@@ -11,8 +11,8 @@
     "standalone",
     "minimal-ui"
   ],
-  "background_color": "#0C2B33",
-  "theme_color": "#0C2B33",
+  "background_color": "#E3EFE5",
+  "theme_color": "#E3EFE5",
   "categories": [
     "travel",
     "navigation",
