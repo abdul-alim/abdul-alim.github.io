@@ -1,8 +1,14 @@
 # Kerala by road — 2026
 
+**Live at <https://abdul-alim.github.io/>** — open it in Safari on the iPhone, then
+Share → Add to Home Screen.
+
 A nine-day road trip app for the drive from Potheri to Madurai, up to Munnar,
 a birthday night on an Alleppey houseboat, then Kochi and home through Salem.
 Built as an installable, offline-capable web app (PWA) for a phone.
+
+Hosted on GitHub Pages from the `abdul-alim.github.io` repository (user site,
+`main` branch, root folder). Pushing to `main` redeploys automatically.
 
 ## What is in here
 
