@@ -189,11 +189,15 @@ img,svg{display:block}
 .tips li{position:relative;padding-left:24px;font-size:14.5px;color:var(--muted);line-height:1.55;margin-top:11px}
 .tips li:before{content:"•";position:absolute;left:8px;top:-1px;color:var(--coral);font-size:19px;font-weight:800}
 
-/* ---------- the crew photo ---------- */
-.crew{margin:20px auto 0;max-width:330px}
-.crew img{width:100%;height:auto;display:block;border-radius:var(--r);box-shadow:var(--sh-lg);
+/* ---------- the family photos ---------- */
+.crew-line{font:700 14px/1.5 var(--body);color:var(--muted);margin:0 0 12px}
+.strip-x{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;
+  margin:0 -16px;padding:2px 16px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.strip-x::-webkit-scrollbar{display:none}
+.shot{flex:0 0 auto;width:64vw;max-width:276px;scroll-snap-align:center}
+.shot img{width:100%;height:auto;display:block;border-radius:var(--r-sm);box-shadow:var(--sh-lg);
   aspect-ratio:4/5;object-fit:cover;background:var(--cream)}
-.crew figcaption{font:700 13.5px/1.5 var(--body);color:var(--muted);text-align:center;padding:11px 8px 0}
+.shot figcaption{font:700 12.5px/1.45 var(--body);color:var(--muted);text-align:center;padding:9px 4px 0}
 
 /* ---------- route ---------- */
 .page-h{font:800 34px/1.1 var(--display);margin-top:20px}
@@ -968,10 +972,18 @@ function viewRoute(){
   } else if(td<=9) when="Today is day "+td+" of 9.";
   return `<div class="wrap">
     <h1 class="page-h">Kerala <em>by road</em> 🛣️</h1>
-    <figure class="crew">
-      <img src="photos/family.jpg" alt="The four of us" width="1000" height="1250" decoding="async">
-      <figcaption>The four of us — doing it the slow way 🧡</figcaption>
-    </figure>
+    <h2 class="eye">📸 The four of us</h2>
+    <p class="crew-line">Doing it the slow way 🧡</p>
+    <div class="strip-x">
+      <figure class="shot">
+        <img src="photos/us-1.jpg" alt="The four of us outside Palais de Mahé"
+             width="1000" height="1250" decoding="async">
+      </figure>
+      <figure class="shot">
+        <img src="photos/us-2.jpg" alt="The four of us on the beach"
+             width="1000" height="1250" loading="lazy" decoding="async">
+      </figure>
+    </div>
     <p class="page-lede">Nine days, 24 October to 1 November 2026. Madurai for the wedding, up to Munnar, a birthday night on an Alleppey houseboat, then Kochi and home through Salem.</p>
     <p class="stat">${p.d} of ${p.n} stops done${when?` <span>· ${when}</span>`:""}</p>
     <div class="bar" style="--p:${pc}%"><u></u></div>

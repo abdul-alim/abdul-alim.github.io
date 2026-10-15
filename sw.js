@@ -1,7 +1,7 @@
 /* Kerala by road — offline service worker.
    Bump CACHE when you change index.html or the icons. */
-const CACHE = "kerala-v8";
-const RUNTIME = "kerala-rt-v8";
+const CACHE = "kerala-v9";
+const RUNTIME = "kerala-rt-v9";
 
 const CORE = [
   "./",
@@ -13,7 +13,8 @@ const CORE = [
   "./icons/maskable-192.png",
   "./icons/maskable-512.png",
   "./icons/apple-touch-icon.png",
-  "./photos/family.jpg",
+  "./photos/us-1.jpg",
+  "./photos/us-2.jpg",
 ];
 
 self.addEventListener("install", (e) => {

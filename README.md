@@ -17,7 +17,7 @@ Hosted on GitHub Pages from the `abdul-alim.github.io` repository (user site,
 | `index.html` | The whole app. Data, styles and logic in one file — no build step. |
 | `manifest.webmanifest` | Makes it installable, sets the home-screen name and colours. |
 | `sw.js` | Service worker. Caches the app so it opens with no signal. |
-| `photos/` | The family photo used on the Route page. |
+| `photos/` | The family photos, shown as a scrollable strip on the Route page. |
 | `icons/` | Home-screen icons (`icon-*`), Android maskable icons, and the iOS `apple-touch-icon`. |
 | `favicon.ico` | Browser tab icon. |
 | `_headers` | Netlify only: correct type for the manifest, no-cache for `sw.js`. |
