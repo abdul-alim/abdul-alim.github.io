@@ -17,7 +17,7 @@ Hosted on GitHub Pages from the `abdul-alim.github.io` repository (user site,
 | `index.html` | The whole app. Data, styles and logic in one file — no build step. |
 | `manifest.webmanifest` | Makes it installable, sets the home-screen name and colours. |
 | `sw.js` | Service worker. Caches the app so it opens with no signal. |
-| `vendor/` | three.js and the car module, loaded only when the Car tab is opened. |
+| `photos/` | The family photo used on the Route page. |
 | `icons/` | Home-screen icons (`icon-*`), Android maskable icons, and the iOS `apple-touch-icon`. |
 | `favicon.ico` | Browser tab icon. |
 | `_headers` | Netlify only: correct type for the manifest, no-cache for `sw.js`. |
@@ -86,10 +86,6 @@ Safari on an iPhone.
   everywhere in the app, including the Navigate button on that row.
 - **Route** — all nine days with the night's stay and distances. Tap a day to
   jump to it.
-- **Car** — a 3D model of the Safari you can drag to spin, five paint options,
-  the pre-trip checks and the fuel plan. The model is drawn by three.js, which
-  is vendored locally and fetched lazily, so nothing is downloaded until you
-  open this tab — and it still works offline once cached.
 - **Money** — costs and the packing and booking checklists.
 - Reached marks, skipped stops and checklist ticks are saved on the device.
   They are per-device and are not shared between phones.
