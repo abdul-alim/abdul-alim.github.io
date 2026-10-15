@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#F5F6F7">
+<meta name="theme-color" content="#0C2B33">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Kerala '26">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="description" content="Nine days by road: Madurai, Munnar, the Alleppey backwaters and Kochi. 24 October to 1 November 2026.">
 <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
 <meta name="referrer" content="no-referrer">
@@ -18,254 +18,625 @@
 <link rel="icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400&family=Mukta:wght@400;500;600;700&family=Rozha+One&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#F5F6F7;
-  --card:#FFFFFF;
-  --ink:#101828;
-  --ink-2:#475467;
-  --muted:#667085;
-  --line:#E4E7EC;
-  --line-2:#F2F4F7;
-  --go:#067647;
-  --go-bg:#ECFDF3;
-  --accent:#0F766E;
-  --r:14px;
-  --shadow:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.06);
-  --tab:58px;
-  --font:"Inter",-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --sky:#0C2B33;
+  --deep:#08222A;
+  --surface:#113A44;
+  --surface-2:#16454F;
+  --line:rgba(246,234,216,.14);
+  --line-2:rgba(246,234,216,.08);
+  --sandal:#F6EAD8;
+  --dim:rgba(246,234,216,.62);
+  --dimmer:rgba(246,234,216,.42);
+  --marigold:#F0A72B;
+  --vermilion:#D8452B;
+  --palm:#4C9E72;
+  --teal:#2A9D9D;
+  --brass:#C8A15A;
+  --go:#5FBF8B;
+  --display:"Rozha One",Georgia,serif;
+  --body:"Mukta",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --hand:"Kalam",var(--body);
+  --r:18px;
+  --tab:62px;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{
-  margin:0;background:var(--bg);color:var(--ink);font:400 15.5px/1.55 var(--font);
-  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
-  padding-bottom:calc(var(--tab) + env(safe-area-inset-bottom) + 24px);
+  margin:0;background:var(--sky);color:var(--sandal);
+  font:400 15.5px/1.6 var(--body);
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:calc(var(--tab) + env(safe-area-inset-bottom) + 26px);
   -webkit-tap-highlight-color:transparent;
+  background-image:radial-gradient(120% 60% at 50% 0%,rgba(240,167,43,.07),transparent 70%);
 }
 h1,h2,h3,p,ol,ul,dl,dt,dd,figure{margin:0}
 ol,ul{padding:0;list-style:none}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:left}
 a{color:inherit}
-img{display:block;max-width:100%}
-:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+img,svg{display:block}
+:focus-visible{outline:2px solid var(--marigold);outline-offset:3px;border-radius:6px}
 .wrap{max-width:600px;margin:0 auto;padding:0 16px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .num{font-variant-numeric:tabular-nums}
 
-/* ---------- generic card + section label ---------- */
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
-.sec{margin:26px 0 10px;font:600 11px/1 var(--font);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
-.sec+.card{margin-top:0}
-.hint{color:var(--muted);font-size:13.5px;line-height:1.5}
-.lead{color:var(--muted);font-size:14px;margin:8px 0 12px}
+/* ---------- handwritten eyebrow ---------- */
+.eyebrow{font:400 17px/1.2 var(--hand);color:var(--marigold);margin:28px 0 10px;letter-spacing:.01em}
+.eyebrow.plain{color:var(--brass)}
 
-/* ---------- day strip ---------- */
-.strip{position:sticky;top:0;z-index:40;background:rgba(245,246,247,.92);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top)}
-.strip ul{display:flex;gap:7px;overflow-x:auto;padding:9px 16px;max-width:600px;margin:0 auto;scrollbar-width:none}
-.strip ul::-webkit-scrollbar{display:none}
-.chip{
-  flex:0 0 auto;min-width:50px;padding:7px 9px 7px;border-radius:11px;text-align:center;
-  background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);
+/* ---------- route rail ---------- */
+.rail{
+  position:sticky;top:0;z-index:40;background:rgba(12,43,51,.9);
+  backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px);
+  border-bottom:1px solid var(--line-2);padding-top:env(safe-area-inset-top);
 }
-.chip small{display:block;font:600 9.5px/1 var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.chip b{display:block;font:700 17px/1.2 var(--font);letter-spacing:-.02em;margin-top:3px}
-.chip i{display:block;height:3px;border-radius:2px;background:var(--line-2);margin-top:6px;overflow:hidden}
-.chip i u{display:block;height:100%;border-radius:2px;background:var(--c);width:var(--p,0%)}
-.chip[aria-current="true"]{background:var(--ink);border-color:var(--ink)}
-.chip[aria-current="true"] small{color:rgba(255,255,255,.6)}
-.chip[aria-current="true"] b{color:#fff}
-.chip[aria-current="true"] i{background:rgba(255,255,255,.2)}
-.chip[aria-current="true"] i u{background:#fff}
+.rail-in{display:flex;gap:24px;overflow-x:auto;scrollbar-width:none;padding:13px 22px 11px;max-width:600px;margin:0 auto}
+.rail-in::-webkit-scrollbar{display:none}
+.node{position:relative;flex:0 0 auto;width:38px;text-align:center}
+.node+.node:before{content:"";position:absolute;left:-24px;top:15px;width:24px;border-top:2px dashed rgba(246,234,216,.28)}
+.node .dot{
+  display:grid;place-content:center;width:32px;height:32px;margin:0 auto;border-radius:50%;
+  border:1.5px solid var(--line);color:var(--dim);
+  font:700 13px/1 var(--body);font-variant-numeric:tabular-nums;background:rgba(8,34,42,.6);
+}
+.node .dd{display:block;margin-top:5px;font:500 10.5px/1.2 var(--body);color:var(--dimmer);letter-spacing:.02em}
+.node[aria-current="true"] .dot{
+  background:var(--c);border-color:var(--marigold);color:#08181C;
+  box-shadow:0 0 0 3px rgba(240,167,43,.24);transform:scale(1.1);font-weight:700;
+}
+.node[aria-current="true"] .dd{color:var(--sandal);font-weight:600}
+.node.done .dot{background:rgba(95,191,139,.16);border-color:var(--go);color:var(--go)}
 
-/* ---------- day hero ---------- */
-.hero{position:relative;aspect-ratio:16/10;background:linear-gradient(150deg,#243B53,#101828)}
-.hero img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease}
-.hero img.on{opacity:1}
-.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(9,13,20,.9) 4%,rgba(9,13,20,.5) 42%,rgba(9,13,20,.12) 78%)}
-.hero-txt{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:15px 16px 16px;color:#fff}
-.hero-eye{font:600 11px/1 var(--font);letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.78)}
-.hero h1{font:700 clamp(22px,6.2vw,27px)/1.18 var(--font);letter-spacing:-.021em;margin-top:7px}
-.pill{display:inline-block;vertical-align:3px;margin-left:8px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.32);color:#fff;font:600 10.5px/1 var(--font);letter-spacing:.07em;text-transform:uppercase;padding:5px 7px;border-radius:999px;backdrop-filter:blur(4px)}
+/* ---------- day plate ---------- */
+.plate{position:relative;border-radius:var(--r);overflow:hidden;margin-top:16px;background:var(--deep);border:1px solid rgba(240,167,43,.16);box-shadow:0 14px 38px rgba(0,0,0,.38)}
+.plate-art{position:relative;aspect-ratio:16/9;overflow:hidden}
+.plate-art svg{width:100%;height:100%}
+.plate-art:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(6,24,30,.78),rgba(6,24,30,.18) 34%,rgba(6,24,30,0) 52%)}
+.plate-hand{position:absolute;left:16px;right:16px;bottom:12px;z-index:2;font:400 16px/1.2 var(--hand);color:#FFDC96;text-shadow:0 2px 10px rgba(0,0,0,.55)}
+.plate-cap{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:12px;padding:14px 16px 16px;background:linear-gradient(165deg,var(--surface-2),var(--deep))}
+.plate-cap h1{font:400 clamp(23px,6.4vw,31px)/1.15 var(--display);color:#FFF9EF}
+.plate-no{font:400 58px/.8 var(--display);color:var(--c);opacity:.62;letter-spacing:-.02em}
+.pill{
+  display:inline-block;vertical-align:4px;margin-left:9px;border:1px solid rgba(240,167,43,.6);
+  background:rgba(240,167,43,.16);color:#FFD98A;border-radius:999px;
+  font:600 10.5px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;padding:5px 8px
+}
 
-/* ---------- fact grid ---------- */
-.facts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
-.facts>div{padding:12px 16px;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+/* ---------- facts ---------- */
+.facts{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;background:rgba(8,34,42,.86);border-top:1px solid var(--line)}
+.facts>div{padding:12px 16px;border-bottom:1px solid var(--line-2);border-right:1px solid var(--line-2)}
 .facts>div:nth-child(2n){border-right:0}
 .facts>div:nth-last-child(-n+2){border-bottom:0}
-.facts dt{font:500 11px/1 var(--font);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.facts dd{font:600 15px/1.35 var(--font);letter-spacing:-.01em;margin-top:5px}
+.facts dt{font:500 10.5px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--dimmer)}
+.facts dd{font:600 15px/1.35 var(--body);color:var(--sandal);margin-top:6px}
 
 /* ---------- next stop ---------- */
-.next{background:var(--ink);color:#fff;padding:16px;border-radius:var(--r);box-shadow:0 2px 6px rgba(16,24,40,.14);margin-top:14px}
-.next-eye{font:600 11px/1 var(--font);letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.62)}
-.next h2{font:700 clamp(20px,5.6vw,24px)/1.2 var(--font);letter-spacing:-.021em;margin-top:8px}
-.next p{font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.72);margin-top:7px}
-.next-act{display:flex;gap:8px;margin-top:15px}
-.next-then{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.12);font-size:13.5px;color:rgba(255,255,255,.62)}
-.next-then b{color:#fff;font-weight:600}
+.next{
+  position:relative;margin-top:14px;border-radius:var(--r);overflow:hidden;
+  background:linear-gradient(160deg,var(--surface-2),var(--surface));
+  border:1px solid rgba(240,167,43,.34);box-shadow:0 8px 26px rgba(0,0,0,.28);
+}
+.next:before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--marigold)}
+.next-in{padding:16px 18px 17px 20px}
+.next-eye{font:400 15px/1 var(--hand);color:var(--marigold)}
+.next h2{font:400 clamp(21px,5.8vw,25px)/1.16 var(--display);color:#FFF9EF;margin-top:7px}
+.next p{font-size:14.5px;line-height:1.55;color:var(--dim);margin-top:8px}
+.next-act{display:flex;gap:9px;margin-top:15px}
+.next-then{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:13.5px;color:var(--dim)}
+.next-then b{color:var(--sandal);font-weight:600}
 
 /* ---------- buttons ---------- */
 .btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  min-height:46px;padding:0 16px;border-radius:10px;
-  font:600 14.5px/1 var(--font);letter-spacing:-.005em;
-  border:1px solid var(--line);background:var(--card);color:var(--ink);
-  text-decoration:none;transition:background .15s,opacity .15s;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  min-height:47px;padding:0 17px;border-radius:12px;
+  font:600 14.5px/1 var(--body);border:1.5px solid var(--line);
+  background:rgba(246,234,216,.06);color:var(--sandal);text-decoration:none;
+  transition:transform .12s ease,filter .15s ease;
 }
-.btn:active{opacity:.72}
-.btn-primary{background:var(--ink);border-color:var(--ink);color:#fff}
-.btn-go{background:var(--go);border-color:var(--go);color:#fff}
-.btn-quiet{background:transparent;border-color:transparent;color:var(--muted)}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--marigold);border-color:var(--marigold);color:#20160A}
+.btn-go{background:rgba(95,191,139,.16);border-color:var(--go);color:#9FE3BF}
+.btn-quiet{background:transparent;border-color:var(--line);color:var(--dim)}
 .btn-w{flex:1}
-.next .btn{background:#fff;border-color:#fff;color:var(--ink)}
-.next .btn-ghost{background:transparent;border-color:rgba(255,255,255,.28);color:#fff}
+.btn svg{width:17px;height:17px;flex:none}
 
 /* ---------- stop rows ---------- */
-.rows>li+li{border-top:1px solid var(--line)}
-.row{display:grid;grid-template-columns:64px minmax(0,1fr) 24px;gap:12px;align-items:center;width:100%;padding:13px 16px;transition:background .15s}
-.row:active{background:var(--line-2)}
-.row-time{font:600 13.5px/1.3 var(--font);letter-spacing:-.01em;color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
-.row-nm{font:600 15px/1.35 var(--font);letter-spacing:-.012em;min-width:0}
-.row-sub{display:block;font:400 12.5px/1.4 var(--font);color:var(--muted);margin-top:3px;letter-spacing:0}
-.row-mk{justify-self:end;width:22px;height:22px;border:1.5px solid var(--line);border-radius:50%;display:grid;place-content:center;font:700 12px/1 var(--font);color:transparent}
-.row.is-next .row-time{color:var(--ink);font-weight:700}
-.row.is-next .row-mk{border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 3px rgba(15,118,110,.14)}
-.row.is-next .row-nm{font-weight:700}
-.row.done .row-mk{background:var(--go);border-color:var(--go);color:#fff}
-.row.done .row-mk:after{content:"✓"}
-.row.done .row-nm,.row.done .row-time{color:var(--muted);font-weight:500}
-.row.hoff .row-nm{color:var(--muted);text-decoration:line-through}
-.row-opt .row-nm:after{content:"optional";display:inline-block;font:600 10px/1 var(--font);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--line-2);border-radius:5px;padding:3px 5px;margin-left:8px;vertical-align:1px}
-.here-tag{display:inline-block;font:600 10px/1 var(--font);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:rgba(15,118,110,.09);border-radius:5px;padding:3px 5px;margin-left:8px;vertical-align:1px}
+.rows{border-radius:var(--r);overflow:hidden;background:var(--surface);border:1px solid var(--line-2)}
+.rows>li+li{border-top:1px solid var(--line-2)}
+.row{display:grid;grid-template-columns:66px minmax(0,1fr) 26px;gap:12px;align-items:center;width:100%;padding:14px 16px;transition:background .15s}
+.row:active{background:rgba(246,234,216,.05)}
+.row-time{font:600 13.5px/1.3 var(--body);color:var(--dim);font-variant-numeric:tabular-nums;white-space:nowrap}
+.row-nm{font:600 15px/1.35 var(--body);color:var(--sandal);min-width:0}
+.row-sub{display:block;font:400 12.5px/1.4 var(--body);color:var(--dimmer);margin-top:4px}
+.row-mk{justify-self:end;width:23px;height:23px;border:1.5px solid var(--line);border-radius:50%;display:grid;place-content:center;color:transparent}
+.row-mk svg{width:12px;height:12px}
+.row.is-next .row-mk{border-color:var(--marigold);background:var(--marigold);box-shadow:0 0 0 4px rgba(240,167,43,.16)}
+.row.is-next .row-nm,.row.is-next .row-time{color:#FFF9EF;font-weight:700}
+.row.done .row-mk{background:rgba(95,191,139,.2);border-color:var(--go);color:var(--go)}
+.row.done .row-nm{color:var(--dim);font-weight:500}
+.row.done .row-time{color:var(--go)}
+.row.hoff .row-nm{color:var(--dimmer);text-decoration:line-through}
+.row-opt .row-nm:after{
+  content:"optional";display:inline-block;font:600 9.5px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--brass);border:1px solid rgba(200,161,90,.4);border-radius:5px;padding:3px 5px;margin-left:9px;vertical-align:2px
+}
 
 /* ---------- disclosures ---------- */
 .acc+.acc{margin-top:12px}
-.acc>summary{display:flex;align-items:center;gap:10px;padding:14px 16px;cursor:pointer;list-style:none;font:600 14.5px/1.3 var(--font);letter-spacing:-.012em}
+.acc{border-radius:var(--r);overflow:hidden;background:var(--surface);border:1px solid var(--line-2)}
+.acc>summary{display:flex;align-items:center;gap:10px;padding:15px 16px;cursor:pointer;list-style:none;font:600 14.5px/1.3 var(--body);color:var(--sandal)}
 .acc>summary::-webkit-details-marker{display:none}
-.acc>summary:after{content:"";width:8px;height:8px;margin-left:auto;border-right:1.8px solid var(--muted);border-bottom:1.8px solid var(--muted);transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+.acc>summary:after{content:"";width:8px;height:8px;margin-left:auto;border-right:1.8px solid var(--brass);border-bottom:1.8px solid var(--brass);transform:rotate(45deg) translateY(-2px);transition:transform .2s}
 .acc[open]>summary:after{transform:rotate(-135deg) translateY(-1px)}
-.acc[open]>summary{border-bottom:1px solid var(--line)}
-.acc-bd{padding:4px 16px 16px}
-.tl li{display:grid;grid-template-columns:62px minmax(0,1fr);gap:12px;padding:10px 0;border-top:1px solid var(--line-2)}
+.acc[open]>summary{border-bottom:1px solid var(--line-2)}
+.acc-bd{padding:6px 16px 16px}
+.tl li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:12px;padding:11px 0;border-top:1px solid var(--line-2)}
 .tl li:first-child{border-top:0}
-.tl time{font:600 13px/1.5 var(--font);color:var(--ink-2);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
-.tl p{font-size:14.5px;line-height:1.5;color:var(--muted)}
-.tl li.key time{color:var(--ink);font-weight:700}
-.tl li.key p{color:var(--ink)}
-.tl li.now{background:rgba(15,118,110,.05)}
-.tl li.now time:after{content:"now";display:block;font:600 9.5px/1.4 var(--font);letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
-.tl li.past{opacity:.5}
-.note-p{font-size:14.5px;line-height:1.55;color:var(--ink-2)}
-.tips li{position:relative;padding-left:15px;font-size:14.5px;line-height:1.5;color:var(--ink-2);margin-top:9px}
-.tips li:before{content:"";position:absolute;left:0;top:.6em;width:4px;height:4px;border-radius:50%;background:var(--line)}
+.tl time{font:600 13px/1.5 var(--body);color:var(--brass);font-variant-numeric:tabular-nums}
+.tl p{font-size:14.5px;line-height:1.55;color:var(--dim)}
+.tl li.key time{color:var(--marigold)}
+.tl li.key p{color:var(--sandal)}
+.tl li.now{background:rgba(240,167,43,.07)}
+.tl li.now time:after{content:"now";display:block;font:600 9.5px/1.4 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--marigold)}
+.tl li.past{opacity:.45}
+.note-p{font-size:14.5px;line-height:1.6;color:var(--dim)}
+.tips li{position:relative;padding-left:16px;font-size:14.5px;line-height:1.55;color:var(--dim);margin-top:10px}
+.tips li:before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--brass);opacity:.7}
 
-/* ---------- route ---------- */
-.page-h{font:700 clamp(30px,8.4vw,40px)/1.06 var(--font);letter-spacing:-.03em;margin-top:18px}
-.page-lede{color:var(--muted);font-size:15px;line-height:1.55;margin-top:10px}
-.stat{display:flex;align-items:baseline;gap:8px;margin-top:20px;font:600 14px/1.4 var(--font)}
-.stat span{color:var(--muted);font-weight:400}
-.bar{height:5px;border-radius:3px;background:var(--line);margin-top:9px;overflow:hidden}
-.bar u{display:block;height:100%;border-radius:3px;background:var(--go);width:var(--p,0%)}
-.day{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;padding:13px 16px;transition:background .15s}
-.day:active{background:var(--line-2)}
-.day+.day{border-top:1px solid var(--line)}
-.day-no{position:relative;font:700 14px/1 var(--font);color:var(--ink-2);font-variant-numeric:tabular-nums;padding-left:10px}
-.day-no:before{content:"";position:absolute;left:0;top:-1px;bottom:-1px;width:3px;border-radius:2px;background:var(--c)}
-.day-dt{display:block;font:500 11px/1 var(--font);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
-.day-ti{display:block;font:600 14.5px/1.35 var(--font);letter-spacing:-.012em;margin-top:5px}
-.day-sub{display:block;font:400 12.5px/1.4 var(--font);color:var(--muted);margin-top:4px}
-.day-km{font:600 13px/1 var(--font);color:var(--ink-2);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;min-width:58px}
-.day-km em{display:block;font:500 11.5px/1.4 var(--font);font-style:normal;color:var(--go);margin-top:6px;letter-spacing:-.01em}
-.day-km em.zero{color:var(--muted)}
+/* ---------- route page ---------- */
+.page-h{font:400 clamp(34px,10vw,46px)/1.06 var(--display);color:#FFF9EF;margin-top:22px}
+.page-h em{font-style:normal;color:var(--marigold)}
+.page-lede{color:var(--dim);font-size:15px;line-height:1.6;margin-top:12px}
+.stat{display:flex;align-items:baseline;gap:8px;margin-top:22px;font:600 14px/1.4 var(--body)}
+.stat span{color:var(--dimmer);font-weight:400}
+.bar{height:5px;border-radius:3px;background:rgba(246,234,216,.12);margin-top:10px;overflow:hidden}
+.bar u{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--palm),var(--marigold));width:var(--p,0%)}
+.days{border-radius:var(--r);overflow:hidden;background:var(--surface);border:1px solid var(--line-2)}
+.day{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;padding:13px 16px;transition:background .15s}
+.day:active{background:rgba(246,234,216,.05)}
+.day+.day{border-top:1px solid var(--line-2)}
+.day-no{
+  display:grid;place-content:center;width:34px;height:34px;border-radius:50%;
+  background:var(--c);color:#08181C;font:700 13px/1 var(--body);font-variant-numeric:tabular-nums;
+}
+.day-dt{display:block;font:500 10.5px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--dimmer)}
+.day-ti{display:block;font:400 16px/1.3 var(--display);color:var(--sandal);margin-top:5px}
+.day-sub{display:block;font:400 12.5px/1.4 var(--body);color:var(--dimmer);margin-top:5px}
+.day-km{font:600 13px/1 var(--body);color:var(--dim);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;min-width:56px}
+.day-km em{display:block;font:500 11.5px/1.4 var(--body);font-style:normal;color:var(--go);margin-top:7px}
+.day-km em.zero{color:var(--dimmer)}
 
 /* ---------- money ---------- */
 .ledger{padding:4px 16px 12px}
-.ledger li{display:flex;align-items:baseline;gap:8px;padding:10px 0;border-bottom:1px solid var(--line-2)}
+.ledger li{display:flex;align-items:baseline;gap:8px;padding:11px 0;border-bottom:1px solid var(--line-2)}
 .ledger li:last-child{border-bottom:0}
-.ledger .l{order:1;font-size:14.5px;color:var(--ink-2);min-width:0}
+.ledger .l{order:1;font-size:14.5px;color:var(--dim);min-width:0}
 .ledger .d{order:2;flex:1;min-width:12px}
-.ledger b{order:3;font:600 14.5px/1.35 var(--font);white-space:nowrap;font-variant-numeric:tabular-nums;letter-spacing:-.012em}
-.ledger .tot{margin-top:4px;padding-top:14px;border-top:1.5px solid var(--ink);border-bottom:0}
-.ledger .tot .l{font:600 13px/1.4 var(--font);letter-spacing:.05em;text-transform:uppercase;color:var(--ink)}
-.ledger .tot b{font:700 20px/1 var(--font);letter-spacing:-.025em}
+.ledger b{order:3;font:600 14.5px/1.35 var(--body);color:var(--sandal);white-space:nowrap;font-variant-numeric:tabular-nums}
+.ledger .tot{margin-top:4px;padding-top:15px;border-top:1.5px solid rgba(240,167,43,.45);border-bottom:0}
+.ledger .tot .l{font:600 12px/1.4 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--brass)}
+.ledger .tot b{font:400 24px/1 var(--display);color:var(--marigold)}
 
 /* ---------- checklist ---------- */
 .chk{padding:2px 16px}
 .chk li+li{border-top:1px solid var(--line-2)}
 .chk label{display:flex;gap:12px;align-items:flex-start;padding:13px 0;cursor:pointer}
 .chk input{
-  appearance:none;-webkit-appearance:none;flex:none;width:21px;height:21px;margin:1px 0 0;
-  border:1.5px solid #D0D5DD;border-radius:6px;background:var(--card);display:grid;place-content:center;cursor:pointer;transition:background .15s,border-color .15s;
+  appearance:none;-webkit-appearance:none;flex:none;width:22px;height:22px;margin:1px 0 0;
+  border:1.5px solid rgba(246,234,216,.28);border-radius:7px;background:rgba(8,34,42,.5);
+  display:grid;place-content:center;cursor:pointer;transition:background .15s,border-color .15s;
 }
 .chk input:checked{background:var(--go);border-color:var(--go)}
-.chk input:checked:after{content:"";width:4px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
-.chk span{font-size:14.5px;line-height:1.5;color:var(--ink-2)}
-.chk input:checked+span{color:var(--muted);text-decoration:line-through;text-decoration-color:#D0D5DD}
+.chk input:checked:after{content:"";width:4px;height:9px;border:solid #08181C;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.chk span{font-size:14.5px;line-height:1.55;color:var(--dim)}
+.chk input:checked+span{color:var(--dimmer);text-decoration:line-through;text-decoration-color:rgba(246,234,216,.25)}
+.hint{color:var(--dimmer);font-size:13.5px;line-height:1.55}
 
 /* ---------- tabs ---------- */
-.tabs{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(255,255,255,.94);backdrop-filter:saturate(180%) blur(14px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+.tabs{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  background:rgba(8,34,42,.94);backdrop-filter:saturate(160%) blur(16px);-webkit-backdrop-filter:saturate(160%) blur(16px);
+  border-top:1px solid var(--line-2);padding-bottom:env(safe-area-inset-bottom);
+}
 .tabs div{display:flex;max-width:600px;margin:0 auto}
-.tabs button{flex:1;min-height:var(--tab);display:grid;place-content:center;text-align:center;font:600 11.5px/1 var(--font);letter-spacing:.02em;color:var(--muted);transition:color .15s}
-.tabs button[aria-selected="true"]{color:var(--ink)}
-.tabs button[aria-selected="true"] span{position:relative}
-.tabs button[aria-selected="true"] span:after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:-19px;width:22px;height:2.5px;border-radius:2px;background:var(--ink)}
+.tabs button{
+  flex:1;min-height:var(--tab);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  font:600 10.5px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--dimmer);transition:color .15s;
+}
+.tabs svg{width:22px;height:22px}
+.tabs button[aria-selected="true"]{color:var(--marigold)}
+.tabs button[aria-selected="true"] svg{filter:drop-shadow(0 0 8px rgba(240,167,43,.4))}
 
 /* ---------- detail sheet ---------- */
 .sheet{position:fixed;inset:0;z-index:80;display:flex;align-items:flex-end}
 .sheet[hidden]{display:none}
-.scrim{position:absolute;inset:0;background:rgba(16,24,40,.5);border:0;padding:0;cursor:default;animation:fade .2s ease-out}
-.panel{position:relative;width:100%;max-width:600px;margin:0 auto;max-height:90vh;overflow-y:auto;background:var(--card);border-radius:18px 18px 0 0;padding-bottom:calc(env(safe-area-inset-bottom) + 18px);animation:rise .28s cubic-bezier(.2,.8,.25,1)}
-.grab{width:34px;height:4px;border-radius:2px;background:var(--line);margin:9px auto 0}
-.panel figure{margin:13px 0 0;aspect-ratio:16/10;background:var(--line-2);overflow:hidden}
+.scrim{position:absolute;inset:0;background:rgba(4,18,22,.66);border:0;padding:0;cursor:default;animation:fade .2s ease-out}
+.panel{
+  position:relative;width:100%;max-width:600px;margin:0 auto;max-height:90vh;overflow-y:auto;
+  background:var(--surface);border-radius:22px 22px 0 0;border-top:4px solid var(--c,var(--marigold));
+  padding-bottom:calc(env(safe-area-inset-bottom) + 20px);animation:rise .3s cubic-bezier(.2,.8,.25,1);
+}
+.grab{width:38px;height:4px;border-radius:2px;background:rgba(246,234,216,.22);margin:10px auto 0}
+.panel figure{margin:14px 0 0;aspect-ratio:16/10;background:var(--deep);overflow:hidden}
 .panel figure img{width:100%;height:100%;object-fit:cover}
-.panel .cap{font:400 11px/1 var(--font);color:var(--muted);padding:8px 18px 0}
+.panel .cap{font:400 11px/1 var(--body);color:var(--dimmer);padding:8px 18px 0}
 .panel .cap a{text-decoration:underline}
 .panel-bd{padding:14px 18px 0}
-.panel-bd h2{font:700 clamp(21px,5.8vw,25px)/1.2 var(--font);letter-spacing:-.022em}
-.pmeta{font:500 11px/1.4 var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.ptext{font-size:15px;line-height:1.55;color:var(--ink-2);margin-top:9px}
-.act{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}
-.marked{font-size:13px;color:var(--go);margin-top:12px;font-weight:500}
+.panel-bd h2{font:400 clamp(22px,6vw,27px)/1.18 var(--display);color:#FFF9EF}
+.pmeta{font:400 15px/1.3 var(--hand);color:var(--marigold)}
+.ptext{font-size:15px;line-height:1.6;color:var(--dim);margin-top:10px}
+.act{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.marked{font-size:13px;color:var(--go);margin-top:13px;font-weight:500}
 
 /* ---------- install hint ---------- */
-.hintbar{position:fixed;left:12px;right:12px;bottom:calc(var(--tab) + env(safe-area-inset-bottom) + 12px);z-index:65;background:var(--ink);color:#fff;font:400 13px/1.45 var(--font);border-radius:12px;box-shadow:0 6px 20px rgba(16,24,40,.22);display:flex;align-items:center;gap:10px;padding:12px 14px;max-width:576px;margin:0 auto}
-.hintbar b{font-weight:600}
-.hintbar button{margin-left:auto;color:rgba(255,255,255,.6);font:400 20px/1 var(--font);padding:2px 4px}
+.hintbar{
+  position:fixed;left:12px;right:12px;bottom:calc(var(--tab) + env(safe-area-inset-bottom) + 12px);z-index:65;
+  background:var(--marigold);color:#20160A;font:500 13px/1.45 var(--body);border-radius:14px;
+  box-shadow:0 8px 26px rgba(0,0,0,.4);display:flex;align-items:center;gap:10px;padding:12px 14px;
+  max-width:576px;margin:0 auto;
+}
+.hintbar b{font-weight:700}
+.hintbar button{margin-left:auto;color:rgba(32,22,10,.6);font:400 20px/1 var(--body);padding:2px 4px}
 
-@keyframes rise{from{transform:translateY(16px);opacity:.5}to{transform:none;opacity:1}}
+@keyframes rise{from{transform:translateY(18px);opacity:.5}to{transform:none;opacity:1}}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 @media (prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
-@media (min-width:520px){.facts{grid-template-columns:repeat(4,1fr)}.facts>div{border-bottom:0;border-right:1px solid var(--line)!important}.facts>div:last-child{border-right:0!important}}
-@media print{.tabs,.strip,.hintbar,.btn{display:none}body{background:#fff;padding:0}}
+@media (min-width:520px){
+  .facts{grid-template-columns:repeat(4,1fr)}
+  .facts>div{border-bottom:0;border-right:1px solid var(--line-2)!important}
+  .facts>div:last-child{border-right:0!important}
+  .plate-txt{padding:128px 22px 22px}
+}
+@media print{.tabs,.rail,.hintbar,.btn{display:none}body{background:#fff;color:#000}}
 </style>
 </head>
 <body>
 
-<nav class="strip" aria-label="Choose a day"><ul id="strip"></ul></nav>
+<nav class="rail" aria-label="Choose a day"><div class="rail-in" id="rail"></div></nav>
 <main id="view"></main>
 
 <nav class="tabs" role="tablist" aria-label="Sections"><div>
-  <button role="tab" data-tab="day"><span>Day</span></button>
-  <button role="tab" data-tab="route"><span>Route</span></button>
-  <button role="tab" data-tab="info"><span>Info</span></button>
+  <button role="tab" data-tab="day">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+      <circle cx="12" cy="10" r="4"/><path d="M2.5 19.5h19M5.5 15.5l1.6 1.4M18.5 15.5l-1.6 1.4"/></svg>
+    <span>Day</span></button>
+  <button role="tab" data-tab="route">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+      <circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="5.5" r="2.5"/>
+      <path d="M8 18.5h6.5a3.5 3.5 0 0 0 0-7h-5a3.5 3.5 0 0 1 0-7H16"/></svg>
+    <span>Route</span></button>
+  <button role="tab" data-tab="info">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+      <path d="M4 7h16M4 12h16M4 17h10"/></svg>
+    <span>Info</span></button>
 </div></nav>
 
 <div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="sheet-h"></div>
 <noscript><div class="wrap" style="padding-top:30px"><h1 class="page-h">Kerala by road</h1><p class="page-lede">Turn on JavaScript to see the itinerary.</p></div></noscript>
 
 <script>
-/* ======================= itinerary data =======================
-   c   = the day's route colour (a thin accent only)
-   km  = distance driven that day
-   hero= Wikipedia titles for the day photo (first one with a picture wins)
-   facts = the 2x2 summary beneath the photo
-   tl  = hour by hour (3rd item truthy = a fixed commitment)
-   w   = Wikipedia titles for a stop's photo
-   q   = the Google Maps search used by Navigate                     */
+/* ======================= the nine plates =======================
+   Hand-drawn flat vector scenes, one per day, in the Kerala mural
+   palette: indigo water, marigold light, vermilion earth, palm green. */
+const ART = {
+/* Madurai — a gopuram at sunrise, the road running to its door */
+gopuram:()=>`<svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs><linearGradient id="a1" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#3E2545"/><stop offset=".38" stop-color="#7E3139"/>
+<stop offset=".66" stop-color="#C4562E"/><stop offset=".88" stop-color="#E8912F"/>
+<stop offset="1" stop-color="#F0A72B"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#a1)"/>
+<circle cx="486" cy="346" r="98" fill="#F0A72B" opacity=".15"/>
+<circle cx="486" cy="346" r="60" fill="#FFD07A" opacity=".92"/>
+<g fill="#4A1E2A" opacity=".8">
+<path d="M646 356h92l-10-26h-72z"/><path d="M656 330h72l-10-22h-52z"/><path d="M666 308h52l-9-20h-34z"/>
+<path d="M674 288h36l-8-18h-20z"/><rect x="688" y="258" width="8" height="14"/><circle cx="692" cy="254" r="6"/></g>
+<g fill="#2A1119">
+<rect x="288" y="330" width="224" height="120"/>
+<path d="M294 330h212l-16-32H310z"/><path d="M310 298h180l-16-30H326z"/>
+<path d="M326 268h148l-15-28H341z"/><path d="M341 240h118l-14-26H355z"/>
+<path d="M355 214h90l-13-24H368z"/><path d="M368 190h64l-12-22H380z"/>
+<path d="M380 168h40l-9-18h-22z"/><rect x="395" y="126" width="11" height="26"/>
+<circle cx="400" cy="122" r="7.5"/></g>
+<g fill="#F0A72B" opacity=".22">
+<path d="M294 330h212l-16-32H310z"/><path d="M326 268h148l-15-28H341z"/><path d="M355 214h90l-13-24H368z"/></g>
+<path d="M380 450v-52a20 20 0 0 1 40 0v52z" fill="#F0A72B" opacity=".45"/>
+<rect y="420" width="800" height="30" fill="#4A2A30"/>
+<path d="M0 450l262-30h276l262 30z" fill="#5A333A"/>
+<path d="M0 422h800v6H0z" fill="#F0A72B" opacity=".22"/>
+<path d="M400 422h10l40 28h-100z" fill="#F6EAD8" opacity=".18"/>
+<g fill="#150B11">
+<rect x="84" y="348" width="7" height="76"/>
+<path d="M87 348c-30-16-52-12-64 4 22-9 44-6 64-4zm0 0c30-16 52-12 64 4-22-9-44-6-64-4zm3-5c-8-28-24-42-42-42 20 6 32 20 42 42zm-3 0c8-28 24-42 42-42-20 6-32 20-42 42z"/>
+<rect x="722" y="360" width="6" height="60"/>
+<path d="M725 360c-24-13-42-10-52 3 18-6 36-5 52-3zm0 0c24-13 42-10 52 3-18-6-36-5-52-3z"/></g>
+<g fill="#0F0A0E"><rect x="358" y="430" width="48" height="13" rx="6"/><rect x="366" y="423" width="32" height="9" rx="4"/></g>
+<circle cx="370" cy="444" r="4.5" fill="#0F0A0E"/><circle cx="398" cy="444" r="4.5" fill="#0F0A0E"/>
+<circle cx="407" cy="433" r="3" fill="#F0A72B"/></svg>`,
+
+/* Munnar — the Bodimettu ghat, hairpins climbing into mist */
+ghat:()=>`<svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs><linearGradient id="a2" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#152C42"/><stop offset=".42" stop-color="#2E6E70"/>
+<stop offset=".76" stop-color="#7FB48A"/><stop offset="1" stop-color="#D9C98C"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#a2)"/>
+<circle cx="648" cy="112" r="30" fill="#FFEEC2" opacity=".8"/>
+<g fill="#D6E7DB" opacity=".16"><ellipse cx="250" cy="188" rx="230" ry="15"/><ellipse cx="620" cy="150" rx="170" ry="11"/><ellipse cx="120" cy="252" rx="190" ry="13"/></g>
+<path d="M0 246 Q164 166 334 230 T800 204 V450 H0Z" fill="#2A6455"/>
+<path d="M0 302 Q204 224 404 288 T800 266 V450 H0Z" fill="#205448"/>
+<path d="M0 358 Q224 294 444 344 T800 326 V450 H0Z" fill="#183F3A"/>
+<path d="M182 450C242 406 344 418 390 368 436 318 358 298 404 248 450 198 552 216 620 172 688 128 762 120 830 88"
+ stroke="#123A34" stroke-width="19" fill="none" stroke-linecap="round"/>
+<path d="M182 450C242 406 344 418 390 368 436 318 358 298 404 248 450 198 552 216 620 172 688 128 762 120 830 88"
+ stroke="#E9D9AE" stroke-width="12" fill="none" stroke-linecap="round"/>
+<path d="M182 450C242 406 344 418 390 368 436 318 358 298 404 248 450 198 552 216 620 172 688 128 762 120 830 88"
+ stroke="#B98A3E" stroke-width="1.8" fill="none" stroke-dasharray="9 11" opacity=".75"/>
+<g fill="#0F332E">
+<path d="M150 386l14-32 14 32z"/><path d="M166 386l10-23 10 23z"/>
+<path d="M300 452l15-34 15 34z"/><path d="M318 452l10-24 10 24z"/>
+<path d="M452 296l14-32 14 32z"/><path d="M469 298l10-23 10 23z"/>
+<path d="M556 306l13-30 13 30z"/><path d="M620 244l14-32 14 32z"/><path d="M638 248l10-23 10 23z"/>
+<path d="M92 434l13-30 13 30z"/><path d="M690 400l14-32 14 32z"/></g>
+<g fill="#0E2622"><rect x="196" y="366" width="46" height="13" rx="6"/><rect x="205" y="358" width="29" height="10" rx="5"/></g>
+<circle cx="206" cy="381" r="5" fill="#0E2622"/><circle cx="231" cy="381" r="5" fill="#0E2622"/>
+<circle cx="242" cy="368" r="3.6" fill="#F0A72B"/>
+<ellipse cx="254" cy="368" rx="18" ry="8" fill="#F0A72B" opacity=".26"/></svg>`,
+
+/* Munnar — tea terraces stepping down to a lake */
+tea:()=>`<svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs>
+<linearGradient id="a3" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#1B4A66"/><stop offset=".42" stop-color="#5FA3A6"/>
+<stop offset=".72" stop-color="#B7D3A8"/><stop offset="1" stop-color="#DCE6C0"/></linearGradient>
+<pattern id="t3a" width="18" height="14" patternUnits="userSpaceOnUse">
+<rect width="18" height="14" fill="#318457"/>
+<circle cx="4.5" cy="4" r="2.6" fill="#57A87A" opacity=".6"/>
+<circle cx="13" cy="10" r="2.4" fill="#57A87A" opacity=".5"/></pattern>
+<pattern id="t3b" width="22" height="16" patternUnits="userSpaceOnUse">
+<rect width="22" height="16" fill="#266C48"/>
+<circle cx="5" cy="4" r="3.2" fill="#42915F" opacity=".65"/>
+<circle cx="16" cy="11" r="3" fill="#42915F" opacity=".55"/></pattern>
+<pattern id="t3c" width="26" height="18" patternUnits="userSpaceOnUse">
+<rect width="26" height="18" fill="#1B5337"/>
+<circle cx="6" cy="5" r="3.8" fill="#2E7547" opacity=".7"/>
+<circle cx="19" cy="12" r="3.5" fill="#2E7547" opacity=".6"/></pattern>
+</defs>
+<rect width="800" height="450" fill="url(#a3)"/>
+<circle cx="196" cy="84" r="34" fill="#FFF3CF" opacity=".8"/>
+<path d="M0 188 Q200 140 410 178 T800 158 V450 H0Z" fill="#3E7C78" opacity=".8"/>
+<path d="M0 216 Q220 170 430 206 T800 190 V450 H0Z" fill="#33706B" opacity=".9"/>
+<path d="M96 264 Q300 238 520 254 T800 246 V310 Q560 326 300 316 T96 298Z" fill="#1E7C86"/>
+<g stroke="#BEE7E0" stroke-width="2" opacity=".3" fill="none">
+<path d="M180 274q90-8 180 0t180-4"/><path d="M230 292q90-8 180 0t150-4"/></g>
+<g fill="#0E3F45"><path d="M472 270h52l-9 14h-34z"/><rect x="495" y="248" width="4" height="22"/><path d="M499 248l18 12-18 3z"/></g>
+<path d="M0 302 Q220 264 440 294 T800 276 V450 H0Z" fill="url(#t3a)"/>
+<path d="M0 302 Q220 264 440 294 T800 276" stroke="#71C294" stroke-width="2.5" fill="none" opacity=".5"/>
+<path d="M0 346 Q230 308 450 338 T800 322 V450 H0Z" fill="url(#t3b)"/>
+<path d="M0 346 Q230 308 450 338 T800 322" stroke="#5CA87E" stroke-width="2.5" fill="none" opacity=".42"/>
+<path d="M0 394 Q240 358 460 388 T800 374 V450 H0Z" fill="url(#t3c)"/>
+<path d="M0 394 Q240 358 460 388 T800 374" stroke="#4A9469" stroke-width="2.5" fill="none" opacity=".36"/></svg>`,
+
+/* Eravikulam — a Nilgiri tahr on the crest, waterfall behind */
+tahr:()=>`<svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs><linearGradient id="a4" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#7FB0B4"/><stop offset=".48" stop-color="#C6DCD4"/>
+<stop offset=".76" stop-color="#EDF2E4"/><stop offset="1" stop-color="#F8F7ED"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#a4)"/>
+<circle cx="626" cy="112" r="46" fill="#FFFDF2" opacity=".9"/>
+<path d="M0 210 Q180 164 370 196 T800 174 V450 H0Z" fill="#9BBCB4" opacity=".75"/>
+<path d="M0 246 Q200 202 400 236 T800 216 V450 H0Z" fill="#6E9B94" opacity=".85"/>
+<path d="M512 232h200" stroke="#6E9B94" stroke-width="0" fill="none"/>
+<g fill="#E6F2EC" opacity=".3"><ellipse cx="300" cy="252" rx="240" ry="14"/><ellipse cx="660" cy="286" rx="180" ry="11"/><ellipse cx="180" cy="300" rx="190" ry="12"/></g>
+<path d="M0 338 Q180 308 360 332 T800 318 V450 H0Z" fill="#24514A"/>
+<path d="M0 388 Q200 358 400 382 T800 368 V450 H0Z" fill="#163B36"/>
+<g fill="#0C2723">
+<path d="M334 330c-5-15 5-25 21-26l48-2c14-1 23 7 24 20l1 10-94 2z"/>
+<path d="M324 314c-10-4-16 1-15 10 1 8 8 12 17 11l13-2-2-16z"/>
+<path d="M326 308c-6-13-17-20-30-20 12 6 19 13 22 22zm12 2c5-13 16-19 28-19-11 5-18 12-21 21z"/>
+<rect x="342" y="332" width="9" height="20" rx="4"/><rect x="360" y="334" width="9" height="18" rx="4"/>
+<rect x="396" y="332" width="9" height="20" rx="4"/><rect x="414" y="334" width="9" height="18" rx="4"/></g>
+<g stroke="#12332E" stroke-width="2.5" stroke-linecap="round" opacity=".85">
+<path d="M238 364l6-18M252 366l8-20M268 366l6-16M600 356l7-19M616 360l8-18M634 360l6-17"/></g>
+<g fill="#E6F2EC" opacity=".28"><ellipse cx="180" cy="300" rx="170" ry="13"/><ellipse cx="660" cy="266" rx="140" ry="10"/></g></svg>`,
+
+/* Alleppey — the houseboat at dusk, lanterns strung for a birthday */
+boat:()=>`<svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs><linearGradient id="a5" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#07202B"/><stop offset=".40" stop-color="#123F4A"/>
+<stop offset=".62" stop-color="#7E5228"/><stop offset=".80" stop-color="#D08A2B"/>
+<stop offset="1" stop-color="#F2AE38"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#a5)"/>
+<circle cx="620" cy="286" r="46" fill="#FFD98A" opacity=".95"/>
+<g fill="#0A2A33">
+<rect x="70" y="196" width="8" height="104"/>
+<path d="M74 196c-34-18-58-14-72 4 24-10 50-7 72-4zm0 0c34-18 58-14 72 4-24-10-50-7-72-4zm4-6c-9-32-27-48-47-48 22 7 36 23 47 48zm-4 0c9-32 27-48 47-48-22 7-36 23-47 48z"/>
+<rect x="176" y="238" width="7" height="72"/>
+<path d="M180 238c-28-15-48-12-60 3 20-7 41-6 60-3zm0 0c28-15 48-12 60 3-20-7-41-6-60-3z"/></g>
+<rect y="300" width="800" height="150" fill="#0A2E38"/>
+<g fill="#F0A72B" opacity=".22"><rect x="588" y="300" width="64" height="150"/><rect x="606" y="300" width="28" height="150"/></g>
+<g stroke="#7FC7CC" stroke-width="2" opacity=".18" fill="none">
+<path d="M48 336q56-8 112 0t112-3"/><path d="M420 372q62-8 124 0t124-3"/><path d="M110 410q74-9 148 0t148-3"/></g>
+<g transform="translate(140 224)">
+<path d="M0 76h520l-44 40H44z" fill="#3A2213"/>
+<path d="M20 76h480l-12-10H32z" fill="#5C3B22"/>
+<path d="M54 50h412v26H54z" fill="#7C5431"/>
+<path d="M62 50q196-90 392 0z" fill="#8E6C3A"/>
+<g stroke="#5F4526" stroke-width="2.4" opacity=".5" fill="none">
+<path d="M112 50q156-68 312 0M162 50q114-58 228 0M212 50q72-46 144 0"/></g>
+<rect x="238" y="58" width="46" height="20" rx="3" fill="#F0A72B" opacity=".92"/>
+<circle cx="261" cy="68" r="5" fill="#FFF6DC"/>
+<g fill="#F0A72B"><circle cx="100" cy="42" r="5"/><circle cx="152" cy="34" r="5"/><circle cx="206" cy="29" r="5"/>
+<circle cx="262" cy="27" r="5"/><circle cx="318" cy="29" r="5"/><circle cx="372" cy="34" r="5"/><circle cx="424" cy="42" r="5"/></g>
+<path d="M98 42q164-20 328 0" stroke="#C8A15A" stroke-width="1.6" fill="none" opacity=".55"/>
+<rect x="466" y="34" width="5" height="22" fill="#5C3B22"/>
+<path d="M466 34l20 10-20 5z" fill="#F0A72B" opacity=".9"/></g>
+<g fill="#F0A72B" opacity=".14"><rect x="200" y="316" width="400" height="28"/></g></svg>`,
+
+/* Fort Kochi — Chinese fishing nets against the last light */
+nets:()=>`<svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs><linearGradient id="a6" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#3A1B3E"/><stop offset=".4" stop-color="#8E3532"/>
+<stop offset=".72" stop-color="#D9632E"/><stop offset="1" stop-color="#F0A72B"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#a6)"/>
+<circle cx="452" cy="286" r="52" fill="#FFD98A" opacity=".95"/>
+<circle cx="452" cy="286" r="86" fill="#FFC24D" opacity=".16"/>
+<rect y="312" width="800" height="138" fill="#2A1A2C"/>
+<rect y="312" width="800" height="10" fill="#5A2E33" opacity=".6"/>
+<g fill="#FFD98A" opacity=".28"><rect x="424" y="322" width="56" height="128"/><rect x="440" y="322" width="24" height="128"/></g>
+<g stroke="#FFE2A6" stroke-width="2" opacity=".25" fill="none">
+<path d="M40 348q60-9 120 0t120-3"/><path d="M300 392q70-9 140 0t140-3"/><path d="M80 420q80-10 160 0t160-4"/></g>
+<g stroke="#1C0F1E" fill="none" stroke-linecap="round">
+<g stroke-width="9"><path d="M196 430L300 168"/><path d="M300 168l96 46"/></g>
+<g stroke-width="4" opacity=".9"><path d="M300 168L214 214"/><path d="M396 214q-6 74-58 118"/></g>
+<g stroke-width="2.5" opacity=".55">
+<path d="M396 214l-30 118M396 214l-60 118M396 214l-88 118M396 214l14 118M396 214l44 112"/></g>
+<path d="M212 332h184" stroke-width="3"/><path d="M226 300h160" stroke-width="2" opacity=".5"/></g>
+<g stroke="#1C0F1E" fill="none" stroke-linecap="round">
+<g stroke-width="8"><path d="M566 430L666 196"/><path d="M666 196l84 40"/></g>
+<g stroke-width="3.5" opacity=".9"><path d="M666 196L586 236"/><path d="M750 236q-6 64-52 102"/></g>
+<g stroke-width="2.2" opacity=".5">
+<path d="M750 236l-26 102M750 236l-52 102M750 236l-78 102M750 236l12 102M750 236l38 96"/></g>
+<path d="M584 338h166" stroke-width="2.6"/></g>
+<g fill="#1C0F1E"><path d="M92 372h86l-10 14h-66z"/><path d="M104 366h62l-6 6h-50z"/><rect x="132" y="344" width="3" height="22"/>
+<path d="M135 344c-14-8-24-6-30 2 10-4 21-3 30-2zm0 0c14-8 24-6 30 2-10-4-21-3-30-2z"/></g>
+<g fill="#160C18">
+<rect x="742" y="300" width="6" height="60"/>
+<path d="M745 300c-24-13-42-10-52 3 18-6 36-5 52-3zm0 0c24-13 42-10 52 3-18-6-36-5-52-3z"/></g></svg>`,
+
+/* Kochi — the sunset cruise past the Marine Drive skyline */
+cruise:()=>`<svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs><linearGradient id="a7" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#0B1F3E"/><stop offset=".5" stop-color="#2C4A7A"/>
+<stop offset=".82" stop-color="#8A5F7A"/><stop offset="1" stop-color="#D98B54"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#a7)"/>
+<g fill="#FFF6D8"><circle cx="120" cy="70" r="2"/><circle cx="228" cy="46" r="1.7"/><circle cx="320" cy="96" r="1.4"/>
+<circle cx="66" cy="132" r="1.6"/><circle cx="420" cy="52" r="1.8"/><circle cx="540" cy="88" r="1.4"/><circle cx="700" cy="60" r="1.9"/></g>
+<path d="M666 56a28 28 0 1 0 0 56 22 22 0 1 1 0-56z" fill="#FFF3D6" opacity=".92"/>
+<g fill="#16223C">
+<rect x="60" y="236" width="40" height="76"/><rect x="108" y="212" width="30" height="100"/>
+<rect x="146" y="252" width="46" height="60"/><rect x="200" y="228" width="26" height="84"/>
+<rect x="234" y="262" width="52" height="50"/><rect x="294" y="244" width="34" height="68"/>
+<rect x="336" y="270" width="44" height="42"/>
+<circle cx="470" cy="268" r="44" fill="none" stroke="#16223C" stroke-width="6"/>
+<g stroke="#16223C" stroke-width="3">
+<path d="M470 268V224M470 268l38-22M470 268l38 22M470 268v44M470 268l-38 22M470 268l-38-22"/></g>
+<path d="M418 312h104" stroke="#16223C" stroke-width="5"/>
+<rect x="540" y="256" width="30" height="56"/><rect x="578" y="238" width="24" height="74"/>
+<rect x="610" y="268" width="42" height="44"/><rect x="660" y="250" width="28" height="62"/>
+<rect x="696" y="274" width="46" height="38"/></g>
+<g fill="#FFC65C">
+<rect x="114" y="222" width="6" height="7"/><rect x="124" y="238" width="6" height="7"/><rect x="118" y="256" width="6" height="7"/>
+<rect x="208" y="240" width="6" height="7"/><rect x="304" y="256" width="6" height="7"/>
+<rect x="348" y="280" width="6" height="7"/><rect x="588" y="250" width="6" height="7"/>
+<rect x="670" y="262" width="6" height="7"/><rect x="710" y="286" width="6" height="7"/>
+<rect x="154" y="264" width="6" height="7"/><rect x="246" y="274" width="6" height="7"/><rect x="626" y="280" width="6" height="7"/></g>
+<rect y="312" width="800" height="138" fill="#1B3560"/>
+<path d="M0 312h800v8H0z" fill="#3E5C90" opacity=".5"/>
+<g fill="#D98B54" opacity=".2"><rect x="600" y="312" width="70" height="138"/></g>
+<g stroke="#7FA3D4" stroke-width="2" opacity=".2" fill="none">
+<path d="M40 350q60-8 120 0t120-3"/><path d="M380 386q70-9 140 0t140-4"/><path d="M120 420q80-9 160 0t160-3"/></g>
+<g transform="translate(250 274)">
+<path d="M0 44h210l-16 24H16z" fill="#1B2E4E"/>
+<path d="M14 30h182v14H14z" fill="#26406B"/>
+<path d="M30 30h150v-8H30z" fill="#34527F"/>
+<g fill="#F0A72B"><rect x="26" y="34" width="12" height="7" rx="2"/><rect x="50" y="34" width="12" height="7" rx="2"/>
+<rect x="74" y="34" width="12" height="7" rx="2"/><rect x="98" y="34" width="12" height="7" rx="2"/>
+<rect x="122" y="34" width="12" height="7" rx="2"/><rect x="146" y="34" width="12" height="7" rx="2"/>
+<rect x="170" y="34" width="12" height="7" rx="2"/></g>
+<rect x="88" y="6" width="34" height="18" rx="3" fill="#33517E"/>
+<rect x="94" y="11" width="8" height="8" rx="2" fill="#F0A72B"/>
+<rect x="108" y="11" width="8" height="8" rx="2" fill="#F0A72B"/>
+<rect x="102" y="-10" width="3" height="16" fill="#4A6A9A"/><circle cx="103" cy="-12" r="3" fill="#F0A72B"/></g>
+<g fill="#F0A72B" opacity=".2"><rect x="282" y="318" width="150" height="22"/></g></svg>`,
+
+/* Salem — an empty dawn highway running to the hills */
+highway:()=>`<svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs><linearGradient id="a8" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#101C38"/><stop offset=".38" stop-color="#3E4468"/>
+<stop offset=".62" stop-color="#9C6A55"/><stop offset=".8" stop-color="#E0994A"/>
+<stop offset="1" stop-color="#F5BE5E"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#a8)"/>
+<circle cx="404" cy="288" r="40" fill="#FFE7AC" opacity=".95"/>
+<path d="M0 262 Q150 232 300 250 T800 236 V450 H0Z" fill="#232C4A"/>
+<path d="M0 286 Q170 258 340 274 T800 264 V450 H0Z" fill="#18203A"/>
+<rect y="300" width="800" height="150" fill="#0E1526"/>
+<path d="M52 450L378 300h44l326 150z" fill="#333E5C"/>
+<path d="M52 450L378 300h10L74 450z" fill="#5A6684" opacity=".9"/>
+<path d="M748 450L412 300h-10l316 150z" fill="#5A6684" opacity=".9"/>
+<g fill="#F6EAD8" opacity=".8">
+<rect x="396" y="306" width="8" height="12"/><rect x="393" y="330" width="14" height="20"/>
+<rect x="388" y="366" width="24" height="32"/><rect x="380" y="414" width="40" height="36"/></g>
+<g stroke="#0B1120" stroke-width="2.5" opacity=".75" fill="none">
+<path d="M186 320v72M186 330h58M244 330v62M186 352h58"/></g>
+<g fill="#0B1120">
+<rect x="576" y="352" width="96" height="34" rx="4"/><rect x="660" y="360" width="34" height="26" rx="3"/>
+<rect x="582" y="332" width="70" height="22" rx="3"/></g>
+<circle cx="600" cy="390" r="8" fill="#0B1120"/><circle cx="660" cy="390" r="8" fill="#0B1120"/>
+<circle cx="688" cy="390" r="8" fill="#0B1120"/>
+<rect x="582" y="360" width="12" height="7" rx="2" fill="#F0A72B" opacity=".9"/>
+<circle cx="690" cy="370" r="3.4" fill="#E2452B"/><circle cx="678" cy="370" r="3.4" fill="#E2452B"/>
+<g fill="#0B1120">
+<rect x="104" y="272" width="8" height="86"/>
+<path d="M108 272c-30-16-52-12-64 4 22-9 44-7 64-4zm0 0c30-16 52-12 64 4-22-9-44-7-64-4zm4-5c-9-30-26-45-45-45 21 7 34 22 45 45zm-4 0c9-30 26-45 45-45-21 7-34 22-45 45z"/>
+<rect x="700" y="286" width="7" height="72"/>
+<path d="M703 286c-26-14-45-11-56 3 19-7 38-6 56-3zm0 0c26-14 45-11 56 3-19-7-38-6-56-3z"/></g>
+<rect x="42" y="368" width="22" height="66" rx="11" fill="#F6EAD8" opacity=".92"/>
+<rect x="42" y="368" width="22" height="20" rx="10" fill="#D8452B"/>
+<g fill="#0B1120" opacity=".55"><rect x="30" y="440" width="46" height="6" rx="3"/></g></svg>`,
+
+/* Home — a lit window at the end of the lane */
+home:()=>`<svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs><linearGradient id="a9" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#050F1C"/><stop offset=".46" stop-color="#0C2436"/>
+<stop offset=".78" stop-color="#14384A"/><stop offset="1" stop-color="#1E5054"/></linearGradient>
+<radialGradient id="glow" cx=".5" cy=".5" r=".5">
+<stop offset="0" stop-color="#F0A72B" stop-opacity=".5"/><stop offset="1" stop-color="#F0A72B" stop-opacity="0"/></radialGradient></defs>
+<rect width="800" height="450" fill="url(#a9)"/>
+<g fill="#FFF6D8"><circle cx="84" cy="58" r="2"/><circle cx="190" cy="38" r="1.6"/><circle cx="280" cy="84" r="1.5"/>
+<circle cx="374" cy="42" r="1.9"/><circle cx="480" cy="72" r="1.5"/><circle cx="586" cy="34" r="1.7"/>
+<circle cx="686" cy="86" r="1.6"/><circle cx="754" cy="50" r="1.4"/><circle cx="142" cy="118" r="1.3"/>
+<circle cx="634" cy="136" r="1.3"/><circle cx="240" cy="176" r="1.2"/></g>
+<circle cx="662" cy="92" r="25" fill="#FFF3D6" opacity=".92"/>
+<circle cx="672" cy="84" r="25" fill="#0A1F31" opacity=".95"/>
+<path d="M0 314 Q180 288 360 304 T800 292 V450 H0Z" fill="#0A2130"/>
+<g fill="#071C28">
+<rect x="252" y="272" width="270" height="122"/>
+<path d="M228 276L387 178l159 98z"/>
+<rect x="452" y="212" width="20" height="62"/>
+<rect x="286" y="300" width="52" height="44" rx="3" fill="#F0A72B"/>
+<rect x="292" y="306" width="40" height="32" rx="2" fill="#FFD98A"/>
+<path d="M286 322h52M312 300v44" stroke="#071C28" stroke-width="3"/>
+<rect x="386" y="306" width="42" height="88" rx="3"/>
+<circle cx="420" cy="352" r="3.4" fill="#F0A72B"/>
+</g>
+<ellipse cx="312" cy="352" rx="150" ry="90" fill="url(#glow)"/>
+<rect y="390" width="800" height="60" fill="#071C26"/>
+<path d="M387 386h26l86 64H301z" fill="#123C46" opacity=".9"/>
+<path d="M390 386h20l50 64h-88z" fill="#F0A72B" opacity=".14"/>
+<g fill="#04141C">
+<rect x="118" y="284" width="12" height="102"/>
+<path d="M124 284c-50-26-86-20-106 6 36-13 72-10 106-6zm0 0c50-26 86-20 106 6-36-13-72-10-106-6zm6-7c-13-46-41-68-70-68 32 9 53 32 70 68zm-6 0c13-46 41-68 70-68-32 9-53 32-70 68z"/>
+<rect x="694" y="308" width="9" height="78"/>
+<path d="M699 308c-34-18-58-14-72 4 24-10 50-7 72-4zm0 0c34-18 58-14 72 4-24-10-50-7-72-4z"/></g>
+<g stroke="#04141C" stroke-width="4" fill="none" opacity=".85">
+<path d="M556 392v-30M600 392v-30M556 370h44M556 382h44"/>
+<path d="M186 392v-26M222 392v-26"/></g>
+<g fill="#F0A72B" opacity=".45"><circle cx="578" cy="398" r="3"/></g></svg>`,
+
+fallback:()=>`<svg viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs><linearGradient id="af" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#08222C"/><stop offset=".6" stop-color="#12414B"/>
+<stop offset="1" stop-color="#F0A72B"/></linearGradient></defs>
+<rect width="800" height="450" fill="url(#af)"/>
+<circle cx="560" cy="300" r="48" fill="#FFD27E" opacity=".9"/>
+<path d="M0 320 Q200 286 400 306 T800 296 V450 H0Z" fill="#0A2E38"/></svg>`
+};
+
+/* ======================= itinerary data ======================= */
 const DAYS=[
-{dow:"Sat",date:"24 Oct",short:"24",title:"Potheri to Madurai",c:"#9A3412",km:430,night:"Sterling V Grand Madurai",hero:"Meenakshi Temple|Meenakshi Amman Temple",
+{dow:"Sat",date:"24 Oct",short:"24",title:"Potheri to Madurai",c:"#D8452B",art:"gopuram",km:430,night:"Sterling V Grand Madurai",
  facts:[["Leave","6:00 AM"],["Arrive","1:30 PM"],["Driving","7.5 hrs with stops"],["Free time","6 hrs"]],
  tl:[
   ["6:00 AM","Leave Potheri. The kids sleep in the car; keep breakfast packed.",1],
@@ -282,7 +653,7 @@ const DAYS=[
  stay:{h:"Sterling V Grand Madurai",t:"Booked. Near the wedding venue, with a lift and a short morning commute.",n:"Sterling V Grand Madurai",sid:"madurai",q:"Sterling V Grand Madurai",at:"1:30 PM",rl:"Checked in"},
  tip:["Leave early to beat truck traffic on the highway.","Fill up at Trichy so you reach Madurai with a comfortable tank."]},
 
-{dow:"Sun",date:"25 Oct",short:"25",title:"Wedding, then up to Munnar",c:"#166534",km:131,night:"Avadale Munnar",hero:"Munnar",
+{dow:"Sun",date:"25 Oct",short:"25",title:"Wedding, then up to Munnar",c:"#D8452B",art:"ghat",km:131,night:"Avadale Munnar",
  facts:[["Leave","11:00 AM"],["Arrive","3:30 PM"],["Driving","4+ hrs with stops"],["Free time","2 hrs"]],
  tl:[
   ["Morning","The wedding in Madurai."],
@@ -299,7 +670,7 @@ const DAYS=[
  stay:{h:"Avadale Munnar",t:"Booked, 1 night. You move to The Regalia Munnar tomorrow, so keep tonight's unpacking light.",n:"Avadale Munnar",sid:"avadale",q:"Avadale Munnar",at:"3:30 PM",rl:"Checked in"},
  tip:["Google shows 3 hrs 15 min, but with lunch and the kids' breaks plan on 4 hours or more.","Check the Idukki weather alert and Bodimettu road status on 23 and 24 Oct. If it is unsafe, sleep in Theni or Madurai and go up the next morning.","Fill the tank at Theni before the ghat."]},
 
-{dow:"Mon",date:"26 Oct",short:"26",title:"Munnar high-range day",c:"#166534",km:40,night:"The Regalia Munnar",hero:"Mattupetty Dam",
+{dow:"Mon",date:"26 Oct",short:"26",title:"Munnar high-range day",c:"#4C9E72",art:"tea",km:40,night:"The Regalia Munnar",
  facts:[["Leave","9:00 AM"],["Back","5:00 PM"],["Driving","3 hrs in total"],["Out and about","6 hrs"]],
  tl:[
   ["9:00 AM","Breakfast, then check out of Avadale. Bags in the car; you check in at The Regalia this evening."],
@@ -319,7 +690,7 @@ const DAYS=[
  stay:{h:"The Regalia Munnar",t:"Booked, night 1 of 2. Check in on the way back from sightseeing. No repacking until the 28th.",n:"The Regalia Munnar",sid:"regalia",q:"The Regalia Munnar",at:"5:00 PM",rl:"Checked in"},
  tip:["The road winds. Give the kids a light breakfast and keep the car cool.","Top Station is much colder than town, so carry sweaters.","Call The Regalia ahead and ask about early check-in or a place for the kids to nap."]},
 
-{dow:"Tue",date:"27 Oct",short:"27",title:"Eravikulam, tea and a waterfall",c:"#166534",km:25,night:"The Regalia Munnar",hero:"Eravikulam National Park",
+{dow:"Tue",date:"27 Oct",short:"27",title:"Eravikulam, tea and a waterfall",c:"#2A9D9D",art:"tahr",km:25,night:"The Regalia Munnar",
  facts:[["Leave","9:00 AM"],["Back","5:00 PM"],["Driving","2 hrs in total"],["Out and about","6 hrs"]],
  tl:[
   ["9:00 AM","Eravikulam National Park. Book tickets online, take the shuttle from the gate and walk the easy path.",1],
@@ -336,7 +707,7 @@ const DAYS=[
  stay:{h:"The Regalia Munnar",t:"Booked, night 2 of 2. Pack the car tonight; tomorrow starts at 8:30 AM.",n:"The Regalia Munnar",sid:"regalia",q:"The Regalia Munnar",at:"5:00 PM",rl:"Back"},
  tip:["Eravikulam may close in the afternoon, so go in the morning and confirm the closing time.","If it rains, swap Attukal for the Tea Museum and head back early."]},
 
-{dow:"Wed",date:"28 Oct",short:"28",title:"Birthday night on a houseboat",c:"#0F766E",km:190,night:"Houseboat, Alleppey",badge:"Birthday",hero:"Kerala backwaters|Kettuvallam",
+{dow:"Wed",date:"28 Oct",short:"28",title:"Birthday night on a houseboat",c:"#F0A72B",art:"boat",km:190,night:"Houseboat, Alleppey",badge:"Birthday",
  facts:[["Leave","8:30 AM"],["Alleppey","1:15 PM"],["Driving","4.5 hrs"],["On the boat","1:30 PM to 9 AM"]],
  tl:[
   ["8:30 AM","Check out of The Regalia and leave for Alleppey via Adimali, Neriamangalam and Kothamangalam.",1],
@@ -353,7 +724,7 @@ const DAYS=[
  stay:{h:"Alleppey houseboat",t:"AC one-bedroom houseboat with meals, about ₹8,000–10,000. The birthday is on board this evening and you sleep on the boat. Check that the AC runs through the night and the room has mosquito screens.",n:"Board the Alleppey houseboat",sid:"boat",q:"Alappuzha houseboat jetty",at:"1:30 PM",rl:"Boarded",w:"Kettuvallam|Kerala backwaters"},
  tip:["Ask for child life jackets, railings and a safe place for the infant to sleep.","Boats usually moor by early evening and set off again in the morning. Confirm the times and that the cake is allowed.","If it rains, stay in the AC room and cut the cake there."]},
 
-{dow:"Thu",date:"29 Oct",short:"29",title:"Alleppey to Fort Kochi",c:"#1E3A8A",km:60,night:"Ernakulam",hero:"Chinese fishing nets",
+{dow:"Thu",date:"29 Oct",short:"29",title:"Alleppey to Fort Kochi",c:"#2A9D9D",art:"nets",km:60,night:"Ernakulam",
  facts:[["Leave","9:30 AM"],["Arrive","11:30 AM"],["Driving","1.5–2 hrs"],["Free time","6 hrs"]],
  tl:[
   ["7:00 AM","Sunrise on the canals and breakfast on the boat."],
@@ -373,7 +744,7 @@ const DAYS=[
  stay:{h:"Ernakulam hotel",t:"On the Marine Drive side, ₹5,500–7,500, with a lift and a short walk to the promenade. Night 1 of 2.",n:"Check in: Ernakulam hotel",sid:"ern",q:"Marine Drive Kochi hotels",at:"6:30 PM",rl:"Checked in"},
  tip:["Park once in Fort Kochi and walk. It is compact.","Carry water and sun hats for the afternoon."]},
 
-{dow:"Fri",date:"30 Oct",short:"30",title:"Lulu Mall and a sea cruise",c:"#1E3A8A",km:20,night:"Ernakulam",hero:"Marine Drive, Kochi|Kochi",
+{dow:"Fri",date:"30 Oct",short:"30",title:"Lulu Mall and a sea cruise",c:"#5B7FD4",art:"cruise",km:20,night:"Ernakulam",
  facts:[["Lulu Mall","10:30 AM"],["Sea cruise","4:30–6:30 PM"],["Driving","About 1 hr"],["Out and about","7 hrs"]],
  tl:[
   ["9:00 AM","A slow breakfast at the hotel."],
@@ -390,7 +761,7 @@ const DAYS=[
  stay:{h:"Ernakulam hotel",t:"The same hotel, night 2 of 2, so there is no repacking and an easy exit towards Palakkad at 6 AM.",n:"Back at the Ernakulam hotel",sid:"ern",q:"Marine Drive Kochi hotels",at:"8:00 PM",rl:"Back"},
  tip:["Book the cruise the same morning and ask for child life jackets.","The sea can be rough and cruises get cancelled. If so, take the Water Metro at sunset instead.","Eat early. Tomorrow starts at 6:00 AM."]},
 
-{dow:"Sat",date:"31 Oct",short:"31",title:"Ernakulam to Salem",c:"#475467",km:360,night:"Salem",hero:"Salem, Tamil Nadu",
+{dow:"Sat",date:"31 Oct",short:"31",title:"Ernakulam to Salem",c:"#C8A15A",art:"highway",km:360,night:"Salem",
  facts:[["Leave","6:00 AM"],["Arrive","1:30 PM"],["Driving","7 hrs with stops"],["Free time","Rest day"]],
  tl:[
   ["6:00 AM","Leave Ernakulam. The kids sleep for the first stretch.",1],
@@ -406,7 +777,7 @@ const DAYS=[
  stay:{h:"Salem hotel",t:"On the highway side, ₹3,500–5,000, for an easy exit in the morning.",n:"Check in: Salem hotel",sid:"salem",q:"Salem hotels",at:"1:30 PM",rl:"Checked in"},
  tip:["Leave by 6:00 AM to miss the Palakkad–Coimbatore traffic.","Pack breakfast for the first stretch."]},
 
-{dow:"Sun",date:"1 Nov",short:"1",title:"Salem to Potheri, home",c:"#475467",km:340,night:"Home",hero:"Chennai",
+{dow:"Sun",date:"1 Nov",short:"1",title:"Salem to Potheri, home",c:"#C8A15A",art:"home",km:340,night:"Home",
  facts:[["Leave","7:00 AM"],["Arrive","1:30 PM"],["Driving","6 hrs with stops"],["Free time","None"]],
  tl:[
   ["7:00 AM","Leave Salem.",1],
@@ -482,6 +853,12 @@ function tripDay(n){
 function clock(ts){ try{return new Date(ts).toLocaleTimeString("en-IN",{timeZone:"Asia/Kolkata",hour:"numeric",minute:"2-digit",hour12:true}).toUpperCase();}catch(e){return "";} }
 const navUrl=q=>"https://www.google.com/maps/dir/?api=1&travelmode=driving&destination="+encodeURIComponent(q);
 const TOTAL_KM=DAYS.reduce((a,D)=>a+D.km,0);
+const WORDS=["one","two","three","four","five","six","seven","eight","nine"];
+const ICON={
+  nav:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.5 21 21l-9-4.2L3 21z"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 6.5"/></svg>',
+  here:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 21.5s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10.5" r="2.6"/></svg>'
+};
 
 /* ======================= state ======================= */
 const KEY="kerala-trip-2026-app";
@@ -524,15 +901,15 @@ async function photoFor(w){
   return null;
 }
 
-/* ======================= day strip ======================= */
-function stripHtml(){
+/* ======================= route rail ======================= */
+function railHtml(){
   const items=DAYS.map((D,i)=>{
-    const p=dayProg(i), pc=p.n?Math.round(100*p.d/p.n):0;
-    return `<li><button class="chip" style="--c:${D.c};--p:${pc}%" data-go="day" data-v="${i}"
-      ${i===VD?'aria-current="true"':""} aria-label="Day ${i+1}, ${D.dow} ${D.date}: ${D.title}">
-      <small>${D.dow}</small><b>${D.short}</b><i><u></u></i></button></li>`;
+    const p=dayProg(i), done=p.n&&p.d===p.n;
+    return `<button class="node ${done?"done":""}" style="--c:${D.c}" data-go="day" data-v="${i}"
+      ${i===VD?'aria-current="true"':""} aria-label="Day ${i+1}, ${D.dow} ${D.date}: ${esc(D.title)}">
+      <span class="dot">${i+1}</span><span class="dd">${D.short} ${D.date.split(" ")[1]}</span></button>`;
   }).join("");
-  return `<ul>${items}</ul>`;
+  return items;
 }
 
 /* ======================= day view ======================= */
@@ -540,29 +917,29 @@ function nextHtml(i,isToday){
   const D=DAYS[i], nx=nextStop(i), L=stopsOf(i);
   if(!nx){
     const nd=i<DAYS.length-1?stopsOf(i+1).find(s=>!s.alt):null;
-    return `<section class="next">
-      <p class="next-eye">${i<DAYS.length-1?"Day complete":"Trip complete"}</p>
+    return `<section class="next"><div class="next-in">
+      <p class="next-eye">${i<DAYS.length-1?"day complete":"trip complete"}</p>
       <h2>${i<DAYS.length-1?"Every stop ticked off":"You are home"}</h2>
       ${nd?`<p>Tomorrow starts with ${esc(nd.n)}${nd.t?" at "+esc(nd.t):""}.</p>
-      <div class="next-act"><button class="btn btn-w" data-go="day" data-v="${i+1}">Open day ${i+2}</button></div>`
+      <div class="next-act"><button class="btn btn-primary btn-w" data-go="day" data-v="${i+1}">Open day ${i+2}</button></div>`
       :`<p>Safe travels.</p>`}
-    </section>`;
+    </div></section>`;
   }
   const rest=L.filter(s=>!s.alt&&!isDone(s)&&s.k!==nx.k);
   const alts=L.filter(s=>s.alt&&!isDone(s));
   const started=L.some(s=>!s.alt&&isDone(s));
-  const label=isToday||started?"Next stop":"Start here";
-  return `<section class="next">
+  const label=isToday||started?"next stop":"start here";
+  return `<section class="next"><div class="next-in">
     <p class="next-eye">${label}${nx.t?` · ${esc(nx.t)}`:""}</p>
     <h2>${esc(nx.n)}</h2>
     <p>${esc(nx.d)}</p>
     <div class="next-act">
-      <a class="btn btn-w" href="${navUrl(nx.q)}" target="_blank" rel="noopener">Navigate</a>
-      <button class="btn btn-ghost btn-w" data-go="got" data-v="${nx.k}">${esc(nx.rl)}</button>
+      <a class="btn btn-primary btn-w" href="${navUrl(nx.q)}" target="_blank" rel="noopener">${ICON.nav}Navigate</a>
+      <button class="btn btn-w" data-go="got" data-v="${nx.k}">${esc(nx.rl)}</button>
     </div>
     ${rest.length?`<p class="next-then">Then <b>${esc(rest[0].n)}</b>${rest[0].t?" at "+esc(rest[0].t):""}</p>`:""}
     ${alts.length?`<p class="next-then">If there is time: <b>${esc(alts.map(a=>a.n).join(", "))}</b></p>`:""}
-  </section>`;
+  </div></section>`;
 }
 
 function rowHtml(s,i){
@@ -574,7 +951,7 @@ function rowHtml(s,i){
   return `<li><button class="${cls}" data-go="open" data-v="${s.k}">
     <span class="row-time">${esc(time)}</span>
     <span class="row-nm">${esc(s.n)}${sub}</span>
-    <span class="row-mk" aria-hidden="true"></span>
+    <span class="row-mk" aria-hidden="true">${ICON.check}</span>
     <span class="sr">${got?"Done":skip?"Skipped":"Not done yet"}</span>
   </button></li>`;
 }
@@ -586,40 +963,39 @@ function viewDay(){
   const items=D.tl.map(t=>({t,m:toMin(t[0])}));
   let cur=-1;
   if(isToday) items.forEach((o,x)=>{ if(o.m!==null&&o.m<=n.min) cur=x; });
+  const art=(ART[D.art]||ART.fallback||"")();
   return `<div class="wrap">
-    <article class="card" style="margin-top:14px">
-      <div class="hero" style="--c:${D.c}">
-        <img alt="" data-hero="${esc(D.hero||"")}" decoding="async">
-        <div class="hero-txt">
-          <p class="hero-eye">Day ${i+1} of 9 · ${D.km} km · ${D.dow} ${D.date}</p>
-          <h1>${esc(D.title)}${D.badge?`<span class="pill">${D.badge}</span>`:""}</h1>
-        </div>
+    <article class="plate" style="--c:${D.c}">
+      <div class="plate-art">${art}<p class="plate-hand">Day ${WORDS[i]} · ${D.dow} ${D.date} · ${D.km} km</p></div>
+      <div class="plate-cap">
+        <h1>${esc(D.title)}${D.badge?`<span class="pill">${esc(D.badge)}</span>`:""}</h1>
+        <span class="plate-no" aria-hidden="true">${String(i+1).padStart(2,"0")}</span>
       </div>
       <dl class="facts">${D.facts.map(f=>`<div><dt>${esc(f[0])}</dt><dd>${esc(f[1])}</dd></div>`).join("")}</dl>
     </article>
 
     ${nextHtml(i,isToday)}
 
-    <h2 class="sec">Today's stops</h2>
-    <ol class="rows card">${planned.map(s=>rowHtml(s,i)).join("")}</ol>
-    ${optional.length?`<h2 class="sec">If there is time</h2><ol class="rows card">${optional.map(s=>rowHtml(s,i)).join("")}</ol>`:""}
+    <h2 class="eyebrow">today's stops</h2>
+    <ol class="rows">${planned.map(s=>rowHtml(s,i)).join("")}</ol>
+    ${optional.length?`<h2 class="eyebrow plain">if there is time</h2><ol class="rows">${optional.map(s=>rowHtml(s,i)).join("")}</ol>`:""}
 
-    <h2 class="sec">Detail</h2>
-    <details class="acc card">
+    <h2 class="eyebrow plain">the detail</h2>
+    <details class="acc">
       <summary>Hour by hour</summary>
       <div class="acc-bd"><ol class="tl">${items.map((o,x)=>
         `<li class="${o.t[2]?"key":""} ${x<cur?"past":""} ${x===cur?"now":""}"><time>${esc(o.t[0])}</time><p>${o.t[1]}</p></li>`
       ).join("")}</ol></div>
     </details>
-    <details class="acc card">
+    <details class="acc">
       <summary>Tonight · ${esc(D.stay.h)}</summary>
       <div class="acc-bd">
         <p class="note-p">${D.stay.t}</p>
-        <div class="act"><a class="btn" href="${navUrl(S.loc[D.stay.sid]||D.stay.q)}" target="_blank" rel="noopener">Navigate</a>
+        <div class="act"><a class="btn" href="${navUrl(S.loc[D.stay.sid]||D.stay.q)}" target="_blank" rel="noopener">${ICON.nav}Navigate</a>
         ${D.stay.sid!=="home"?`<button class="btn btn-quiet" data-go="edit" data-v="${D.stay.sid}">Set location</button>`:""}</div>
       </div>
     </details>
-    <details class="acc card">
+    <details class="acc">
       <summary>Good to know</summary>
       <div class="acc-bd"><ul class="tips">${D.tip.map(t=>`<li>${esc(t)}</li>`).join("")}</ul></div>
     </details>
@@ -635,24 +1011,24 @@ function viewRoute(){
     when=left===1?"Starts tomorrow.":left>1?"Starts in "+left+" days.":"";
   } else if(td<=9) when="Today is day "+td+" of 9.";
   return `<div class="wrap">
-    <h1 class="page-h">Kerala by road</h1>
+    <h1 class="page-h">Kerala<br><em>by road</em></h1>
     <p class="page-lede">Nine days, 24 October to 1 November 2026. Madurai for the wedding, up to Munnar, a birthday night on an Alleppey houseboat, then Kochi and home through Salem.</p>
     <p class="stat num">${p.d} of ${p.n} stops done${when?` <span>· ${when}</span>`:""}</p>
     <div class="bar" style="--p:${pc}%"><u></u></div>
-    <h2 class="sec">The nine days</h2>
-    <div class="card">${DAYS.map((D,i)=>{
+    <h2 class="eyebrow">the nine days</h2>
+    <div class="days">${DAYS.map((D,i)=>{
       const q=dayProg(i);
-      return `<button class="day" style="--c:${D.c}" data-go="day" data-v="${i}">
-        <span class="day-no">${i+1}</span>
+      return `<button class="day" data-go="day" data-v="${i}">
+        <span class="day-no" style="--c:${D.c}">${i+1}</span>
         <span><span class="day-dt">${D.dow} ${D.date}</span><span class="day-ti">${esc(D.title)}</span>
         <span class="day-sub">Night · ${esc(D.night)}</span></span>
         <span class="day-km num">${D.km} km<em class="${q.d?"":"zero"}">${q.d}/${q.n} done</em></span>
       </button>`;
     }).join("")}</div>
-    <h2 class="sec">The road</h2>
-    <div class="card" style="padding:14px 16px">
+    <h2 class="eyebrow plain">the road</h2>
+    <div class="rows" style="padding:15px 16px">
       <p class="note-p">About ${TOTAL_KM.toLocaleString("en-IN")} km door to door. Tata Safari, two adults, a 2-year-old and an infant.</p>
-      <p class="hint" style="margin-top:9px">Timings, fares and opening hours are planning estimates — confirm them when you book. Drive times assume normal traffic.</p>
+      <p class="hint" style="margin-top:10px">Timings, fares and opening hours are planning estimates — confirm them when you book. Drive times assume normal traffic.</p>
     </div>
   </div>`;
 }
@@ -669,21 +1045,21 @@ function chkList(arr){
 }
 function viewInfo(){
   return `<div class="wrap">
-    <h1 class="page-h">Money &amp; prep</h1>
-    <h2 class="sec">What it costs</h2>
-    <div class="card">${ledger(COSTS,"₹95,500")}</div>
-    <p class="hint" style="margin-top:10px">Diesel at about ₹99.55 a litre, the Safari at roughly 12 km per litre on this mix of highway and ghat. The Munnar nights use ₹7,000 each until you enter your booked rates.</p>
-    <h2 class="sec">Each night</h2>
-    <div class="card">${ledger(NIGHTS)}</div>
-    <p class="hint" style="margin-top:10px">Aim for the houseboat at or just under your ₹10,000 limit: an AC one-bedroom with meals. Shoulder-season prices — confirm when you book.</p>
-    <h2 class="sec">Before you go</h2>
-    <div class="card"><div style="padding:14px 16px 0"><h3 style="font:600 14.5px/1.3 var(--font);letter-spacing:-.012em">Book this week</h3></div>${chkList(CHK.book)}</div>
-    <h2 class="sec">Check on 23 and 24 Oct</h2>
-    <div class="card">${chkList(CHK.check)}</div>
-    <h2 class="sec">Pack</h2>
-    <div class="card">${chkList(CHK.pack)}</div>
-    <p class="hint" style="margin-top:14px">Ticks and reached marks stay on this device only.</p>
-    <button class="btn btn-quiet" style="margin-top:10px;border-color:var(--line)" data-go="reset">Clear all ticks and marks</button>
+    <h1 class="page-h">Money<br><em>&amp; prep</em></h1>
+    <h2 class="eyebrow">what it costs</h2>
+    <div class="rows">${ledger(COSTS,"₹95,500")}</div>
+    <p class="hint" style="margin-top:11px">Diesel at about ₹99.55 a litre, the Safari at roughly 12 km per litre on this mix of highway and ghat. The Munnar nights use ₹7,000 each until you enter your booked rates.</p>
+    <h2 class="eyebrow">each night</h2>
+    <div class="rows">${ledger(NIGHTS)}</div>
+    <p class="hint" style="margin-top:11px">Aim for the houseboat at or just under your ₹10,000 limit: an AC one-bedroom with meals. Shoulder-season prices — confirm when you book.</p>
+    <h2 class="eyebrow">before you go</h2>
+    <div class="rows" style="padding-top:14px"><h3 style="font:400 17px/1.3 var(--display);padding:0 16px">Book this week</h3>${chkList(CHK.book)}</div>
+    <h2 class="eyebrow plain">check on 23 and 24 Oct</h2>
+    <div class="rows">${chkList(CHK.check)}</div>
+    <h2 class="eyebrow plain">pack</h2>
+    <div class="rows">${chkList(CHK.pack)}</div>
+    <p class="hint" style="margin-top:16px">Ticks and reached marks stay on this device only.</p>
+    <button class="btn btn-quiet" style="margin-top:10px" data-go="reset">Clear all ticks and marks</button>
   </div>`;
 }
 
@@ -694,15 +1070,15 @@ function sheetHtml(i,s){
   const D=DAYS[i], got=S.got[s.k], skip=S.skip[s.k];
   const edit=s.stay&&s.stay.sid!=="home";
   return `<div class="scrim" data-go="close"></div>
-  <div class="panel">
+  <div class="panel" style="--c:${D.c}">
     <div class="grab"></div>
     <div class="panel-bd">
-      <p class="pmeta">Day ${i+1} · ${D.dow} ${D.date}${s.t?" · "+esc(s.t):""}</p>
-      <h2 id="sheet-h" style="margin-top:6px">${esc(s.n)}</h2>
+      <p class="pmeta">Day ${WORDS[i]} · ${D.dow} ${D.date}${s.t?" · "+esc(s.t):""}</p>
+      <h2 id="sheet-h" style="margin-top:5px">${esc(s.n)}</h2>
       <p class="ptext">${esc(s.d)}</p>
       <div id="sheet-ph"></div>
       <div class="act">
-        <a class="btn btn-primary" href="${navUrl(S.loc[s.stay?s.stay.sid:s.k]||s.q)}" target="_blank" rel="noopener">Navigate</a>
+        <a class="btn btn-primary" href="${navUrl(S.loc[s.stay?s.stay.sid:s.k]||s.q)}" target="_blank" rel="noopener">${ICON.nav}Navigate</a>
         ${got||skip?`<button class="btn" data-go="undo" data-v="${s.k}">Undo</button>`
                   :`<button class="btn btn-go" data-go="got" data-v="${s.k}">${esc(s.rl)}</button>`}
         ${!got&&!skip&&!s.stay?`<button class="btn btn-quiet" data-go="skip" data-v="${s.k}">Skip</button>`:""}
@@ -737,27 +1113,14 @@ function closeSheet(){
   try{ if(history.state&&history.state.sheet) history.back(); }catch(e){}
 }
 
-/* ======================= photos into the day hero ======================= */
-async function paintHero(){
-  const img=document.querySelector(".hero img[data-hero]");
-  if(!img) return;
-  const want=img.dataset.hero, day=VD;
-  const ph=await photoFor(want);
-  const now=document.querySelector(".hero img[data-hero]");
-  if(!ph||!now||now.dataset.hero!==want||day!==VD) return;
-  now.onload=()=>now.classList.add("on");
-  now.src=ph.s;
-}
-
 /* ======================= boot ======================= */
 let TAB="day", VD=0;
 function render(keep){
   const y=keep?window.scrollY:0;
-  $("#strip").innerHTML=stripHtml();
+  $("#rail").innerHTML=railHtml();
   $("#view").innerHTML = TAB==="day"?viewDay():TAB==="route"?viewRoute():viewInfo();
   document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute("aria-selected",String(b.dataset.tab===TAB)));
-  $(".strip").style.display = TAB==="day"?"":"none";
-  if(TAB==="day") paintHero();
+  $(".rail").style.display = TAB==="day"?"":"none";
   if(keep) window.scrollTo(0,y); else window.scrollTo(0,0);
 }
 
@@ -794,10 +1157,8 @@ window.addEventListener("popstate",()=>{ if(openKey) closeSheet(); });
   if(["day","route","info"].includes(wantTab)) TAB=wantTab;
   document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>{TAB=b.dataset.tab;render(false);}));
   render(false);
-  if(VD===0||td===0){ const sel=document.querySelector('.chip[aria-current="true"]'); if(sel) sel.scrollIntoView({inline:"center",block:"nearest"}); }
+  if(VD===0||td===0){ const sel=document.querySelector('.node[aria-current="true"]'); if(sel) sel.scrollIntoView({inline:"center",block:"nearest"}); }
   try{ if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)) navigator.serviceWorker.register("sw.js"); }catch(e){}
-  window.addEventListener("online",()=>{ if(TAB==="day") paintHero(); });
-  /* offer the install step to iPhone users in Safari, once */
   try{
     const ios=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
     if(ios&&!navigator.standalone&&!localStorage.getItem("kerala-hint")){
