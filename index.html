@@ -164,16 +164,17 @@ img,svg{display:block}
 .row-opt .row-nm:after{content:"maybe";display:inline-block;font:800 9.5px/1 var(--body);letter-spacing:.08em;
   text-transform:uppercase;color:var(--grape);background:#F0EDFD;border-radius:999px;padding:4px 7px;margin-left:9px;vertical-align:2px}
 
-/* ---------- car card ---------- */
+/* ---------- car ---------- */
 .car-card{background:linear-gradient(170deg,#EAF7FC,#CFE8F2);border-radius:var(--r);box-shadow:var(--sh);
-  padding:14px 16px 16px;margin-top:14px;overflow:hidden}
+  padding:14px 16px 16px;margin-top:6px;overflow:hidden}
 .car-head{display:flex;align-items:center;gap:10px}
-.car-head h3{font:800 19px/1.2 var(--display);flex:1}
-.car-head span{font:700 11.5px/1.3 var(--body);color:var(--muted);text-align:right}
-.stage3d{position:relative;height:210px;display:grid;place-items:center;perspective:1000px;cursor:grab;touch-action:pan-y;margin:2px 0 0}
-.shadow3d{position:absolute;left:50%;top:72%;width:200px;height:34px;margin-left:-100px;border-radius:50%;
-  background:radial-gradient(ellipse at center,rgba(60,90,70,.22),rgba(60,90,70,0) 70%)}
-.car3d{position:relative;width:0;height:0;transform-style:preserve-3d;transform:scale(.74) rotateX(-15deg) rotateY(var(--ry,-32deg))}
+.car-head h3{font:800 20px/1.2 var(--display);flex:1}
+.car-head span{font:700 11.5px/1.35 var(--body);color:var(--muted);text-align:right}
+.stage3d{position:relative;height:250px;display:grid;place-items:center;perspective:1050px;cursor:grab;touch-action:pan-y;margin:2px 0 0}
+.shadow3d{position:absolute;left:50%;top:73%;width:220px;height:36px;margin-left:-110px;border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(40,70,90,.22),rgba(40,70,90,0) 70%)}
+.car3d{position:relative;width:0;height:0;transform-style:preserve-3d;
+  transform:scale(.78) rotateX(-15deg) rotateY(var(--ry,-32deg))}
 .box3d{position:absolute;left:0;top:0;transform-style:preserve-3d;transform:translate3d(var(--x,0),var(--y,0),var(--z,0))}
 .f3{position:absolute;left:0;top:0;width:var(--w);height:var(--h);margin-left:calc(var(--w)/-2);margin-top:calc(var(--h)/-2);
   background:var(--c,#F7A82B);backface-visibility:hidden;border-radius:5px}
@@ -184,6 +185,14 @@ img,svg{display:block}
 .box3d .f3:nth-child(5){height:var(--d);margin-top:calc(var(--d)/-2);transform:rotateX(90deg) translateZ(calc(var(--h)/2))}
 .box3d .f3:nth-child(6){height:var(--d);margin-top:calc(var(--d)/-2);transform:rotateX(-90deg) translateZ(calc(var(--h)/2))}
 .car-hint{text-align:center;font:700 12.5px/1.4 var(--body);color:var(--muted);margin-top:2px}
+.swatches{display:flex;gap:11px;justify-content:center;margin-top:12px}
+.swatch{width:31px;height:31px;border-radius:50%;background:var(--s);transition:transform .15s;
+  box-shadow:inset 0 0 0 2px rgba(255,255,255,.85),0 2px 6px rgba(31,45,38,.2)}
+.swatch[aria-pressed="true"]{transform:scale(1.2);box-shadow:0 0 0 3px var(--mango),0 2px 8px rgba(31,45,38,.22)}
+.specs{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:14px}
+.specs>div{background:rgba(255,255,255,.74);border-radius:14px;padding:11px 8px;text-align:center}
+.specs dt{font:700 10px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.specs dd{font:800 14.5px/1.3 var(--display);margin-top:6px}
 
 /* ---------- disclosure ---------- */
 .acc{margin-top:12px;background:var(--paper);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden}
@@ -293,7 +302,9 @@ img,svg{display:block}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 .bobbing .car3d{animation:bob 3.4s ease-in-out infinite}
-@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+@media (prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;transition:none!important}
+}
 @media (min-width:520px){.facts{grid-template-columns:repeat(4,1fr)}}
 @media print{.tabs,.rail,.hintbar,.btn{display:none}body{background:#fff}}
 </style>
@@ -316,6 +327,9 @@ img,svg{display:block}
     <button role="tab" data-tab="route">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 19c0-4 6-3 6-7s4-3 6-3"/><circle cx="5" cy="19" r="2.2"/><circle cx="19" cy="8" r="2.2"/></svg>
       <span>Route</span></button>
+    <button role="tab" data-tab="car">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13.5l1.6-4.4A2.4 2.4 0 0 1 6.9 7.5h10.2a2.4 2.4 0 0 1 2.3 1.6L21 13.5v4h-18z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>
+      <span>Car</span></button>
     <button role="tab" data-tab="info">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M16 7H10a2.5 2.5 0 0 0 0 5h4a2.5 2.5 0 0 1 0 5H8"/></svg>
       <span>Money</span></button>
@@ -777,8 +791,12 @@ const CHK={book:[
  ["k1","Idukki weather alert and Bodimettu road status. If it looks bad, use Palani, Udumalpet and Marayoor (6–7 hrs)."],
  ["k2","Kochi sea cruise availability, today's fare and child tickets"],
  ["k3","Mattancherry Palace and Jew Town opening hours (closed Fridays)"],
- ["k4","Child life jackets on both boats"],
- ["k5","Tyre pressure, spare wheel, and a full tank before the Bodimettu ghat"]],
+ ["k4","Child life jackets on both boats"]],
+ car:[
+ ["c1","Service and fluids done before 24 Oct"],
+ ["c2","Tyre pressure checked, spare wheel and jack in place"],
+ ["c3","Full tank before the Bodimettu ghat on 25 Oct"],
+ ["c4","Phone mount, charger and the kids' playlist loaded",true]],
  pack:[
  ["p1","Sweaters and a jacket for Munnar"],
  ["p2","Kids' food, ORS, motion-sickness remedy, mosquito repellent"],
@@ -826,7 +844,7 @@ const ICON={
 
 /* ======================= state ======================= */
 const KEY="kerala-trip-2026-app";
-let S={got:{},skip:{},loc:{},chk:{}};
+let S={got:{},skip:{},loc:{},chk:{},paint:0};
 try{ Object.assign(S,JSON.parse(localStorage.getItem(KEY)||"{}")); }catch(e){}
 function save(){ try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){} }
 
@@ -865,62 +883,100 @@ async function photoFor(w){
   return null;
 }
 
-/* ======================= the 3D car ======================= */
+/* ======================= the 3D car =======================
+   Built from boxes so it needs no library and works offline.
+   Paints are precomputed hex shades — no color-mix(), which is slow
+   inside a preserve-3d context and needs newer browsers. */
+const PAINTS=[
+  {n:"Dark red",      base:"#8E2231", lt:"#A8394A", lt2:"#BE5464", dk:"#6E1725", dk2:"#4E0F1A"},
+  {n:"Pearl white",   base:"#E7EAEE", lt:"#F4F6F8", lt2:"#FFFFFF", dk:"#C8CDD4", dk2:"#AEB4BC"},
+  {n:"Daytona grey",  base:"#4E5A66", lt:"#64707C", lt2:"#7C8894", dk:"#3B4650", dk2:"#2A333B"},
+  {n:"Ocean blue",    base:"#1F4E86", lt:"#2E62A0", lt2:"#4279B8", dk:"#163C69", dk2:"#0F2C4E"},
+  {n:"Tropical mist", base:"#7FB8B0", lt:"#97CCC4", lt2:"#AFDCD5", dk:"#639A93", dk2:"#4B7B75"}
+];
 const CAR_BOXES=[
-  {x:-72,y:44,z:38,w:36,h:42,d:30,c:"#2A3830"},
-  {x: 72,y:44,z:38,w:36,h:42,d:30,c:"#2A3830"},
-  {x:-72,y:44,z:-38,w:36,h:42,d:30,c:"#222E27"},
-  {x: 72,y:44,z:-38,w:36,h:42,d:30,c:"#222E27"},
-  {x:4,y:2,w:206,h:52,d:92,c:"#F2A32C",front:"#FFC55E",back:"#D98A1C",top:"#FFD07A"},
-  {x:30,y:-46,w:112,h:46,d:84,c:"#FFF6E6",front:"#8FC9E6",back:"#8FC9E6",right:"#8FC9E6",left:"#8FC9E6",top:"#FFFCF4"},
-  {x:30,y:-73,z:30,w:92,h:7,d:7,c:"#2A3830"},
-  {x:30,y:-73,z:-30,w:92,h:7,d:7,c:"#2A3830"},
-  {x:-104,y:10,w:14,h:26,d:94,c:"#FFF6E6"},
-  {x:-100,y:-6,w:7,h:20,d:58,c:"#2A3830"},
-  {x:-99,y:-4,z:34,w:9,h:14,d:16,c:"#FFF0B8"},
-  {x:-99,y:-4,z:-34,w:9,h:14,d:16,c:"#FFF0B8"},
-  {x:104,y:-16,z:34,w:9,h:19,d:14,c:"#FB7A5C"},
-  {x:104,y:-16,z:-34,w:9,h:19,d:14,c:"#FB7A5C"}
+  /* wheels */
+  {x:-72,y:48,z:38,w:38,h:46,d:32,c:"#232B27"},
+  {x: 72,y:48,z:38,w:38,h:46,d:32,c:"#232B27"},
+  {x:-72,y:48,z:-38,w:38,h:46,d:32,c:"#1A201D"},
+  {x: 72,y:48,z:-38,w:38,h:46,d:32,c:"#1A201D"},
+  /* lower body */
+  {x:4,y:4,w:208,h:58,d:94,paint:1},
+  /* side cladding */
+  {x:4,y:40,z:48,w:186,h:15,d:4,c:"#333B38"},
+  {x:4,y:40,z:-48,w:186,h:15,d:4,c:"#333B38"},
+  /* greenhouse: body-colour pillar band, glass, then roof */
+  {x:28,y:-34,w:152,h:24,d:88,paint:1},
+  {x:28,y:-58,w:147,h:26,d:84,c:"#7FB3CC",front:"#8FC2D8",top:"#96C9DE"},
+  {x:28,y:-78,w:156,h:14,d:90,paint:1},
+  /* roof rails */
+  {x:28,y:-89,z:32,w:132,h:8,d:8,c:"#333B38"},
+  {x:28,y:-89,z:-32,w:132,h:8,d:8,c:"#333B38"},
+  /* grille, headlight bar, tail bar */
+  {x:-105,y:0,w:8,h:32,d:74,c:"#2B3230"},
+  {x:-104,y:-16,w:7,h:15,d:80,c:"#FFF3C4"},
+  {x:107,y:-10,w:7,h:24,d:80,c:"#E2452B"}
 ];
 function carHtml(){
+  const P=PAINTS[S.paint||0]||PAINTS[0];
+  const shade=[P.lt,P.dk,P.dk2,P.base,P.lt2,P.dk2];
   const body=CAR_BOXES.map(b=>{
-    const f=(cc)=>`<div class="f3" style="--w:${b.w}px;--h:${b.h}px;--d:${b.d}px;--c:${cc||b.c}"></div>`;
+    const f=i=>{
+      const cc = b.paint ? shade[i] : [b.front,b.back,b.right,b.left,b.top,b.bottom][i] || b.c;
+      return `<div class="f3" style="--w:${b.w}px;--h:${b.h}px;--d:${b.d}px;--c:${cc}"></div>`;
+    };
     return `<div class="box3d" style="--x:${b.x||0}px;--y:${b.y||0}px;--z:${b.z||0}px;--w:${b.w}px;--h:${b.h}px;--d:${b.d}px">
-      ${f(b.front)}${f(b.back)}${f(b.right)}${f(b.left)}${f(b.top)}${f(b.bottom)}</div>`;
+      ${[0,1,2,3,4,5].map(f).join("")}</div>`;
   }).join("");
-  return `<div class="car-card" style="--c:var(--mango)">
+  return `<div class="car-card">
     <div class="car-head">
-      <h3>The Safari</h3>
-      <span>2019 Tata Safari<br>2.0 · 6 seats</span>
+      <h3>Tata Safari</h3>
+      <span>2023 facelift<br>2.0 diesel · 6 seats</span>
     </div>
     <div class="stage3d bobbing" id="stage3d">
       <div class="shadow3d"></div>
       <div class="car3d" id="car3d">${body}</div>
     </div>
     <p class="car-hint">Drag to spin it 👆</p>
-    <div class="act" style="margin-top:12px">
-      <a class="btn" style="flex:1" href="${CAR.showroom}" target="_blank" rel="noopener">${ICON.car}See the real one</a>
-    </div>
+    <div class="swatches">${PAINTS.map((p,i)=>
+      `<button class="swatch" style="--s:${p.base}" data-go="paint" data-v="${i}"
+        aria-pressed="${i===(S.paint||0)}" aria-label="${esc(p.n)}"></button>`).join("")}</div>
+    <dl class="specs">
+      <div><dt>Seats</dt><dd>6</dd></div>
+      <div><dt>Fuel</dt><dd>Diesel</dd></div>
+      <div><dt>Trip</dt><dd>${TOTAL_KM.toLocaleString("en-IN")} km</dd></div>
+    </dl>
   </div>`;
 }
-function wireCar(){
-  const stage=$("#stage3d"), car=$("#car3d");
-  if(!stage||!car) return;
-  let ry=-32, drag=false, px=0, auto=true;
-  car.style.setProperty("--ry",ry+"deg");
-  const set=v=>{ry=v;car.style.setProperty("--ry",ry+"deg")};
-  const down=e=>{drag=true;auto=false;px=(e.touches?e.touches[0]:e).clientX;stage.style.cursor="grabbing"};
-  const move=e=>{if(!drag)return;const x=(e.touches?e.touches[0]:e).clientX;set(ry+(x-px)*.55);px=x;if(e.cancelable)e.preventDefault()};
-  const up=()=>{drag=false;stage.style.cursor="grab"};
-  stage.addEventListener("mousedown",down);
-  window.addEventListener("mousemove",move);
-  window.addEventListener("mouseup",up);
-  stage.addEventListener("touchstart",down,{passive:true});
-  stage.addEventListener("touchmove",move,{passive:false});
-  window.addEventListener("touchend",up);
+/* Drag state lives outside the view so listeners are bound once, not per render. */
+const CARST={drag:false,px:0,auto:true,ry:-32};
+function carSet(v){ CARST.ry=v; const c=$("#car3d"); if(c) c.style.setProperty("--ry",v+"deg"); }
+function carDown(e){
+  CARST.drag=true; CARST.auto=false;
+  CARST.px=(e.touches?e.touches[0]:e).clientX;
+  const s=$("#stage3d"); if(s) s.style.cursor="grabbing";
+}
+function carMove(e){
+  if(!CARST.drag) return;
+  const x=(e.touches?e.touches[0]:e).clientX;
+  carSet(CARST.ry+(x-CARST.px)*.55);
+  CARST.px=x;
+  if(e.cancelable) e.preventDefault();
+}
+function carUp(){ CARST.drag=false; const s=$("#stage3d"); if(s) s.style.cursor="grab"; }
+function initCarControls(){
+  document.addEventListener("mousedown",e=>{ if(e.target.closest&&e.target.closest("#stage3d")) carDown(e); });
+  document.addEventListener("touchstart",e=>{ if(e.target.closest&&e.target.closest("#stage3d")) carDown(e); },{passive:true});
+  document.addEventListener("mousemove",carMove);
+  document.addEventListener("touchmove",carMove,{passive:false});
+  document.addEventListener("mouseup",carUp);
+  document.addEventListener("touchend",carUp);
   if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-    setInterval(()=>{ if(auto&&!drag) set(ry+0.28); },40);
+    setInterval(()=>{ if(CARST.auto&&!CARST.drag) carSet(CARST.ry+0.28); },40);
   }
+}
+function wireCar(){
+  if($("#car3d")) carSet(CARST.ry);
 }
 
 /* ======================= rail ======================= */
@@ -1002,9 +1058,6 @@ function viewDay(){
     <ol class="rows">${planned.map(s=>rowHtml(s,i)).join("")}</ol>
     ${optional.length?`<h2 class="eye">🌟 If there is time</h2><ol class="rows">${optional.map(s=>rowHtml(s,i)).join("")}</ol>`:""}
 
-    <h2 class="eye">🚗 Your car</h2>
-    ${carHtml()}
-
     <h2 class="eye">📖 The detail</h2>
     <details class="acc" style="--c:${D.c}">
       <summary>${ICON.clock}Hour by hour<span class="chev">${ICON.chev}</span></summary>
@@ -1050,8 +1103,6 @@ function viewRoute(){
         <span class="day-km num">${D.km} km<em class="${q.d?"":"zero"}">${q.d}/${q.n}</em></span>
       </button>`;
     }).join("")}</div>
-    <h2 class="eye">🚗 Your car</h2>
-    ${carHtml()}
     <h2 class="eye">ℹ️ The road</h2>
     <div class="rows" style="padding:16px">
       <p class="note-p">About ${TOTAL_KM.toLocaleString("en-IN")} km door to door, in the Tata Safari. Two adults, a 2-year-old and an infant.</p>
@@ -1087,6 +1138,35 @@ function viewInfo(){
     <div class="rows">${chkList(CHK.pack)}</div>
     <p class="hint">Ticks and reached marks stay on this device only.</p>
     <button class="btn btn-quiet" style="margin-top:12px;background:var(--paper)" data-go="reset">Clear all ticks and marks</button>
+  </div>`;
+}
+
+/* ======================= car view ======================= */
+function viewCar(){
+  return `<div class="wrap">
+    <h1 class="page-h">Our car <em>🚗</em></h1>
+    <p class="page-lede">The Safari that's doing all the driving. Spin it, and tap a colour to match yours.</p>
+    ${carHtml()}
+
+    <h2 class="eye">📋 Before we leave</h2>
+    <div class="rows">${chkList(CHK.car)}</div>
+
+    <h2 class="eye">⛽ For the drive</h2>
+    <div class="rows" style="padding:16px">
+      <p class="note-p">Diesel at about ₹99.55 a litre and roughly 12 km per litre on this mix of highway and ghat — call it <b>₹14,000</b> of fuel for the trip.</p>
+      <p class="hint">Fill up at Trichy before Madurai, at Theni before the Bodimettu ghat, and once more before Chennai on the last day.</p>
+    </div>
+
+    <h2 class="eye">🛠️ At the wheel</h2>
+    <div class="rows" style="padding:16px">
+      <p class="note-p">Long days on 24, 25 and 31 Oct. Swap drivers at breakfast and lunch stops, keep the cabin cool for the kids, and take the hairpins on the Bodimettu ghat in second gear.</p>
+    </div>
+
+    <h2 class="eye">🔗 Tata's own 3D</h2>
+    <div class="rows" style="padding:16px">
+      <p class="note-p">The official digital showroom, with the real paint and trim options.</p>
+      <div class="act"><a class="btn" style="flex:1" href="${CAR.showroom}" target="_blank" rel="noopener">${ICON.car}Open the Tata showroom</a></div>
+    </div>
   </div>`;
 }
 
@@ -1150,7 +1230,7 @@ function render(keep){
   $("#greetsub").textContent=td?("Day "+td+" of nine · "+DAYS[VD].title)
     :(td===0&&n.y===2026&&(n.mo<10||(n.mo===10&&n.d<24))?"Getting ready · "+DAYS[VD].date
     :DAYS[VD].dow+" "+DAYS[VD].date+" · "+DAYS[VD].title);
-  $("#view").innerHTML = TAB==="day"?viewDay():TAB==="route"?viewRoute():viewInfo();
+  $("#view").innerHTML = TAB==="day"?viewDay():TAB==="route"?viewRoute():TAB==="car"?viewCar():viewInfo();
   document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute("aria-selected",String(b.dataset.tab===TAB)));
   $(".rail").style.display = TAB==="day"?"":"none";
   wireCar();
@@ -1163,6 +1243,16 @@ document.addEventListener("click",e=>{
   if(a==="day"){ VD=+v; TAB="day"; render(false); return; }
   if(a==="open"){ openSheet(v); return; }
   if(a==="close"){ closeSheet(); return; }
+  if(a==="paint"){
+    S.paint=+v; save();
+    const P=PAINTS[+v], s=[P.lt,P.dk,P.dk2,P.base,P.lt2,P.dk2];
+    document.querySelectorAll("#car3d .box3d").forEach((box,bi)=>{
+      const b=CAR_BOXES[bi]; if(!b||!b.paint) return;
+      box.querySelectorAll(".f3").forEach((f,fi)=>f.style.setProperty("--c",s[fi]));
+    });
+    document.querySelectorAll(".swatch").forEach((el,i)=>el.setAttribute("aria-pressed",String(i===+v)));
+    return;
+  }
   if(a==="got"){ S.got[v]=Date.now(); delete S.skip[v]; try{navigator.vibrate&&navigator.vibrate(18);}catch(x){} }
   else if(a==="skip"){ S.skip[v]=1; delete S.got[v]; }
   else if(a==="undo"){ delete S.got[v]; delete S.skip[v]; }
@@ -1189,6 +1279,7 @@ window.addEventListener("popstate",()=>{ if(openKey) closeSheet(); });
   const wantTab=new URLSearchParams(location.search).get("tab");
   if(["day","route","info"].includes(wantTab)) TAB=wantTab;
   document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>{TAB=b.dataset.tab;render(false);}));
+  initCarControls();
   render(false);
   if(VD===0||td===0){ const sel=document.querySelector('.chip[aria-current="true"]'); if(sel) sel.scrollIntoView({inline:"center",block:"nearest"}); }
   try{ if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)) navigator.serviceWorker.register("sw.js"); }catch(e){}
