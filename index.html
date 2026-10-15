@@ -170,20 +170,11 @@ img,svg{display:block}
 .car-head{display:flex;align-items:center;gap:10px}
 .car-head h3{font:800 20px/1.2 var(--display);flex:1}
 .car-head span{font:700 11.5px/1.35 var(--body);color:var(--muted);text-align:right}
-.stage3d{position:relative;height:250px;display:grid;place-items:center;perspective:1050px;cursor:grab;touch-action:pan-y;margin:2px 0 0}
-.shadow3d{position:absolute;left:50%;top:73%;width:220px;height:36px;margin-left:-110px;border-radius:50%;
-  background:radial-gradient(ellipse at center,rgba(40,70,90,.22),rgba(40,70,90,0) 70%)}
-.car3d{position:relative;width:0;height:0;transform-style:preserve-3d;
-  transform:scale(.78) rotateX(-15deg) rotateY(var(--ry,-32deg))}
-.box3d{position:absolute;left:0;top:0;transform-style:preserve-3d;transform:translate3d(var(--x,0),var(--y,0),var(--z,0))}
-.f3{position:absolute;left:0;top:0;width:var(--w);height:var(--h);margin-left:calc(var(--w)/-2);margin-top:calc(var(--h)/-2);
-  background:var(--c,#F7A82B);backface-visibility:hidden;border-radius:5px}
-.box3d .f3:nth-child(1){transform:translateZ(calc(var(--d)/2))}
-.box3d .f3:nth-child(2){transform:rotateY(180deg) translateZ(calc(var(--d)/2))}
-.box3d .f3:nth-child(3){width:var(--d);margin-left:calc(var(--d)/-2);transform:rotateY(90deg) translateZ(calc(var(--w)/2))}
-.box3d .f3:nth-child(4){width:var(--d);margin-left:calc(var(--d)/-2);transform:rotateY(-90deg) translateZ(calc(var(--w)/2))}
-.box3d .f3:nth-child(5){height:var(--d);margin-top:calc(var(--d)/-2);transform:rotateX(90deg) translateZ(calc(var(--h)/2))}
-.box3d .f3:nth-child(6){height:var(--d);margin-top:calc(var(--d)/-2);transform:rotateX(-90deg) translateZ(calc(var(--h)/2))}
+.stage3d{position:relative;height:238px;margin:2px 0 0;border-radius:18px;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 8%,#f4fbfd,#cfe8f2)}
+.stage3d canvas{width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab}
+.car-load{position:absolute;inset:0;display:grid;place-content:center;text-align:center;
+  font:700 13.5px/1.5 var(--body);color:var(--muted);padding:0 20px}
 .car-hint{text-align:center;font:700 12.5px/1.4 var(--body);color:var(--muted);margin-top:2px}
 .swatches{display:flex;gap:11px;justify-content:center;margin-top:12px}
 .swatch{width:31px;height:31px;border-radius:50%;background:var(--s);transition:transform .15s;
@@ -884,62 +875,29 @@ async function photoFor(w){
 }
 
 /* ======================= the 3D car =======================
-   Built from boxes so it needs no library and works offline.
-   Paints are precomputed hex shades — no color-mix(), which is slow
-   inside a preserve-3d context and needs newer browsers. */
+   three.js is vendored in ./vendor and imported lazily, so its 720 KB is only
+   fetched the first time someone opens the Car tab. */
 const PAINTS=[
-  {n:"Dark red",      base:"#8E2231", lt:"#A8394A", lt2:"#BE5464", dk:"#6E1725", dk2:"#4E0F1A"},
-  {n:"Pearl white",   base:"#E7EAEE", lt:"#F4F6F8", lt2:"#FFFFFF", dk:"#C8CDD4", dk2:"#AEB4BC"},
-  {n:"Daytona grey",  base:"#4E5A66", lt:"#64707C", lt2:"#7C8894", dk:"#3B4650", dk2:"#2A333B"},
-  {n:"Ocean blue",    base:"#1F4E86", lt:"#2E62A0", lt2:"#4279B8", dk:"#163C69", dk2:"#0F2C4E"},
-  {n:"Tropical mist", base:"#7FB8B0", lt:"#97CCC4", lt2:"#AFDCD5", dk:"#639A93", dk2:"#4B7B75"}
+  {n:"Onyx black",   key:"black", ui:"#15171a"},
+  {n:"Pearl white",  key:"white", ui:"#e9edf1"},
+  {n:"Daytona grey", key:"grey",  ui:"#4e5a66"},
+  {n:"Ocean blue",   key:"blue",  ui:"#1f4e86"},
+  {n:"Tropical mist",key:"mist",  ui:"#7fb8b0"}
 ];
-const CAR_BOXES=[
-  /* wheels */
-  {x:-72,y:48,z:38,w:38,h:46,d:32,c:"#232B27"},
-  {x: 72,y:48,z:38,w:38,h:46,d:32,c:"#232B27"},
-  {x:-72,y:48,z:-38,w:38,h:46,d:32,c:"#1A201D"},
-  {x: 72,y:48,z:-38,w:38,h:46,d:32,c:"#1A201D"},
-  /* lower body */
-  {x:4,y:4,w:208,h:58,d:94,paint:1},
-  /* side cladding */
-  {x:4,y:40,z:48,w:186,h:15,d:4,c:"#333B38"},
-  {x:4,y:40,z:-48,w:186,h:15,d:4,c:"#333B38"},
-  /* greenhouse: body-colour pillar band, glass, then roof */
-  {x:28,y:-34,w:152,h:24,d:88,paint:1},
-  {x:28,y:-58,w:147,h:26,d:84,c:"#7FB3CC",front:"#8FC2D8",top:"#96C9DE"},
-  {x:28,y:-78,w:156,h:14,d:90,paint:1},
-  /* roof rails */
-  {x:28,y:-89,z:32,w:132,h:8,d:8,c:"#333B38"},
-  {x:28,y:-89,z:-32,w:132,h:8,d:8,c:"#333B38"},
-  /* grille, headlight bar, tail bar */
-  {x:-105,y:0,w:8,h:32,d:74,c:"#2B3230"},
-  {x:-104,y:-16,w:7,h:15,d:80,c:"#FFF3C4"},
-  {x:107,y:-10,w:7,h:24,d:80,c:"#E2452B"}
-];
+let carApi=null, carLoading=false;
 function carHtml(){
-  const P=PAINTS[S.paint||0]||PAINTS[0];
-  const shade=[P.lt,P.dk,P.dk2,P.base,P.lt2,P.dk2];
-  const body=CAR_BOXES.map(b=>{
-    const f=i=>{
-      const cc = b.paint ? shade[i] : [b.front,b.back,b.right,b.left,b.top,b.bottom][i] || b.c;
-      return `<div class="f3" style="--w:${b.w}px;--h:${b.h}px;--d:${b.d}px;--c:${cc}"></div>`;
-    };
-    return `<div class="box3d" style="--x:${b.x||0}px;--y:${b.y||0}px;--z:${b.z||0}px;--w:${b.w}px;--h:${b.h}px;--d:${b.d}px">
-      ${[0,1,2,3,4,5].map(f).join("")}</div>`;
-  }).join("");
   return `<div class="car-card">
     <div class="car-head">
       <h3>Tata Safari</h3>
       <span>2023 facelift<br>2.0 diesel · 6 seats</span>
     </div>
-    <div class="stage3d bobbing" id="stage3d">
-      <div class="shadow3d"></div>
-      <div class="car3d" id="car3d">${body}</div>
+    <div class="stage3d" id="stage3d">
+      <canvas id="car3d" aria-label="A 3D model of the Tata Safari. Drag to spin it."></canvas>
+      <div class="car-load" id="carLoad">Loading the car…</div>
     </div>
     <p class="car-hint">Drag to spin it 👆</p>
     <div class="swatches">${PAINTS.map((p,i)=>
-      `<button class="swatch" style="--s:${p.base}" data-go="paint" data-v="${i}"
+      `<button class="swatch" style="--s:${p.ui}" data-go="paint" data-v="${i}"
         aria-pressed="${i===(S.paint||0)}" aria-label="${esc(p.n)}"></button>`).join("")}</div>
     <dl class="specs">
       <div><dt>Seats</dt><dd>6</dd></div>
@@ -948,36 +906,24 @@ function carHtml(){
     </dl>
   </div>`;
 }
-/* Drag state lives outside the view so listeners are bound once, not per render. */
-const CARST={drag:false,px:0,auto:true,ry:-32};
-function carSet(v){ CARST.ry=v; const c=$("#car3d"); if(c) c.style.setProperty("--ry",v+"deg"); }
-function carDown(e){
-  CARST.drag=true; CARST.auto=false;
-  CARST.px=(e.touches?e.touches[0]:e).clientX;
-  const s=$("#stage3d"); if(s) s.style.cursor="grabbing";
-}
-function carMove(e){
-  if(!CARST.drag) return;
-  const x=(e.touches?e.touches[0]:e).clientX;
-  carSet(CARST.ry+(x-CARST.px)*.55);
-  CARST.px=x;
-  if(e.cancelable) e.preventDefault();
-}
-function carUp(){ CARST.drag=false; const s=$("#stage3d"); if(s) s.style.cursor="grab"; }
-function initCarControls(){
-  document.addEventListener("mousedown",e=>{ if(e.target.closest&&e.target.closest("#stage3d")) carDown(e); });
-  document.addEventListener("touchstart",e=>{ if(e.target.closest&&e.target.closest("#stage3d")) carDown(e); },{passive:true});
-  document.addEventListener("mousemove",carMove);
-  document.addEventListener("touchmove",carMove,{passive:false});
-  document.addEventListener("mouseup",carUp);
-  document.addEventListener("touchend",carUp);
-  if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){
-    setInterval(()=>{ if(CARST.auto&&!CARST.drag) carSet(CARST.ry+0.28); },40);
+async function bootCar(){
+  const canvas=$("#car3d");
+  if(!canvas||carApi||carLoading) return;
+  carLoading=true;
+  try{
+    const mod=await import("./vendor/car3d.js");
+    if(!$("#car3d")){ carLoading=false; return; }          // tab moved on while loading
+    carApi=mod.createCar(canvas,{paint:(PAINTS[S.paint||0]||PAINTS[0]).key});
+    carApi.start();
+    const l=$("#carLoad"); if(l) l.remove();
+  }catch(e){
+    const l=$("#carLoad");
+    if(l) l.textContent="This browser can\u2019t show the 3D model, but everything else works.";
   }
+  carLoading=false;
 }
-function wireCar(){
-  if($("#car3d")) carSet(CARST.ry);
-}
+function wireCar(){ if(carApi) carApi.start(); else bootCar(); }
+function stopCar(){ if(carApi){ carApi.dispose(); carApi=null; } }
 
 /* ======================= rail ======================= */
 function railHtml(){
@@ -1233,7 +1179,8 @@ function render(keep){
   $("#view").innerHTML = TAB==="day"?viewDay():TAB==="route"?viewRoute():TAB==="car"?viewCar():viewInfo();
   document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute("aria-selected",String(b.dataset.tab===TAB)));
   $(".rail").style.display = TAB==="day"?"":"none";
-  wireCar();
+  stopCar();
+  if(TAB==="car") wireCar();
   if(keep) window.scrollTo(0,y); else window.scrollTo(0,0);
 }
 
@@ -1245,11 +1192,7 @@ document.addEventListener("click",e=>{
   if(a==="close"){ closeSheet(); return; }
   if(a==="paint"){
     S.paint=+v; save();
-    const P=PAINTS[+v], s=[P.lt,P.dk,P.dk2,P.base,P.lt2,P.dk2];
-    document.querySelectorAll("#car3d .box3d").forEach((box,bi)=>{
-      const b=CAR_BOXES[bi]; if(!b||!b.paint) return;
-      box.querySelectorAll(".f3").forEach((f,fi)=>f.style.setProperty("--c",s[fi]));
-    });
+    if(carApi) carApi.setPaint(PAINTS[+v].key);
     document.querySelectorAll(".swatch").forEach((el,i)=>el.setAttribute("aria-pressed",String(i===+v)));
     return;
   }
@@ -1279,7 +1222,6 @@ window.addEventListener("popstate",()=>{ if(openKey) closeSheet(); });
   const wantTab=new URLSearchParams(location.search).get("tab");
   if(["day","route","info"].includes(wantTab)) TAB=wantTab;
   document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>{TAB=b.dataset.tab;render(false);}));
-  initCarControls();
   render(false);
   if(VD===0||td===0){ const sel=document.querySelector('.chip[aria-current="true"]'); if(sel) sel.scrollIntoView({inline:"center",block:"nearest"}); }
   try{ if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)) navigator.serviceWorker.register("sw.js"); }catch(e){}
