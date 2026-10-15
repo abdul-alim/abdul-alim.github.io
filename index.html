@@ -1,0 +1,814 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F5F6F7">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Kerala '26">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="description" content="Nine days by road: Madurai, Munnar, the Alleppey backwaters and Kochi. 24 October to 1 November 2026.">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<meta name="referrer" content="no-referrer">
+<title>Kerala by road</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png" sizes="192x192">
+<link rel="icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F6F7;
+  --card:#FFFFFF;
+  --ink:#101828;
+  --ink-2:#475467;
+  --muted:#667085;
+  --line:#E4E7EC;
+  --line-2:#F2F4F7;
+  --go:#067647;
+  --go-bg:#ECFDF3;
+  --accent:#0F766E;
+  --r:14px;
+  --shadow:0 1px 2px rgba(16,24,40,.04), 0 1px 3px rgba(16,24,40,.06);
+  --tab:58px;
+  --font:"Inter",-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);font:400 15.5px/1.55 var(--font);
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  padding-bottom:calc(var(--tab) + env(safe-area-inset-bottom) + 24px);
+  -webkit-tap-highlight-color:transparent;
+}
+h1,h2,h3,p,ol,ul,dl,dt,dd,figure{margin:0}
+ol,ul{padding:0;list-style:none}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+a{color:inherit}
+img{display:block;max-width:100%}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:600px;margin:0 auto;padding:0 16px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.num{font-variant-numeric:tabular-nums}
+
+/* ---------- generic card + section label ---------- */
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden}
+.sec{margin:26px 0 10px;font:600 11px/1 var(--font);letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.sec+.card{margin-top:0}
+.hint{color:var(--muted);font-size:13.5px;line-height:1.5}
+.lead{color:var(--muted);font-size:14px;margin:8px 0 12px}
+
+/* ---------- day strip ---------- */
+.strip{position:sticky;top:0;z-index:40;background:rgba(245,246,247,.92);backdrop-filter:saturate(180%) blur(12px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top)}
+.strip ul{display:flex;gap:7px;overflow-x:auto;padding:9px 16px;max-width:600px;margin:0 auto;scrollbar-width:none}
+.strip ul::-webkit-scrollbar{display:none}
+.chip{
+  flex:0 0 auto;min-width:50px;padding:7px 9px 7px;border-radius:11px;text-align:center;
+  background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);
+}
+.chip small{display:block;font:600 9.5px/1 var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.chip b{display:block;font:700 17px/1.2 var(--font);letter-spacing:-.02em;margin-top:3px}
+.chip i{display:block;height:3px;border-radius:2px;background:var(--line-2);margin-top:6px;overflow:hidden}
+.chip i u{display:block;height:100%;border-radius:2px;background:var(--c);width:var(--p,0%)}
+.chip[aria-current="true"]{background:var(--ink);border-color:var(--ink)}
+.chip[aria-current="true"] small{color:rgba(255,255,255,.6)}
+.chip[aria-current="true"] b{color:#fff}
+.chip[aria-current="true"] i{background:rgba(255,255,255,.2)}
+.chip[aria-current="true"] i u{background:#fff}
+
+/* ---------- day hero ---------- */
+.hero{position:relative;aspect-ratio:16/10;background:linear-gradient(150deg,#243B53,#101828)}
+.hero img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease}
+.hero img.on{opacity:1}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(9,13,20,.9) 4%,rgba(9,13,20,.5) 42%,rgba(9,13,20,.12) 78%)}
+.hero-txt{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:15px 16px 16px;color:#fff}
+.hero-eye{font:600 11px/1 var(--font);letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.78)}
+.hero h1{font:700 clamp(22px,6.2vw,27px)/1.18 var(--font);letter-spacing:-.021em;margin-top:7px}
+.pill{display:inline-block;vertical-align:3px;margin-left:8px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.32);color:#fff;font:600 10.5px/1 var(--font);letter-spacing:.07em;text-transform:uppercase;padding:5px 7px;border-radius:999px;backdrop-filter:blur(4px)}
+
+/* ---------- fact grid ---------- */
+.facts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.facts>div{padding:12px 16px;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+.facts>div:nth-child(2n){border-right:0}
+.facts>div:nth-last-child(-n+2){border-bottom:0}
+.facts dt{font:500 11px/1 var(--font);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.facts dd{font:600 15px/1.35 var(--font);letter-spacing:-.01em;margin-top:5px}
+
+/* ---------- next stop ---------- */
+.next{background:var(--ink);color:#fff;padding:16px;border-radius:var(--r);box-shadow:0 2px 6px rgba(16,24,40,.14);margin-top:14px}
+.next-eye{font:600 11px/1 var(--font);letter-spacing:.09em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+.next h2{font:700 clamp(20px,5.6vw,24px)/1.2 var(--font);letter-spacing:-.021em;margin-top:8px}
+.next p{font-size:14.5px;line-height:1.5;color:rgba(255,255,255,.72);margin-top:7px}
+.next-act{display:flex;gap:8px;margin-top:15px}
+.next-then{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.12);font-size:13.5px;color:rgba(255,255,255,.62)}
+.next-then b{color:#fff;font-weight:600}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:46px;padding:0 16px;border-radius:10px;
+  font:600 14.5px/1 var(--font);letter-spacing:-.005em;
+  border:1px solid var(--line);background:var(--card);color:var(--ink);
+  text-decoration:none;transition:background .15s,opacity .15s;
+}
+.btn:active{opacity:.72}
+.btn-primary{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn-go{background:var(--go);border-color:var(--go);color:#fff}
+.btn-quiet{background:transparent;border-color:transparent;color:var(--muted)}
+.btn-w{flex:1}
+.next .btn{background:#fff;border-color:#fff;color:var(--ink)}
+.next .btn-ghost{background:transparent;border-color:rgba(255,255,255,.28);color:#fff}
+
+/* ---------- stop rows ---------- */
+.rows>li+li{border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:64px minmax(0,1fr) 24px;gap:12px;align-items:center;width:100%;padding:13px 16px;transition:background .15s}
+.row:active{background:var(--line-2)}
+.row-time{font:600 13.5px/1.3 var(--font);letter-spacing:-.01em;color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.row-nm{font:600 15px/1.35 var(--font);letter-spacing:-.012em;min-width:0}
+.row-sub{display:block;font:400 12.5px/1.4 var(--font);color:var(--muted);margin-top:3px;letter-spacing:0}
+.row-mk{justify-self:end;width:22px;height:22px;border:1.5px solid var(--line);border-radius:50%;display:grid;place-content:center;font:700 12px/1 var(--font);color:transparent}
+.row.is-next .row-time{color:var(--ink);font-weight:700}
+.row.is-next .row-mk{border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 3px rgba(15,118,110,.14)}
+.row.is-next .row-nm{font-weight:700}
+.row.done .row-mk{background:var(--go);border-color:var(--go);color:#fff}
+.row.done .row-mk:after{content:"✓"}
+.row.done .row-nm,.row.done .row-time{color:var(--muted);font-weight:500}
+.row.hoff .row-nm{color:var(--muted);text-decoration:line-through}
+.row-opt .row-nm:after{content:"optional";display:inline-block;font:600 10px/1 var(--font);letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--line-2);border-radius:5px;padding:3px 5px;margin-left:8px;vertical-align:1px}
+.here-tag{display:inline-block;font:600 10px/1 var(--font);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);background:rgba(15,118,110,.09);border-radius:5px;padding:3px 5px;margin-left:8px;vertical-align:1px}
+
+/* ---------- disclosures ---------- */
+.acc+.acc{margin-top:12px}
+.acc>summary{display:flex;align-items:center;gap:10px;padding:14px 16px;cursor:pointer;list-style:none;font:600 14.5px/1.3 var(--font);letter-spacing:-.012em}
+.acc>summary::-webkit-details-marker{display:none}
+.acc>summary:after{content:"";width:8px;height:8px;margin-left:auto;border-right:1.8px solid var(--muted);border-bottom:1.8px solid var(--muted);transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+.acc[open]>summary:after{transform:rotate(-135deg) translateY(-1px)}
+.acc[open]>summary{border-bottom:1px solid var(--line)}
+.acc-bd{padding:4px 16px 16px}
+.tl li{display:grid;grid-template-columns:62px minmax(0,1fr);gap:12px;padding:10px 0;border-top:1px solid var(--line-2)}
+.tl li:first-child{border-top:0}
+.tl time{font:600 13px/1.5 var(--font);color:var(--ink-2);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.tl p{font-size:14.5px;line-height:1.5;color:var(--muted)}
+.tl li.key time{color:var(--ink);font-weight:700}
+.tl li.key p{color:var(--ink)}
+.tl li.now{background:rgba(15,118,110,.05)}
+.tl li.now time:after{content:"now";display:block;font:600 9.5px/1.4 var(--font);letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
+.tl li.past{opacity:.5}
+.note-p{font-size:14.5px;line-height:1.55;color:var(--ink-2)}
+.tips li{position:relative;padding-left:15px;font-size:14.5px;line-height:1.5;color:var(--ink-2);margin-top:9px}
+.tips li:before{content:"";position:absolute;left:0;top:.6em;width:4px;height:4px;border-radius:50%;background:var(--line)}
+
+/* ---------- route ---------- */
+.page-h{font:700 clamp(30px,8.4vw,40px)/1.06 var(--font);letter-spacing:-.03em;margin-top:18px}
+.page-lede{color:var(--muted);font-size:15px;line-height:1.55;margin-top:10px}
+.stat{display:flex;align-items:baseline;gap:8px;margin-top:20px;font:600 14px/1.4 var(--font)}
+.stat span{color:var(--muted);font-weight:400}
+.bar{height:5px;border-radius:3px;background:var(--line);margin-top:9px;overflow:hidden}
+.bar u{display:block;height:100%;border-radius:3px;background:var(--go);width:var(--p,0%)}
+.day{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;padding:13px 16px;transition:background .15s}
+.day:active{background:var(--line-2)}
+.day+.day{border-top:1px solid var(--line)}
+.day-no{position:relative;font:700 14px/1 var(--font);color:var(--ink-2);font-variant-numeric:tabular-nums;padding-left:10px}
+.day-no:before{content:"";position:absolute;left:0;top:-1px;bottom:-1px;width:3px;border-radius:2px;background:var(--c)}
+.day-dt{display:block;font:500 11px/1 var(--font);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.day-ti{display:block;font:600 14.5px/1.35 var(--font);letter-spacing:-.012em;margin-top:5px}
+.day-sub{display:block;font:400 12.5px/1.4 var(--font);color:var(--muted);margin-top:4px}
+.day-km{font:600 13px/1 var(--font);color:var(--ink-2);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;min-width:58px}
+.day-km em{display:block;font:500 11.5px/1.4 var(--font);font-style:normal;color:var(--go);margin-top:6px;letter-spacing:-.01em}
+.day-km em.zero{color:var(--muted)}
+
+/* ---------- money ---------- */
+.ledger{padding:4px 16px 12px}
+.ledger li{display:flex;align-items:baseline;gap:8px;padding:10px 0;border-bottom:1px solid var(--line-2)}
+.ledger li:last-child{border-bottom:0}
+.ledger .l{order:1;font-size:14.5px;color:var(--ink-2);min-width:0}
+.ledger .d{order:2;flex:1;min-width:12px}
+.ledger b{order:3;font:600 14.5px/1.35 var(--font);white-space:nowrap;font-variant-numeric:tabular-nums;letter-spacing:-.012em}
+.ledger .tot{margin-top:4px;padding-top:14px;border-top:1.5px solid var(--ink);border-bottom:0}
+.ledger .tot .l{font:600 13px/1.4 var(--font);letter-spacing:.05em;text-transform:uppercase;color:var(--ink)}
+.ledger .tot b{font:700 20px/1 var(--font);letter-spacing:-.025em}
+
+/* ---------- checklist ---------- */
+.chk{padding:2px 16px}
+.chk li+li{border-top:1px solid var(--line-2)}
+.chk label{display:flex;gap:12px;align-items:flex-start;padding:13px 0;cursor:pointer}
+.chk input{
+  appearance:none;-webkit-appearance:none;flex:none;width:21px;height:21px;margin:1px 0 0;
+  border:1.5px solid #D0D5DD;border-radius:6px;background:var(--card);display:grid;place-content:center;cursor:pointer;transition:background .15s,border-color .15s;
+}
+.chk input:checked{background:var(--go);border-color:var(--go)}
+.chk input:checked:after{content:"";width:4px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.chk span{font-size:14.5px;line-height:1.5;color:var(--ink-2)}
+.chk input:checked+span{color:var(--muted);text-decoration:line-through;text-decoration-color:#D0D5DD}
+
+/* ---------- tabs ---------- */
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(255,255,255,.94);backdrop-filter:saturate(180%) blur(14px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
+.tabs div{display:flex;max-width:600px;margin:0 auto}
+.tabs button{flex:1;min-height:var(--tab);display:grid;place-content:center;text-align:center;font:600 11.5px/1 var(--font);letter-spacing:.02em;color:var(--muted);transition:color .15s}
+.tabs button[aria-selected="true"]{color:var(--ink)}
+.tabs button[aria-selected="true"] span{position:relative}
+.tabs button[aria-selected="true"] span:after{content:"";position:absolute;left:50%;transform:translateX(-50%);bottom:-19px;width:22px;height:2.5px;border-radius:2px;background:var(--ink)}
+
+/* ---------- detail sheet ---------- */
+.sheet{position:fixed;inset:0;z-index:80;display:flex;align-items:flex-end}
+.sheet[hidden]{display:none}
+.scrim{position:absolute;inset:0;background:rgba(16,24,40,.5);border:0;padding:0;cursor:default;animation:fade .2s ease-out}
+.panel{position:relative;width:100%;max-width:600px;margin:0 auto;max-height:90vh;overflow-y:auto;background:var(--card);border-radius:18px 18px 0 0;padding-bottom:calc(env(safe-area-inset-bottom) + 18px);animation:rise .28s cubic-bezier(.2,.8,.25,1)}
+.grab{width:34px;height:4px;border-radius:2px;background:var(--line);margin:9px auto 0}
+.panel figure{margin:13px 0 0;aspect-ratio:16/10;background:var(--line-2);overflow:hidden}
+.panel figure img{width:100%;height:100%;object-fit:cover}
+.panel .cap{font:400 11px/1 var(--font);color:var(--muted);padding:8px 18px 0}
+.panel .cap a{text-decoration:underline}
+.panel-bd{padding:14px 18px 0}
+.panel-bd h2{font:700 clamp(21px,5.8vw,25px)/1.2 var(--font);letter-spacing:-.022em}
+.pmeta{font:500 11px/1.4 var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.ptext{font-size:15px;line-height:1.55;color:var(--ink-2);margin-top:9px}
+.act{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}
+.marked{font-size:13px;color:var(--go);margin-top:12px;font-weight:500}
+
+/* ---------- install hint ---------- */
+.hintbar{position:fixed;left:12px;right:12px;bottom:calc(var(--tab) + env(safe-area-inset-bottom) + 12px);z-index:65;background:var(--ink);color:#fff;font:400 13px/1.45 var(--font);border-radius:12px;box-shadow:0 6px 20px rgba(16,24,40,.22);display:flex;align-items:center;gap:10px;padding:12px 14px;max-width:576px;margin:0 auto}
+.hintbar b{font-weight:600}
+.hintbar button{margin-left:auto;color:rgba(255,255,255,.6);font:400 20px/1 var(--font);padding:2px 4px}
+
+@keyframes rise{from{transform:translateY(16px);opacity:.5}to{transform:none;opacity:1}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.001ms!important;transition-duration:.001ms!important}}
+@media (min-width:520px){.facts{grid-template-columns:repeat(4,1fr)}.facts>div{border-bottom:0;border-right:1px solid var(--line)!important}.facts>div:last-child{border-right:0!important}}
+@media print{.tabs,.strip,.hintbar,.btn{display:none}body{background:#fff;padding:0}}
+</style>
+</head>
+<body>
+
+<nav class="strip" aria-label="Choose a day"><ul id="strip"></ul></nav>
+<main id="view"></main>
+
+<nav class="tabs" role="tablist" aria-label="Sections"><div>
+  <button role="tab" data-tab="day"><span>Day</span></button>
+  <button role="tab" data-tab="route"><span>Route</span></button>
+  <button role="tab" data-tab="info"><span>Info</span></button>
+</div></nav>
+
+<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="sheet-h"></div>
+<noscript><div class="wrap" style="padding-top:30px"><h1 class="page-h">Kerala by road</h1><p class="page-lede">Turn on JavaScript to see the itinerary.</p></div></noscript>
+
+<script>
+/* ======================= itinerary data =======================
+   c   = the day's route colour (a thin accent only)
+   km  = distance driven that day
+   hero= Wikipedia titles for the day photo (first one with a picture wins)
+   facts = the 2x2 summary beneath the photo
+   tl  = hour by hour (3rd item truthy = a fixed commitment)
+   w   = Wikipedia titles for a stop's photo
+   q   = the Google Maps search used by Navigate                     */
+const DAYS=[
+{dow:"Sat",date:"24 Oct",short:"24",title:"Potheri to Madurai",c:"#9A3412",km:430,night:"Sterling V Grand Madurai",hero:"Meenakshi Temple|Meenakshi Amman Temple",
+ facts:[["Leave","6:00 AM"],["Arrive","1:30 PM"],["Driving","7.5 hrs with stops"],["Free time","6 hrs"]],
+ tl:[
+  ["6:00 AM","Leave Potheri. The kids sleep in the car; keep breakfast packed.",1],
+  ["8:30 AM","Breakfast near Villupuram. Half an hour to feed, change and stretch."],
+  ["11:00 AM","Short break near Trichy for fuel, washrooms and snacks."],
+  ["1:30 PM","Reach Madurai. Check in, lunch, and a nap for the kids.",1],
+  ["3:00 PM","Thirumalai Nayakkar Mahal. An easy, short palace visit."],
+  ["5:30 PM","Meenakshi Amman Temple for the evening. Carry the infant; strollers are awkward inside."],
+  ["8:00 PM","Dinner and an early night. The wedding is in the morning."]],
+ places:[
+  {n:"Thirumalai Nayakkar Mahal",d:"A grand pillared palace with a shaded courtyard, good for a toddler to walk around.",q:"Thirumalai Nayak Mahal Madurai",t:"3:00 PM",w:"Thirumalai Nayak Palace|Thirumalai Nayak Mahal"},
+  {n:"Meenakshi Amman Temple",d:"Go in the evening when it is cooler. Check darshan timings and photography rules first.",q:"Meenakshi Amman Temple Madurai",t:"5:30 PM",w:"Meenakshi Temple|Meenakshi Amman Temple"},
+  {n:"Madurai food",d:"Soft idli, kal dosai and jigarthanda for the adults. Keep the kids on plain food.",q:"Famous restaurants Madurai",alt:1}],
+ stay:{h:"Sterling V Grand Madurai",t:"Booked. Near the wedding venue, with a lift and a short morning commute.",n:"Sterling V Grand Madurai",sid:"madurai",q:"Sterling V Grand Madurai",at:"1:30 PM",rl:"Checked in"},
+ tip:["Leave early to beat truck traffic on the highway.","Fill up at Trichy so you reach Madurai with a comfortable tank."]},
+
+{dow:"Sun",date:"25 Oct",short:"25",title:"Wedding, then up to Munnar",c:"#166534",km:131,night:"Avadale Munnar",hero:"Munnar",
+ facts:[["Leave","11:00 AM"],["Arrive","3:30 PM"],["Driving","4+ hrs with stops"],["Free time","2 hrs"]],
+ tl:[
+  ["Morning","The wedding in Madurai."],
+  ["11:00 AM","Leave Madurai for Avadale Munnar via NH 85, Theni and Bodimettu. Google shows 131 km and 3 hrs 15 min.",1],
+  ["12:30 PM","Lunch at Theni, 30–40 minutes. It is the last big town before the ghat."],
+  ["1:45 PM","The Bodimettu ghat begins. Drive slowly and use the viewpoints for photo stops."],
+  ["3:30 PM","Reach Avadale Munnar and check in with daylight to spare.",1],
+  ["4:30 PM","Settle in, then a short walk or tea around the stay. Sunset is around 5:50 PM."],
+  ["7:30 PM","Dinner at the stay and a quiet evening."]],
+ places:[
+  {n:"Lunch at Theni",d:"The last big town before the ghat. Fill the tank here too.",q:"Theni",t:"12:30 PM",w:"Theni"},
+  {n:"Blossom Hydel Park",d:"A garden park near town with a big play area, ropeways, swings and tree houses. Small entry fee. Check the drive from Avadale first.",q:"Blossom Hydel Park Munnar",w:"Blossom Hydel Park|Blossom Park, Munnar",alt:1},
+  {n:"Pothamedu viewpoint",d:"An easy sunset view over tea, coffee and cardamom estates. Check the drive from Avadale first.",q:"Pothamedu Viewpoint Munnar",w:"Pothamedu",alt:1}],
+ stay:{h:"Avadale Munnar",t:"Booked, 1 night. You move to The Regalia Munnar tomorrow, so keep tonight's unpacking light.",n:"Avadale Munnar",sid:"avadale",q:"Avadale Munnar",at:"3:30 PM",rl:"Checked in"},
+ tip:["Google shows 3 hrs 15 min, but with lunch and the kids' breaks plan on 4 hours or more.","Check the Idukki weather alert and Bodimettu road status on 23 and 24 Oct. If it is unsafe, sleep in Theni or Madurai and go up the next morning.","Fill the tank at Theni before the ghat."]},
+
+{dow:"Mon",date:"26 Oct",short:"26",title:"Munnar high-range day",c:"#166534",km:40,night:"The Regalia Munnar",hero:"Mattupetty Dam",
+ facts:[["Leave","9:00 AM"],["Back","5:00 PM"],["Driving","3 hrs in total"],["Out and about","6 hrs"]],
+ tl:[
+  ["9:00 AM","Breakfast, then check out of Avadale. Bags in the car; you check in at The Regalia this evening."],
+  ["9:30 AM","Mattupetty Dam. Pedal and row boats, with wide lawns by the lake.",1],
+  ["11:00 AM","Echo Point. A short walk to an easy viewpoint."],
+  ["12:00 PM","Kundala Lake. Boat rides among the tea hills."],
+  ["1:00 PM","Lunch on the Kundala to Top Station road."],
+  ["2:00 PM","Top Station, the highest point on the Munnar–Kodaikanal road."],
+  ["3:30 PM","Start back, stopping for tea-garden photos on the way.",1],
+  ["5:00 PM","Check in at The Regalia Munnar, then rest and an early dinner."]],
+ places:[
+  {n:"Mattupetty Dam",d:"Boating is the family highlight. Go before 10 AM for calm water and fewer crowds.",q:"Mattupetty Dam Munnar",t:"9:30 AM",w:"Mattupetty Dam"},
+  {n:"Echo Point",d:"A short stroll where the older child can shout and listen for the echo.",q:"Echo Point Munnar",t:"11:00 AM",w:"Echo Point, Munnar"},
+  {n:"Kundala Lake",d:"Pedal and shikara-style boats surrounded by tea hills.",q:"Kundala Lake Munnar",t:"12:00 PM",w:"Kundala Lake|Kundala Dam"},
+  {n:"Top Station",d:"About 1,700 m high, windy and cool. Bring jackets.",q:"Top Station Munnar",t:"2:00 PM",w:"Top Station, Munnar|Top Station"},
+  {n:"Munnar Rose Garden",d:"A small park on the Mattupetty road for a quick toddler stop.",q:"Rose Garden Mattupetty Munnar",alt:1}],
+ stay:{h:"The Regalia Munnar",t:"Booked, night 1 of 2. Check in on the way back from sightseeing. No repacking until the 28th.",n:"The Regalia Munnar",sid:"regalia",q:"The Regalia Munnar",at:"5:00 PM",rl:"Checked in"},
+ tip:["The road winds. Give the kids a light breakfast and keep the car cool.","Top Station is much colder than town, so carry sweaters.","Call The Regalia ahead and ask about early check-in or a place for the kids to nap."]},
+
+{dow:"Tue",date:"27 Oct",short:"27",title:"Eravikulam, tea and a waterfall",c:"#166534",km:25,night:"The Regalia Munnar",hero:"Eravikulam National Park",
+ facts:[["Leave","9:00 AM"],["Back","5:00 PM"],["Driving","2 hrs in total"],["Out and about","6 hrs"]],
+ tl:[
+  ["9:00 AM","Eravikulam National Park. Book tickets online, take the shuttle from the gate and walk the easy path.",1],
+  ["11:30 AM","Leave the park and have lunch in Munnar town."],
+  ["2:00 PM","Tea Museum. See how tea leaves are picked, processed and packed."],
+  ["3:30 PM","Attukal Waterfall, a short drive out of town. Stay on the safe viewing areas."],
+  ["5:00 PM","Back at The Regalia. Pack the car tonight for the early start."]],
+ places:[
+  {n:"Eravikulam National Park",d:"Home of the Nilgiri tahr. Carry the infant; the paved walkway is easy for a toddler.",q:"Eravikulam National Park Munnar",t:"9:00 AM",w:"Eravikulam National Park"},
+  {n:"Tea Museum",d:"Short and interactive, and good for curious kids. Buy fresh tea to take home.",q:"Tata Tea Museum Munnar",t:"2:00 PM",w:"Tea Museum, Munnar|KDHP Tea Museum"},
+  {n:"Attukal Waterfall",d:"A pretty picnic spot between Munnar and Pallivasal.",q:"Attukal Waterfalls Munnar",t:"3:30 PM",w:"Attukal Waterfalls|Attukad Waterfalls"},
+  {n:"Anayirangal Dam",d:"About 22 km away, with tea estates all round. A quiet picnic if you want a slower day.",q:"Anayirangal Dam Munnar",w:"Anayirangal Dam|Anayirangal",alt:1},
+  {n:"Marayoor",d:"About 40 km away. A children's park under a single banyan tree, with Thoovanam Falls nearby.",q:"Marayoor Munnar",w:"Marayoor",alt:1}],
+ stay:{h:"The Regalia Munnar",t:"Booked, night 2 of 2. Pack the car tonight; tomorrow starts at 8:30 AM.",n:"The Regalia Munnar",sid:"regalia",q:"The Regalia Munnar",at:"5:00 PM",rl:"Back"},
+ tip:["Eravikulam may close in the afternoon, so go in the morning and confirm the closing time.","If it rains, swap Attukal for the Tea Museum and head back early."]},
+
+{dow:"Wed",date:"28 Oct",short:"28",title:"Birthday night on a houseboat",c:"#0F766E",km:190,night:"Houseboat, Alleppey",badge:"Birthday",hero:"Kerala backwaters|Kettuvallam",
+ facts:[["Leave","8:30 AM"],["Alleppey","1:15 PM"],["Driving","4.5 hrs"],["On the boat","1:30 PM to 9 AM"]],
+ tl:[
+  ["8:30 AM","Check out of The Regalia and leave for Alleppey via Adimali, Neriamangalam and Kothamangalam.",1],
+  ["10:15 AM","Valara and Cheeyappara waterfalls. About 30 minutes at the roadside viewpoints."],
+  ["11:30 AM","A snack for the kids on the way. Lunch is on the boat."],
+  ["1:15 PM","Reach Alleppey, park the car and board."],
+  ["1:30 PM","Lunch on board, then an afternoon cruise through the canals.",1],
+  ["5:30 PM","The boat moors for the night. Golden-hour photos on deck."],
+  ["6:30 PM","Birthday cake and decor on board.",1],
+  ["8:00 PM","Dinner on board, then sleep on the boat itself."]],
+ places:[
+  {n:"Valara and Cheeyappara waterfalls",d:"Easy roadside waterfalls between Adimali and Neriamangalam. A good place to stretch your legs.",q:"Cheeyappara Waterfalls Kerala",t:"10:15 AM",w:"Cheeyappara Waterfalls|Valara Waterfalls"},
+  {n:"Vembanad Lake",d:"The wide backwater lake the houseboats cruise on. The photos from the deck are the point.",q:"Vembanad Lake Alappuzha",w:"Vembanad|Vembanad Lake",alt:1}],
+ stay:{h:"Alleppey houseboat",t:"AC one-bedroom houseboat with meals, about ₹8,000–10,000. The birthday is on board this evening and you sleep on the boat. Check that the AC runs through the night and the room has mosquito screens.",n:"Board the Alleppey houseboat",sid:"boat",q:"Alappuzha houseboat jetty",at:"1:30 PM",rl:"Boarded",w:"Kettuvallam|Kerala backwaters"},
+ tip:["Ask for child life jackets, railings and a safe place for the infant to sleep.","Boats usually moor by early evening and set off again in the morning. Confirm the times and that the cake is allowed.","If it rains, stay in the AC room and cut the cake there."]},
+
+{dow:"Thu",date:"29 Oct",short:"29",title:"Alleppey to Fort Kochi",c:"#1E3A8A",km:60,night:"Ernakulam",hero:"Chinese fishing nets",
+ facts:[["Leave","9:30 AM"],["Arrive","11:30 AM"],["Driving","1.5–2 hrs"],["Free time","6 hrs"]],
+ tl:[
+  ["7:00 AM","Sunrise on the canals and breakfast on the boat."],
+  ["9:00 AM","Check out and leave the boat."],
+  ["9:30 AM","Drive to Fort Kochi."],
+  ["11:30 AM","Reach Fort Kochi and have lunch at a café.",1],
+  ["12:30 PM","Mattancherry Palace and Jew Town. Both are closed on Fridays, so today works."],
+  ["2:30 PM","Santa Cruz Basilica and St Francis Church."],
+  ["4:00 PM","The Chinese fishing nets and the beach walkway."],
+  ["5:50 PM","Sunset on the beach.",1],
+  ["6:30 PM","Drive to the hotel in Ernakulam, about 40 minutes, then dinner."]],
+ places:[
+  {n:"Mattancherry Palace and Jew Town",d:"Murals, antiques and spice lanes, all easy short stops.",q:"Mattancherry Palace Kochi",t:"12:30 PM",w:"Mattancherry Palace"},
+  {n:"Santa Cruz Basilica",d:"A quick visit to one of Kochi's best-known churches.",q:"Santa Cruz Basilica Fort Kochi",t:"2:30 PM",w:"Santa Cruz Cathedral Basilica|Santa Cruz Basilica, Kochi"},
+  {n:"Chinese fishing nets",d:"Kochi's best-known sight. Fresh fish is sold at the stalls nearby.",q:"Chinese fishing nets Fort Kochi",t:"4:00 PM",w:"Chinese fishing nets"},
+  {n:"Fort Kochi beach",d:"A relaxed sunset walk where the kids can run around.",q:"Fort Kochi Beach",t:"5:50 PM",w:"Fort Kochi|Fort Kochi Beach"}],
+ stay:{h:"Ernakulam hotel",t:"On the Marine Drive side, ₹5,500–7,500, with a lift and a short walk to the promenade. Night 1 of 2.",n:"Check in: Ernakulam hotel",sid:"ern",q:"Marine Drive Kochi hotels",at:"6:30 PM",rl:"Checked in"},
+ tip:["Park once in Fort Kochi and walk. It is compact.","Carry water and sun hats for the afternoon."]},
+
+{dow:"Fri",date:"30 Oct",short:"30",title:"Lulu Mall and a sea cruise",c:"#1E3A8A",km:20,night:"Ernakulam",hero:"Marine Drive, Kochi|Kochi",
+ facts:[["Lulu Mall","10:30 AM"],["Sea cruise","4:30–6:30 PM"],["Driving","About 1 hr"],["Out and about","7 hrs"]],
+ tl:[
+  ["9:00 AM","A slow breakfast at the hotel."],
+  ["10:30 AM","Lulu Mall. Food court, shopping and a kids' area if it is open. Easy air-conditioned time.",1],
+  ["1:30 PM","Lunch and a rest back at the hotel."],
+  ["3:00 PM","Optional: a Water Metro ride for the toddler. It is short and cheap."],
+  ["4:30 PM","Board the sunset sea cruise at Marine Drive.",1],
+  ["6:30 PM","Back ashore. Walk Marine Drive and have dinner by the water."]],
+ places:[
+  {n:"Lulu Mall",d:"A large mall in Edappally with a food court and shopping. Check for its kids' play zone and baby-care rooms.",q:"Lulu Mall Kochi",t:"10:30 AM",w:"Lulu International Shopping Mall|Lulu Mall Kochi"},
+  {n:"Kochi Water Metro",d:"Cheap, modern ferries between High Court Jetty and the islands.",q:"Kochi Water Metro High Court terminal",t:"3:00 PM",w:"Kochi Water Metro",alt:1},
+  {n:"Sagarrani sunset cruise",d:"A two-hour cruise from Marine Drive out to sea. Older price lists showed ₹350–400 a ticket, so confirm today's fare and child rates.",q:"Sagara Rani cruise Marine Drive Kochi",t:"4:30 PM",rl:"Boarded"},
+  {n:"Marine Drive",d:"The evening promenade, with food stalls and city views.",q:"Marine Drive Kochi",t:"6:30 PM",w:"Marine Drive, Kochi"}],
+ stay:{h:"Ernakulam hotel",t:"The same hotel, night 2 of 2, so there is no repacking and an easy exit towards Palakkad at 6 AM.",n:"Back at the Ernakulam hotel",sid:"ern",q:"Marine Drive Kochi hotels",at:"8:00 PM",rl:"Back"},
+ tip:["Book the cruise the same morning and ask for child life jackets.","The sea can be rough and cruises get cancelled. If so, take the Water Metro at sunset instead.","Eat early. Tomorrow starts at 6:00 AM."]},
+
+{dow:"Sat",date:"31 Oct",short:"31",title:"Ernakulam to Salem",c:"#475467",km:360,night:"Salem",hero:"Salem, Tamil Nadu",
+ facts:[["Leave","6:00 AM"],["Arrive","1:30 PM"],["Driving","7 hrs with stops"],["Free time","Rest day"]],
+ tl:[
+  ["6:00 AM","Leave Ernakulam. The kids sleep for the first stretch.",1],
+  ["8:30 AM","Breakfast near Thrissur or Walayar."],
+  ["10:30 AM","Pass Coimbatore. A short break for fuel and washrooms."],
+  ["12:00 PM","Lunch near Erode or Perundurai."],
+  ["1:30 PM","Reach Salem, check in and rest.",1],
+  ["6:30 PM","An early dinner and an early night."]],
+ places:[
+  {n:"Lunch near Erode",d:"A family restaurant on the highway. Keep it short.",q:"Erode",t:"12:00 PM",w:"Erode"},
+  {n:"Salem food",d:"A family restaurant near the hotel for a simple local meal.",q:"Family restaurants Salem",alt:1},
+  {n:"Yercaud",d:"You already know this road. Skip it unless everyone has energy.",q:"Yercaud Salem",w:"Yercaud",alt:1}],
+ stay:{h:"Salem hotel",t:"On the highway side, ₹3,500–5,000, for an easy exit in the morning.",n:"Check in: Salem hotel",sid:"salem",q:"Salem hotels",at:"1:30 PM",rl:"Checked in"},
+ tip:["Leave by 6:00 AM to miss the Palakkad–Coimbatore traffic.","Pack breakfast for the first stretch."]},
+
+{dow:"Sun",date:"1 Nov",short:"1",title:"Salem to Potheri, home",c:"#475467",km:340,night:"Home",hero:"Chennai",
+ facts:[["Leave","7:00 AM"],["Arrive","1:30 PM"],["Driving","6 hrs with stops"],["Free time","None"]],
+ tl:[
+  ["7:00 AM","Leave Salem.",1],
+  ["9:30 AM","Breakfast near Attur or Ulundurpet."],
+  ["12:00 PM","A short break near Tindivanam."],
+  ["1:30 PM","Home at Potheri.",1]],
+ places:[
+  {n:"Break near Tindivanam",d:"Last stop for washrooms and a snack before Chennai.",q:"Tindivanam",t:"12:00 PM"}],
+ stay:{h:"Home",t:"The trip ends here. Safe travels.",n:"Home in Potheri",sid:"home",q:"Potheri Chennai",at:"1:30 PM",rl:"Home"},
+ tip:["Fill up before Chennai to avoid city fuel queues."]}
+];
+
+const COSTS=[
+ ["Stays, 8 nights, houseboat meals included","₹51,500"],
+ ["Fuel, about 1,680 km","₹14,000"],
+ ["Tolls","₹2,000"],
+ ["Food, about ₹2,000 a day","₹18,000"],
+ ["Kochi sunset sea cruise","₹2,000"],
+ ["Birthday cake and decor","₹2,000"],
+ ["Entries, boating, parking, extras","₹6,000"]];
+const NIGHTS=[
+ ["Sterling V Grand Madurai","₹4,000"],
+ ["Avadale Munnar, 25 Oct","Booked"],
+ ["The Regalia Munnar, 26–27 Oct","Booked"],
+ ["Alleppey houseboat, 28 Oct, with meals","₹8,000–10,000"],
+ ["Ernakulam, 29–30 Oct","₹5,500–7,500"],
+ ["Salem, 31 Oct","₹3,500–5,000"]];
+
+const CHK={book:[
+ ["b1","Sterling V Grand Madurai for 24 Oct"],
+ ["b2","Munnar is booked: Avadale Munnar on 25 Oct, The Regalia Munnar on 26 and 27 Oct",true],
+ ["b3","Alleppey houseboat for the night of 28 Oct, boarding at 1:30 PM, with meals and cake allowed on board"],
+ ["b4","Ask the houseboat: AC through the night, generator hours, mosquito screens and a safe place for the infant to sleep"],
+ ["b5","Ernakulam hotel for 29 and 30 Oct, near Marine Drive, with a lift"],
+ ["b6","Salem hotel for 31 Oct"],
+ ["b7","Eravikulam tickets online for 27 Oct"],
+ ["b8","Birthday cake from an Alleppey bakery, candles and a small banner"]],
+ check:[
+ ["k1","Idukki weather alert and Bodimettu road status. If it looks bad, use Palani, Udumalpet and Marayoor (6–7 hrs)."],
+ ["k2","Kochi sea cruise availability, today's fare and child tickets"],
+ ["k3","Mattancherry Palace and Jew Town opening hours (closed Fridays)"],
+ ["k4","Child life jackets on both boats"],
+ ["k5","Tyre pressure, spare wheel, and a full tank before the Bodimettu ghat"]],
+ pack:[
+ ["p1","Sweaters and a jacket for Munnar"],
+ ["p2","Kids' food, ORS, motion-sickness remedy, mosquito repellent"],
+ ["p3","Baby carrier, light stroller, spare clothes, rain cover"]]};
+
+/* ======================= helpers ======================= */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function toMin(s){
+  const m=String(s).match(/^(\d+):(\d+)\s*(AM|PM)$/i);
+  if(!m) return s==="Morning"?540:null;
+  let h=(+m[1])%12; if(m[3].toUpperCase()==="PM") h+=12;
+  return h*60+(+m[2]);
+}
+function nowIST(){
+  const q=new URLSearchParams(location.search).get("now");
+  const t=q&&q.match(/^(\d{4})-(\d\d)-(\d\d)T(\d\d):(\d\d)/);
+  if(t) return {y:+t[1],mo:+t[2],d:+t[3],min:(+t[4])*60+(+t[5])};
+  const p={};
+  new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Kolkata",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"})
+    .formatToParts(new Date()).forEach(x=>{p[x.type]=x.value;});
+  return {y:+p.year,mo:+p.month,d:+p.day,min:(+p.hour)*60+(+p.minute)};
+}
+function tripDay(n){
+  if(n.y!==2026) return 0;
+  if(n.mo===10&&n.d>=24&&n.d<=31) return n.d-23;
+  if(n.mo===11&&n.d===1) return 9;
+  return 0;
+}
+function clock(ts){ try{return new Date(ts).toLocaleTimeString("en-IN",{timeZone:"Asia/Kolkata",hour:"numeric",minute:"2-digit",hour12:true}).toUpperCase();}catch(e){return "";} }
+const navUrl=q=>"https://www.google.com/maps/dir/?api=1&travelmode=driving&destination="+encodeURIComponent(q);
+const TOTAL_KM=DAYS.reduce((a,D)=>a+D.km,0);
+
+/* ======================= state ======================= */
+const KEY="kerala-trip-2026-app";
+let S={got:{},skip:{},loc:{},chk:{}};
+try{ Object.assign(S,JSON.parse(localStorage.getItem(KEY)||"{}")); }catch(e){}
+function save(){ try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){} }
+
+function stopsOf(i){
+  const D=DAYS[i], st=D.stay;
+  const list=D.places.map((p,j)=>({k:i+"."+j,n:p.n,d:p.d,q:p.q,t:p.t||"",w:p.w||"",alt:!!p.alt,rl:p.rl||"Reached"}));
+  list.push({k:i+".s",n:st.n,d:st.t,q:S.loc[st.sid]||st.q,t:st.at,w:st.w||"",alt:false,rl:st.rl,stay:st});
+  return list.map((s,x)=>({s,x,m:s.t?toMin(s.t):null}))
+    .sort((a,b)=>((a.s.alt?1:0)-(b.s.alt?1:0))||((a.m===null?9999:a.m)-(b.m===null?9999:b.m))||(a.x-b.x))
+    .map(o=>o.s);
+}
+const isDone=s=>!!S.got[s.k]||!!S.skip[s.k];
+const nextStop=i=>{ const L=stopsOf(i); return L.find(s=>!s.alt&&!isDone(s))||null; };
+function dayProg(i){ const L=stopsOf(i).filter(s=>!s.alt); return {d:L.filter(isDone).length,n:L.length}; }
+function allProg(){ let d=0,n=0; DAYS.forEach((_,i)=>{const p=dayProg(i); d+=p.d; n+=p.n;}); return {d,n}; }
+
+/* ======================= photos (lazy, cached) ======================= */
+const IMGK="kerala-trip-2026-photos";
+let IMG={}; try{ IMG=JSON.parse(localStorage.getItem(IMGK)||"{}"); }catch(e){}
+async function photoFor(w){
+  const list=(w||"").split("|").filter(Boolean);
+  for(const t of list) if(IMG[t]&&IMG[t].s) return IMG[t];
+  const need=list.filter(t=>IMG[t]===undefined);
+  if(!need.length) return null;
+  try{
+    const url="https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&redirects=1&prop=pageimages&piprop=thumbnail&pithumbsize=1200&titles="+encodeURIComponent(need.join("|"));
+    const j=await (await fetch(url)).json();
+    const norm={},redir={},by={};
+    (j.query&&j.query.normalized||[]).forEach(x=>norm[x.from]=x.to);
+    (j.query&&j.query.redirects||[]).forEach(x=>redir[x.from]=x.to);
+    Object.values(j.query&&j.query.pages||{}).forEach(pg=>{ if(pg.thumbnail&&pg.thumbnail.source) by[pg.title]={s:pg.thumbnail.source,p:pg.title}; });
+    need.forEach(t=>{ let x=norm[t]||t; x=redir[x]||x; IMG[t]=by[x]||0; });
+    try{ localStorage.setItem(IMGK,JSON.stringify(IMG)); }catch(e){}
+  }catch(e){ /* offline: no photo, everything else still works */ }
+  for(const t of list) if(IMG[t]&&IMG[t].s) return IMG[t];
+  return null;
+}
+
+/* ======================= day strip ======================= */
+function stripHtml(){
+  const items=DAYS.map((D,i)=>{
+    const p=dayProg(i), pc=p.n?Math.round(100*p.d/p.n):0;
+    return `<li><button class="chip" style="--c:${D.c};--p:${pc}%" data-go="day" data-v="${i}"
+      ${i===VD?'aria-current="true"':""} aria-label="Day ${i+1}, ${D.dow} ${D.date}: ${D.title}">
+      <small>${D.dow}</small><b>${D.short}</b><i><u></u></i></button></li>`;
+  }).join("");
+  return `<ul>${items}</ul>`;
+}
+
+/* ======================= day view ======================= */
+function nextHtml(i,isToday){
+  const D=DAYS[i], nx=nextStop(i), L=stopsOf(i);
+  if(!nx){
+    const nd=i<DAYS.length-1?stopsOf(i+1).find(s=>!s.alt):null;
+    return `<section class="next">
+      <p class="next-eye">${i<DAYS.length-1?"Day complete":"Trip complete"}</p>
+      <h2>${i<DAYS.length-1?"Every stop ticked off":"You are home"}</h2>
+      ${nd?`<p>Tomorrow starts with ${esc(nd.n)}${nd.t?" at "+esc(nd.t):""}.</p>
+      <div class="next-act"><button class="btn btn-w" data-go="day" data-v="${i+1}">Open day ${i+2}</button></div>`
+      :`<p>Safe travels.</p>`}
+    </section>`;
+  }
+  const rest=L.filter(s=>!s.alt&&!isDone(s)&&s.k!==nx.k);
+  const alts=L.filter(s=>s.alt&&!isDone(s));
+  const started=L.some(s=>!s.alt&&isDone(s));
+  const label=isToday||started?"Next stop":"Start here";
+  return `<section class="next">
+    <p class="next-eye">${label}${nx.t?` · ${esc(nx.t)}`:""}</p>
+    <h2>${esc(nx.n)}</h2>
+    <p>${esc(nx.d)}</p>
+    <div class="next-act">
+      <a class="btn btn-w" href="${navUrl(nx.q)}" target="_blank" rel="noopener">Navigate</a>
+      <button class="btn btn-ghost btn-w" data-go="got" data-v="${nx.k}">${esc(nx.rl)}</button>
+    </div>
+    ${rest.length?`<p class="next-then">Then <b>${esc(rest[0].n)}</b>${rest[0].t?" at "+esc(rest[0].t):""}</p>`:""}
+    ${alts.length?`<p class="next-then">If there is time: <b>${esc(alts.map(a=>a.n).join(", "))}</b></p>`:""}
+  </section>`;
+}
+
+function rowHtml(s,i){
+  const got=S.got[s.k], skip=S.skip[s.k], nx=nextStop(i);
+  const isNext=nx&&nx.k===s.k;
+  const cls=["row",got?"done":"",skip?"hoff":"",s.alt?"row-opt":"",isNext?"is-next":""].join(" ");
+  const time=got?clock(got):(s.t||(s.alt?"—":"Anytime"));
+  const sub=s.stay?`<span class="row-sub">Tonight's stay</span>`:"";
+  return `<li><button class="${cls}" data-go="open" data-v="${s.k}">
+    <span class="row-time">${esc(time)}</span>
+    <span class="row-nm">${esc(s.n)}${sub}</span>
+    <span class="row-mk" aria-hidden="true"></span>
+    <span class="sr">${got?"Done":skip?"Skipped":"Not done yet"}</span>
+  </button></li>`;
+}
+
+function viewDay(){
+  const i=VD, D=DAYS[i], n=nowIST(), td=tripDay(n), isToday=td===i+1;
+  const planned=stopsOf(i).filter(s=>!s.alt);
+  const optional=stopsOf(i).filter(s=>s.alt);
+  const items=D.tl.map(t=>({t,m:toMin(t[0])}));
+  let cur=-1;
+  if(isToday) items.forEach((o,x)=>{ if(o.m!==null&&o.m<=n.min) cur=x; });
+  return `<div class="wrap">
+    <article class="card" style="margin-top:14px">
+      <div class="hero" style="--c:${D.c}">
+        <img alt="" data-hero="${esc(D.hero||"")}" decoding="async">
+        <div class="hero-txt">
+          <p class="hero-eye">Day ${i+1} of 9 · ${D.km} km · ${D.dow} ${D.date}</p>
+          <h1>${esc(D.title)}${D.badge?`<span class="pill">${D.badge}</span>`:""}</h1>
+        </div>
+      </div>
+      <dl class="facts">${D.facts.map(f=>`<div><dt>${esc(f[0])}</dt><dd>${esc(f[1])}</dd></div>`).join("")}</dl>
+    </article>
+
+    ${nextHtml(i,isToday)}
+
+    <h2 class="sec">Today's stops</h2>
+    <ol class="rows card">${planned.map(s=>rowHtml(s,i)).join("")}</ol>
+    ${optional.length?`<h2 class="sec">If there is time</h2><ol class="rows card">${optional.map(s=>rowHtml(s,i)).join("")}</ol>`:""}
+
+    <h2 class="sec">Detail</h2>
+    <details class="acc card">
+      <summary>Hour by hour</summary>
+      <div class="acc-bd"><ol class="tl">${items.map((o,x)=>
+        `<li class="${o.t[2]?"key":""} ${x<cur?"past":""} ${x===cur?"now":""}"><time>${esc(o.t[0])}</time><p>${o.t[1]}</p></li>`
+      ).join("")}</ol></div>
+    </details>
+    <details class="acc card">
+      <summary>Tonight · ${esc(D.stay.h)}</summary>
+      <div class="acc-bd">
+        <p class="note-p">${D.stay.t}</p>
+        <div class="act"><a class="btn" href="${navUrl(S.loc[D.stay.sid]||D.stay.q)}" target="_blank" rel="noopener">Navigate</a>
+        ${D.stay.sid!=="home"?`<button class="btn btn-quiet" data-go="edit" data-v="${D.stay.sid}">Set location</button>`:""}</div>
+      </div>
+    </details>
+    <details class="acc card">
+      <summary>Good to know</summary>
+      <div class="acc-bd"><ul class="tips">${D.tip.map(t=>`<li>${esc(t)}</li>`).join("")}</ul></div>
+    </details>
+  </div>`;
+}
+
+/* ======================= route view ======================= */
+function viewRoute(){
+  const n=nowIST(), td=tripDay(n), p=allProg(), pc=p.n?Math.round(100*p.d/p.n):0;
+  let when="";
+  if(!td){
+    const left=Math.round((Date.UTC(2026,9,24)-Date.UTC(n.y,n.mo-1,n.d))/864e5);
+    when=left===1?"Starts tomorrow.":left>1?"Starts in "+left+" days.":"";
+  } else if(td<=9) when="Today is day "+td+" of 9.";
+  return `<div class="wrap">
+    <h1 class="page-h">Kerala by road</h1>
+    <p class="page-lede">Nine days, 24 October to 1 November 2026. Madurai for the wedding, up to Munnar, a birthday night on an Alleppey houseboat, then Kochi and home through Salem.</p>
+    <p class="stat num">${p.d} of ${p.n} stops done${when?` <span>· ${when}</span>`:""}</p>
+    <div class="bar" style="--p:${pc}%"><u></u></div>
+    <h2 class="sec">The nine days</h2>
+    <div class="card">${DAYS.map((D,i)=>{
+      const q=dayProg(i);
+      return `<button class="day" style="--c:${D.c}" data-go="day" data-v="${i}">
+        <span class="day-no">${i+1}</span>
+        <span><span class="day-dt">${D.dow} ${D.date}</span><span class="day-ti">${esc(D.title)}</span>
+        <span class="day-sub">Night · ${esc(D.night)}</span></span>
+        <span class="day-km num">${D.km} km<em class="${q.d?"":"zero"}">${q.d}/${q.n} done</em></span>
+      </button>`;
+    }).join("")}</div>
+    <h2 class="sec">The road</h2>
+    <div class="card" style="padding:14px 16px">
+      <p class="note-p">About ${TOTAL_KM.toLocaleString("en-IN")} km door to door. Tata Safari, two adults, a 2-year-old and an infant.</p>
+      <p class="hint" style="margin-top:9px">Timings, fares and opening hours are planning estimates — confirm them when you book. Drive times assume normal traffic.</p>
+    </div>
+  </div>`;
+}
+
+/* ======================= info view ======================= */
+function ledger(list,total){
+  const rows=list.map(([l,v])=>`<li><span class="l">${esc(l)}</span><i class="d"></i><b class="num">${esc(v)}</b></li>`).join("");
+  return `<ul class="ledger">${rows}${total?`<li class="tot"><span class="l">Total</span><i class="d"></i><b class="num">${esc(total)}</b></li>`:""}</ul>`;
+}
+function chkList(arr){
+  return `<ul class="chk">${arr.map(([k,t,def])=>
+    `<li><label><input type="checkbox" data-k="${k}" ${(k in S.chk?S.chk[k]:!!def)?"checked":""}><span>${esc(t)}</span></label></li>`
+  ).join("")}</ul>`;
+}
+function viewInfo(){
+  return `<div class="wrap">
+    <h1 class="page-h">Money &amp; prep</h1>
+    <h2 class="sec">What it costs</h2>
+    <div class="card">${ledger(COSTS,"₹95,500")}</div>
+    <p class="hint" style="margin-top:10px">Diesel at about ₹99.55 a litre, the Safari at roughly 12 km per litre on this mix of highway and ghat. The Munnar nights use ₹7,000 each until you enter your booked rates.</p>
+    <h2 class="sec">Each night</h2>
+    <div class="card">${ledger(NIGHTS)}</div>
+    <p class="hint" style="margin-top:10px">Aim for the houseboat at or just under your ₹10,000 limit: an AC one-bedroom with meals. Shoulder-season prices — confirm when you book.</p>
+    <h2 class="sec">Before you go</h2>
+    <div class="card"><div style="padding:14px 16px 0"><h3 style="font:600 14.5px/1.3 var(--font);letter-spacing:-.012em">Book this week</h3></div>${chkList(CHK.book)}</div>
+    <h2 class="sec">Check on 23 and 24 Oct</h2>
+    <div class="card">${chkList(CHK.check)}</div>
+    <h2 class="sec">Pack</h2>
+    <div class="card">${chkList(CHK.pack)}</div>
+    <p class="hint" style="margin-top:14px">Ticks and reached marks stay on this device only.</p>
+    <button class="btn btn-quiet" style="margin-top:10px;border-color:var(--line)" data-go="reset">Clear all ticks and marks</button>
+  </div>`;
+}
+
+/* ======================= detail sheet ======================= */
+let openKey=null;
+function stopByKey(k){ const i=+String(k).split(".")[0]; return {i,s:stopsOf(i).find(x=>x.k===k)}; }
+function sheetHtml(i,s){
+  const D=DAYS[i], got=S.got[s.k], skip=S.skip[s.k];
+  const edit=s.stay&&s.stay.sid!=="home";
+  return `<div class="scrim" data-go="close"></div>
+  <div class="panel">
+    <div class="grab"></div>
+    <div class="panel-bd">
+      <p class="pmeta">Day ${i+1} · ${D.dow} ${D.date}${s.t?" · "+esc(s.t):""}</p>
+      <h2 id="sheet-h" style="margin-top:6px">${esc(s.n)}</h2>
+      <p class="ptext">${esc(s.d)}</p>
+      <div id="sheet-ph"></div>
+      <div class="act">
+        <a class="btn btn-primary" href="${navUrl(S.loc[s.stay?s.stay.sid:s.k]||s.q)}" target="_blank" rel="noopener">Navigate</a>
+        ${got||skip?`<button class="btn" data-go="undo" data-v="${s.k}">Undo</button>`
+                  :`<button class="btn btn-go" data-go="got" data-v="${s.k}">${esc(s.rl)}</button>`}
+        ${!got&&!skip&&!s.stay?`<button class="btn btn-quiet" data-go="skip" data-v="${s.k}">Skip</button>`:""}
+        ${edit&&!got?`<button class="btn btn-quiet" data-go="edit" data-v="${s.stay.sid}">Set location</button>`:""}
+      </div>
+      ${got?`<p class="marked">Marked at ${esc(clock(got))}.</p>`:""}
+    </div>
+  </div>`;
+}
+function openSheet(k){
+  const {i,s}=stopByKey(k); if(!s) return;
+  const el=$("#sheet");
+  el.innerHTML=sheetHtml(i,s);
+  el.hidden=false; openKey=k;
+  document.body.style.overflow="hidden";
+  try{ history.pushState({sheet:k},""); }catch(e){}
+  const btn=el.querySelector(".panel .btn"); if(btn) btn.focus({preventScroll:true});
+  if(s.w){
+    photoFor(s.w).then(ph=>{
+      const box=$("#sheet-ph");
+      if(!box||!ph||openKey!==k) return;
+      box.innerHTML=`<figure><img src="${ph.s}" alt="${esc(s.n)}"></figure>
+        <p class="cap">Photo: <a href="https://en.wikipedia.org/wiki/${encodeURIComponent(ph.p.replace(/ /g,"_"))}" target="_blank" rel="noopener">Wikipedia</a></p>`;
+    });
+  }
+}
+function closeSheet(){
+  const el=$("#sheet");
+  if(el.hidden) return;
+  el.hidden=true; el.innerHTML=""; openKey=null;
+  document.body.style.overflow="";
+  try{ if(history.state&&history.state.sheet) history.back(); }catch(e){}
+}
+
+/* ======================= photos into the day hero ======================= */
+async function paintHero(){
+  const img=document.querySelector(".hero img[data-hero]");
+  if(!img) return;
+  const want=img.dataset.hero, day=VD;
+  const ph=await photoFor(want);
+  const now=document.querySelector(".hero img[data-hero]");
+  if(!ph||!now||now.dataset.hero!==want||day!==VD) return;
+  now.onload=()=>now.classList.add("on");
+  now.src=ph.s;
+}
+
+/* ======================= boot ======================= */
+let TAB="day", VD=0;
+function render(keep){
+  const y=keep?window.scrollY:0;
+  $("#strip").innerHTML=stripHtml();
+  $("#view").innerHTML = TAB==="day"?viewDay():TAB==="route"?viewRoute():viewInfo();
+  document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute("aria-selected",String(b.dataset.tab===TAB)));
+  $(".strip").style.display = TAB==="day"?"":"none";
+  if(TAB==="day") paintHero();
+  if(keep) window.scrollTo(0,y); else window.scrollTo(0,0);
+}
+
+document.addEventListener("click",e=>{
+  const el=e.target.closest("[data-go]"); if(!el) return;
+  const a=el.dataset.go, v=el.dataset.v;
+  if(a==="day"){ VD=+v; TAB="day"; render(false); return; }
+  if(a==="open"){ openSheet(v); return; }
+  if(a==="close"){ closeSheet(); return; }
+  if(a==="got"){ S.got[v]=Date.now(); delete S.skip[v]; try{navigator.vibrate&&navigator.vibrate(18);}catch(x){} }
+  else if(a==="skip"){ S.skip[v]=1; delete S.got[v]; }
+  else if(a==="undo"){ delete S.got[v]; delete S.skip[v]; }
+  else if(a==="edit"){
+    const st=DAYS.map(D=>D.stay).find(s=>s.sid===v);
+    const r=prompt("Name or address to open in Google Maps",S.loc[v]||st.q);
+    if(r!==null&&r.trim()) S.loc[v]=r.trim(); else return;
+  }
+  else if(a==="reset"){ if(!confirm("Clear every reached, skipped and checklist mark?")) return; S.got={};S.skip={};S.chk={}; }
+  save();
+  if(openKey&&["got","skip","undo"].includes(a)) openSheet(openKey);
+  render(true);
+});
+document.addEventListener("change",e=>{
+  const t=e.target;
+  if(t.matches&&t.matches(".chk input")){ S.chk[t.dataset.k]=t.checked; save(); }
+});
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeSheet(); });
+window.addEventListener("popstate",()=>{ if(openKey) closeSheet(); });
+
+(function init(){
+  const n=nowIST(), td=tripDay(n);
+  VD = td ? td-1 : ((n.y>2026||(n.y===2026&&n.mo>=11))?8:0);
+  const wantTab=new URLSearchParams(location.search).get("tab");
+  if(["day","route","info"].includes(wantTab)) TAB=wantTab;
+  document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>{TAB=b.dataset.tab;render(false);}));
+  render(false);
+  if(VD===0||td===0){ const sel=document.querySelector('.chip[aria-current="true"]'); if(sel) sel.scrollIntoView({inline:"center",block:"nearest"}); }
+  try{ if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)) navigator.serviceWorker.register("sw.js"); }catch(e){}
+  window.addEventListener("online",()=>{ if(TAB==="day") paintHero(); });
+  /* offer the install step to iPhone users in Safari, once */
+  try{
+    const ios=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+    if(ios&&!navigator.standalone&&!localStorage.getItem("kerala-hint")){
+      const bar=document.createElement("div");
+      bar.className="hintbar";
+      bar.innerHTML='<span>Install: tap Share, then <b>Add to Home Screen</b>.</span><button aria-label="Dismiss">×</button>';
+      bar.querySelector("button").onclick=()=>{ try{localStorage.setItem("kerala-hint","1");}catch(e){} bar.remove(); };
+      document.body.appendChild(bar);
+    }
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
