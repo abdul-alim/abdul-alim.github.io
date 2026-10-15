@@ -155,7 +155,8 @@ img,svg{display:block}
 .row-time{font:700 13.5px/1.3 var(--body);color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
 .row-nm{font:700 15.5px/1.35 var(--body);min-width:0}
 .row-sub{display:block;font:600 12.5px/1.4 var(--body);color:var(--muted);margin-top:4px}
-.row-mk{justify-self:end;width:30px;height:30px;border-radius:50%;background:var(--cream);display:grid;place-content:center;color:#C9D6CC}
+.row-mk{position:relative;justify-self:end;width:30px;height:30px;border-radius:50%;background:var(--cream);display:grid;place-content:center;color:#C9D6CC}
+.row-mk:after{content:"";position:absolute;inset:-10px;border-radius:50%}
 .row-mk svg{width:14px;height:14px}
 .row.is-next .row-mk{background:var(--c);color:#fff;box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 20%,transparent)}
 .row.is-next .row-nm{font-weight:800}
@@ -878,12 +879,15 @@ function nextHtml(i,isToday){
   const D=DAYS[i], nx=nextStop(i), L=stopsOf(i);
   if(!nx){
     const nd=i<DAYS.length-1?stopsOf(i+1).find(s=>!s.alt):null;
+    const done=L.filter(s=>!s.alt&&isDone(s));
+    const last=done[done.length-1];
     return `<section class="next" style="--c:${D.c}">
       <span class="next-eye">${ICON.star}${i<DAYS.length-1?"day complete":"trip complete"}</span>
-      <h3>${i<DAYS.length-1?"Every stop ticked off 🎉":"You are home 🏡"}</h3>
+      <h3>${i<DAYS.length-1?"Every stop ticked off \u{1F389}":"You are home \u{1F3E1}"}</h3>
       ${nd?`<p>Tomorrow starts with ${esc(nd.n)}${nd.t?" at "+esc(nd.t):""}.</p>
       <div class="next-act"><button class="btn btn-primary btn-w" data-go="day" data-v="${i+1}">Open day ${i+2}</button></div>`
       :`<p>Safe travels.</p>`}
+      ${last?`<button class="btn" style="width:100%;margin-top:10px" data-go="undo" data-v="${last.k}">${ICON.undo}Undo \u201C${esc(last.n)}\u201D</button>`:""}
     </section>`;
   }
   const rest=L.filter(s=>!s.alt&&!isDone(s)&&s.k!==nx.k);
@@ -913,7 +917,7 @@ function rowHtml(s,i){
     <span class="row-time">${esc(time)}</span>
     <span class="row-nm">${esc(s.n)}${sub}</span>
     <span class="row-mk" aria-hidden="true">${ICON.check}</span>
-    <span class="sr">${got?"Done":skip?"Skipped":"Not done yet"}</span>
+    <span class="sr">${got?"Done. Tap the tick to undo.":skip?"Skipped. Tap the tick to undo.":"Not done yet"}</span>
   </button></li>`;
 }
 
@@ -1105,6 +1109,18 @@ function render(keep){
 }
 
 document.addEventListener("click",e=>{
+  /* Tapping the tick on a finished row un-marks it right there. That is the
+     gesture people reach for, and it saves a pointless trip into the sheet. */
+  const rowBtn=e.target.closest(".row");
+  if(rowBtn&&e.target.closest(".row-mk")){
+    const k=rowBtn.dataset.v;
+    if(S.got[k]||S.skip[k]){
+      delete S.got[k]; delete S.skip[k]; save();
+      try{navigator.vibrate&&navigator.vibrate(12);}catch(x){}
+      render(true);
+      return;
+    }
+  }
   const el=e.target.closest("[data-go]"); if(!el) return;
   const a=el.dataset.go, v=el.dataset.v;
   if(a==="day"){ VD=+v; TAB="day"; render(false); return; }

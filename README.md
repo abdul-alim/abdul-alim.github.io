@@ -87,6 +87,8 @@ Safari on an iPhone.
 - **Route** — all nine days with the night's stay and distances. Tap a day to
   jump to it.
 - **Money** — costs and the packing and booking checklists.
+- Tap **Reached / Checked in** to mark a stop. To undo, either tap the tick on
+  that row, or open the row and use **Undo**.
 - Reached marks, skipped stops and checklist ticks are saved on the device.
   They are per-device and are not shared between phones.
 - Photos come from Wikipedia and need a connection. Everything else works
