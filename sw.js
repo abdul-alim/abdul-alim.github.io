@@ -1,13 +1,15 @@
 /* Kerala by road — offline service worker.
    Bump CACHE when you change index.html or the icons. */
-const CACHE = "kerala-v12";
-const RUNTIME = "kerala-rt-v12";
+const CACHE = "kerala-v13";
+const RUNTIME = "kerala-rt-v13";
 
 const CORE = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
   "./favicon.ico",
+  "./apple-touch-icon.png",
+  "./apple-touch-icon-precomposed.png",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
   "./icons/maskable-192.png",
