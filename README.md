@@ -152,7 +152,7 @@ http://127.0.0.1:8899/?now=2026-10-11T09:00   # before the trip starts
   data and controls. The serif is the voice; the sans is the instrument panel.
 - Ground is a wet-moss celadon (`#E4EDE2`) with a faint paper grain; cards are warm chalk
   (`#FFFDF7`) rather than pure white.
-- Signature: the day's sky. The illustration drifts slowly, and the **live forecast** drives
-  rain or a low sun glow over it.
+- Signature: the **route spine**. A day is one ordered line you fill in as you go, not a
+  stack of cards, with only the next stop expanded so its action needs no second tap.
 - Motion is gated: the day's entrance plays once when the day or tab changes, never on the
   re-render that marking a stop causes. `prefers-reduced-motion` removes it all.
