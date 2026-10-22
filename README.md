@@ -99,8 +99,9 @@ Safari on an iPhone.
 | Night | Where |
 | --- | --- |
 | 24 Oct | Sterling V Grand Madurai |
-| 25 Oct | Avadale Munnar |
-| 26–27 Oct | The Regalia Munnar |
+| 25 Oct | Avadale Munnar, Chinnakanal |
+| 26 Oct | The Regalia Munnar, Chinnakanal |
+| 27 Oct | Arivikad Tea Bungalow, on the Top Station road |
 | 28 Oct | Alleppey houseboat — birthday dinner on board, night on the boat |
 | 29–30 Oct | Ernakulam hotel |
 | 31 Oct | Salem hotel |
