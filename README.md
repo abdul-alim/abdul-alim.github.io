@@ -76,9 +76,9 @@ closes any sheet. The app respects reduced-motion settings.
 ## Design notes
 
 The brief was to make a personal itinerary feel like something worth opening
-every morning. The result is a **photographic field guide**: a warm paper ground,
-deep forest ink, one woven gold thread, and some of Kerala's own colour. It is
-deliberately not a dashboard.
+every morning. The result is a **photographic field guide** in a dark-and-paper
+palette: near-black and warm cream, one orange thread, with violet and teal as
+its only other notes. It is deliberately not a dashboard.
 
 - **Photographs, not decoration.** Each day opens with a real place, cropped to
   four-by-three and colour-graded consistently. The last day is the four of us.
@@ -87,20 +87,24 @@ deliberately not a dashboard.
   Grotesk carries every label, number and paragraph. Both are self-hosted, so the
   first paint does not wait for Google Fonts and the app works with no signal.
 - **The thread.** The journey strip, the day's plan rail, the progress line and
-  the map are one continuous route. Gold is the path already travelled, the
-  day's own ink is where you are now. It is the only structural flourish.
-- **Surfaces.** No stack of white cards. A single paper field, hairline rules,
-  one raised surface for the next action, and generous margins. White space is
-  the hierarchy.
-- **Light and dark.** The whole palette is tokenised, with a separate dark set
-  tested for contrast, not an inverted light mode. Photographs stay untouched.
-  The sun/moon switch starts from the phone's appearance, remembers an explicit
-  choice on this device, and updates the browser's theme colour with it.
+  the map are one continuous route. The primary orange is the path already
+  travelled; each day keeps a small accent of its own — orange, violet or teal.
+  It is the only structural flourish.
+- **Surfaces.** A paper field in light, a near-black field in dark; thin borders,
+  restrained surface cards for the next action, the facts and tonight, and
+  generous margins. The desktop prep opens as a full-width booking list, then three side-by-side lists. White space is
+  still the hierarchy.
+- **Light and dark.** The supplied palette runs in both directions: cream, sand
+  and ink in light; void, surface and cool grey in dark; primary orange,
+  secondary violet and teal throughout. Photographs stay untouched. The sun/moon
+  switch starts from the phone's appearance, remembers an explicit choice on this
+  device, and updates the browser's theme colour with it, without a flash.
 - **A real desktop.** From 1000px up the phone dock gives way to a sticky top bar
-  with Today, Route and Money. Today becomes a plan with a sticky action rail;
-  Route pairs the map with the nine-day index and puts the family photographs
-  under the map; Money sets the budget beside the nights and flows the prep into
-  two columns. The phone layout is unchanged.
+  with a pill navigation, and the day opens with its number set large beside the
+  photograph. Today is a plan with a sticky action rail of cards; Route pairs the
+  map with the nine-day index, then the family photographs with the road notes;
+  Money sets the budget beside a full-height nights card and opens the prep as a
+  full-width booking list plus three grouped columns. The phone layout is unchanged.
 - **Motion.** Day and tab changes fade and lift; the plan bar draws; the map line
   draws once; the sheet springs up and can be dragged down; a toast confirms a
   mark and offers Undo. Nothing moves without a reason, and everything stops for
@@ -140,8 +144,8 @@ Edit `index.html` (and, if the photographs change, the files in
 `photos/plates/`), then **bump the cache name in `sw.js`**:
 
 ```js
-const CACHE = "kerala-v28";      // -> "kerala-v29"
-const RUNTIME = "kerala-rt-v28"; // -> "kerala-rt-v29"
+const CACHE = "kerala-v29";      // -> "kerala-v30"
+const RUNTIME = "kerala-rt-v29"; // -> "kerala-rt-v30"
 ```
 
 Then re-upload or push. Page loads prefer the network, so edits show up on the
