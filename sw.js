@@ -1,7 +1,7 @@
 /* Kerala by road — offline service worker.
    Bump CACHE when you change index.html or the icons. */
-const CACHE = "kerala-v17";
-const RUNTIME = "kerala-rt-v17";
+const CACHE = "kerala-v18";
+const RUNTIME = "kerala-rt-v18";
 
 const CORE = [
   "./",
@@ -46,12 +46,15 @@ self.addEventListener("fetch", (e) => {
   if (req.method !== "GET") return;
   const url = new URL(req.url);
 
-  /* Page loads: try the network so edits land, fall back to the cached app. */
+  /* Page loads: always go to the network so edits land immediately.
+     Without cache:"reload" the browser may answer from its own HTTP cache,
+     and GitHub Pages sends max-age=600, so a deploy could take ten minutes
+     to appear. Fall back to the cached app only when offline. */
   if (req.mode === "navigate") {
     e.respondWith(
       (async () => {
         try {
-          const fresh = await fetch(req);
+          const fresh = await fetch(new Request(req, { cache: "reload" }));
           const cache = await caches.open(CACHE);
           cache.put("./index.html", fresh.clone());
           return fresh;
