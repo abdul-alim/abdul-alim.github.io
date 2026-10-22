@@ -266,7 +266,7 @@ main{display:block}
 .wrap{max-width:var(--content);margin:0 auto;padding:0 20px}
 .page{padding-top:25px}
 .hero-fade{animation:heroIn .6s var(--ease-out) both}
-.hero-fade .day-head>*{animation:heroUp .55s var(--ease-out) both}
+.hero-fade .day-head>*:not(.day-ghost){animation:heroUp .55s var(--ease-out) both}
 .hero-fade .day-head>*:nth-child(2){animation-delay:.04s}
 .hero-fade .day-head>*:nth-child(3){animation-delay:.08s}
 .eyebrow{display:flex;align-items:center;gap:8px;font:600 9.5px/1.4 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
@@ -726,11 +726,11 @@ body[data-tab="route"] main,body[data-tab="money"] main{padding-top:0}
   .jday .jnode{width:9px;height:9px;margin-top:8px}
   .jday .jnum{font-size:12px;margin-top:6px}
   .jday[aria-current="true"] .jnode{width:14px;height:14px;margin-top:5.5px}
-  .wrap.day{max-width:1200px;padding:0 32px}
-  .day{padding-top:30px}
+  .wrap.day{max-width:1200px;padding:30px 32px 0}
+  .day{padding-top:0}
   .day-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(330px,380px);gap:52px;align-items:start}
   .day-main{grid-column:1;grid-row:1;min-width:0}
-  .day-side{grid-column:2;grid-row:1;min-width:0;position:sticky;top:90px;align-self:start}
+  .day-side{grid-column:2;grid-row:1;min-width:0;position:sticky;top:90px;align-self:start;padding-top:9px}
   .day-side .facts{grid-template-columns:1fr 1fr;margin-top:16px}
   .day-side .fact{padding:10px 0 11px}
   .day-side .fact:nth-child(odd){padding-right:14px;border-left:0}
@@ -740,6 +740,10 @@ body[data-tab="route"] main,body[data-tab="money"] main{padding-top:0}
   .stay-card{display:block}
   .day-main .sec:first-child{margin-top:0;border-top:0;padding-top:0}
   .day-main .sec{margin-top:40px}
+  .day-main .plan .sec-head{margin-bottom:8px}
+  .day-main .stop-main{padding:14px 0 17px}
+  .day-main .stop-time{padding-top:19px}
+  .day-main .stop-desc{margin-top:4px}
   .day-main .places{display:grid;grid-template-columns:1fr 1fr;column-gap:34px}
   .day-main .place:nth-child(1),.day-main .place:nth-child(2){border-top:0}
   .day-main .sec-lede{max-width:68ch}
@@ -2441,6 +2445,13 @@ function wireScroll(){
       if(TAB!=="day"){ journey.classList.remove("is-stuck"); return; }
       const top=parseFloat(getComputedStyle(journey).top)||0;
       journey.classList.toggle("is-stuck",journey.getBoundingClientRect().top<=top+1);
+      const ghost=$(".day-ghost"), mast=$(".masthead");
+      if(ghost&&mast){
+        const edge=mast.getBoundingClientRect().bottom;
+        const over=edge-ghost.getBoundingClientRect().top;
+        const fade=Math.max(0,Math.min(1,1-over/120));
+        ghost.style.opacity=String((.8*fade).toFixed(3));
+      }
     });
   };
   window.addEventListener("scroll",check,{passive:true});

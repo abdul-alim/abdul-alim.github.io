@@ -144,8 +144,8 @@ Edit `index.html` (and, if the photographs change, the files in
 `photos/plates/`), then **bump the cache name in `sw.js`**:
 
 ```js
-const CACHE = "kerala-v29";      // -> "kerala-v30"
-const RUNTIME = "kerala-rt-v29"; // -> "kerala-rt-v30"
+const CACHE = "kerala-v30";      // -> "kerala-v31"
+const RUNTIME = "kerala-rt-v30"; // -> "kerala-rt-v31"
 ```
 
 Then re-upload or push. Page loads prefer the network, so edits show up on the
