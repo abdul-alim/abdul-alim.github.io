@@ -1,6 +1,6 @@
 # Kerala by road — 2026
 
-![The Today screen: day five, the birthday night on a houseboat](preview.png)
+![The desktop Today screen: day five, the birthday night on a houseboat](preview.jpg)
 
 
 **Live at <https://abdul-alim.github.io/>** — open it in Safari on the iPhone, then
@@ -8,8 +8,8 @@ Share → Add to Home Screen.
 
 A nine-day road trip companion for the drive from Potheri to Madurai, up to
 Munnar, a birthday night on an Alleppey houseboat, then Kochi and home through
-Salem. It is a single-file, installable, offline-capable web app for a phone,
-built for the four of us.
+Salem. It is a single-file, installable, offline-capable web app for the phone
+on the road and the desktop at home, built for the four of us.
 
 ## What is in here
 
@@ -29,7 +29,8 @@ built for the four of us.
 ## Using it
 
 The app opens on the day you are on, or day one before the trip starts. Tap the
-journey strip or use the **Route** tab to move between days.
+journey strip, the **Route** tab, or — on a desktop — the top navigation to move
+between days. The sun/moon button in the masthead switches appearance at any time.
 
 - **Today** — one day at a time. A photograph, the day's title, the drive and
   where you sleep, then the next thing to do, the four at-a-glance numbers, the
@@ -91,8 +92,15 @@ deliberately not a dashboard.
 - **Surfaces.** No stack of white cards. A single paper field, hairline rules,
   one raised surface for the next action, and generous margins. White space is
   the hierarchy.
-- **Dark mode.** The whole palette is tokenised, with a separate dark set tested
-  for contrast, not an inverted light mode. Photographs stay untouched.
+- **Light and dark.** The whole palette is tokenised, with a separate dark set
+  tested for contrast, not an inverted light mode. Photographs stay untouched.
+  The sun/moon switch starts from the phone's appearance, remembers an explicit
+  choice on this device, and updates the browser's theme colour with it.
+- **A real desktop.** From 1000px up the phone dock gives way to a sticky top bar
+  with Today, Route and Money. Today becomes a plan with a sticky action rail;
+  Route pairs the map with the nine-day index and puts the family photographs
+  under the map; Money sets the budget beside the nights and flows the prep into
+  two columns. The phone layout is unchanged.
 - **Motion.** Day and tab changes fade and lift; the plan bar draws; the map line
   draws once; the sheet springs up and can be dragged down; a toast confirms a
   mark and offers Undo. Nothing moves without a reason, and everything stops for
@@ -132,8 +140,8 @@ Edit `index.html` (and, if the photographs change, the files in
 `photos/plates/`), then **bump the cache name in `sw.js`**:
 
 ```js
-const CACHE = "kerala-v27";      // -> "kerala-v28"
-const RUNTIME = "kerala-rt-v27"; // -> "kerala-rt-v28"
+const CACHE = "kerala-v28";      // -> "kerala-v29"
+const RUNTIME = "kerala-rt-v28"; // -> "kerala-rt-v29"
 ```
 
 Then re-upload or push. Page loads prefer the network, so edits show up on the
