@@ -1,7 +1,7 @@
 /* Kerala by road — offline service worker.
    Bump CACHE when you change index.html or the icons. */
-const CACHE = "kerala-v24";
-const RUNTIME = "kerala-rt-v24";
+const CACHE = "kerala-v25";
+const RUNTIME = "kerala-rt-v25";
 
 const CORE = [
   "./",
