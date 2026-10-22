@@ -117,23 +117,25 @@ img,svg{display:block}
   padding:9px 9px 18px;margin-top:8px;overflow:hidden;border:var(--edge)}
 .post-art{position:relative;border-radius:var(--r-sm);overflow:hidden;aspect-ratio:16/10;background:#CFE9F5;
   isolation:isolate}
-.post-art .art-in{position:absolute;inset:0;transform-origin:52% 44%;
+.post-art .art-in{position:absolute;inset:0;z-index:0;transform-origin:52% 44%;
   animation:drift 34s ease-in-out infinite alternate}
 .post-art svg{width:100%;height:100%}
 /* the day's sky: real weather drives rain or a low sun */
+/* a rainy day reads overcast first, so the streaks have something to sit against */
+.post-art.wx-rain:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(58,96,118,.20) 0%,rgba(58,96,118,.10) 52%,rgba(58,96,118,.03) 100%)}
 .post-art .sky{position:absolute;left:-12%;right:-12%;top:-45%;height:180%;pointer-events:none;opacity:0;
-  transition:opacity 1.6s ease;will-change:transform;
-  -webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.8) 52%,rgba(0,0,0,.18) 100%);
-  mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.8) 52%,rgba(0,0,0,.18) 100%)}
-.post-art .s1{background:repeating-linear-gradient(101deg,rgba(255,255,255,.55) 0 1px,transparent 1px 17px);
-  background-size:17px 32px}
-.post-art .s2{background:repeating-linear-gradient(101deg,rgba(255,255,255,.34) 0 1px,transparent 1px 11px);
-  background-size:11px 32px}
-.post-art.wx-rain .s1{opacity:.26;animation:rain .74s linear infinite}
-.post-art.wx-rain .s2{opacity:.15;animation:rain .47s linear infinite}
-.post-art.wx-glow:after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(58% 46% at 52% 12%,rgba(255,213,120,.55),transparent 68%);
-  animation:breathe 11s ease-in-out infinite}
+  z-index:2;transition:opacity 1.2s ease;will-change:transform;
+  -webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.92) 58%,rgba(0,0,0,.45) 100%);
+  mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.92) 58%,rgba(0,0,0,.45) 100%)}
+.post-art .s1{background:repeating-linear-gradient(101deg,rgba(255,255,255,.78) 0 1.4px,transparent 1.4px 15px);
+  background-size:18px 30px}
+.post-art .s2{background:repeating-linear-gradient(101deg,rgba(255,255,255,.5) 0 1px,transparent 1px 10px);
+  background-size:12px 30px}
+.post-art.wx-rain .s1{opacity:.55;animation:rain .66s linear infinite}
+.post-art.wx-rain .s2{opacity:.34;animation:rain .42s linear infinite}
+.post-art.wx-grey:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(72,96,110,.17) 0%,rgba(72,96,110,.07) 60%,rgba(72,96,110,.02) 100%)}
 .post-num{
   position:absolute;top:15px;right:15px;z-index:3;background:rgba(255,253,247,.94);color:var(--c);
   font:800 11px/1 var(--body);letter-spacing:.1em;text-transform:uppercase;padding:8px 12px;border-radius:999px;
@@ -376,8 +378,8 @@ img,svg{display:block}
 @keyframes pop{from{transform:rotate(45deg) scale(.4) translate(-1px,-2px)}to{transform:rotate(45deg) translate(-1px,-2px)}}
 @keyframes draw{from{stroke-dashoffset:26}to{stroke-dashoffset:0}}
 @keyframes drift{from{transform:scale(1) translate3d(0,0,0)}to{transform:scale(1.05) translate3d(0,-1.4%,0)}}
-@keyframes rain{from{transform:translate3d(0,-34px,0)}to{transform:translate3d(0,0,0)}}
-@keyframes breathe{0%,100%{opacity:.42}50%{opacity:.82}}
+@keyframes rain{from{transform:translate3d(0,-30px,0)}to{transform:translate3d(0,0,0)}}
+@keyframes breathe{0%,100%{opacity:.5}50%{opacity:.95}}
 /* the day opens once, not on every re-render */
 @keyframes inUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 .fresh .post{animation:inUp .55s cubic-bezier(.2,.8,.3,1) both}
@@ -1235,9 +1237,9 @@ function wxWord(c){
 function wxSky(i){
   const w=WX&&WX.d&&WX.d[ISO[i]];
   if(!w||w.c==null) return "";
-  if(w.c>=51) return " wx-rain";
-  if(w.c<=2) return " wx-glow";
-  return "";
+  if(w.c>=51) return " wx-rain";                      /* drizzle through thunder */
+  if(w.c===3||(w.c>=45&&w.c<=48)) return " wx-grey";  /* overcast or mist */
+  return "";                                          /* clear: let it look calm */
 }
 function wxHtml(i){
   const w=WX&&WX.d&&WX.d[ISO[i]];
