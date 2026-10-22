@@ -89,6 +89,9 @@ Safari on an iPhone.
 - **Money** — costs and the packing and booking checklists.
 - Tap **Reached / Checked in** to mark a stop. To undo, either tap the tick on
   that row, or open the row and use **Undo**.
+- Each day shows the forecast from [Open-Meteo](https://open-meteo.com) — free, no API key,
+  no signup, CORS-enabled. One request covers all nine days; it is cached for three
+  hours, and the app shows nothing rather than guessing if the call fails.
 - Reached marks, skipped stops and checklist ticks are saved on the device.
   They are per-device and are not shared between phones.
 - Photos come from Wikipedia and need a connection. Everything else works

@@ -158,6 +158,13 @@ img,svg{display:block}
 .row-nm{font:700 15.5px/1.35 var(--body);min-width:0}
 .row-sub{display:block;font:600 12.5px/1.4 var(--body);color:var(--muted);margin-top:4px}
 .row-mk{position:relative;justify-self:end;width:30px;height:30px;border-radius:50%;background:var(--cream);display:grid;place-content:center;color:#C9D6CC}
+.wx{display:inline-flex;align-items:center;gap:8px;margin:13px 0 0;padding:9px 15px 9px 13px;border-radius:999px;background:var(--cream);border:1.5px solid var(--btn-edge);font-size:13.5px;line-height:1;color:var(--ink)}
+.wx svg{width:19px;height:19px;flex:none;color:#3C93BB}
+.wx b{font-size:15px;font-weight:800;letter-spacing:-.01em}
+.wx em{font-style:normal;font-weight:600;color:var(--muted)}
+.wx.wet{border-color:#E4907C;background:#FDF1ED}
+.wx.wet svg{color:var(--coral)}
+.wx.wet em{color:#B4573E}
 .row-mk:after{content:"";position:absolute;inset:-10px;border-radius:50%}
 .row-mk svg{width:14px;height:14px}
 .row.is-next .row-mk{background:var(--c);color:#fff;box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 20%,transparent)}
@@ -621,52 +628,52 @@ const DAYS=[
   {n:"Lunch at Theni",d:"The last big town before the ghat. Fill the tank here too.",q:"Theni",t:"12:30 PM",w:"Theni"},
   {n:"Blossom Hydel Park",d:"A garden park near town with a big play area, ropeways, swings and tree houses. Small entry fee. Check the drive from Avadale first.",q:"Blossom Hydel Park Munnar",w:"Blossom Hydel Park|Blossom Park, Munnar",alt:1},
   {n:"Pothamedu viewpoint",d:"An easy sunset view over tea, coffee and cardamom estates. Check the drive from Avadale first.",q:"Pothamedu Viewpoint Munnar",w:"Pothamedu",alt:1}],
- stay:{h:"Avadale Munnar",t:"Booked, 1 night, in Chinnakanal about 18 km from Munnar town. The Regalia is in the same village, so tomorrow is a short hop and then a day out.",n:"Avadale Munnar",sid:"avadale",q:"Avadale Munnar",at:"3:30 PM",rl:"Checked in"},
+ stay:{h:"Avadale Munnar",t:"Booked, 1 night, in Chinnakanal about 18 km from Munnar town. You move to The Regalia tomorrow, which is in the same village, so keep the unpacking light.",n:"Avadale Munnar",sid:"avadale",q:"Avadale Munnar",at:"3:30 PM",rl:"Checked in"},
  tip:["Google shows 3 hrs 15 min, but with lunch and the kids' breaks plan on 4 hours or more.","Check the Idukki weather alert and Bodimettu road status on 23 and 24 Oct. If it is unsafe, sleep in Theni or Madurai and go up the next morning.","Fill the tank at Theni before the ghat."]},
 
-{dow:"Mon",date:"26 Oct",short:"26",title:"Eravikulam, tea and a waterfall",c:"#3FBF9F",art:"tahr",km:73,night:"The Regalia Munnar",
- facts:[["Leave","8:00 AM"],["Check in","5:15 PM"],["Driving","2h 45m"],["Out and about","5 hrs"]],
+{dow:"Mon",date:"26 Oct",short:"26",title:"Munnar high-range day",c:"#3FBF9F",art:"tea",km:101,night:"The Regalia Munnar",
+ facts:[["Leave","8:00 AM"],["Back","5:00 PM"],["Driving","4 hrs"],["Out and about","5 hrs"]],
  tl:[
-  ["8:00 AM","Breakfast, then check out of Avadale. It is 18 km to Munnar town, then 13 km up the Rajamalai road."],
-  ["9:30 AM","Eravikulam National Park. Book tickets online, take the shuttle from the gate and walk the easy path.",1],
-  ["11:45 AM","Leave the park and have lunch in Munnar town."],
-  ["2:00 PM","Tea Museum. See how tea leaves are picked, processed and packed."],
-  ["3:30 PM","Attukal Waterfall, a short drive out of town. Stay on the safe viewing areas."],
-  ["4:15 PM","Head back to Chinnakanal, about 18 km down the Thekkady road."],
-  ["5:15 PM","Check in at The Regalia, in the same village as Avadale. No long drive tomorrow either."]],
- places:[
-  {n:"Eravikulam National Park",d:"Home of the Nilgiri tahr. Carry the infant; the paved walkway is easy for a toddler.",q:"Eravikulam National Park Munnar",t:"9:30 AM",w:"Eravikulam National Park"},
-  {n:"Tea Museum",d:"Short and interactive, and good for curious kids. Buy fresh tea to take home.",q:"Tata Tea Museum Munnar",t:"2:00 PM",w:"Tea Museum, Munnar|KDHP Tea Museum"},
-  {n:"Attukal Waterfall",d:"A pretty picnic spot between Munnar and Pallivasal.",q:"Attukal Waterfalls Munnar",t:"3:30 PM",w:"Attukal Waterfalls|Attukad Waterfalls"},
-  {n:"Anayirangal Dam",d:"About 22 km from Chinnakanal, with tea estates all round. A quiet picnic if you want a slower day.",q:"Anayirangal Dam Munnar",w:"Anayirangal Dam|Anayirangal",alt:1},
-  {n:"Marayoor",d:"About 40 km away. A children's park under a single banyan tree, with Thoovanam Falls nearby.",q:"Marayoor Munnar",w:"Marayoor",alt:1}],
- stay:{h:"The Regalia Munnar",t:"Booked, 1 night. In Chinnakanal, about 18 km from town on the Thekkady road. You only change hotels next door today.",n:"The Regalia Munnar",sid:"regalia",q:"The Regalia Munnar",at:"5:15 PM",rl:"Checked in"},
- tip:["Eravikulam may close in the afternoon, so go in the morning and confirm the closing time.","It is 31 km from Avadale to the park gate, so leave at 8:00.","If it rains, swap Attukal for the Tea Museum and head back early."]},
-
-{dow:"Tue",date:"27 Oct",short:"27",title:"Munnar high-range day",c:"#6FBEE4",art:"tea",km:73,night:"Arivikad Tea Bungalow",
- facts:[["Leave","8:00 AM"],["Check in","4:30 PM"],["Driving","3h 10m"],["Out and about","5 hrs"]],
- tl:[
-  ["8:00 AM","Breakfast, then check out of The Regalia. Bags stay in the car: 18 km to Munnar town, then 13 km up the Mattupetty road."],
+  ["8:00 AM","Breakfast, then check out of Avadale. Bags in the car; you check in at The Regalia this evening. It is 18 km to Munnar town first."],
   ["9:15 AM","Mattupetty Dam. Pedal and row boats, with wide lawns by the lake.",1],
   ["11:00 AM","Echo Point. A short walk to an easy viewpoint."],
   ["12:00 PM","Kundala Lake. Boat rides among the tea hills."],
   ["1:00 PM","Lunch on the Kundala to Top Station road."],
   ["2:00 PM","Top Station, the highest point on the Munnar–Kodaikanal road."],
-  ["3:15 PM","Leave Top Station. It is 15 km back down the Top Station road, then 7 km into Arivikad Estate on a rough track.",1],
-  ["4:30 PM","Check in at Arivikad. Nothing but tea around you, and dinner is at the bungalow."]],
+  ["3:15 PM","Start back, stopping for tea-garden photos on the way.",1],
+  ["5:00 PM","Check in at The Regalia Munnar, then rest and an early dinner."]],
  places:[
   {n:"Mattupetty Dam",d:"Boating is the family highlight. Go before 10 AM for calm water and fewer crowds.",q:"Mattupetty Dam Munnar",t:"9:15 AM",w:"Mattupetty Dam"},
   {n:"Echo Point",d:"A short stroll where the older child can shout and listen for the echo.",q:"Echo Point Munnar",t:"11:00 AM",w:"Echo Point, Munnar"},
   {n:"Kundala Lake",d:"Pedal and shikara-style boats surrounded by tea hills.",q:"Kundala Lake Munnar",t:"12:00 PM",w:"Kundala Lake|Kundala Dam"},
   {n:"Top Station",d:"About 1,700 m high, windy and cool. Bring jackets.",q:"Top Station Munnar",t:"2:00 PM",w:"Top Station, Munnar|Top Station"},
   {n:"Munnar Rose Garden",d:"A small park on the Mattupetty road for a quick toddler stop.",q:"Rose Garden Mattupetty Munnar",alt:1}],
- stay:{h:"Arivikad Tea Bungalow",t:"Booked, 1 night. 24 km from Munnar town: 17 km on the Top Station road, then 7 km on the estate track. KDHP advises an SUV, and there is no habitation nearby, so arrange dinner and hot water in advance.",n:"Arivikad Tea Bungalow",sid:"arivikad",q:"Arivikad East Division Bungalow Munnar",at:"4:30 PM",rl:"Checked in"},
- tip:["You are starting from Chinnakanal: allow 1h 15m to reach Mattupetty, not 30 minutes.","Top Station is much colder than town, so carry sweaters.","The last 7 km is an estate track. Ask VOYE HOMES about its condition, and tell them you leave at 7:15 tomorrow."]},
+ stay:{h:"The Regalia Munnar",t:"Booked, night 1 of 2. Check in on the way back from sightseeing. No repacking until the 28th.",n:"The Regalia Munnar",sid:"regalia",q:"The Regalia Munnar",at:"5:00 PM",rl:"Checked in"},
+ tip:["The road winds. Give the kids a light breakfast and keep the car cool.","Top Station is much colder than town, so carry sweaters.","Call The Regalia ahead and ask about early check-in or a place for the kids to nap."]},
+
+{dow:"Tue",date:"27 Oct",short:"27",title:"Eravikulam, tea and a waterfall",c:"#6FBEE4",art:"tahr",km:75,night:"The Regalia Munnar",
+ facts:[["Leave","8:30 AM"],["Back","5:00 PM"],["Driving","2h 30m"],["Out and about","6 hrs"]],
+ tl:[
+  ["8:30 AM","Leave for Eravikulam: 18 km to Munnar town, then 13 km up the Rajamalai road."],
+  ["9:45 AM","Eravikulam National Park. Book tickets online, take the shuttle from the gate and walk the easy path.",1],
+  ["12:00 PM","Leave the park and have lunch in Munnar town."],
+  ["2:00 PM","Tea Museum. See how tea leaves are picked, processed and packed."],
+  ["3:30 PM","Attukal Waterfall, a short drive out of town. Stay on the safe viewing areas."],
+  ["4:15 PM","Head back to Chinnakanal, about 18 km down the Thekkady road."],
+  ["5:00 PM","Back at The Regalia. Pack the car tonight; tomorrow starts at 8:00 AM."]],
+ places:[
+  {n:"Eravikulam National Park",d:"Home of the Nilgiri tahr. Carry the infant; the paved walkway is easy for a toddler.",q:"Eravikulam National Park Munnar",t:"9:45 AM",w:"Eravikulam National Park"},
+  {n:"Tea Museum",d:"Short and interactive, and good for curious kids. Buy fresh tea to take home.",q:"Tata Tea Museum Munnar",t:"2:00 PM",w:"Tea Museum, Munnar|KDHP Tea Museum"},
+  {n:"Attukal Waterfall",d:"A pretty picnic spot between Munnar and Pallivasal.",q:"Attukal Waterfalls Munnar",t:"3:30 PM",w:"Attukal Waterfalls|Attukad Waterfalls"},
+  {n:"Anayirangal Dam",d:"About 22 km from Chinnakanal, with tea estates all round. A quiet picnic if you want a slower day.",q:"Anayirangal Dam Munnar",w:"Anayirangal Dam|Anayirangal",alt:1},
+  {n:"Marayoor",d:"About 40 km away. A children's park under a single banyan tree, with Thoovanam Falls nearby.",q:"Marayoor Munnar",w:"Marayoor",alt:1}],
+ stay:{h:"The Regalia Munnar",t:"Booked, night 2 of 2. Pack the car tonight; tomorrow starts at 8:00 AM.",n:"The Regalia Munnar",sid:"regalia",q:"The Regalia Munnar",at:"5:00 PM",rl:"Back"},
+ tip:["Eravikulam may close in the afternoon, so go in the morning and confirm the closing time.","If it rains, swap Attukal for the Tea Museum and head back early."]},
 
 {dow:"Wed",date:"28 Oct",short:"28",title:"Birthday night on a houseboat",c:"#F7A82B",art:"boat",km:190,night:"Houseboat, Alleppey",badge:"Birthday",
- facts:[["Leave","7:15 AM"],["Alleppey","12:45 PM"],["Driving","5h 30m"],["On the boat","1:30 PM–9 AM"]],
+ facts:[["Leave","8:00 AM"],["Alleppey","1:10 PM"],["Driving","5 hrs"],["On the boat","1:30 PM–9 AM"]],
  tl:[
-  ["7:15 AM","Check out of Arivikad and drive to Alleppey. The 7 km estate track and 17 km down to Munnar town take about 1h 15m, then Adimali, Neriamangalam and Kothamangalam.",1],
+  ["8:00 AM","Check out of The Regalia and drive to Alleppey. About 18 km to Munnar town first, then Adimali, Neriamangalam and Kothamangalam.",1],
   ["9:45 AM","Valara and Cheeyappara waterfalls. About 30 minutes at the roadside viewpoints."],
   ["11:00 AM","A snack for the kids on the way. Lunch is on the boat."],
   ["12:45 PM","Reach Alleppey, park the car and board."],
@@ -757,14 +764,13 @@ const COSTS=[
 const NIGHTS=[
  ["Sterling V Grand Madurai","₹4,000"],
  ["Avadale Munnar, 25 Oct","Booked"],
- ["The Regalia Munnar, 26 Oct","Booked"],
- ["Arivikad Tea Bungalow, 27 Oct","₹2,500+"],
+ ["The Regalia Munnar, 26–27 Oct","Booked"],
  ["Alleppey houseboat, 28 Oct, with meals","₹8,000–10,000"],
  ["Ernakulam, 29–30 Oct","₹5,500–7,500"],
  ["Salem, 31 Oct","₹3,500–5,000"]];
 const CHK={book:[
  ["b1","Sterling V Grand Madurai for 24 Oct"],
- ["b2","Munnar is booked: Avadale 25 Oct, The Regalia 26 Oct, Arivikad 27 Oct",true],
+ ["b2","Munnar is booked: Avadale Munnar on 25 Oct, The Regalia Munnar on 26 and 27 Oct",true],
  ["b3","Alleppey houseboat for the night of 28 Oct, boarding at 1:30 PM, with meals and cake allowed on board"],
  ["b4","Ask the houseboat: AC through the night, generator hours, mosquito screens and a safe place for the infant to sleep"],
  ["b5","Ernakulam hotel for 29 and 30 Oct, near Marine Drive, with a lift"],
@@ -775,8 +781,7 @@ const CHK={book:[
  ["k1","Idukki weather alert and Bodimettu road status. If it looks bad, use Palani, Udumalpet and Marayoor (6–7 hrs)."],
  ["k2","Kochi sea cruise availability, today's fare and child tickets"],
  ["k3","Mattancherry Palace and Jew Town opening hours (closed Fridays)"],
- ["k4","Child life jackets on both boats"],
- ["k5","Arivikad: confirm the 7 km estate track is drivable, and that dinner and hot water are arranged"]],
+ ["k4","Child life jackets on both boats"]],
  car:[
  ["c1","Service and fluids done before 24 Oct"],
  ["c2","Tyre pressure checked, spare wheel and jack in place"],
@@ -816,6 +821,11 @@ function clock(ts){ try{return new Date(ts).toLocaleTimeString("en-IN",{timeZone
 const navUrl=q=>"https://www.google.com/maps/dir/?api=1&travelmode=driving&destination="+encodeURIComponent(q);
 const TOTAL_KM=DAYS.reduce((a,D)=>a+D.km,0);
 const ICON={
+  sun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.3"/><path d="M12 2.4v2.5M12 19.1v2.5M2.4 12h2.5M19.1 12h2.5M5.2 5.2l1.8 1.8M17 17l1.8 1.8M18.8 5.2L17 7M7 17l-1.8 1.8"/></svg>',
+  partly:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.6" cy="8.2" r="3"/><path d="M8.6 1.9v1.7M2.4 8.2h1.7M4.2 3.9l1.2 1.2M13 3.9l-1.2 1.2"/><path d="M9.4 19.6h8.2a2.9 2.9 0 0 0 .3-5.8 4.3 4.3 0 0 0-8.2-.7 3.3 3.3 0 0 0-.3 6.5z"/></svg>',
+  cloud:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18.6h9.6a3.3 3.3 0 0 0 .4-6.6 5 5 0 0 0-9.5-.8A3.8 3.8 0 0 0 7 18.6z"/></svg>',
+  rain:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 15.1h9.6a3.3 3.3 0 0 0 .4-6.6 5 5 0 0 0-9.5-.8A3.8 3.8 0 0 0 7 15.1z"/><path d="M8.8 17.6l-1 2.6M12.4 17.6l-1 2.6M16 17.6l-1 2.6"/></svg>',
+  storm:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 14.6h9.6a3.3 3.3 0 0 0 .4-6.6 5 5 0 0 0-9.5-.8A3.8 3.8 0 0 0 7 14.6z"/><path d="M13.2 16.2l-2.7 3.9h3.1l-1.5 2.7"/></svg>',
   nav:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6 21 21l-9-4.2L3 21z"/></svg>',
   check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 6.5"/></svg>',
   chev:'<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>',
@@ -942,7 +952,7 @@ function viewDay(){
       <div class="post-bd">
         <p class="post-hand" style="color:${D.c}">${D.dow} ${D.date} · ${D.km} km</p>
         <h2>${esc(D.title)}${D.badge?`<span class="pill">${esc(D.badge)}</span>`:""}</h2>
-        <dl class="facts">${D.facts.map(f=>`<div><dt>${esc(f[0])}</dt><dd>${esc(f[1])}</dd></div>`).join("")}</dl>
+        <dl class="facts">${D.facts.map(f=>`<div><dt>${esc(f[0])}</dt><dd>${esc(f[1])}</dd></div>`).join("")}</dl>${wxHtml(i)}
       </div>
     </article>
 
@@ -1098,6 +1108,72 @@ function closeSheet(){
   try{ if(history.state&&history.state.sheet) history.back(); }catch(e){}
 }
 
+/* ======================= weather =======================
+   Open-Meteo: free, no API key, no signup, CORS-enabled. One request covers
+   every stop, because it accepts comma-separated coordinates. Cached for
+   three hours; if the call fails the app simply shows no weather. */
+const WXSTORE="kerala-trip-2026-wx";
+const WXLOC={mdu:[9.9252,78.1198],mnr:[10.0889,77.0595],alp:[9.4981,76.3388],
+             koc:[9.9312,76.2673],slm:[11.6643,78.1460],che:[12.8600,80.0400]};
+const WXDAY=["mdu","mnr","mnr","mnr","alp","koc","koc","slm","che"];
+const ISO=DAYS.map((_,i)=>new Date(Date.UTC(2026,9,24+i)).toISOString().slice(0,10));
+let WX=(()=>{try{return JSON.parse(localStorage.getItem(WXSTORE))||{at:0,d:{}};}catch(e){return {at:0,d:{}};}})();
+
+function wxIcon(c){
+  if(c==null) return "";
+  if(c>=95) return ICON.storm;
+  if((c>=51&&c<=67)||(c>=80&&c<=82)) return ICON.rain;
+  if(c>=45&&c<=48) return ICON.cloud;
+  if(c>=1&&c<=3) return ICON.partly;
+  return ICON.sun;
+}
+function wxWord(c){
+  if(c==null) return "";
+  if(c>=95) return "Thunderstorms";
+  if(c>=80) return "Showers";
+  if(c>=51) return "Rain";
+  if(c>=45) return "Mist";
+  if(c>=3) return "Cloudy";
+  if(c>=1) return "Partly sunny";
+  return "Clear";
+}
+function wxHtml(i){
+  const w=WX&&WX.d&&WX.d[ISO[i]];
+  if(!w||w.hi==null) return "";
+  const wet=w.p!=null&&w.p>=60;
+  const rain=w.p!=null?`<em>\u00b7</em><em>${w.p}% rain</em>`:"";
+  return `<p class="wx${wet?" wet":""}" title="${esc(wxWord(w.c))}">${wxIcon(w.c)}<b>${w.hi}\u00b0</b><em>/ ${w.lo}\u00b0</em>${rain}</p>`;
+}
+async function wxLoad(){
+  const stale=!WX.at||Date.now()-WX.at>3*36e5;
+  const missing=ISO.some(d=>!WX.d[d]);
+  if(!stale&&!missing) return false;
+  try{
+    const ks=Object.keys(WXLOC);
+    const u="https://api.open-meteo.com/v1/forecast?latitude="+ks.map(k=>WXLOC[k][0]).join(",")
+      +"&longitude="+ks.map(k=>WXLOC[k][1]).join(",")
+      +"&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max"
+      +"&timezone=Asia%2FKolkata&start_date="+ISO[0]+"&end_date="+ISO[ISO.length-1];
+    const r=await fetch(u,{cache:"no-store"});
+    if(!r.ok) return false;
+    const j=await r.json();
+    const arr=Array.isArray(j)?j:[j];
+    const d={};
+    DAYS.forEach((D,i)=>{
+      const e=arr[ks.indexOf(WXDAY[i])];
+      if(!e||!e.daily) return;
+      const x=e.daily.time.indexOf(ISO[i]);
+      if(x<0) return;
+      d[ISO[i]]={hi:Math.round(e.daily.temperature_2m_max[x]),lo:Math.round(e.daily.temperature_2m_min[x]),
+                 p:e.daily.precipitation_probability_max[x],c:e.daily.weather_code[x]};
+    });
+    if(!Object.keys(d).length) return false;
+    WX={at:Date.now(),d};
+    localStorage.setItem(WXSTORE,JSON.stringify(WX));
+    return true;
+  }catch(e){ return false; }
+}
+
 /* ======================= boot ======================= */
 let TAB="day", VD=0;
 function render(keep){
@@ -1151,6 +1227,10 @@ document.addEventListener("change",e=>{
 });
 document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeSheet(); });
 window.addEventListener("popstate",()=>{ if(openKey) closeSheet(); });
+document.addEventListener("visibilitychange",()=>{
+  if(document.hidden) return;
+  wxLoad().then(ok=>{ if(ok&&!openKey) render(true); });
+});
 
 (function init(){
   const n=nowIST(), td=tripDay(n);
@@ -1159,6 +1239,7 @@ window.addEventListener("popstate",()=>{ if(openKey) closeSheet(); });
   if(["day","route","info"].includes(wantTab)) TAB=wantTab;
   document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>{TAB=b.dataset.tab;render(false);}));
   render(false);
+  wxLoad().then(ok=>{ if(ok) render(true); });
   if(VD===0||td===0){ const sel=document.querySelector('.chip[aria-current="true"]'); if(sel) sel.scrollIntoView({inline:"center",block:"nearest"}); }
   try{ if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)) navigator.serviceWorker.register("sw.js"); }catch(e){}
   try{

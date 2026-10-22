@@ -1,7 +1,7 @@
 /* Kerala by road — offline service worker.
    Bump CACHE when you change index.html or the icons. */
-const CACHE = "kerala-v18";
-const RUNTIME = "kerala-rt-v18";
+const CACHE = "kerala-v19";
+const RUNTIME = "kerala-rt-v19";
 
 const CORE = [
   "./",
@@ -45,6 +45,9 @@ self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET") return;
   const url = new URL(req.url);
+
+  /* Weather must never come from a cache, so let the browser handle it. */
+  if (url.hostname === "api.open-meteo.com") return;
 
   /* Page loads: always go to the network so edits land immediately.
      Without cache:"reload" the browser may answer from its own HTTP cache,
