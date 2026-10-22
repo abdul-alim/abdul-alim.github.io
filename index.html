@@ -224,6 +224,23 @@ img,svg{display:block}
 /* ---------- plain card list (Money tab) ---------- */
 .rows{background:var(--paper);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;border:var(--edge)}
 
+/* ---------- the menu ---------- */
+.xlist{background:var(--paper);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;border:var(--edge);margin-top:4px}
+.x+.x{border-top:1px solid var(--line)}
+.x-go{display:block;padding:13px 15px;transition:background .18s,transform .12s}
+.x-go:active{background:var(--paper-2)}
+.x-top{display:flex;align-items:baseline;gap:9px}
+.rate{flex:none;font-size:10.5px;letter-spacing:.08em;display:flex}
+.rate i{font-style:normal}
+.rate .s-on{color:var(--mango-d)}
+.rate .s-off{color:rgba(22,48,31,.16)}
+.x-top b{flex:1;min-width:0;font:700 15.5px/1.3 var(--body);letter-spacing:-.005em}
+.x-nav{flex:none;align-self:center;width:29px;height:29px;border-radius:50%;
+  background:color-mix(in srgb,var(--c) 12%,transparent);display:grid;place-content:center;
+  color:var(--c);border:1px solid color-mix(in srgb,var(--c) 22%,transparent)}
+.x-nav svg{width:14px;height:14px}
+.x-d{display:block;font-size:13px;color:var(--muted);line-height:1.5;margin-top:5px;padding-right:26px}
+
 /* ---------- disclosure ---------- */
 .acc{margin-top:12px;background:var(--paper);border-radius:var(--r);box-shadow:var(--sh);
   overflow:hidden;border:var(--edge)}
@@ -693,8 +710,7 @@ const DAYS=[
   ["8:00 PM","Dinner and an early night. The wedding is in the morning."]],
  places:[
   {n:"Thirumalai Nayakkar Mahal",d:"A grand pillared palace with a shaded courtyard, good for a toddler to walk around.",q:"Thirumalai Nayak Mahal Madurai",t:"3:00 PM",w:"Thirumalai Nayak Palace|Thirumalai Nayak Mahal"},
-  {n:"Meenakshi Amman Temple",d:"Go in the evening when it is cooler. Check darshan timings and photography rules first.",q:"Meenakshi Amman Temple Madurai",t:"5:30 PM",w:"Meenakshi Temple|Meenakshi Amman Temple"},
-  {n:"Madurai food",d:"Soft idli, kal dosai and jigarthanda for the adults. Keep the kids on plain food.",q:"Famous restaurants Madurai",alt:1}],
+  {n:"Meenakshi Amman Temple",d:"Go in the evening when it is cooler. Check darshan timings and photography rules first.",q:"Meenakshi Amman Temple Madurai",t:"5:30 PM",w:"Meenakshi Temple|Meenakshi Amman Temple"}],
  stay:{h:"Sterling V Grand Madurai",t:"Booked. Near the wedding venue, with a lift and a short morning commute.",n:"Sterling V Grand Madurai",sid:"madurai",q:"Sterling V Grand Madurai",at:"1:30 PM",rl:"Checked in"},
  tip:["Leave early to beat truck traffic on the highway.","Fill up at Trichy so you reach Madurai with a comfortable tank."]},
 
@@ -709,9 +725,7 @@ const DAYS=[
   ["4:30 PM","Settle in, then a short walk or tea around the stay. Sunset is around 5:50 PM."],
   ["7:30 PM","Dinner at the stay and a quiet evening."]],
  places:[
-  {n:"Lunch at Theni",d:"The last big town before the ghat. Fill the tank here too.",q:"Theni",t:"12:30 PM",w:"Theni"},
-  {n:"Blossom Hydel Park",d:"A garden park near town with a big play area, ropeways, swings and tree houses. Small entry fee. Check the drive from Avadale first.",q:"Blossom Hydel Park Munnar",w:"Blossom Hydel Park|Blossom Park, Munnar",alt:1},
-  {n:"Pothamedu viewpoint",d:"An easy sunset view over tea, coffee and cardamom estates. Check the drive from Avadale first.",q:"Pothamedu Viewpoint Munnar",w:"Pothamedu",alt:1}],
+  {n:"Lunch at Theni",d:"The last big town before the ghat. Fill the tank here too.",q:"Theni",t:"12:30 PM",w:"Theni"}],
  stay:{h:"Avadale Munnar",t:"Booked, 1 night, in Chinnakanal about 18 km from Munnar town. You move to The Regalia tomorrow, which is in the same village, so keep the unpacking light.",n:"Avadale Munnar",sid:"avadale",q:"Avadale Munnar",at:"3:30 PM",rl:"Checked in"},
  tip:["Google shows 3 hrs 15 min, but with lunch and the kids' breaks plan on 4 hours or more.","Check the Idukki weather alert and Bodimettu road status on 23 and 24 Oct. If it is unsafe, sleep in Theni or Madurai and go up the next morning.","Fill the tank at Theni before the ghat."]},
 
@@ -730,10 +744,7 @@ const DAYS=[
   {n:"Mattupetty Dam",d:"Boating is the family highlight. Go before 10 AM for calm water and fewer crowds.",q:"Mattupetty Dam Munnar",t:"9:15 AM",w:"Mattupetty Dam"},
   {n:"Echo Point",d:"A short stroll where the older child can shout and listen for the echo.",q:"Echo Point Munnar",t:"11:00 AM",w:"Echo Point, Munnar"},
   {n:"Kundala Lake",d:"Pedal and shikara-style boats surrounded by tea hills.",q:"Kundala Lake Munnar",t:"12:00 PM",w:"Kundala Lake|Kundala Dam"},
-  {n:"Top Station",d:"About 1,700 m high, windy and cool. Bring jackets.",q:"Top Station Munnar",t:"2:00 PM",w:"Top Station, Munnar|Top Station"},
-  {n:"Mattupetty dairy farm",d:"Just past the dam. About 400 cattle and the calves are the draw; the children can see them close up. Free, and 20 minutes is enough.",q:"Indo Swiss Project Mattupetty Munnar",alt:1},
-  {n:"Chinnakanal waterfalls",d:"A roadside lay-by on the Thekkady road at Periyakanal, about 3 km from your hotel, so you see it from the car without walking. A second falls shares the name 20 km west near Pallivasal, so keep to the Thekkady road.",q:"Chinnakanal Waterfalls Munnar",w:"Chinnakanal",alt:1},
-  {n:"Anayirangal Dam",d:"7 km from Chinnakanal towards Thekkady, so the easiest evening out from the hotel. Speed boat is \u20b9750 for five for 15 minutes, pontoon \u20b91,600 for 30. Entry \u20b920 an adult, \u20b910 a child, \u20b930 the car.",q:"Anayirangal Dam Munnar",w:"Anayirangal Dam|Anayirangal",alt:1}],
+  {n:"Top Station",d:"About 1,700 m high, windy and cool. Bring jackets.",q:"Top Station Munnar",t:"2:00 PM",w:"Top Station, Munnar|Top Station"}],
  stay:{h:"The Regalia Munnar",t:"Booked, night 1 of 2. Check in on the way back from sightseeing. No repacking until the 28th.",n:"The Regalia Munnar",sid:"regalia",q:"The Regalia Munnar",at:"5:00 PM",rl:"Checked in"},
  tip:["The road winds. Give the kids a light breakfast and keep the car cool.","Top Station is much colder than town, so carry sweaters.","Two waterfalls near Munnar are both called Power House Falls and they sit 21 km apart. The one worth your time is the Chinnakanal lay-by on the Thekkady road.","Call The Regalia ahead and ask about early check-in or a place for the kids to nap."]},
 
@@ -750,10 +761,7 @@ const DAYS=[
  places:[
   {n:"Eravikulam National Park",d:"Home of the Nilgiri tahr. Carry the infant; the paved walkway is easy for a toddler.",q:"Eravikulam National Park Munnar",t:"9:45 AM",w:"Eravikulam National Park"},
   {n:"Tea Museum",d:"Short and interactive, and good for curious kids. Buy fresh tea to take home.",q:"Tata Tea Museum Munnar",t:"2:00 PM",w:"Tea Museum, Munnar|KDHP Tea Museum"},
-  {n:"Attukal Waterfall",d:"A pretty picnic spot between Munnar and Pallivasal.",q:"Attukal Waterfalls Munnar",t:"3:30 PM",w:"Attukal Waterfalls|Attukad Waterfalls"},
-  {n:"Blossom Hydel Park",d:"Flat riverside park 3.3 km from the Munnar bazaar: paved walks, lawns, benches. The one place a toddler can run without a slope, a shuttle or a jeep. Drive there, because the highway at the gate has no footpath.",q:"Blossom Hydel Park Munnar",w:"Blossom Hydel Park|Blossom Park, Munnar",alt:1},
-  {n:"Cinnamon Gardens spice plantation",d:"A guided walk past cardamom, pepper and cinnamon. Ask the entry price before you start. The best wet-weather stop in Munnar, because much of it is under cover.",q:"Cinnamon Gardens Spice Plantation Munnar",alt:1},
-  {n:"Marayoor",d:"About 40 km east. Sandalwood forest, ancient dolmens and a children's park under a single banyan tree. A half day on its own, not a quick stop.",q:"Marayoor Munnar",w:"Marayoor",alt:1}],
+  {n:"Attukal Waterfall",d:"A pretty picnic spot between Munnar and Pallivasal.",q:"Attukal Waterfalls Munnar",t:"3:30 PM",w:"Attukal Waterfalls|Attukad Waterfalls"}],
  stay:{h:"The Regalia Munnar",t:"Booked, night 2 of 2. Pack the car tonight; tomorrow starts at 8:00 AM.",n:"The Regalia Munnar",sid:"regalia",q:"The Regalia Munnar",at:"5:00 PM",rl:"Back"},
  tip:["Eravikulam may close in the afternoon, so go in the morning and confirm the closing time.","If it is pouring, drop Attukal and take the spice plantation and Blossom Park instead. Both cope with rain far better than a waterfall viewpoint.","Anayirangal boating stops in heavy rain, so call ahead if the afternoon looks black."]},
 
@@ -769,8 +777,7 @@ const DAYS=[
   ["6:30 PM","Birthday cake and decor on board.",1],
   ["8:00 PM","Dinner on board, then sleep on the boat itself."]],
  places:[
-  {n:"Valara and Cheeyappara waterfalls",d:"Easy roadside waterfalls between Adimali and Neriamangalam. A good place to stretch your legs.",q:"Cheeyappara Waterfalls Kerala",t:"9:45 AM",w:"Cheeyappara Waterfalls|Valara Waterfalls"},
-  {n:"Vembanad Lake",d:"The wide backwater lake the houseboats cruise on. The photos from the deck are the point.",q:"Vembanad Lake Alappuzha",w:"Vembanad|Vembanad Lake",alt:1}],
+  {n:"Valara and Cheeyappara waterfalls",d:"Easy roadside waterfalls between Adimali and Neriamangalam. A good place to stretch your legs.",q:"Cheeyappara Waterfalls Kerala",t:"9:45 AM",w:"Cheeyappara Waterfalls|Valara Waterfalls"}],
  stay:{h:"Alleppey houseboat",t:"AC one-bedroom houseboat with meals, about ₹8,000–10,000. The birthday is on board this evening and you sleep on the boat. Check that the AC runs through the night and the room has mosquito screens.",n:"Board the Alleppey houseboat",sid:"boat",q:"Alappuzha houseboat jetty",at:"1:30 PM",rl:"Boarded",w:"Kettuvallam|Kerala backwaters"},
  tip:["Ask for child life jackets, railings and a safe place for the infant to sleep.","Boats usually moor by early evening and set off again in the morning. Confirm the times and that the cake is allowed.","If it rains, stay in the AC room and cut the cake there."]},
 
@@ -805,7 +812,6 @@ const DAYS=[
   ["6:30 PM","Back ashore. Walk Marine Drive and have dinner by the water."]],
  places:[
   {n:"Lulu Mall",d:"A large mall in Edappally with a food court and shopping. Check for its kids' play zone and baby-care rooms.",q:"Lulu Mall Kochi",t:"10:30 AM",w:"Lulu International Shopping Mall|Lulu Mall Kochi"},
-  {n:"Kochi Water Metro",d:"Cheap, modern ferries between High Court Jetty and the islands.",q:"Kochi Water Metro High Court terminal",t:"3:00 PM",w:"Kochi Water Metro",alt:1},
   {n:"Sagarrani sunset cruise",d:"A two-hour cruise from Marine Drive out to sea. Older price lists showed ₹350–400 a ticket, so confirm today's fare and child rates.",q:"Sagara Rani cruise Marine Drive Kochi",t:"4:30 PM",rl:"Boarded"},
   {n:"Marine Drive",d:"The evening promenade, with food stalls and city views.",q:"Marine Drive Kochi",t:"6:30 PM",w:"Marine Drive, Kochi"}],
  stay:{h:"Ernakulam hotel",t:"The same hotel, night 2 of 2, so there is no repacking and an easy exit towards Palakkad at 6 AM.",n:"Back at the Ernakulam hotel",sid:"ern",q:"Marine Drive Kochi hotels",at:"8:00 PM",rl:"Back"},
@@ -821,9 +827,7 @@ const DAYS=[
   ["1:30 PM","Reach Salem, check in and rest.",1],
   ["6:30 PM","An early dinner and an early night."]],
  places:[
-  {n:"Lunch near Erode",d:"A family restaurant on the highway. Keep it short.",q:"Erode",t:"12:00 PM",w:"Erode"},
-  {n:"Salem food",d:"A family restaurant near the hotel for a simple local meal.",q:"Family restaurants Salem",alt:1},
-  {n:"Yercaud",d:"You already know this road. Skip it unless everyone has energy.",q:"Yercaud Salem",w:"Yercaud",alt:1}],
+  {n:"Lunch near Erode",d:"A family restaurant on the highway. Keep it short.",q:"Erode",t:"12:00 PM",w:"Erode"}],
  stay:{h:"Salem hotel",t:"On the highway side, ₹3,500–5,000, for an easy exit in the morning.",n:"Check in: Salem hotel",sid:"salem",q:"Salem hotels",at:"1:30 PM",rl:"Checked in"},
  tip:["Leave by 6:00 AM to miss the Palakkad–Coimbatore traffic.","Pack breakfast for the first stretch."]},
 
@@ -908,6 +912,7 @@ function clock(ts){ try{return new Date(ts).toLocaleTimeString("en-IN",{timeZone
 const navUrl=q=>"https://www.google.com/maps/dir/?api=1&travelmode=driving&destination="+encodeURIComponent(q);
 const TOTAL_KM=DAYS.reduce((a,D)=>a+D.km,0);
 const ICON={
+  go:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg>',
   dash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>',
   sun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.3"/><path d="M12 2.4v2.5M12 19.1v2.5M2.4 12h2.5M19.1 12h2.5M5.2 5.2l1.8 1.8M17 17l1.8 1.8M18.8 5.2L17 7M7 17l-1.8 1.8"/></svg>',
   partly:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.6" cy="8.2" r="3"/><path d="M8.6 1.9v1.7M2.4 8.2h1.7M4.2 3.9l1.2 1.2M13 3.9l-1.2 1.2"/><path d="M9.4 19.6h8.2a2.9 2.9 0 0 0 .3-5.8 4.3 4.3 0 0 0-8.2-.7 3.3 3.3 0 0 0-.3 6.5z"/></svg>',
@@ -1006,7 +1011,6 @@ function spineHtml(i){
     const st=S.got[s.k]?"done":S.skip[s.k]?"skip":(nx&&nx.k===s.k?"next":"");
     return spineNode(s,i,st,st==="next");
   });
-  optional.forEach(s=>rows.push(spineNode(s,i,S.got[s.k]?"done":S.skip[s.k]?"skip":"maybe",false)));
   if(planned.length&&planned.every(isDone)){
     const nd=i<DAYS.length-1?stopsOf(i+1).find(s=>!s.alt):null;
     const last=planned[planned.length-1];
@@ -1049,6 +1053,7 @@ function viewDay(){
     </div>
 
     ${spineHtml(i)}
+    ${extraHtml(i)}
 
     <details class="acc" style="--c:${D.c}">
       <summary>${ICON.clock}Hour by hour<span class="chev">${ICON.chev}</span></summary>
@@ -1185,6 +1190,76 @@ function closeSheet(){
   el.hidden=true; el.innerHTML=""; openKey=null;
   document.body.style.overflow="";
   try{ if(history.state&&history.state.sheet) history.back(); }catch(e){}
+}
+
+
+/* ======================= the menu =======================
+   Every place worth knowing in each area, rated for this family rather
+   than scored like a review site, each one tapped straight into driving
+   directions. Nothing here is part of a day's plan; you take what fits. */
+const AREA_OF=["mad","theni","mun","mun","alp","koc","koc","slm","home"];
+const AREA_NAME={mad:"Madurai",theni:"the Theni road",mun:"Munnar",alp:"Alleppey",
+                 koc:"Kochi",slm:"Salem",home:"the road home"};
+const EXTRAS={
+ mad:[
+  {n:"Meenakshi Amman Temple",r:5,q:"Meenakshi Amman Temple Madurai",d:"The reason to stop in Madurai. Go late afternoon when it cools. Shoes off and no phones inside."},
+  {n:"Thirumalai Nayakkar Mahal",r:4,q:"Thirumalai Nayakkar Mahal Madurai",d:"A 17th-century pillared hall a kilometre from the temple. Twenty minutes, and the light is lovely."},
+  {n:"Gandhi Memorial Museum",r:3,q:"Gandhi Memorial Museum Madurai",d:"Housed in a palace, with the bloodstained dhoti on display. Quiet, cool, and free."},
+  {n:"Vandiyur Mariamman Teppakulam",r:3,q:"Vandiyur Mariamman Teppakulam Madurai",d:"A huge temple tank with a shrine on an island in the middle. A good evening loop."},
+  {n:"Samanar Hills",r:2,q:"Samanar Hills Madurai",d:"Jain rock carvings up steps cut into a hill, 12 km out. Skip it in the afternoon heat."},
+  {n:"Athisayam theme park",r:2,q:"Athisayam Theme Park Madurai",d:"Water rides 20 km out of town. Only if the wedding leaves you a spare afternoon."}],
+ theni:[
+  {n:"Suruli Falls",r:3,q:"Suruli Falls Theni",d:"A cave temple and a waterfall about 10 km off the Cumbum road. A leg-stretch, not a destination."},
+  {n:"Kumbakkarai Falls",r:2,q:"Kumbakkarai Falls Theni",d:"Near Periyakulam on the climb up. Rocky and shallow, so hold the toddler the whole time."},
+  {n:"Bodimettu viewpoint",r:2,q:"Bodimettu Munnar",d:"The top of the ghat. Worth the stop only if the cloud lifts."}],
+ mun:[
+  {n:"Mattupetty dairy farm",r:5,q:"Indo Swiss Project Mattupetty Munnar",d:"Just past the dam. About 400 cattle, and the calves come close. Free, and 20 minutes is enough."},
+  {n:"Blossom Hydel Park",r:5,q:"Blossom Hydel Park Munnar",d:"Flat, paved riverside park 3.3 km from the bazaar. The one place a toddler can run without a slope."},
+  {n:"Chinnakanal waterfalls",r:4,q:"Chinnakanal Waterfalls Munnar",d:"A lay-by on the Thekkady road 3 km from the hotel, seen from the car. Best when it is raining."},
+  {n:"Anayirangal Dam",r:4,q:"Anayirangal Dam Munnar",d:"7 km from Chinnakanal towards Thekkady. Speed boat ₹750 for five for 15 minutes. Entry ₹20 an adult, ₹10 a child."},
+  {n:"Pothamedu viewpoint",r:4,q:"Pothamedu Viewpoint Munnar",d:"Tea, coffee and cardamom slopes with a sunset view, 1.5 km past Blossom Park. Drive to it."},
+  {n:"Cinnamon Gardens spice plantation",r:4,q:"Cinnamon Gardens Spice Plantation Munnar",d:"Cardamom, pepper and cinnamon on a guided walk. Mostly under cover, so it works in rain."},
+  {n:"Munnar bazaar",r:3,q:"Munnar Bazaar",d:"Tea, spices and chocolate for the people back home. Ten minutes and cheap."},
+  {n:"Photo Point",r:3,q:"Munnar Photo Point",d:"The classic Mattupetty-road photo stop. Five minutes and no walking."},
+  {n:"Marayoor",r:3,q:"Marayoor Munnar",d:"40 km east. Sandalwood, ancient dolmens and a children's park under one banyan tree. Half a day."},
+  {n:"Kolukkumalai",r:2,q:"Kolukkumalai Munnar",d:"The highest tea estate in the world, but a 4 AM jeep up a rough track. Wrong with an infant."},
+  {n:"Chinnar Wildlife Sanctuary",r:2,q:"Chinnar Wildlife Sanctuary",d:"60 km east on the Tamil Nadu border. A full, hot day."}],
+ alp:[
+  {n:"Alappuzha beach",r:4,q:"Alappuzha Beach",d:"A long pier and a park 4 km from the jetty. Good either side of the boat."},
+  {n:"Alappuzha lighthouse",r:4,q:"Alappuzha Lighthouse",d:"Climbable, 150 years old, right by the beach. Check it is open that day."},
+  {n:"Kuttanad paddy fields",r:4,q:"Kuttanad Alappuzha",d:"The fields that grow below sea level. You pass them on the boat, but the drive is worth it too."},
+  {n:"Revi Karunakaran Museum",r:3,q:"Revi Karunakaran Museum Alappuzha",d:"An eccentric private collection of ivory, crystal and art. Air-conditioned, so good in rain."},
+  {n:"Marari beach",r:3,q:"Marari Beach Alappuzha",d:"Quiet sand 11 km north. Easy to add on the way in."},
+  {n:"Ambalappuzha Krishna temple",r:3,q:"Ambalappuzha Sri Krishna Temple",d:"Famous for its payasam, served to visitors. 14 km south of town."}],
+ koc:[
+  {n:"Paradesi Synagogue and Jew Town",r:4,q:"Paradesi Synagogue Jew Town Kochi",d:"450 years old, at the end of a lane of antique shops. The walk is half the point."},
+  {n:"Hill Palace Museum",r:4,q:"Hill Palace Museum Tripunithura",d:"The Kochi royal family's palace, 12 km out. Big grounds and a children's park alongside."},
+  {n:"Kerala Folklore Museum",r:3,q:"Kerala Folklore Museum Kochi",d:"Three floors of wood carving and ritual masks. Indoors, so it works in rain."},
+  {n:"Bolgatty Palace",r:3,q:"Bolgatty Palace Kochi",d:"A Dutch palace on a harbour island, with lawns the children can run on."},
+  {n:"Cherai beach",r:3,q:"Cherai Beach Kochi",d:"25 km north on Vypin. Wide sand and shallow water, but the drive back through traffic is slow."},
+  {n:"Mangalavanam bird sanctuary",r:2,q:"Mangalavanam Bird Sanctuary Kochi",d:"A patch of mangrove behind the high court. Small, shady and free."}],
+ slm:[
+  {n:"Yercaud",r:4,q:"Yercaud Salem",d:"A hill station 30 km up from Salem at 1,500 m. Coffee, viewpoints and a lake. Half a day."},
+  {n:"Kottai Mariamman Temple",r:3,q:"Kottai Mariamman Temple Salem",d:"An old fort temple in the middle of town. Twenty minutes if the evening is free."},
+  {n:"Salem mango stalls",r:3,q:"Salem Mango Market",d:"Salem is mango country. Buy a box on the way out; the season starts in November."},
+  {n:"1008 Lingam Temple",r:2,q:"1008 Lingam Temple Salem",d:"A modern temple with a thousand lingams. Quick and quiet."}],
+ home:[
+  {n:"Sripuram Golden Temple, Vellore",r:3,q:"Sripuram Golden Temple Vellore",d:"Roughly on the way, but it adds two hours and the queue is unpredictable. Only on an early start."},
+  {n:"Krishnagiri dam",r:2,q:"Krishnagiri Dam",d:"A leg-stretch beside the highway. Not worth a detour of its own."}]
+};
+function stars(n){
+  return `<i class="s-on">${"\u2605".repeat(n)}</i><i class="s-off">${"\u2606".repeat(5-n)}</i>`;
+}
+function extraHtml(i){
+  const list=(EXTRAS[AREA_OF[i]]||[]).slice().sort((a,b)=>b.r-a.r);
+  if(!list.length) return "";
+  return `<h2 class="eye">More around ${esc(AREA_NAME[AREA_OF[i]]||"here")}</h2>
+    <p class="hint" style="margin:-2px 0 11px">Rated for a family with a toddler and a baby, not a review score. Tap any row for directions.</p>
+    <ol class="xlist">${list.map(x=>`<li class="x">
+      <a class="x-go" href="${navUrl(x.q)}" target="_blank" rel="noopener">
+        <span class="x-top"><span class="rate" aria-label="${x.r} of 5">${stars(x.r)}</span><b>${esc(x.n)}</b><i class="x-nav">${ICON.go}</i></span>
+        <span class="x-d">${esc(x.d)}</span>
+      </a></li>`).join("")}</ol>`;
 }
 
 /* ======================= weather =======================
