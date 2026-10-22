@@ -1,9 +1,11 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#E3EFE5">
+<meta name="theme-color" content="#EEEFE6" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C1813" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Kerala 2026">
@@ -11,620 +13,687 @@
 <meta name="description" content="Nine days by road: Madurai, Munnar, the Alleppey backwaters and Kochi. 24 October to 1 November 2026.">
 <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
 <meta name="referrer" content="no-referrer">
-<title>Kerala by road</title>
+<title>Kerala by road · 2026</title>
 <link rel="manifest" href="manifest.webmanifest">
-<!-- Absolute, at the origin root, no query string: the most conventional form
-     WebKit can be given, and the same path it probes on its own. -->
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" href="/icons/icon-192.png" sizes="192x192">
-<link rel="icon" href="/favicon.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" href="icons/icon-192.png" sizes="192x192">
+<link rel="icon" href="favicon.ico">
+<link rel="preload" href="fonts/gloock-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/schibsted-grotesk-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+@font-face{
+  font-family:"Gloock";
+  src:url("fonts/gloock-latin.woff2") format("woff2");
+  font-weight:400;font-style:normal;font-display:swap;
+}
+@font-face{
+  font-family:"Schibsted Grotesk";
+  src:url("fonts/schibsted-grotesk-latin.woff2") format("woff2");
+  font-weight:400 900;font-style:normal;font-display:swap;
+}
 :root{
-  /* map paper, near-black ink, and the day's own colour as the accent */
-  --paper:#ECECE6;
-  --paper-2:#E3E3DB;
-  --ink:#16211C;
-  --muted:#5C6A61;
-  --line:rgba(22,33,28,.14);
-  --line-2:rgba(22,33,28,.08);
-  --btn-edge:#939F96;
-  --day:#3E9A55;
-  --display:"Bricolage Grotesque",system-ui,sans-serif;
-  --body:"Figtree",system-ui,-apple-system,sans-serif;
-  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,monospace;
-  --r:20px;
-  --tab:62px;
+  --paper:#EEEFE6;
+  --paper-deep:#E5E7DC;
+  --surface:#F7F6EF;
+  --surface-2:#EDEEE4;
+  --ink:#14241D;
+  --ink-soft:#2A3A31;
+  --muted:#58665D;
+  --faint:#5F6B61;
+  --gold-ink:#7A5B2A;
+  --line:rgba(20,36,29,.14);
+  --line-soft:rgba(20,36,29,.075);
+  --gold:#A58244;
+  --gold-soft:#C6A163;
+  --laterite:#A8482D;
+  --day:#C9553B;
+  --inverse-bg:#14241D;
+  --inverse-fg:#F6F1E4;
+  --inverse-muted:rgba(246,241,228,.6);
+  --danger-fg:#FFFFFF;
+  --photo-fg:#F8F2E5;
+  --sans:"Schibsted Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Gloock",Georgia,"Times New Roman",serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --content:720px;
+  --dock-h:58px;
+  --grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.82' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  --map-sea:#D6E3DB;
+  --map-land:#F6F0E1;
+  --map-hill:rgba(92,116,88,.18);
+  --map-line:rgba(20,36,29,.13);
+  --map-route:#1D3127;
+  --map-gold:#A58244;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --paper:#0C1813;
+    --paper-deep:#101E18;
+    --surface:#12221A;
+    --surface-2:#17291F;
+    --ink:#F1EEE2;
+    --ink-soft:#DCDED0;
+    --muted:#A0AEA3;
+    --faint:#8B998F;
+    --gold-ink:#D8B67A;
+    --line:rgba(241,238,226,.16);
+    --line-soft:rgba(241,238,226,.08);
+    --gold:#CDA969;
+    --gold-soft:#B68F50;
+    --laterite:#E17A59;
+    --inverse-bg:#EFEADB;
+    --inverse-fg:#14241D;
+    --inverse-muted:rgba(20,36,29,.6);
+    --danger-fg:#14241D;
+    --map-sea:#0D1B16;
+    --map-land:#17271E;
+    --map-hill:rgba(160,186,152,.12);
+    --map-line:rgba(241,238,226,.14);
+    --map-route:#EFE9DA;
+    --map-gold:#CDA969;
+    color-scheme:dark;
+  }
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{
-  margin:0;background:var(--paper);color:var(--ink);
-  font:400 16px/1.55 var(--body);-webkit-font-smoothing:antialiased;
-  padding-bottom:calc(var(--tab) + env(safe-area-inset-bottom) + 24px);
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font:400 16px/1.55 var(--sans);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  padding-bottom:calc(var(--dock-h) + env(safe-area-inset-bottom) + 38px);
+  overflow-x:hidden;
   -webkit-tap-highlight-color:transparent;
 }
-h1,h2,h3,p,ol,ul,dl,dt,dd,figure{margin:0}
+::selection{background:var(--gold-soft);color:var(--ink)}
+h1,h2,h3,h4,p,ol,ul,dl,dd,figure,blockquote{margin:0}
 ol,ul{padding:0;list-style:none}
 button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:left}
-a{color:inherit}
-img,svg{display:block}
-:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:8px}
+a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
+strong,b{font-weight:600}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.num{font-variant-numeric:tabular-nums}
-.wrap{max-width:680px;margin:0 auto;padding:0 18px}
-.mono{font-family:var(--mono)}
+.skip{position:fixed;left:12px;top:-90px;z-index:200;background:var(--inverse-bg);color:var(--inverse-fg);padding:10px 14px;border-radius:10px;font-size:13px;font-weight:600;transition:top .2s var(--ease)}
+.skip:focus{top:calc(env(safe-area-inset-top) + 12px)}
+.tnum{font-variant-numeric:tabular-nums}
 
-/* ---------- day view shell ---------- */
-.dayview{max-width:680px;margin:0 auto}
+/* ============ masthead ============ */
+.masthead{position:relative;z-index:30;background:var(--paper)}
+.mast-in{max-width:1120px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 14px) 20px 13px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{display:inline-flex;align-items:center;gap:9px;min-height:32px;border-radius:8px}
+.brand-mark{width:21px;height:21px;color:var(--gold);flex:none}
+.brand-name{font:600 14px/1 var(--sans);letter-spacing:-.01em;white-space:nowrap}
+.brand-name i{font-style:normal;font-weight:450;color:var(--muted)}
+.mast-right{display:flex;align-items:center;gap:9px;min-width:0}
+.mast-dates{font:550 9px/1 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.net{display:inline-flex;align-items:center;gap:5px;font:600 8.5px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--laterite);border:1px solid color-mix(in srgb,var(--laterite) 32%,transparent);border-radius:5px;padding:4px 5px;white-space:nowrap}
+.net[hidden]{display:none}
+.net:before{content:"";width:4px;height:4px;border-radius:50%;background:currentColor}
 
-/* ---------- the day's colour band ---------- */
-.band{background:var(--c);padding:18px 18px 20px;position:relative}
-.band:after{content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,0) 55%)}
-.band-eye{position:relative;z-index:1;font:600 10.5px/1 var(--mono);letter-spacing:.1em;
-  text-transform:uppercase;opacity:.72}
-.band h1{position:relative;z-index:1;font:700 33px/1.02 var(--display);letter-spacing:-.035em;
-  margin-top:11px;text-wrap:balance}
-.band-wx{position:relative;z-index:1;margin-top:14px;display:flex;gap:8px;flex-wrap:wrap}
-.pill{display:inline-block;vertical-align:6px;margin-left:9px;background:var(--ink);color:#fff;
-  border-radius:6px;font:600 9.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:6px 8px}
-
-/* weather chip inside the band sits on colour, so it is translucent paper */
-.wx{display:inline-flex;align-items:center;gap:7px;padding:7px 11px 7px 9px;border-radius:9px;
-  background:rgba(255,255,255,.62);font:600 12px/1 var(--mono);color:var(--ink)}
-.wx svg{width:15px;height:15px;flex:none;color:var(--ink);opacity:.75}
-.wx b{font-weight:700;font-variant-numeric:tabular-nums}
-.wx em{font-style:normal;opacity:.68}
-.wx.wet{background:rgba(255,255,255,.82)}
-
-/* ---------- the illustration, edge to edge ---------- */
-.post-art{position:relative;width:100%;aspect-ratio:16/10;overflow:hidden;background:#CFE9F5;isolation:isolate}
-.post-art .art-in{position:absolute;inset:0;z-index:0;transform-origin:52% 46%;
-  animation:drift 34s ease-in-out infinite alternate}
-.post-art svg{width:100%;height:100%}
-.post-art.wx-rain:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(180deg,rgba(58,96,118,.20) 0%,rgba(58,96,118,.10) 52%,rgba(58,96,118,.03) 100%)}
-.post-art.wx-grey:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:linear-gradient(180deg,rgba(72,96,110,.17) 0%,rgba(72,96,110,.07) 60%,rgba(72,96,110,.02) 100%)}
-.post-art .sky{position:absolute;left:-12%;right:-12%;top:-45%;height:180%;pointer-events:none;opacity:0;
-  z-index:2;transition:opacity 1.2s ease;will-change:transform;
-  -webkit-mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.92) 58%,rgba(0,0,0,.45) 100%);
-  mask-image:linear-gradient(180deg,#000 0%,rgba(0,0,0,.92) 58%,rgba(0,0,0,.45) 100%)}
-.post-art .s1{background:repeating-linear-gradient(101deg,rgba(255,255,255,.78) 0 1.4px,transparent 1.4px 15px);
-  background-size:18px 30px}
-.post-art .s2{background:repeating-linear-gradient(101deg,rgba(255,255,255,.5) 0 1px,transparent 1px 10px);
-  background-size:12px 30px}
-.post-art.wx-rain .s1{opacity:.55;animation:rain .66s linear infinite}
-.post-art.wx-rain .s2{opacity:.34;animation:rain .42s linear infinite}
-
-/* ---------- progress ---------- */
-.prog{display:flex;align-items:center;gap:12px;margin-top:20px}
-.prog-bar{flex:1;height:5px;border-radius:99px;background:var(--line);overflow:hidden}
-.prog-bar u{display:block;height:100%;border-radius:99px;background:var(--c);width:var(--p,0%);
-  transition:width .5s cubic-bezier(.2,.8,.25,1)}
-.prog-l{font:600 10px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
-
-/* ---------- the spine ---------- */
-.spine{margin-top:22px}
-.sp{display:grid;grid-template-columns:50px 26px minmax(0,1fr);align-items:start}
-.sp-t{font:500 11px/1 var(--mono);color:var(--muted);font-variant-numeric:tabular-nums;
-  text-align:right;padding:8px 8px 0 0;white-space:nowrap}
-.sp-rail{position:relative;display:flex;justify-content:center;align-self:stretch}
-.sp-rail:before{content:"";position:absolute;left:50%;transform:translateX(-50%);top:0;bottom:0;
-  width:1.5px;background:var(--line)}
-.sp:first-child .sp-rail:before{top:13px}
-.sp:last-child .sp-rail:before{bottom:auto;height:13px}
-.sp-dot{position:relative;z-index:1;width:26px;height:26px;border-radius:50%;background:var(--paper);
-  border:1.5px solid var(--line);display:grid;place-content:center;color:transparent;
-  transition:background .18s,border-color .18s}
-.sp-dot svg{width:12px;height:12px}
-.sp-dot:after{content:"";position:absolute;inset:-10px;border-radius:50%}
-.sp-bd{padding:5px 0 24px 12px;min-width:0}
-.sp-h{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;width:100%}
-.sp-h b{font:700 16.5px/1.3 var(--body);letter-spacing:-.012em}
-.sp-tag{font:600 8.5px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;padding:4px 6px;
-  border-radius:5px;background:var(--ink);color:var(--paper)}
-.sp-d{font-size:14px;color:var(--muted);line-height:1.5;margin-top:6px}
-.sp-act{display:flex;gap:9px;margin-top:12px}
-.sp.done .sp-dot{background:var(--c);border-color:transparent;color:var(--ink)}
-.sp.done .sp-h b{color:var(--muted);font-weight:500;text-decoration:line-through}
-.sp.done .sp-t{color:var(--ink);font-weight:600}
-.sp.next .sp-dot{background:var(--ink);border-color:transparent;color:var(--paper)}
-.sp.next .sp-h b{font-weight:700}
-.sp.skip .sp-dot{background:var(--paper-2);border-color:var(--line);color:var(--muted)}
-.sp.skip .sp-h b{color:var(--muted);text-decoration:line-through}
-.sp-end .sp-dot{background:var(--ink);border-color:transparent;color:var(--paper)}
-.sp-end .sp-bd>b{font:700 16.5px/1.3 var(--body)}
-
-/* ---------- the menu ---------- */
-.xlist{margin-top:6px;border-top:1px solid var(--line)}
-.x{border-bottom:1px solid var(--line)}
-.x-go{display:block;padding:14px 2px;transition:background .15s}
-.x-go:active{background:var(--paper-2)}
-.x-top{display:flex;align-items:baseline;gap:10px}
-.rate{flex:none;display:flex;font-size:11px;letter-spacing:.06em;line-height:1.5}
-.rate i{font-style:normal}
-.rate .s-on{color:var(--ink)}
-.rate .s-off{color:rgba(22,33,28,.26)}
-.x-top b{flex:1;min-width:0;font:600 15.5px/1.3 var(--body);letter-spacing:-.008em}
-.x-nav{flex:none;align-self:center;width:26px;height:26px;border-radius:50%;background:var(--c);
-  display:grid;place-content:center;color:var(--ink)}
-.x-nav svg{width:13px;height:13px}
-.x-d{display:block;font-size:13px;color:var(--muted);line-height:1.45;margin-top:4px;padding-right:34px}
-
-/* ---------- section heads ---------- */
-.eye{display:flex;align-items:center;gap:8px;font:600 11px/1.3 var(--mono);letter-spacing:.1em;
-  text-transform:uppercase;margin:32px 0 12px;color:var(--muted)}
-.eye svg{width:14px;height:14px;flex:none}
-.hint{color:var(--muted);font-size:12.5px;line-height:1.5;margin-top:10px}
-
-/* ---------- buttons ---------- */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 18px;
-  border-radius:99px;font:600 14.5px/1 var(--body);background:transparent;color:var(--ink);
-  border:1.5px solid var(--btn-edge);text-decoration:none;flex:0 0 auto;white-space:nowrap;
-  transition:transform .12s,opacity .18s}
-.btn:active{transform:scale(.96)}
-.btn-primary{background:var(--ink);border-color:var(--ink);color:var(--paper)}
-.btn-leaf{background:var(--c,var(--ink));border-color:var(--c,var(--ink));color:var(--ink)}
-.btn-quiet{background:transparent;border-color:var(--line);color:var(--muted)}
-.btn-w{flex:1}
-.btn svg{width:17px;height:17px;flex:none}
-
-/* ---------- disclosure ---------- */
-.acc{margin-top:1px;border-top:1px solid var(--line)}
-.acc>summary{display:flex;align-items:center;gap:10px;padding:16px 2px;cursor:pointer;list-style:none;
-  font:600 14px/1.3 var(--mono);letter-spacing:.02em}
-.acc>summary::-webkit-details-marker{display:none}
-.acc>summary svg{width:17px;height:17px;flex:none;color:var(--muted)}
-.acc>summary .chev{margin-left:auto;transition:transform .25s}
-.acc>summary .chev svg{width:13px;height:13px;color:var(--muted)}
-.acc[open]>summary .chev{transform:rotate(180deg)}
-.acc-bd{padding:0 2px 18px}
-.tl li{display:grid;grid-template-columns:64px minmax(0,1fr);gap:12px;padding:10px 0;border-top:1px solid var(--line-2)}
-.tl li:first-child{border-top:0}
-.tl time{font:500 11.5px/1.7 var(--mono);color:var(--ink)}
-.tl p{font-size:14.5px;color:var(--muted);line-height:1.55}
-.tl li.key p{color:var(--ink);font-weight:500}
-.tl li.now{background:var(--paper-2);border-radius:8px;padding-left:9px;padding-right:9px;margin:0 -9px}
-.tl li.now time:after{content:"now";display:block;font-size:9px;letter-spacing:.1em;text-transform:uppercase}
-.tl li.past{opacity:.45}
-.note-p{font-size:15px;color:var(--muted);line-height:1.6}
-.tips li{position:relative;padding-left:18px;font-size:14.5px;color:var(--muted);line-height:1.55;margin-top:10px}
-.tips li:before{content:"";position:absolute;left:0;top:8px;width:6px;height:1.5px;background:var(--ink)}
-
-/* ---------- greeting ---------- */
-.hi{padding:calc(env(safe-area-inset-top) + 16px) 0 0}
-.hi .wrap{display:flex;align-items:center;gap:12px}
-.hi-txt{flex:1;min-width:0}
-.hi-txt b{display:block;font:700 19px/1.1 var(--display);letter-spacing:-.03em}
-.hi-txt small{display:block;font:500 12px/1.4 var(--mono);color:var(--muted);margin-top:4px}
-.avatar{flex:none;width:50px;height:50px;border-radius:14px;background:var(--day);color:var(--ink);
-  display:grid;place-content:center;text-align:center}
-.avatar b{font:700 21px/1 var(--display);letter-spacing:-.03em}
-.avatar small{display:block;font:600 7.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;margin-top:3px;opacity:.75}
-
-/* ---------- rail ---------- */
-.rail{position:sticky;top:0;z-index:40;background:var(--paper);border-bottom:1px solid var(--line)}
-.rail-in{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:10px 16px;max-width:680px;margin:0 auto}
-.rail-in::-webkit-scrollbar{display:none}
-.chip{flex:0 0 auto;padding:7px 11px;border-radius:9px;background:transparent;border:1px solid var(--line);
-  text-align:center;min-width:52px;transition:background .18s,color .18s}
-.chip small{display:block;font:500 8.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.chip b{display:block;font:700 15px/1.2 var(--display);margin-top:3px;font-variant-numeric:tabular-nums}
-.chip:active{background:var(--paper-2)}
-.chip[aria-current="true"]{background:var(--c);border-color:var(--ink)}
-.chip[aria-current="true"] small,.chip[aria-current="true"] b{color:var(--ink)}
-.chip.done:after{content:"";display:block;width:4px;height:4px;border-radius:50%;background:var(--ink);margin:4px auto 0}
-
-/* ---------- tabs ---------- */
-.tabs{position:fixed;left:0;right:0;bottom:0;z-index:60;padding-bottom:env(safe-area-inset-bottom);
-  background:var(--paper);border-top:1px solid var(--line)}
-.tabs div{display:flex;max-width:680px;margin:0 auto}
-.tabs button{flex:1;min-height:var(--tab);display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:5px;font:600 9.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
-  position:relative;transition:color .15s}
-.tabs svg{width:20px;height:20px}
-.tabs button[aria-selected="true"]{color:var(--ink)}
-.tabs button[aria-selected="true"]:before{content:"";position:absolute;top:0;left:22%;right:22%;height:3px;
-  background:var(--day)}
-
-/* ---------- sheet ---------- */
-.sheet{position:fixed;inset:0;z-index:80;display:flex;align-items:flex-end}
-.sheet[hidden]{display:none}
-.scrim{position:absolute;inset:0;background:rgba(22,33,28,.45);border:0;padding:0;cursor:default;
-  animation:fade .2s both}
-.panel{position:relative;width:100%;max-width:680px;margin:0 auto;max-height:90vh;overflow-y:auto;
-  background:var(--paper);border-radius:22px 22px 0 0;padding-bottom:calc(env(safe-area-inset-bottom) + 20px);
-  animation:rise .38s cubic-bezier(.16,.9,.3,1) both}
-.grab{width:38px;height:4px;border-radius:99px;background:var(--line);margin:10px auto 0}
-.panel figure{margin:14px 0 0;aspect-ratio:16/10;background:var(--paper-2);overflow:hidden}
-.panel figure img{width:100%;height:100%;object-fit:cover}
-.panel .cap{font:500 10.5px/1 var(--mono);color:var(--muted);padding:8px 18px 0}
-.panel .cap a{text-decoration:underline}
-.panel-bd{padding:16px 18px 0}
-.panel-bd h2{font:700 25px/1.06 var(--display);letter-spacing:-.03em}
-.pmeta{display:inline-block;font:600 10px/1 var(--mono);letter-spacing:.09em;text-transform:uppercase;
-  color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:6px 8px}
-.ptext{font-size:15px;color:var(--muted);line-height:1.55;margin-top:12px}
-.act{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
-.marked{font:600 11px/1 var(--mono);color:var(--muted);margin-top:14px}
-
-/* ---------- route view ---------- */
-.page-h{font:700 38px/1.02 var(--display);letter-spacing:-.04em;margin-top:22px;text-wrap:balance}
-.page-h em{font-style:normal}
-.page-lede{color:var(--muted);font-size:15px;margin-top:10px;line-height:1.55}
-.stat{display:flex;align-items:center;gap:9px;margin-top:20px;font:600 13px/1.4 var(--mono)}
-.stat span{color:var(--muted);font-weight:500}
-.bar{height:5px;border-radius:99px;background:var(--line);margin-top:10px;overflow:hidden}
-.bar u{display:block;height:100%;border-radius:99px;background:var(--ink);width:var(--p,0%);
-  transition:width .6s cubic-bezier(.2,.8,.25,1)}
-.days{border-top:1px solid var(--line)}
-.day{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:12px;align-items:center;width:100%;
-  padding:14px 2px;border-bottom:1px solid var(--line);transition:background .15s}
-.day:active{background:var(--paper-2)}
-.day-no{display:grid;place-content:center;width:30px;height:30px;border-radius:8px;background:var(--c);
-  color:var(--ink);font:700 13px/1 var(--display);font-variant-numeric:tabular-nums}
-.day-dt{display:block;font:500 9.5px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.day-ti{display:block;font:700 16px/1.25 var(--body);margin-top:6px;letter-spacing:-.015em}
-.day-sub{display:block;font:500 11px/1.3 var(--mono);color:var(--muted);margin-top:5px}
-.day-km{font:500 11px/1 var(--mono);color:var(--muted);text-align:right;white-space:nowrap;
-  font-variant-numeric:tabular-nums;min-width:52px}
-.day-km em{display:block;font-style:normal;margin-top:8px;color:var(--ink);font-weight:600}
-
-/* ---------- money / lists ---------- */
-.rows{border-top:1px solid var(--line)}
-.ledger li{display:flex;align-items:baseline;gap:9px;padding:12px 2px;border-bottom:1px solid var(--line-2)}
-.ledger li:last-child{border-bottom:0}
-.ledger .l{order:1;font-size:14.5px;color:var(--muted);min-width:0}
-.ledger .d{order:2;flex:1;min-width:10px}
-.ledger b{order:3;font:600 14px/1.3 var(--mono);white-space:nowrap;font-variant-numeric:tabular-nums}
-.ledger .tot{margin-top:4px;padding-top:16px;border-top:2px solid var(--ink);border-bottom:0}
-.ledger .tot .l{font:600 10.5px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}
-.ledger .tot b{font:700 25px/1 var(--display);letter-spacing:-.03em}
-.chk li{border-bottom:1px solid var(--line-2)}
-.chk label{display:flex;gap:12px;align-items:flex-start;padding:13px 2px;cursor:pointer}
-.chk input{appearance:none;-webkit-appearance:none;flex:none;width:22px;height:22px;margin:0;border-radius:6px;
-  border:1.5px solid var(--btn-edge);display:grid;place-content:center;cursor:pointer;transition:background .15s}
-.chk input:checked{background:var(--ink);border-color:var(--ink)}
-.chk input:checked:after{content:"";width:4px;height:8px;border:solid var(--paper);border-width:0 2px 2px 0;
-  transform:rotate(45deg) translate(-1px,-2px)}
-.chk span{font-size:14.5px;color:var(--muted);line-height:1.5}
-.chk input:checked+span{color:var(--muted);text-decoration:line-through;opacity:.6}
-
-/* ---------- family photos ---------- */
-.crew-line{font-size:13.5px;color:var(--muted);margin:0 0 12px}
-.strip-x{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
-  margin:0 -18px;padding:2px 18px 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.strip-x::-webkit-scrollbar{display:none}
-.shot{flex:0 0 auto;width:62vw;max-width:264px;scroll-snap-align:center}
-.shot img{width:100%;height:auto;display:block;border-radius:0;aspect-ratio:4/5;object-fit:cover;background:var(--paper-2)}
-.shot figcaption{font:500 10.5px/1.4 var(--mono);color:var(--muted);padding:9px 0 0}
-
-/* ---------- install hint ---------- */
-.hintbar{position:fixed;left:12px;right:12px;bottom:calc(var(--tab) + env(safe-area-inset-bottom) + 12px);z-index:65;
-  background:var(--ink);color:var(--paper);font:500 13px/1.4 var(--body);border-radius:12px;
-  display:flex;align-items:center;gap:10px;padding:12px 14px;max-width:656px;margin:0 auto;
-  animation:rise .4s cubic-bezier(.16,.9,.3,1) both}
-.hintbar b{font-weight:700}
-.hintbar button{margin-left:auto;color:rgba(236,236,230,.6);font-size:19px;line-height:1;padding:2px 4px}
-
-/* ---------- motion ---------- */
-@keyframes rise{from{transform:translateY(22px);opacity:.4}to{transform:none;opacity:1}}
-@keyframes fade{from{opacity:0}to{opacity:1}}
-@keyframes drift{from{transform:scale(1) translate3d(0,0,0)}to{transform:scale(1.05) translate3d(0,-1.4%,0)}}
-@keyframes rain{from{transform:translate3d(0,-30px,0)}to{transform:translate3d(0,0,0)}}
-@keyframes inUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.fresh .band{animation:inUp .45s cubic-bezier(.2,.8,.3,1) both}
-.fresh .post-art{animation:fade .6s ease both}
-.fresh .prog{animation:inUp .45s cubic-bezier(.2,.8,.3,1) .10s both}
-.fresh .spine{animation:inUp .5s cubic-bezier(.2,.8,.3,1) .15s both}
-.fresh .xlist,.fresh .days,.fresh .page-h{animation:inUp .5s cubic-bezier(.2,.8,.3,1) .05s both}
-@media (prefers-reduced-motion:reduce){
-  *,*:before,*:after{animation:none!important;transition:none!important}
-  .post-art .art-in{transform:none}
-  .post-art .sky{display:none}
+/* ============ hero: a photograph, then its caption ============ */
+.hero{position:relative}
+.hero-grid{max-width:1120px;margin:0 auto}
+.plate{position:relative;overflow:hidden;background:var(--paper-deep);background:color-mix(in srgb,var(--day) 13%,var(--paper-deep));isolation:isolate;aspect-ratio:4/3}
+.plate-lq{position:absolute;inset:-8%;background-size:cover;background-position:center;filter:blur(22px) saturate(.9);transform:scale(1.08);opacity:.9;transition:opacity .7s ease;z-index:0}
+.plate-img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transform:scale(1.025);transition:opacity .7s var(--ease-out),transform 1.3s var(--ease-out)}
+.plate.is-loaded .plate-img{opacity:1;transform:scale(1)}
+.plate.is-loaded .plate-lq{opacity:0}
+.plate:after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:
+  linear-gradient(180deg,rgba(10,20,16,.08),rgba(10,20,16,0) 25%,rgba(10,20,16,0) 72%,rgba(10,20,16,.22)),
+  radial-gradient(130% 100% at 50% 42%,transparent 58%,rgba(12,24,18,.18));}
+.plate-grain{position:absolute;inset:0;z-index:3;pointer-events:none;background-image:var(--grain);background-size:140px;opacity:.14;mix-blend-mode:multiply}
+.plate-credit{position:absolute;right:10px;bottom:9px;z-index:4;max-width:52%;padding:4px 6px;border-radius:4px;background:rgba(9,20,15,.34);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);color:rgba(248,242,229,.82);font:500 8px/1.2 var(--sans);letter-spacing:.03em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.plate-credit:hover{color:#fff}
+.day-head{max-width:720px;margin:0 auto;padding:14px 20px 15px}
+.day-top{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:26px}
+.eye{display:inline-flex;align-items:center;gap:7px;font:600 9.5px/1.3 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.eye .dot{width:5px;height:5px;border-radius:50%;background:var(--day);flex:none}
+.eye .today{color:var(--ink)}
+.eye .pre{color:var(--gold-ink)}
+.badge{font:650 8px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);background:var(--gold-soft);padding:5px 6px;border-radius:4px;margin-left:7px}
+.day-title{font:400 clamp(36px,9.4vw,54px)/.99 var(--serif);letter-spacing:-.022em;margin-top:8px;text-wrap:balance;max-width:17ch}
+.day-sub{display:flex;flex-wrap:wrap;align-items:baseline;gap:0 8px;margin-top:8px;font:500 12px/1.45 var(--sans);color:var(--muted)}
+.day-sub .sep{color:var(--faint);font-size:9px}
+.day-sub b{color:var(--ink);font-weight:600}
+.wx{display:inline-flex;align-items:center;gap:6px;min-height:26px;padding:4px 8px;border:1px solid var(--line);border-radius:7px;background:transparent;font:600 10px/1 var(--sans);color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.wx svg{width:13px;height:13px;flex:none;color:var(--ink)}
+.wx b{color:var(--ink);font-weight:650}
+.wx em{font-style:normal;color:var(--muted);font-weight:500}
+.wx.wet{border-color:var(--line);border-color:color-mix(in srgb,var(--day) 26%,var(--line));background:color-mix(in srgb,var(--day) 7%,transparent)}
+.wx.wet svg{color:var(--day)}
+.wx-slot{flex:none}
+@media(max-width:699px){.plate{aspect-ratio:auto;height:clamp(236px,66vw,284px)}.next .next-desc{-webkit-line-clamp:2}}
+@media(min-width:900px){
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.32fr) minmax(320px,.68fr);gap:46px;align-items:end;padding:28px 20px 12px}
+  .plate{max-height:none}
+  .day-head{width:100%;max-width:none;padding:0 0 16px}
+  .day-title{font-size:clamp(42px,4.2vw,56px);max-width:14ch;margin-top:12px}
+  .day-top{min-height:28px}
+  .day-sub{margin-top:12px;font-size:12.5px}
 }
-@media print{.tabs,.rail,.hintbar,.btn{display:none}body{background:#fff}}
+@media(max-width:360px){.mast-dates{display:none}.jday .jdow{font-size:7px;letter-spacing:.08em}}
+@media(min-width:700px) and (max-width:899px){.plate{aspect-ratio:16/10}}
+@media(min-width:900px){.map-frame{max-width:560px;margin-left:20px;margin-right:auto}.map-cap{max-width:560px;margin-left:20px}}
+@media(min-width:1180px){
+  .hero-grid{gap:64px;padding-top:34px;padding-bottom:14px}
+}
+
+/* ============ the day thread / journey bar ============ */
+.journey{position:sticky;top:env(safe-area-inset-top);z-index:45;background:var(--paper);background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(18px) saturate(1.25);-webkit-backdrop-filter:blur(18px) saturate(1.25);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);transition:box-shadow .25s ease}
+.journey.is-stuck{box-shadow:0 10px 28px rgba(15,30,22,.07)}
+.journey-in{--pad:8px;position:relative;max-width:720px;margin:0 auto;padding:0 var(--pad);display:flex;height:62px;align-items:stretch}
+.j-rail{position:absolute;left:calc(var(--pad) + (100% - var(--pad) * 2) / 18);right:calc(var(--pad) + (100% - var(--pad) * 2) / 18);top:26px;height:1px;background:var(--line)}
+.j-rail u{display:block;height:1.5px;margin-top:-.25px;background:var(--gold);width:var(--jp,0%);transition:width .5s var(--ease-out)}
+.jday{position:relative;flex:1 1 0;min-width:0;height:62px;display:flex;flex-direction:column;align-items:center;padding-top:7px;color:var(--muted);border-radius:6px;transition:color .2s}
+.jday:hover{color:var(--ink)}
+.jday .jdow{font:600 8px/1 var(--sans);letter-spacing:.13em;text-transform:uppercase;white-space:nowrap}
+.jday .jnode{width:8px;height:8px;border-radius:50%;border:1.3px solid var(--faint);background:var(--paper);margin-top:7px;position:relative;z-index:1;transition:width .25s var(--ease),height .25s var(--ease),margin-top .25s var(--ease),background .25s,border-color .25s,box-shadow .25s}
+.jday .jnum{font:550 11px/1 var(--sans);letter-spacing:.01em;margin-top:5px;font-variant-numeric:tabular-nums;white-space:nowrap;transition:font-weight .2s,color .2s}
+.jday.done .jnode{background:var(--ink);border-color:var(--ink)}
+.jday[aria-current="true"]{color:var(--ink)}
+.jday[aria-current="true"] .jnode{width:13px;height:13px;margin-top:4.5px;background:var(--day);border:2px solid var(--paper);box-shadow:0 0 0 1.5px var(--ink)}
+.jday[aria-current="true"] .jnum{font-weight:700;color:var(--ink)}
+.jday[aria-current="true"] .jdow{color:var(--ink)}
+@media(min-width:760px){
+  .journey-in{--pad:20px;height:66px}
+  .j-rail{top:28px}
+  .jday{height:66px;padding-top:8px}
+  .jday .jdow{font-size:8px}
+  .jday .jnode{width:9px;height:9px;margin-top:8px}
+  .jday .jnum{font-size:12px;margin-top:5px}
+  .jday[aria-current="true"] .jnode{width:14px;height:14px;margin-top:5.5px}
+}
+.status-fill{position:fixed;left:0;right:0;top:0;height:env(safe-area-inset-top);background:var(--paper);z-index:44;pointer-events:none}
+
+/* ============ page + type ============ */
+main{display:block}
+.wrap{max-width:var(--content);margin:0 auto;padding:0 20px}
+.page{padding-top:25px}
+.hero-fade{animation:heroIn .6s var(--ease-out) both}
+.hero-fade .day-head>*{animation:heroUp .55s var(--ease-out) both}
+.hero-fade .day-head>*:nth-child(2){animation-delay:.04s}
+.hero-fade .day-head>*:nth-child(3){animation-delay:.08s}
+.eyebrow{display:flex;align-items:center;gap:8px;font:600 9.5px/1.4 var(--sans);letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.eyebrow .line{width:18px;height:1px;background:var(--gold);flex:none}
+.page-title{font:400 clamp(40px,10vw,58px)/.98 var(--serif);letter-spacing:-.025em;margin-top:13px;text-wrap:balance;max-width:15ch}
+.page-lede{font-size:14px;line-height:1.55;color:var(--muted);margin-top:12px;max-width:54ch}
+.page-head{padding-bottom:2px}
+.page .sec:first-of-type{margin-top:26px}
+.sec{margin-top:34px;border-top:1px solid var(--line-soft);padding-top:16px}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:9px}
+.sec-head h2{font:600 18px/1.25 var(--sans);letter-spacing:-.022em}
+.sec-meta{font:500 10px/1.3 var(--sans);letter-spacing:.05em;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.sec-lede{font-size:12.5px;line-height:1.5;color:var(--muted);margin:1px 0 13px;max-width:54ch}
+
+/* ============ buttons ============ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;padding:0 16px;border:1px solid transparent;border-radius:12px;font:600 13px/1 var(--sans);letter-spacing:-.005em;background:var(--surface-2);color:var(--ink);transition:transform .18s var(--ease),background .2s,color .2s,border-color .2s,opacity .2s;white-space:nowrap}
+.btn:active{transform:scale(.972)}
+.btn svg{width:15px;height:15px;flex:none}
+.btn-primary{background:var(--inverse-bg);color:var(--inverse-fg);border-color:var(--inverse-bg)}
+.btn-primary:hover{opacity:.9}
+.btn-line{background:transparent;border-color:var(--line);color:var(--ink)}
+.btn-line:hover{border-color:var(--muted)}
+.btn-gold{background:var(--gold-soft);border-color:var(--gold-soft);color:#14241D}
+.btn-quiet{background:transparent;color:var(--muted);border-color:transparent;min-height:38px;padding:0 2px;font-weight:550}
+.btn-quiet:hover{color:var(--ink)}
+.btn-flex{flex:1 1 0}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.linkish{font:600 11.5px/1.4 var(--sans);color:var(--muted);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line);min-height:36px;display:inline-flex;align-items:center;gap:5px}
+.linkish:hover{color:var(--ink)}
+
+/* ============ day: next up ============ */
+.day{padding-top:14px}
+.next{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:15px 16px 14px;position:relative;overflow:hidden}
+.next:before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--day)}
+.next-top{display:flex;align-items:center;gap:8px;font:650 9px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.next-top .pulse{width:6px;height:6px;border-radius:50%;background:var(--day);box-shadow:0 0 0 4px color-mix(in srgb,var(--day) 16%,transparent);flex:none}
+.next-top time{margin-left:auto;color:var(--ink);font:600 10px/1 var(--sans);letter-spacing:.05em;font-variant-numeric:tabular-nums}
+.next h2{font:600 19px/1.25 var(--sans);letter-spacing:-.022em;margin-top:9px;text-wrap:balance}
+.next .next-desc{font-size:13px;line-height:1.5;color:var(--muted);margin-top:5px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.next-acts{display:flex;gap:8px;margin-top:12px}
+.next.done:before{background:var(--gold)}
+.next.done .next-top .pulse{background:var(--gold);box-shadow:0 0 0 4px color-mix(in srgb,var(--gold) 16%,transparent)}
+.next.done h2{font-size:21px}
+.next-foot{display:flex;gap:8px;margin-top:11px}
+.next-foot .btn{min-height:40px}
+.next .checkmark{width:29px;height:29px;border-radius:50%;background:var(--gold-soft);color:#14241D;display:grid;place-content:center;margin-top:3px}
+.next .checkmark svg{width:14px;height:14px}
+.next.done .next-top time{display:none}
+
+/* ============ facts ============ */
+.facts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);margin-top:14px}
+.fact{padding:10px 0 11px}
+.fact:nth-child(odd){padding-right:14px}
+.fact:nth-child(even){padding-left:15px;border-left:1px solid var(--line-soft)}
+.fact:nth-child(n+3){border-top:1px solid var(--line-soft)}
+.fact dt{font:600 8.5px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.fact dd{font:600 14px/1.3 var(--sans);letter-spacing:-.012em;margin-top:3px;font-variant-numeric:tabular-nums;color:var(--ink)}
+@media(min-width:650px){
+  .facts{grid-template-columns:repeat(4,1fr)}
+  .fact{padding:12px 16px 13px}
+  .fact:nth-child(odd){padding-right:16px}
+  .fact:nth-child(even){padding-left:16px}
+  .fact:nth-child(n+3){border-top:0}
+  .fact+.fact{border-left:1px solid var(--line-soft)}
+}
+
+/* ============ plan ============ */
+.plan .sec-head{margin-bottom:5px}
+.planbar{height:2px;background:var(--line-soft);border-radius:99px;overflow:hidden;margin:2px 0 4px}
+.planbar u{display:block;height:100%;width:var(--p,0%);background:var(--gold);border-radius:99px;transition:width .55s var(--ease-out)}
+.stops{margin-top:2px}
+.stop{display:grid;grid-template-columns:47px 18px minmax(0,1fr);position:relative}
+.stop-time{font:500 10px/1.35 var(--sans);letter-spacing:.01em;color:var(--muted);text-align:right;padding:16px 8px 0 0;white-space:nowrap;font-variant-numeric:tabular-nums}
+.stop-rail{position:relative;display:flex;justify-content:center}
+.stop-rail:before{content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;transform:translateX(-.5px);background:var(--line)}
+.stop:first-child .stop-rail:before{top:21px}
+.stop:last-child .stop-rail:before{bottom:auto;height:21px}
+.stop-node{position:relative;z-index:1;width:9px;height:9px;border-radius:50%;border:1.4px solid var(--faint);background:var(--paper);margin-top:17px;transition:all .25s var(--ease)}
+.stop-node svg{position:absolute;width:8px;height:8px;left:-.7px;top:-.7px;opacity:0;color:var(--paper);transition:opacity .2s}
+.stop.is-next .stop-node{width:13px;height:13px;margin-top:15px;background:var(--day);border:2px solid var(--paper);box-shadow:0 0 0 1.4px var(--ink)}
+.stop.is-done .stop-node{background:var(--ink);border-color:var(--ink)}
+.stop.is-done .stop-node svg{opacity:1}
+.stop.is-skip .stop-node{background:var(--surface-2);border-color:var(--line)}
+.stop.is-skip .stop-node:after{content:"";position:absolute;left:2px;top:3.2px;width:4px;height:1px;background:var(--muted)}
+.stop.is-stay .stop-node{border-radius:2px;transform:rotate(45deg)}
+.stop.is-stay.is-done .stop-node{background:var(--gold)}
+.stop-main{display:flex;align-items:flex-start;gap:4px;margin-left:5px;border-bottom:1px solid var(--line-soft);padding:11px 0 13px;min-width:0}
+.stop:last-child .stop-main{border-bottom:0}
+.stop-open{flex:1 1 auto;min-width:0;padding:1px 0;border-radius:7px;display:block}
+.stop-title{display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-width:0}
+.stop-title b{font:600 15px/1.3 var(--sans);letter-spacing:-.012em}
+.stop.is-done .stop-title b{color:var(--muted);font-weight:500}
+.stop.is-skip .stop-title b{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--line);font-weight:500}
+.stop-desc{display:-webkit-box;font-size:12.5px;line-height:1.45;color:var(--muted);margin-top:3px;overflow:hidden;-webkit-line-clamp:2;-webkit-box-orient:vertical;padding-right:4px}
+.stop.is-done .stop-desc,.stop.is-skip .stop-desc{opacity:.55}
+.stop-tag{font:650 7.5px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;padding:4px 5px;border-radius:4px;background:var(--surface-2);color:var(--muted);white-space:nowrap;flex:none}
+.stop-tag.next{background:var(--surface-2);background:color-mix(in srgb,var(--day) 16%,transparent);color:var(--ink)}
+.stop-tag.night{background:color-mix(in srgb,var(--gold) 18%,transparent);color:var(--gold)}
+.stop-tag.maybe{background:transparent;border:1px solid var(--line);color:var(--faint)}
+.stop-check{flex:none;width:44px;height:44px;margin:-6px -9px -6px 0;display:grid;place-content:center;border-radius:50%;color:var(--muted)}
+.stop-check i{width:23px;height:23px;border:1.4px solid var(--line);border-radius:50%;display:grid;place-content:center;transition:background .2s,border-color .2s,transform .18s var(--ease);font-style:normal}
+.stop-check:hover i{border-color:var(--ink);transform:scale(1.04)}
+.stop-check svg{width:11px;height:11px;color:var(--paper);opacity:0;transition:opacity .2s}
+.stop.is-done .stop-check i,.stop.is-skip .stop-check i{background:var(--ink);border-color:var(--ink)}
+.stop.is-done .stop-check svg,.stop.is-skip .stop-check svg{opacity:1}
+.stop.is-stay .stop-check i{border-radius:7px}
+.stop.is-done .stop-title b{text-decoration:none}
+.stop.is-done .stop-open:hover b{color:var(--ink)}
+@media(min-width:650px){
+  .stop{grid-template-columns:56px 20px minmax(0,1fr)}
+  .stop-time{font-size:10px;padding-top:17px}
+  .stop-title b{font-size:15.5px}
+}
+
+/* ============ notes / folds ============ */
+.notes-list{margin-top:1px}
+.notes-list li{position:relative;padding-left:16px;font-size:13px;line-height:1.5;color:var(--muted);margin-top:8px;max-width:58ch}
+.notes-list li:before{content:"";position:absolute;left:0;top:8px;width:7px;height:1px;background:var(--gold)}
+.fold{border-top:1px solid var(--line-soft);margin-top:12px}
+.fold:first-of-type{margin-top:0}
+.fold-btn{display:flex;align-items:center;gap:10px;width:100%;min-height:52px;padding:12px 0;font:600 13.5px/1.3 var(--sans);letter-spacing:-.01em;border-radius:6px}
+.fold-btn>svg{width:16px;height:16px;flex:none;color:var(--muted)}
+.fold-btn .cnt{margin-left:auto;font:500 9.5px/1.3 var(--sans);letter-spacing:.04em;color:var(--muted);font-variant-numeric:tabular-nums}
+.fold-ic{width:22px;height:22px;border:1px solid var(--line);border-radius:50%;display:grid;place-content:center;flex:none;transition:transform .3s var(--ease),border-color .2s}
+.fold-ic svg{width:10px;height:10px}
+.fold-btn[aria-expanded="true"] .fold-ic{transform:rotate(180deg);border-color:var(--muted)}
+.fold-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s var(--ease-out)}
+.fold[data-open="true"] .fold-body{grid-template-rows:1fr}
+.fold-inner{overflow:hidden}
+.fold-content{padding:0 0 17px}
+.hours li{display:grid;grid-template-columns:58px minmax(0,1fr);gap:10px;padding:9px 0;border-top:1px solid var(--line-soft)}
+.hours li:first-child{border-top:0}
+.hours time{font:500 9.5px/1.7 var(--sans);color:var(--ink);font-variant-numeric:tabular-nums}
+.hours p{font-size:12.5px;line-height:1.5;color:var(--muted)}
+.hours li.key p{color:var(--ink);font-weight:500}
+.hours li.past{opacity:.48}
+.hours li.now{background:var(--surface);margin:0 -10px;padding:9px 10px;border-radius:7px;border-top-color:transparent}
+.hours li.now time:after{content:"now";display:block;font:650 7px/1.4 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink)}
+
+/* ============ nearby ============ */
+.places{margin-top:2px}
+.place{display:flex;align-items:center;gap:10px;padding:11px 0;border-top:1px solid var(--line-soft);border-radius:6px;transition:background .2s}
+.place:first-child{border-top:0}
+.place-main{flex:1;min-width:0}
+.place-top{display:flex;align-items:center;gap:7px;min-width:0}
+.place-top b{font:600 14px/1.35 var(--sans);letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rating{display:inline-flex;gap:3px;flex:none;align-items:center;margin-top:1px}
+.rating i{width:4.5px;height:4.5px;border-radius:50%;background:var(--line);display:block}
+.rating i.on{background:var(--gold-ink)}
+.place p{font-size:12px;line-height:1.45;color:var(--muted);margin-top:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;max-width:52ch}
+.place-go{flex:none;width:30px;height:30px;border:1px solid var(--line);border-radius:50%;display:grid;place-content:center;transition:background .2s,color .2s,border-color .2s,transform .25s var(--ease)}
+.place-go svg{width:12px;height:12px}
+.place:hover .place-go{background:var(--inverse-bg);color:var(--inverse-fg);border-color:var(--inverse-bg);transform:translateX(2px)}
+
+/* ============ next day / footer ============ */
+.nextday{display:flex;align-items:center;gap:12px;width:100%;margin-top:30px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;text-align:left;border-radius:2px;transition:opacity .2s}
+.nextday:hover{opacity:.72}
+.nd-num{flex:none;width:34px;height:34px;border-radius:50%;background:var(--paper);background:color-mix(in srgb,var(--day) 20%,var(--paper));color:var(--ink);border:1px solid color-mix(in srgb,var(--day) 32%,transparent);display:grid;place-content:center;font:700 13px/1 var(--sans);font-variant-numeric:tabular-nums}
+.nd-num svg{width:15px;height:15px}
+.nd-main{flex:1;min-width:0}
+.nd-label{display:block;font:650 8.5px/1.2 var(--sans);letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.nd-title{display:block;font:600 14px/1.35 var(--sans);margin-top:3px;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nd-go{flex:none;width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:grid;place-content:center}
+.nd-go svg{width:12px;height:12px}
+.day-foot{margin-top:26px;font-size:10.5px;line-height:1.55;color:var(--faint);max-width:52ch}
+.day-foot a{text-decoration:underline;text-underline-offset:2px;text-decoration-color:var(--line)}
+
+/* ============ route page ============ */
+.route-head{padding-top:4px}
+.map-bleed{margin:22px -20px 0;position:relative}
+.map-frame{position:relative;max-width:560px;margin:0 auto;background:var(--map-sea);overflow:hidden;isolation:isolate}
+.map-frame svg{width:100%;height:auto;display:block}
+.map-frame:after{content:"";position:absolute;inset:0;pointer-events:none;background-image:var(--grain);background-size:160px;opacity:.1;mix-blend-mode:multiply}
+.map-cap{display:flex;align-items:baseline;justify-content:space-between;gap:12px;max-width:560px;margin:0 auto;padding:9px 2px 0;font:500 9px/1.4 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.map-cap b{font-weight:650;color:var(--ink)}
+.m-sea{fill:var(--map-sea)}
+.m-wave{stroke:var(--map-line);fill:none;stroke-width:1;opacity:.55}
+.m-dots{opacity:.34}
+.m-land{fill:var(--map-land);stroke:var(--map-line);stroke-width:1.3}
+.m-contour{fill:none;stroke:var(--map-line);stroke-width:1;opacity:.5}
+.m-water{fill:none;stroke:color-mix(in srgb,var(--map-sea) 50%,var(--map-route));stroke-width:1.4;opacity:.22}
+.m-ghat{fill:var(--map-hill);stroke:var(--map-line);stroke-width:1}
+.m-ghatline{fill:none;stroke:var(--map-line);stroke-width:1}
+.m-route-case{fill:none;stroke:var(--map-land);stroke-width:12;stroke-linecap:round;stroke-linejoin:round;opacity:.95}
+.m-route{fill:none;stroke:var(--map-route);stroke-width:5.6;stroke-linecap:round;stroke-linejoin:round}
+.m-route-dash{fill:none;stroke:var(--map-land);stroke-width:1.3;stroke-dasharray:2 9;stroke-linecap:round;opacity:.8}
+.m-stop{fill:var(--map-land);stroke:var(--map-route);stroke-width:2.2}
+.m-stop-fill{stroke:none}
+.m-halo{fill:none;stroke:var(--gold);stroke-width:1;opacity:.8}
+.m-pulse{fill:none;stroke:var(--day);stroke-width:1.2;opacity:.8}
+.m-home{fill:var(--map-route)}
+.map text{font-family:var(--sans);fill:var(--map-route)}
+.m-label{font-size:28px;font-weight:650;letter-spacing:-.02em}
+.m-label-lg{font-size:32px;font-weight:650;letter-spacing:-.02em}
+.m-small{font-size:17px;font-weight:550;letter-spacing:.04em;fill:var(--muted)}
+.m-micro{font-size:18px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;fill:var(--muted)}
+.m-state{font-size:24px;font-weight:600;letter-spacing:.3em;fill:var(--map-route);opacity:.13;text-transform:uppercase}
+.m-sea-label{font-size:19px;font-weight:600;letter-spacing:.24em;fill:var(--map-route);opacity:.26;text-transform:uppercase}
+.m-dist{font-size:17px;font-weight:550;letter-spacing:.03em;fill:var(--muted)}
+.m-ghat-label{font-size:17px;font-weight:600;letter-spacing:.17em;fill:var(--muted);text-transform:uppercase}
+.m-scale{stroke:var(--map-route);stroke-width:1;opacity:.55;fill:none}
+.m-stop-label{font-size:28px;font-weight:650;letter-spacing:-.015em;fill:var(--map-route);paint-order:stroke;stroke:var(--map-land);stroke-width:4px;stroke-linejoin:round}
+.m-micro{paint-order:stroke;stroke:var(--map-land);stroke-width:3.5px;stroke-linejoin:round}
+.m-coast-label{paint-order:stroke;stroke:var(--map-sea);stroke-width:4px;stroke-linejoin:round}
+.m-border{fill:none;stroke:var(--map-route);stroke-width:1.4;stroke-dasharray:5 9;opacity:.24}
+.m-active-label{font-size:16px;font-weight:650;letter-spacing:.12em;text-transform:uppercase;fill:var(--day)}
+.m-route{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.6s var(--ease-out)}
+.map-frame.is-in .m-route{stroke-dashoffset:0}
+.m-route-dash{opacity:0;transition:opacity .7s ease .9s}
+.map-frame.is-in .m-route-dash{opacity:.9}
+
+.route-days{margin-top:4px}
+.dayrow{display:flex;align-items:center;gap:11px;width:100%;padding:9px 0;border-bottom:1px solid var(--line-soft);text-align:left;border-radius:4px;transition:opacity .2s}
+.dayrow:hover{opacity:.75}
+.dayrow.is-selected img{outline:1.5px solid var(--gold);outline-offset:2px}
+.dayrow.is-selected .dayrow-title{color:var(--ink)}
+.dayrow img{width:62px;height:47px;object-fit:cover;border-radius:3px;background:var(--surface-2);flex:none}
+.dayrow-main{flex:1;min-width:0}
+.dayrow-meta{font:600 8px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:flex;gap:6px;align-items:center;white-space:nowrap;overflow:hidden}
+.dayrow-meta .now-tag{color:var(--gold-ink);font-weight:650}
+.dayrow-title{display:block;font:600 14.5px/1.35 var(--sans);letter-spacing:-.012em;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dayrow-night{display:block;font-size:10.5px;line-height:1.4;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dayrow-right{flex:none;text-align:right;align-self:flex-start;padding-top:2px}
+.dayrow-km{font:550 9.5px/1.2 var(--sans);color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.dayrow-prog{display:block;font:600 8px/1.2 var(--sans);color:var(--faint);margin-top:3px;font-variant-numeric:tabular-nums}
+.crew{margin-top:4px}
+.crew-line{font-size:12.5px;color:var(--muted);margin-bottom:11px}
+.crew-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:0 -20px}
+.crew-fig{margin:0;position:relative;overflow:hidden;background:var(--surface-2)}
+.crew-fig img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;transition:transform 1s var(--ease-out)}
+.crew-fig.beach img{object-position:50% 68%}
+.crew-fig:hover img{transform:scale(1.02)}
+.crew-cap{font:500 8.5px/1.4 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:7px 20px 0}
+.road-note{font-size:13px;line-height:1.6;color:var(--muted);max-width:56ch}
+.road-note b{color:var(--ink)}
+.road-grid{display:flex;gap:26px;margin-top:14px;padding-top:13px;border-top:1px solid var(--line-soft)}
+.road-grid div{flex:1}
+.road-grid dt{font:600 8.5px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.road-grid dd{font:600 19px/1.2 var(--sans);letter-spacing:-.03em;margin-top:3px}
+.credits-btn{display:inline-flex;align-items:center;gap:6px;font:500 10.5px/1.5 var(--sans);color:var(--muted);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line);margin-top:16px}
+.page-foot{padding-top:26px;padding-bottom:10px;font:500 10px/1.6 var(--sans);color:var(--faint);max-width:56ch}
+
+/* ============ money page ============ */
+.total{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding:20px 0 15px;margin-top:5px}
+.total b{font:800 clamp(44px,12vw,62px)/.88 var(--sans);letter-spacing:-.055em;font-variant-numeric:proportional-nums}
+.total span{font:600 8.5px/1.5 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:right;max-width:112px}
+.stack{display:flex;height:9px;gap:2px;margin-top:13px;border-radius:99px;overflow:hidden}
+.stack i{display:block;height:100%;min-width:2px;flex-basis:0}
+.ledger{margin-top:9px}
+.ledger li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:baseline;gap:9px;padding:9px 0;border-bottom:1px solid var(--line-soft);font-size:12.5px;color:var(--muted)}
+.ledger li:last-child{border-bottom:0}
+.ledger .sw{width:6px;height:6px;border-radius:2px;flex:none}
+.ledger .l{min-width:0;line-height:1.4}
+.ledger .v{font:600 12px/1.3 var(--sans);color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.hint{font-size:11px;line-height:1.55;color:var(--faint);margin-top:11px;max-width:56ch}
+.hint a{text-decoration:underline;text-underline-offset:2px}
+.nights li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--line-soft);font-size:12.5px;color:var(--muted)}
+.nights li:last-child{border-bottom:0}
+.nights .n{min-width:0;line-height:1.4}
+.nights .v{font:600 12px/1.3 var(--sans);color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}
+.booked{display:inline-block;font:650 7px/1 var(--sans);letter-spacing:.09em;text-transform:uppercase;color:var(--gold-ink);border:1px solid var(--line);border-color:color-mix(in srgb,var(--gold) 32%,transparent);border-radius:4px;padding:3px 4px;margin-left:5px;vertical-align:1px}
+.prep-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
+.prep-count{font:600 11px/1.3 var(--sans);color:var(--ink);font-variant-numeric:tabular-nums}
+.prep-count span{color:var(--muted);font-weight:500}
+.prepbar{height:2px;background:var(--line-soft);border-radius:99px;overflow:hidden;margin-bottom:4px}
+.prepbar u{display:block;height:100%;width:var(--p,0%);background:var(--gold);border-radius:99px;transition:width .4s var(--ease)}
+.checkgroup{margin-top:19px}
+.checkgroup-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding-bottom:5px;border-bottom:1px solid var(--line)}
+.checkgroup-head h3{font:600 13px/1.3 var(--sans);letter-spacing:-.01em}
+.checkgroup-head span{font:550 9px/1.2 var(--sans);color:var(--muted);font-variant-numeric:tabular-nums}
+.chk{list-style:none}
+.chk li{border-bottom:1px solid var(--line-soft)}
+.chk label{display:flex;align-items:flex-start;gap:11px;padding:10px 0;min-height:43px;cursor:pointer;border-radius:5px}
+.chk input{appearance:none;-webkit-appearance:none;flex:none;width:21px;height:21px;margin:0;border:1.4px solid var(--faint);border-radius:6px;display:grid;place-content:center;cursor:pointer;transition:background .18s,border-color .18s,transform .15s;background:transparent;position:relative;top:.5px}
+.chk input:active{transform:scale(.94)}
+.chk input:checked{background:var(--ink);border-color:var(--ink)}
+.chk input:checked:after{content:"";width:4px;height:8px;border:solid var(--paper);border-width:0 1.6px 1.6px 0;transform:rotate(45deg) translate(-.5px,-1px)}
+.chk span{font-size:12.5px;line-height:1.45;color:var(--muted);transition:color .2s,opacity .2s}
+.chk input:checked+span{color:var(--faint);text-decoration:line-through;text-decoration-color:var(--line)}
+.data-foot{margin-top:20px;padding-top:14px;border-top:1px solid var(--line-soft);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.data-foot .hint{margin:0}
+.danger{font:550 10.5px/1.4 var(--sans);color:var(--muted);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line);min-height:36px;display:inline-flex;align-items:center}
+.danger:hover{color:var(--laterite)}
+
+/* ============ dock ============ */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:70;display:flex;justify-content:center;padding:0 13px calc(env(safe-area-inset-bottom) + 12px);pointer-events:none}
+.dock-in{pointer-events:auto;position:relative;display:flex;width:min(100%,382px);height:var(--dock-h);padding:5px;border-radius:17px;background:var(--paper);background:color-mix(in srgb,var(--paper) 84%,transparent);backdrop-filter:blur(22px) saturate(1.4);-webkit-backdrop-filter:blur(22px) saturate(1.4);border:1px solid var(--line);box-shadow:0 10px 34px rgba(15,30,22,.12),0 1px 0 rgba(255,255,255,.35) inset}
+.dock-pill{position:absolute;top:5px;bottom:5px;left:5px;width:calc((100% - 10px) / 3);border-radius:12px;background:var(--inverse-bg);transform:translateX(calc(var(--i,0) * 100%));transition:transform .42s var(--ease);z-index:0}
+.dock button{position:relative;z-index:1;flex:1 1 0;display:flex;align-items:center;justify-content:center;gap:6px;border-radius:12px;color:var(--muted);font:600 11.5px/1 var(--sans);letter-spacing:-.005em;transition:color .25s;min-height:44px}
+.dock button svg{width:16px;height:16px;flex:none}
+.dock button[aria-current="page"]{color:var(--inverse-fg)}
+.dock button:not([aria-current="page"]):hover{color:var(--ink)}
+
+/* ============ hiding the day shell on other pages ============ */
+body[data-tab="route"] .hero,body[data-tab="route"] .journey,
+body[data-tab="money"] .hero,body[data-tab="money"] .journey{display:none}
+body[data-tab="route"] main,body[data-tab="money"] main{padding-top:0}
+
+/* ============ toast ============ */
+.toast{position:fixed;left:50%;bottom:calc(var(--dock-h) + env(safe-area-inset-bottom) + 25px);z-index:90;display:flex;align-items:center;gap:10px;max-width:calc(100% - 28px);padding:9px 10px 9px 14px;border-radius:12px;background:var(--inverse-bg);color:var(--inverse-fg);box-shadow:0 14px 42px rgba(10,22,16,.25);font:500 12px/1.3 var(--sans);opacity:0;pointer-events:none;transform:translate(-50%,8px) scale(.98);transition:opacity .25s ease,transform .32s var(--ease-out)}
+.toast.show{opacity:1;pointer-events:auto;transform:translate(-50%,0) scale(1)}
+.toast .t-dot{width:6px;height:6px;border-radius:50%;background:var(--gold-soft);flex:none}
+.toast .t-msg{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.toast button{flex:none;margin-left:2px;font:650 11.5px/1 var(--sans);color:var(--inverse-fg);opacity:.92;padding:8px 8px;border-radius:6px;min-height:32px;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--gold)}
+.toast button:hover{background:rgba(255,255,255,.08);opacity:1}
+.toast .t-close{color:var(--inverse-muted);font-size:16px;font-weight:400;padding:4px 6px;min-height:28px}
+
+/* ============ sheet ============ */
+.sheet{position:fixed;inset:0;z-index:100;display:flex;align-items:flex-end;justify-content:center}
+.sheet[hidden]{display:none}
+.scrim{position:absolute;inset:0;border:0;padding:0;margin:0;background:rgba(8,18,13,.52);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);cursor:default;animation:fade .22s ease both}
+.panel{position:relative;z-index:1;width:100%;max-width:560px;max-height:91vh;max-height:91dvh;overflow-y:auto;overscroll-behavior:contain;background:var(--paper);border-radius:23px 23px 0 0;padding:0 18px calc(env(safe-area-inset-bottom) + 20px);box-shadow:0 -20px 60px rgba(5,15,10,.2);animation:rise .46s var(--ease-out) both;-webkit-overflow-scrolling:touch}
+.panel.is-dragging{transition:none}
+.grab{width:52px;height:18px;border-radius:99px;margin:3px auto 0;touch-action:none;cursor:grab;display:flex;align-items:center;justify-content:center}
+.grab:after{content:"";width:38px;height:4px;border-radius:99px;background:var(--line)}
+.sheet-close{position:absolute;top:11px;right:14px;z-index:3;width:40px;height:40px;border-radius:50%;background:var(--surface);border:1px solid var(--line);display:grid;place-content:center;color:var(--ink);transition:background .2s,transform .18s}
+.sheet-close:hover{background:var(--surface-2)}
+.sheet-close:active{transform:scale(.94)}
+.sheet-close svg{width:13px;height:13px}
+.sheet-head{padding:14px 44px 0 1px}
+.sheet-eye{font:600 9px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);display:flex;align-items:center;gap:7px}
+.sheet-eye svg{width:12px;height:12px;flex:none}
+.sheet-eye .dot{width:5px;height:5px;border-radius:50%;background:var(--day)}
+.sheet h2{font:400 clamp(27px,7.4vw,34px)/1.03 var(--serif);letter-spacing:-.02em;margin-top:8px;text-wrap:balance}
+.sheet-sub{font-size:13px;line-height:1.55;color:var(--muted);margin-top:9px;padding-right:6px}
+.sheet-photo{margin:14px -18px 0;position:relative;background:var(--surface-2);overflow:hidden;aspect-ratio:16/10}
+.sheet-photo img{width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s ease}
+.sheet-photo.loaded img{opacity:1}
+.sheet-photo.loaded .shimmer{display:none}
+.shimmer{position:absolute;inset:0;background:linear-gradient(100deg,var(--surface-2) 30%,var(--surface) 46%,var(--surface-2) 62%);background-size:220% 100%;animation:shimmer 1.4s linear infinite}
+.sheet-cap{font:500 8.5px/1.4 var(--sans);letter-spacing:.04em;color:var(--faint);margin-top:6px;padding:0 1px}
+.sheet-acts{display:flex;gap:8px;margin-top:16px}
+.sheet-acts .btn{flex:1 1 0;min-height:47px}
+.sheet-links{display:flex;align-items:center;flex-wrap:wrap;gap:10px 18px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line-soft)}
+.sheet-marked{font:500 10px/1.4 var(--sans);color:var(--muted);margin-top:12px;display:flex;align-items:center;gap:6px}
+.sheet-marked svg{width:12px;height:12px;color:var(--gold-ink)}
+.sheet-form{padding-top:10px}
+.sheet-form label{display:block;font:600 8.5px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:18px}
+.sheet-form input{width:100%;margin-top:6px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:13px 12px;color:var(--ink);font:500 16px/1.4 var(--sans);outline:none;transition:border-color .2s,box-shadow .2s}
+.sheet-form input:focus{border-color:var(--ink);box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 15%,transparent)}
+.sheet-form .form-actions{display:flex;gap:8px;margin-top:15px}
+.sheet-form .form-actions .btn{flex:1 1 0}
+.sheet-form .hint{margin-top:11px}
+.credits-list li{padding:11px 0;border-top:1px solid var(--line-soft);font-size:11.5px;line-height:1.5;color:var(--muted)}
+.credits-list li:first-child{border-top:0}
+.credits-list b{color:var(--ink);font-weight:600;display:block;font-size:12px}
+.credits-list a{text-decoration:underline;text-underline-offset:2px;text-decoration-color:var(--line)}
+.confirm-body{font-size:13.5px;line-height:1.55;color:var(--muted);margin-top:10px}
+@media(min-width:700px){
+  .sheet{align-items:center;padding:24px}
+  .panel{border-radius:22px;max-height:85vh;padding-left:22px;padding-right:22px}
+  .sheet-photo{margin-left:-22px;margin-right:-22px}
+  .sheet h2{font-size:34px}
+  .scrim{background:rgba(8,18,13,.42)}
+}
+
+/* ============ install hint ============ */
+.hintbar[hidden]{display:none}
+.hintbar{position:fixed;left:14px;right:14px;bottom:calc(var(--dock-h) + env(safe-area-inset-bottom) + 25px);z-index:80;max-width:520px;margin:0 auto;background:var(--inverse-bg);color:var(--inverse-fg);border-radius:12px;padding:11px 12px 11px 14px;display:flex;align-items:center;gap:10px;font:500 11.5px/1.4 var(--sans);box-shadow:0 12px 38px rgba(10,22,16,.22);animation:rise .4s var(--ease-out) both}
+.hintbar>svg{width:15px;height:15px;flex:none;color:var(--inverse-fg);opacity:.62}
+.hintbar b{font-weight:650}
+.hintbar button{margin-left:auto;flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-content:center;color:var(--inverse-muted);font-size:18px;line-height:1}
+.hintbar .share{width:15px;height:15px;flex:none;color:var(--gold-soft)}
+
+/* ============ motion / utils ============ */
+@keyframes heroIn{from{opacity:.35}to{opacity:1}}
+@keyframes heroUp{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{transform:translateY(26px);opacity:.5}to{transform:none;opacity:1}}
+@keyframes shimmer{from{background-position:180% 0}to{background-position:-80% 0}}
+@keyframes viewIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.view-in{animation:viewIn .38s var(--ease-out) both}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .plate-img{transform:none!important;opacity:1!important}
+  .plate-lq{display:none}
+}
+
+/* ============ day extras ============ */
+.day-stay{display:flex;align-items:center;gap:6px;margin-top:6px;font:500 11.5px/1.4 var(--sans);color:var(--muted)}
+.day-stay svg{width:13px;height:13px;color:var(--gold);flex:none}
+.day-stay b{color:var(--ink);font-weight:550}
+.day-jump{display:inline-flex;align-items:center;gap:5px;margin-top:9px;font:600 9px/1.3 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--gold-ink);min-height:28px}
+.day-jump svg{width:11px;height:11px}
+.day-jump:hover{color:var(--ink)}
+.badge[hidden]{display:none}
+.fold.in-sec{border-top:0;margin-top:0}
+.fold.in-sec .fold-btn{padding-top:0}
+.field-error{display:none;font:500 11px/1.4 var(--sans);color:var(--laterite);margin-top:7px}
+.field-error.show{display:block}
+.btn-danger{background:var(--laterite);border-color:var(--laterite);color:var(--danger-fg)}
+.btn-danger:hover{opacity:.9}
+.nojs{max-width:720px;margin:0 auto;padding:30px 20px 60px}
+.nojs h1{font:400 40px/1 var(--serif)}
+.nojs p{font-size:14px;line-height:1.6;color:var(--muted);margin-top:12px}
+.credits-src{font-size:10.5px;color:var(--faint);margin-top:2px}
+.credits-src a{text-decoration:underline;text-underline-offset:2px;text-decoration-color:var(--line)}
+.prep-group-last{margin-bottom:0}
+@media(max-width:359px){
+  .brand-name{font-size:12.5px}
+  .mast-in{padding-left:16px;padding-right:16px}
+  .day-head{padding-left:16px;padding-right:16px}
+  .wrap{padding-left:16px;padding-right:16px}
+  .map-bleed{margin-left:-16px;margin-right:-16px}
+  .crew-grid{margin-left:-16px;margin-right:-16px}
+  .dayrow img{width:54px;height:41px}
+  .jday .jnum{font-size:10px}
+}
+
+@media(min-width:900px){.map-bleed .map-frame{max-width:560px;margin-left:20px;margin-right:auto}.map-bleed .map-cap{max-width:560px;margin-left:20px;margin-right:auto}}
+@media print{
+  .dock,.journey,.toast,.sheet,.hintbar,.plate-credit,.mast-right{display:none!important}
+  body{background:#fff;padding:0}
+  .hero-grid{display:block;padding:0}
+  .plate{max-height:300px}
+}
 </style>
 </head>
 <body>
 
-<header class="hi"><div class="wrap">
-  <div class="hi-txt"><b>Kerala &rsquo;26</b><small id="greetsub"></small></div>
-  <div class="avatar"><b id="avnum">5</b><small>day</small></div>
-</div></header>
+<a class="skip" href="#view">Skip to the plan</a>
+<div class="status-fill" aria-hidden="true"></div>
 
-<nav class="rail" aria-label="Choose a day"><div class="rail-in" id="rail"></div></nav>
-<main id="view"></main>
+<header class="masthead">
+  <div class="mast-in">
+    <button class="brand" data-act="tab" data-tab="day" aria-label="Kerala by road — today">
+      <svg class="brand-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+        <path d="M4.2 18.4C4.2 11.2 9.4 7.2 14.3 6.3c4.2-.8 6-2.1 6.6-3.8"/>
+        <circle cx="4.2" cy="18.4" r="2.1" fill="currentColor" stroke="none"/>
+        <circle cx="20.9" cy="2.5" r="2.1" fill="currentColor" stroke="none"/>
+      </svg>
+      <span class="brand-name">Kerala <i>by road</i></span>
+    </button>
+    <div class="mast-right">
+      <span class="net" id="net" hidden>Offline</span>
+      <span class="mast-dates">24 Oct — 1 Nov 2026</span>
+    </div>
+  </div>
+</header>
 
-<nav class="tabs" role="tablist" aria-label="Sections">
-  <div>
-    <button role="tab" data-tab="day">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15.5h16M6.5 12l8-8 3 3-8 8z"/><circle cx="7.5" cy="16.5" r="2"/></svg>
-      <span>Today</span></button>
-    <button role="tab" data-tab="route">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 19c0-4 6-3 6-7s4-3 6-3"/><circle cx="5" cy="19" r="2.2"/><circle cx="19" cy="8" r="2.2"/></svg>
-      <span>Route</span></button>
-    <button role="tab" data-tab="info">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M16 7H10a2.5 2.5 0 0 0 0 5h4a2.5 2.5 0 0 1 0 5H8"/></svg>
-      <span>Money</span></button>
+<main id="content">
+  <section class="hero" id="hero" aria-label="The day"></section>
+  <nav class="journey" id="journey" aria-label="Choose a day"><div class="journey-in" id="journey-in"></div></nav>
+  <div id="view"></div>
+</main>
+
+<nav class="dock" aria-label="Sections">
+  <div class="dock-in" id="dock-in">
+    <span class="dock-pill" aria-hidden="true"></span>
+    <button data-act="tab" data-tab="day" aria-current="page">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6l1.4 1.4M17 17l1.4 1.4M18.4 5.6 17 7M7 17l-1.4 1.4"/></svg>
+      <span>Today</span>
+    </button>
+    <button data-act="tab" data-tab="route" aria-current="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19.2c0-4.6 5.4-3.9 6.8-7.8 1.2-3.5 3.3-4.5 7.2-4.5"/><circle cx="5" cy="19.2" r="2.1"/><circle cx="19" cy="6.9" r="2.1"/></svg>
+      <span>Route</span>
+    </button>
+    <button data-act="tab" data-tab="money" aria-current="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 5H18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6.5A2.5 2.5 0 0 1 4 16.5v-9A2.5 2.5 0 0 1 6.5 5z"/><path d="M4 8.5h16"/><circle cx="16.2" cy="14" r="1.2" fill="currentColor" stroke="none"/></svg>
+      <span>Money</span>
+    </button>
   </div>
 </nav>
 
-<div class="sheet" id="sheet" hidden role="dialog" aria-modal="true" aria-labelledby="sheet-h"></div>
-<noscript><div class="wrap" style="padding-top:30px"><h1 class="page-h">Kerala by road</h1><p class="page-lede">Turn on JavaScript to see the itinerary.</p></div></noscript>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="sheet" id="sheet" hidden></div>
+<div class="hintbar" id="hintbar" hidden></div>
+
+<noscript>
+  <style>.hero,.journey,.dock,.toast,.sheet,.hintbar{display:none!important}</style>
+  <div class="nojs">
+    <h1>Kerala by road</h1>
+    <p>Nine days, 24 October to 1 November 2026: Potheri to Madurai for the wedding, up to Munnar, a night on an Alleppey houseboat, Fort Kochi and home through Salem.</p>
+    <p>Turn on JavaScript to open the full plan, offline notes and directions.</p>
+  </div>
+</noscript>
 
 <script>
-/* ======================= the nine postcards =======================
-   Bright, flat, friendly scenes — one per day. */
-const ART = {
-/* Madurai — a gopuram on a bright morning */
-gopuram:()=>`<svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-<defs><linearGradient id="p1" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0" stop-color="#9CD8F0"/><stop offset=".62" stop-color="#D6EEF9"/><stop offset="1" stop-color="#FFF3DC"/></linearGradient></defs>
-<rect width="800" height="500" fill="url(#p1)"/>
-<circle cx="646" cy="112" r="52" fill="#FFD166"/><circle cx="646" cy="112" r="74" fill="#FFD166" opacity=".25"/>
-<g fill="#fff"><ellipse cx="176" cy="106" rx="58" ry="34"/><ellipse cx="228" cy="118" rx="42" ry="26"/><ellipse cx="128" cy="122" rx="38" ry="24"/>
-<ellipse cx="486" cy="76" rx="44" ry="26"/><ellipse cx="528" cy="86" rx="32" ry="20"/></g>
-<path d="M0 300 Q160 250 330 288 T800 268 V500 H0Z" fill="#A8D8B9"/>
-<g><path d="M296 336h208v164H296z" fill="#FB7A5C"/>
-<path d="M310 296h180v40H310z" fill="#FFD9C8"/>
-<path d="M324 258h152v38H324z" fill="#FB7A5C"/>
-<path d="M338 222h124v36H338z" fill="#FFD9C8"/>
-<path d="M352 188h96v34H352z" fill="#FB7A5C"/>
-<path d="M366 158h68v30H366z" fill="#FFD9C8"/>
-<path d="M380 130h40v28H380z" fill="#FB7A5C"/>
-<path d="M380 130q20-28 40 0z" fill="#FFD9C8"/>
-<rect x="396" y="86" width="8" height="20" fill="#FB7A5C"/>
-<circle cx="400" cy="80" r="7" fill="#FB7A5C"/>
-<path d="M382 500v-54a18 18 0 0 1 36 0v54z" fill="#C4562E"/></g>
-<path d="M382 500v-58a18 18 0 0 1 36 0v58z" fill="#C4562E" opacity=".55"/>
-<g fill="#4FA96B"><rect x="96" y="368" width="11" height="82" rx="5"/>
-<path d="M101 368c-34-6-54-20-62-42 20 14 42 20 62 22zm0 0c34-6 54-20 62-42-20 14-42 20-62 22z"/>
-<path d="M101 368c-16-18-22-38-18-60 8 20 16 34 22 44zm0 0c16-18 22-38 18-60-8 20-16 34-22 44z"/>
-<rect x="704" y="386" width="9" height="64" rx="4"/>
-<path d="M708 386c-28-5-44-16-50-34 16 11 34 16 50 18zm0 0c28-5 44-16 50-34-16 11-34 16-50 18z"/></g>
-<rect y="452" width="800" height="48" fill="#8FD3A4"/>
-<path d="M0 500l300-48h200l300 48z" fill="#C7D0D3"/>
-<g><rect x="352" y="440" width="62" height="20" rx="9" fill="#F2A32C"/><rect x="362" y="428" width="42" height="14" rx="7" fill="#FFC55E"/>
-<circle cx="368" cy="462" r="7" fill="#2A3830"/><circle cx="402" cy="462" r="7" fill="#2A3830"/></g></svg>`,
-
-/* Munnar — the ghat road climbing through green hills */
-ghat:()=>`<svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-<defs><linearGradient id="p2" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0" stop-color="#8ED2EE"/><stop offset=".7" stop-color="#DCF0F8"/></linearGradient></defs>
-<rect width="800" height="500" fill="url(#p2)"/>
-<circle cx="132" cy="98" r="46" fill="#FFD166"/>
-<g fill="#fff"><ellipse cx="596" cy="98" rx="62" ry="34"/><ellipse cx="652" cy="112" rx="44" ry="26"/><ellipse cx="544" cy="116" rx="40" ry="24"/>
-<ellipse cx="316" cy="66" rx="46" ry="26"/></g>
-<path d="M0 254 Q180 200 370 240 T800 214 V500 H0Z" fill="#A8D8B9"/>
-<path d="M0 306 Q210 254 410 296 T800 272 V500 H0Z" fill="#7FC79A"/>
-<path d="M0 366 Q230 316 440 356 T800 336 V500 H0Z" fill="#5BAE7C"/>
-<path d="M0 440 Q240 400 450 432 T800 416 V500 H0Z" fill="#3E8B62"/>
-<path d="M170 500C236 448 344 462 392 408 440 354 358 332 406 280 454 228 556 244 596 190 636 136 700 128 780 96"
- stroke="#C7D0D3" stroke-width="26" fill="none" stroke-linecap="round"/>
-<path d="M170 500C236 448 344 462 392 408 440 354 358 332 406 280 454 228 556 244 596 190 636 136 700 128 780 96"
- stroke="#fff" stroke-width="4" fill="none" stroke-dasharray="16 18" stroke-linecap="round"/>
-<g fill="#3E8B62">
-<path d="M470 232l17-40 17 40z"/><path d="M492 236l12-28 12 28z"/>
-<path d="M652 154l16-38 16 38z"/><path d="M674 158l11-26 11 26z"/>
-<path d="M110 296l18-42 18 42z"/><path d="M262 402l18-42 18 42z"/><path d="M712 372l18-42 18 42z"/></g>
-<g><rect x="200" y="418" width="58" height="19" rx="9" fill="#F2A32C"/><rect x="210" y="406" width="38" height="13" rx="6" fill="#FFC55E"/>
-<circle cx="216" cy="439" r="7" fill="#2A3830"/><circle cx="246" cy="439" r="7" fill="#2A3830"/></g></svg>`,
-
-/* Munnar — tea terraces above a lake */
-tea:()=>`<svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-<defs><linearGradient id="p3" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0" stop-color="#8ED2EE"/><stop offset=".72" stop-color="#E4F4FA"/></linearGradient>
-<pattern id="b3a" width="26" height="20" patternUnits="userSpaceOnUse">
-<rect width="26" height="20" fill="#6FC08C"/><circle cx="6" cy="6" r="3.4" fill="#8FD3A4"/><circle cx="18" cy="14" r="3" fill="#8FD3A4"/></pattern>
-<pattern id="b3b" width="30" height="22" patternUnits="userSpaceOnUse">
-<rect width="30" height="22" fill="#4FA96B"/><circle cx="8" cy="6" r="4" fill="#6FC08C"/><circle cx="22" cy="15" r="3.6" fill="#6FC08C"/></pattern>
-<pattern id="b3c" width="34" height="24" patternUnits="userSpaceOnUse">
-<rect width="34" height="24" fill="#3E8B62"/><circle cx="9" cy="7" r="4.6" fill="#58B368"/><circle cx="25" cy="16" r="4" fill="#58B368"/></pattern></defs>
-<rect width="800" height="500" fill="url(#p3)"/>
-<circle cx="654" cy="96" r="44" fill="#FFD166"/>
-<g fill="#fff"><ellipse cx="176" cy="88" rx="54" ry="30"/><ellipse cx="226" cy="98" rx="38" ry="22"/></g>
-<path d="M0 216 Q190 168 380 204 T800 180 V500 H0Z" fill="#A8D8B9"/>
-<path d="M298 296 Q460 264 660 282 T800 280 V340 Q560 362 420 344 T298 324Z" fill="#7FD1E0"/>
-<g stroke="#fff" stroke-width="3" opacity=".5" fill="none">
-<path d="M410 302q80-8 160 0t150-4"/><path d="M452 320q80-8 160 0t120-4"/></g>
-<g fill="#C4703F"><path d="M470 296h48l-7 14h-34z"/><rect x="491" y="272" width="4" height="24"/><path d="M495 272l18 12-18 3z" fill="#fff"/></g>
-<path d="M0 334 Q220 302 440 328 T800 312 V500 H0Z" fill="url(#b3a)"/>
-<path d="M0 334 Q220 302 440 328 T800 312" stroke="#A8E0B8" stroke-width="5" fill="none" opacity=".75"/>
-<path d="M0 390 Q240 358 460 386 T800 370 V500 H0Z" fill="url(#b3b)"/>
-<path d="M0 390 Q240 358 460 386 T800 370" stroke="#8FD3A4" stroke-width="5" fill="none" opacity=".65"/>
-<path d="M0 448 Q250 418 470 446 T800 432 V500 H0Z" fill="url(#b3c)"/>
-<path d="M0 448 Q250 418 470 446 T800 432" stroke="#6FC08C" stroke-width="5" fill="none" opacity=".55"/></svg>`,
-
-/* Eravikulam — a tahr on the ridge */
-tahr:()=>`<svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-<defs><linearGradient id="p4" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0" stop-color="#9CD8F0"/><stop offset=".68" stop-color="#EAF7FC"/></linearGradient></defs>
-<rect width="800" height="500" fill="url(#p4)"/>
-<circle cx="640" cy="102" r="46" fill="#FFD166"/>
-<g fill="#fff"><ellipse cx="196" cy="96" rx="56" ry="30"/><ellipse cx="248" cy="106" rx="38" ry="22"/><ellipse cx="470" cy="70" rx="40" ry="22"/></g>
-<path d="M0 254 Q180 208 370 246 T800 224 V500 H0Z" fill="#A8D8B9"/>
-<path d="M0 306 Q200 262 400 298 T800 278 V500 H0Z" fill="#7FC79A"/>
-<path d="M516 306l72-100 84 100z" fill="#B9DCEA"/>
-<path d="M588 206l84 100h-48z" fill="#A2CEDF"/>
-<path d="M0 386 Q190 350 380 380 T800 362 V500 H0Z" fill="#4FA96B"/>
-<path d="M0 440 Q210 408 410 434 T800 420 V500 H0Z" fill="#3E8B62"/>
-<g transform="translate(390 372) scale(1.34) translate(-390 -372)" fill="#2F6B52">
-<path d="M322 372c-6-17 6-29 24-30l56-2c16-1 27 8 28 23l1 11-109 2z"/>
-<path d="M310 354c-12-5-19 1-18 11 1 9 10 14 20 13l15-2-2-19z"/>
-<path d="M312 346c-7-15-20-23-34-23 14 7 22 15 25 26zm14 2c6-15 18-22 32-22-13 6-21 13-24 24z"/>
-<rect x="332" y="374" width="10" height="22" rx="5"/><rect x="354" y="376" width="10" height="20" rx="5"/>
-<rect x="392" y="374" width="10" height="22" rx="5"/><rect x="412" y="376" width="10" height="20" rx="5"/></g>
-<g stroke="#58B368" stroke-width="4" stroke-linecap="round">
-<path d="M232 424l7-22M250 428l9-24M270 428l7-20M640 404l8-23M662 410l9-22M684 410l7-20"/></g>
-<g fill="#FFD166"><circle cx="292" cy="420" r="6"/><circle cx="612" cy="400" r="6"/><circle cx="188" cy="446" r="5"/><circle cx="712" cy="438" r="5"/></g></svg>`,
-
-/* Alleppey — the houseboat at golden hour */
-boat:()=>`<svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-<defs><linearGradient id="p5" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0" stop-color="#8ED2EE"/><stop offset=".55" stop-color="#DCF0F8"/>
-<stop offset=".82" stop-color="#FFE0B0"/><stop offset="1" stop-color="#FFC98A"/></linearGradient></defs>
-<rect width="800" height="500" fill="url(#p5)"/>
-<circle cx="620" cy="212" r="52" fill="#FFD166"/><circle cx="620" cy="212" r="78" fill="#FFD166" opacity=".22"/>
-<g fill="#fff"><ellipse cx="176" cy="92" rx="58" ry="32"/><ellipse cx="230" cy="104" rx="40" ry="24"/><ellipse cx="470" cy="66" rx="42" ry="24"/></g>
-<g fill="#4FA96B">
-<rect x="78" y="212" width="12" height="120" rx="6"/>
-<path d="M84 212c-38-6-60-22-68-46 22 15 46 22 68 24zm0 0c38-6 60-22 68-46-22 15-46 22-68 24z"/>
-<path d="M84 212c-18-20-24-42-20-66 9 22 18 38 24 49zm0 0c18-20 24-42 20-66-9 22-18 38-24 49z"/>
-<rect x="188" y="248" width="10" height="86" rx="5"/>
-<path d="M193 248c-32-5-50-18-58-38 19 12 39 18 58 20zm0 0c32-5 50-18 58-38-19 12-39 18-58 20z"/></g>
-<rect y="332" width="800" height="168" fill="#4FB8CE"/>
-<g stroke="#fff" stroke-width="4" opacity=".35" fill="none">
-<path d="M60 372q60-10 120 0t120-4"/><path d="M440 420q64-10 128 0t128-4"/><path d="M120 462q76-10 152 0t152-4"/></g>
-<g transform="translate(150 246)">
-<path d="M0 86h500l-42 42H42z" fill="#B8763F"/>
-<path d="M20 86h460l-12-10H32z" fill="#D8925A"/>
-<path d="M54 58h392v28H54z" fill="#E8AE72"/>
-<path d="M62 58q188-84 376 0z" fill="#D8925A"/>
-<g stroke="#B8763F" stroke-width="3" opacity=".55" fill="none"><path d="M112 58q150-62 300 0M164 58q110-52 220 0M216 58q68-42 136 0"/></g>
-<rect x="228" y="66" width="46" height="20" rx="5" fill="#FB7A5C"/><rect x="266" y="66" width="46" height="20" rx="5" fill="#FFD166"/>
-<g fill="#FB7A5C"><circle cx="100" cy="48" r="6"/><circle cx="152" cy="40" r="6"/><circle cx="206" cy="35" r="6"/><circle cx="262" cy="33" r="6"/>
-<circle cx="318" cy="35" r="6"/><circle cx="372" cy="40" r="6"/><circle cx="424" cy="48" r="6"/></g>
-<path d="M98 48q164-20 328 0" stroke="#fff" stroke-width="2.5" fill="none" opacity=".8"/>
-<rect x="466" y="38" width="5" height="22" fill="#B8763F"/><path d="M466 38l22 11-22 5z" fill="#FFD166"/></g>
-<g fill="#FFD166" opacity=".3"><rect x="220" y="332" width="360" height="30" rx="14"/></g></svg>`,
-
-/* Fort Kochi — fishing nets in the afternoon */
-nets:()=>`<svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-<defs><linearGradient id="p6" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0" stop-color="#9CD8F0"/><stop offset=".56" stop-color="#FFE6C4"/>
-<stop offset=".84" stop-color="#FFC9A8"/><stop offset="1" stop-color="#FFB08A"/></linearGradient></defs>
-<rect width="800" height="500" fill="url(#p6)"/>
-<circle cx="470" cy="252" r="48" fill="#FFD166"/>
-<g fill="#fff"><ellipse cx="160" cy="92" rx="58" ry="32"/><ellipse cx="216" cy="104" rx="40" ry="24"/><ellipse cx="640" cy="72" rx="46" ry="26"/></g>
-<rect y="320" width="800" height="180" fill="#4FB8CE"/>
-<rect y="320" width="800" height="8" fill="#fff" opacity=".35"/>
-<g fill="#FFD166" opacity=".35"><rect x="430" y="328" width="80" height="172" rx="14"/></g>
-<g stroke="#fff" stroke-width="4" opacity=".3" fill="none">
-<path d="M40 366q60-10 120 0t120-4"/><path d="M380 416q70-10 140 0t140-4"/><path d="M100 462q80-10 160 0t160-4"/></g>
-<g stroke="#8A6242" fill="none" stroke-linecap="round">
-<g stroke-width="11"><path d="M186 480L300 190"/><path d="M300 190l100 48"/></g>
-<g stroke-width="5" opacity=".9"><path d="M300 190L214 238"/><path d="M400 238q-8 80-62 126"/></g>
-<g stroke-width="3" opacity=".6"><path d="M400 238l-32 126M400 238l-64 126M400 238l-94 126M400 238l14 126M400 238l46 118"/></g>
-<path d="M212 364h190" stroke-width="4"/></g>
-<g stroke="#8A6242" fill="none" stroke-linecap="round">
-<g stroke-width="10"><path d="M576 480L680 218"/><path d="M680 218l88 42"/></g>
-<g stroke-width="4.5" opacity=".9"><path d="M680 218L598 260"/><path d="M768 260q-8 68-56 108"/></g>
-<g stroke-width="2.6" opacity=".55"><path d="M768 260l-28 108M768 260l-56 108M768 260l-84 108M768 260l12 108M768 260l40 102"/></g>
-<path d="M596 368h172" stroke-width="3"/></g>
-<g fill="#8A6242"><path d="M74 400h86l-10 16H84z"/><path d="M86 392h62l-6 8H92z"/><rect x="114" y="368" width="4" height="24"/></g></svg>`,
-
-/* Kochi — sunset cruise past the skyline */
-cruise:()=>`<svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-<defs><linearGradient id="p7" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0" stop-color="#8FA9E8"/><stop offset=".52" stop-color="#C6D6F5"/>
-<stop offset=".84" stop-color="#FFD9BE"/><stop offset="1" stop-color="#FFC0A0"/></linearGradient></defs>
-<rect width="800" height="500" fill="url(#p7)"/>
-<g fill="#fff"><circle cx="118" cy="72" r="3.4"/><circle cx="226" cy="46" r="2.8"/><circle cx="330" cy="98" r="2.4"/>
-<circle cx="70" cy="134" r="2.6"/><circle cx="430" cy="56" r="3"/><circle cx="548" cy="92" r="2.4"/><circle cx="716" cy="62" r="3.2"/><circle cx="640" cy="150" r="2.2"/></g>
-<path d="M666 56a30 30 0 1 0 0 60 24 24 0 1 1 0-60z" fill="#FFF3C4"/>
-<g fill="#8B7BE8"><rect x="60" y="252" width="42" height="80" rx="6"/><rect x="110" y="222" width="32" height="110" rx="6"/>
-<rect x="150" y="266" width="50" height="66" rx="6"/><rect x="208" y="240" width="28" height="92" rx="6"/></g>
-<g fill="#6FBEE4"><rect x="244" y="278" width="56" height="54" rx="6"/><rect x="308" y="256" width="36" height="76" rx="6"/>
-<rect x="352" y="286" width="46" height="46" rx="6"/><rect x="556" y="268" width="32" height="64" rx="6"/>
-<rect x="596" y="248" width="26" height="84" rx="6"/><rect x="630" y="282" width="44" height="50" rx="6"/>
-<rect x="682" y="262" width="30" height="70" rx="6"/><rect x="720" y="288" width="48" height="44" rx="6"/></g>
-<circle cx="466" cy="286" r="46" fill="none" stroke="#FB7A5C" stroke-width="7"/>
-<g stroke="#FB7A5C" stroke-width="4"><path d="M466 286v-46M466 286l40-23M466 286l40 23M466 286v46M466 286l-40 23M466 286l-40-23"/></g>
-<path d="M418 332h96" stroke="#FB7A5C" stroke-width="6" stroke-linecap="round"/>
-<g fill="#FFD166"><rect x="66" y="268" width="8" height="10" rx="2"/><rect x="80" y="290" width="8" height="10" rx="2"/><rect x="118" y="240" width="8" height="10" rx="2"/>
-<rect x="160" y="282" width="8" height="10" rx="2"/><rect x="216" y="258" width="8" height="10" rx="2"/><rect x="254" y="296" width="8" height="10" rx="2"/>
-<rect x="318" y="274" width="8" height="10" rx="2"/><rect x="362" y="298" width="8" height="10" rx="2"/><rect x="566" y="286" width="8" height="10" rx="2"/>
-<rect x="606" y="266" width="8" height="10" rx="2"/><rect x="640" y="298" width="8" height="10" rx="2"/><rect x="692" y="280" width="8" height="10" rx="2"/><rect x="730" y="300" width="8" height="10" rx="2"/></g>
-<rect y="332" width="800" height="168" fill="#5FA8D8"/>
-<g fill="#FFD9BE" opacity=".35"><rect x="640" y="332" width="90" height="168" rx="16"/></g>
-<g stroke="#fff" stroke-width="4" opacity=".3" fill="none">
-<path d="M40 376q60-10 120 0t120-4"/><path d="M400 424q70-10 140 0t140-4"/><path d="M120 462q80-10 160 0t160-4"/></g>
-<g transform="translate(250 300)">
-<path d="M0 46h190l-16 26H16z" fill="#fff"/><path d="M14 32h162v14H14z" fill="#EAF2FA"/>
-<rect x="80" y="8" width="32" height="20" rx="5" fill="#DCE8F5"/>
-<g fill="#FFD166"><rect x="26" y="36" width="13" height="8" rx="3"/><rect x="52" y="36" width="13" height="8" rx="3"/><rect x="78" y="36" width="13" height="8" rx="3"/>
-<rect x="104" y="36" width="13" height="8" rx="3"/><rect x="130" y="36" width="13" height="8" rx="3"/><rect x="152" y="36" width="13" height="8" rx="3"/></g>
-<rect x="86" y="12" width="9" height="9" rx="2" fill="#FFD166"/><rect x="99" y="12" width="9" height="9" rx="2" fill="#FFD166"/>
-<rect x="95" y="-10" width="3" height="18" fill="#B9CBE0"/><circle cx="96" cy="-13" r="4" fill="#FB7A5C"/></g></svg>`,
-
-/* Salem — an easy dawn highway */
-highway:()=>`<svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-<defs><linearGradient id="p8" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0" stop-color="#8ED2EE"/><stop offset=".6" stop-color="#E4F4FA"/>
-<stop offset=".88" stop-color="#FFE9C4"/></linearGradient></defs>
-<rect width="800" height="500" fill="url(#p8)"/>
-<circle cx="470" cy="196" r="48" fill="#FFD166"/><circle cx="470" cy="196" r="72" fill="#FFD166" opacity=".22"/>
-<g fill="#fff"><ellipse cx="176" cy="88" rx="58" ry="32"/><ellipse cx="232" cy="100" rx="40" ry="24"/><ellipse cx="660" cy="72" rx="46" ry="26"/></g>
-<path d="M0 232 Q180 190 360 224 T800 202 V500 H0Z" fill="#A8D8B9"/>
-<path d="M0 272 Q200 236 400 266 T800 248 V500 H0Z" fill="#7FC79A"/>
-<path d="M0 320 Q220 288 440 314 T800 300 V500 H0Z" fill="#5BAE7C"/>
-<rect y="388" width="800" height="112" fill="#8FD3A4"/>
-<path d="M42 500L352 388h96l310 112z" fill="#C7D0D3"/>
-<path d="M42 500L352 388h12L74 500z" fill="#DFE6E8"/><path d="M758 500L448 388h-12l316 112z" fill="#DFE6E8"/>
-<g fill="#fff"><rect x="392" y="396" width="9" height="13" rx="3"/><rect x="388" y="422" width="16" height="22" rx="5"/>
-<rect x="382" y="460" width="28" height="34" rx="7"/></g>
-<g fill="#4FA96B">
-<rect x="104" y="286" width="11" height="92" rx="5"/>
-<path d="M109 286c-34-6-54-20-62-42 20 14 42 20 62 22zm0 0c34-6 54-20 62-42-20 14-42 20-62 22z"/>
-<path d="M109 286c-16-18-22-38-18-60 8 20 16 34 22 44zm0 0c16-18 22-38 18-60-8 20-16 34-22 44z"/>
-<rect x="704" y="306" width="9" height="70" rx="4"/>
-<path d="M708 306c-28-5-44-16-50-34 16 11 34 16 50 18zm0 0c28-5 44-16 50-34-16 11-34 16-50 18z"/></g>
-<g><rect x="196" y="404" width="64" height="21" rx="10" fill="#F2A32C"/><rect x="207" y="391" width="42" height="15" rx="7" fill="#FFC55E"/>
-<circle cx="212" cy="428" r="8" fill="#2A3830"/><circle cx="246" cy="428" r="8" fill="#2A3830"/>
-<circle cx="256" cy="404" r="5" fill="#FFF0B8"/></g>
-<g fill="#FFD166"><rect x="60" y="440" width="24" height="40" rx="8"/></g>
-<g fill="#FB7A5C"><rect x="60" y="440" width="24" height="16" rx="8"/></g></svg>`,
-
-/* Home — a lit window on the last night */
-home:()=>`<svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-<defs><linearGradient id="p9" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0" stop-color="#6E7FD0"/><stop offset=".55" stop-color="#A9B8EC"/>
-<stop offset=".86" stop-color="#F3CFE0"/><stop offset="1" stop-color="#FFE0C8"/></linearGradient>
-<radialGradient id="pg" cx=".5" cy=".5" r=".5">
-<stop offset="0" stop-color="#FFD166" stop-opacity=".55"/><stop offset="1" stop-color="#FFD166" stop-opacity="0"/></radialGradient></defs>
-<rect width="800" height="500" fill="url(#p9)"/>
-<g fill="#fff"><circle cx="92" cy="66" r="3.2"/><circle cx="200" cy="44" r="2.8"/><circle cx="300" cy="92" r="2.4"/>
-<circle cx="400" cy="50" r="3"/><circle cx="510" cy="84" r="2.6"/><circle cx="610" cy="42" r="2.8"/>
-<circle cx="712" cy="96" r="2.6"/><circle cx="150" cy="130" r="2.2"/><circle cx="660" cy="146" r="2.2"/></g>
-<path d="M690 54a32 32 0 1 0 0 64 26 26 0 1 1 0-64z" fill="#FFF3C4"/>
-<g fill="#fff"><ellipse cx="180" cy="180" rx="52" ry="26" opacity=".55"/><ellipse cx="230" cy="190" rx="36" ry="20" opacity=".55"/></g>
-<path d="M0 336 Q180 306 360 326 T800 312 V500 H0Z" fill="#6FBFA0"/>
-<ellipse cx="330" cy="404" rx="170" ry="80" fill="url(#pg)"/>
-<g><path d="M266 336h150v134H266z" fill="#FFF6E6"/>
-<path d="M244 340L341 250l97 90z" fill="#FB7A5C"/>
-<rect x="404" y="272" width="20" height="64" rx="4" fill="#E8695A"/>
-<rect x="292" y="360" width="54" height="46" rx="8" fill="#FFD166"/><rect x="300" y="368" width="38" height="30" rx="5" fill="#FFF0B8"/>
-<path d="M292 383h54M319 360v46" stroke="#E8AE72" stroke-width="4"/>
-<rect x="368" y="376" width="42" height="94" rx="6" fill="#C4703F"/><circle cx="402" cy="424" r="5" fill="#FFD166"/></g>
-<rect y="462" width="800" height="38" fill="#4FA96B"/>
-<path d="M341 470h22l72 30H268z" fill="#8FD3A4"/>
-<path d="M346 470h14l40 30h-70z" fill="#FFD166" opacity=".35"/>
-<g fill="#3E8B62">
-<rect x="128" y="330" width="14" height="112" rx="7"/>
-<path d="M135 332c-40-11-63-31-70-58 26 20 54 31 70 35z"/>
-<path d="M135 332c40-11 63-31 70-58-26 20-54 31-70 35z"/>
-<path d="M135 332c-16-22-21-46-14-70 7 24 14 43 20 58z"/>
-<path d="M135 332c16-22 21-46 14-70-7 24-14 43-20 58z"/>
-<rect x="612" y="346" width="11" height="94" rx="5"/>
-<path d="M617 348c-32-9-50-25-56-46 21 16 43 25 56 28z"/>
-<path d="M617 348c32-9 50-25 56-46-21 16-43 25-56 28z"/>
-<path d="M617 348c-13-18-17-37-11-56 6 19 11 34 16 46z"/>
-<path d="M617 348c13-18 17-37 11-56-6 19-11 34-16 46z"/></g>
-<g stroke="#3E8B62" stroke-width="6" fill="none" stroke-linecap="round"><path d="M520 462v-34M556 462v-34M520 440h36M520 452h36"/></g></svg>`,
-
-fallback:()=>`<svg viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-<defs><linearGradient id="pf" x1="0" y1="0" x2="0" y2="1">
-<stop offset="0" stop-color="#8ED2EE"/><stop offset="1" stop-color="#FFE0B0"/></linearGradient></defs>
-<rect width="800" height="500" fill="url(#pf)"/>
-<circle cx="600" cy="160" r="52" fill="#FFD166"/>
-<path d="M0 320 Q200 280 400 306 T800 292 V500 H0Z" fill="#5BAE7C"/></svg>`
-};
-
 /* ======================= itinerary data ======================= */
 const DAYS=[
 {dow:"Sat",date:"24 Oct",short:"24",title:"Potheri to Madurai",c:"#FB7A5C",art:"gopuram",km:430,night:"Sterling V Grand Madurai",
@@ -813,317 +882,6 @@ const CHK={book:[
  ["p3","Baby carrier, light stroller, spare clothes, rain cover"]]};
 const CAR={showroom:"https://tata.cars/digital-showroom.html?modelId=5-20YZDK9N&pplId=1-1XMV72TV"};
 
-/* ======================= helpers ======================= */
-const $=s=>document.querySelector(s);
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-function toMin(s){
-  const m=String(s).match(/^(\d+):(\d+)\s*(AM|PM)$/i);
-  if(!m) return s==="Morning"?540:null;
-  let h=(+m[1])%12; if(m[3].toUpperCase()==="PM") h+=12;
-  return h*60+(+m[2]);
-}
-function nowIST(){
-  const q=new URLSearchParams(location.search).get("now");
-  const t=q&&q.match(/^(\d{4})-(\d\d)-(\d\d)T(\d\d):(\d\d)/);
-  if(t) return {y:+t[1],mo:+t[2],d:+t[3],min:(+t[4])*60+(+t[5])};
-  const p={};
-  new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Kolkata",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"})
-    .formatToParts(new Date()).forEach(x=>{p[x.type]=x.value;});
-  return {y:+p.year,mo:+p.month,d:+p.day,min:(+p.hour)*60+(+p.minute)};
-}
-function tripDay(n){
-  if(n.y!==2026) return 0;
-  if(n.mo===10&&n.d>=24&&n.d<=31) return n.d-23;
-  if(n.mo===11&&n.d===1) return 9;
-  return 0;
-}
-function clock(ts){ try{return new Date(ts).toLocaleTimeString("en-IN",{timeZone:"Asia/Kolkata",hour:"numeric",minute:"2-digit",hour12:true}).toUpperCase();}catch(e){return "";} }
-const navUrl=q=>"https://www.google.com/maps/dir/?api=1&travelmode=driving&destination="+encodeURIComponent(q);
-const TOTAL_KM=DAYS.reduce((a,D)=>a+D.km,0);
-const ICON={
-  go:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M12.5 5.5 19 12l-6.5 6.5"/></svg>',
-  dash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>',
-  sun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.3"/><path d="M12 2.4v2.5M12 19.1v2.5M2.4 12h2.5M19.1 12h2.5M5.2 5.2l1.8 1.8M17 17l1.8 1.8M18.8 5.2L17 7M7 17l-1.8 1.8"/></svg>',
-  partly:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.6" cy="8.2" r="3"/><path d="M8.6 1.9v1.7M2.4 8.2h1.7M4.2 3.9l1.2 1.2M13 3.9l-1.2 1.2"/><path d="M9.4 19.6h8.2a2.9 2.9 0 0 0 .3-5.8 4.3 4.3 0 0 0-8.2-.7 3.3 3.3 0 0 0-.3 6.5z"/></svg>',
-  cloud:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 18.6h9.6a3.3 3.3 0 0 0 .4-6.6 5 5 0 0 0-9.5-.8A3.8 3.8 0 0 0 7 18.6z"/></svg>',
-  rain:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 15.1h9.6a3.3 3.3 0 0 0 .4-6.6 5 5 0 0 0-9.5-.8A3.8 3.8 0 0 0 7 15.1z"/><path d="M8.8 17.6l-1 2.6M12.4 17.6l-1 2.6M16 17.6l-1 2.6"/></svg>',
-  storm:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 14.6h9.6a3.3 3.3 0 0 0 .4-6.6 5 5 0 0 0-9.5-.8A3.8 3.8 0 0 0 7 14.6z"/><path d="M13.2 16.2l-2.7 3.9h3.1l-1.5 2.7"/></svg>',
-  nav:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.6 21 21l-9-4.2L3 21z"/></svg>',
-  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12.5 9.5 17.5 19.5 6.5"/></svg>',
-  chev:'<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>',
-  pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.6s7-5.7 7-11.2a7 7 0 1 0-14 0c0 5.5 7 11.2 7 11.2z"/><circle cx="12" cy="10.4" r="2.7"/></svg>',
-  spark:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l2.2 5.6L20 11l-5.8 2.4L12 19l-2.2-5.6L4 11l5.8-2.4z"/></svg>',
-  star:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.5l2.7 5.6 6 .8-4.4 4.2 1.1 6-5.4-2.9-5.4 2.9 1.1-6L3.3 9.9l6-.8z"/></svg>',
-  car:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 13.5l1.6-4.4A2.4 2.4 0 0 1 6.9 7.5h10.2a2.4 2.4 0 0 1 2.3 1.6L21 13.5v4h-18z"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg>',
-  undo:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 8.5h9a5 5 0 0 1 0 10H8"/><path d="M8.5 4.5 4.5 8.5l4 4"/></svg>',
-  clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>',
-  bed:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-7h14a4 4 0 0 1 4 4v3M3 11V7"/><circle cx="8" cy="9.5" r="2"/></svg>'
-};
-
-/* ======================= state ======================= */
-const KEY="kerala-trip-2026-app";
-let S={got:{},skip:{},loc:{},chk:{},paint:0};
-try{ Object.assign(S,JSON.parse(localStorage.getItem(KEY)||"{}")); }catch(e){}
-function save(){ try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){} }
-
-function stopsOf(i){
-  const D=DAYS[i], st=D.stay;
-  const list=D.places.map((p,j)=>({k:i+"."+j,n:p.n,d:p.d,q:p.q,t:p.t||"",w:p.w||"",alt:!!p.alt,rl:p.rl||"Reached"}));
-  list.push({k:i+".s",n:st.n,d:st.t,q:S.loc[st.sid]||st.q,t:st.at,w:st.w||"",alt:false,rl:st.rl,stay:st});
-  return list.map((s,x)=>({s,x,m:s.t?toMin(s.t):null}))
-    .sort((a,b)=>((a.s.alt?1:0)-(b.s.alt?1:0))||((a.m===null?9999:a.m)-(b.m===null?9999:b.m))||(a.x-b.x))
-    .map(o=>o.s);
-}
-const isDone=s=>!!S.got[s.k]||!!S.skip[s.k];
-const nextStop=i=>{ const L=stopsOf(i); return L.find(s=>!s.alt&&!isDone(s))||null; };
-function dayProg(i){ const L=stopsOf(i).filter(s=>!s.alt); return {d:L.filter(isDone).length,n:L.length}; }
-function allProg(){ let d=0,n=0; DAYS.forEach((_,i)=>{const p=dayProg(i); d+=p.d; n+=p.n;}); return {d,n}; }
-
-/* ======================= photos ======================= */
-const IMGK="kerala-trip-2026-photos";
-let IMG={}; try{ IMG=JSON.parse(localStorage.getItem(IMGK)||"{}"); }catch(e){}
-async function photoFor(w){
-  const list=(w||"").split("|").filter(Boolean);
-  for(const t of list) if(IMG[t]&&IMG[t].s) return IMG[t];
-  const need=list.filter(t=>IMG[t]===undefined);
-  if(!need.length) return null;
-  try{
-    const url="https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&redirects=1&prop=pageimages&piprop=thumbnail&pithumbsize=1200&titles="+encodeURIComponent(need.join("|"));
-    const j=await (await fetch(url)).json();
-    const norm={},redir={},by={};
-    (j.query&&j.query.normalized||[]).forEach(x=>norm[x.from]=x.to);
-    (j.query&&j.query.redirects||[]).forEach(x=>redir[x.from]=x.to);
-    Object.values(j.query&&j.query.pages||{}).forEach(pg=>{ if(pg.thumbnail&&pg.thumbnail.source) by[pg.title]={s:pg.thumbnail.source,p:pg.title}; });
-    need.forEach(t=>{ let x=norm[t]||t; x=redir[x]||x; IMG[t]=by[x]||0; });
-    try{ localStorage.setItem(IMGK,JSON.stringify(IMG)); }catch(e){}
-  }catch(e){}
-  for(const t of list) if(IMG[t]&&IMG[t].s) return IMG[t];
-  return null;
-}
-
-
-/* ======================= rail ======================= */
-function railHtml(){
-  return DAYS.map((D,i)=>{
-    const p=dayProg(i), done=p.n&&p.d===p.n;
-    return `<button class="chip ${done?"done":""}" style="--c:${D.c}" data-go="day" data-v="${i}"
-      ${i===VD?'aria-current="true"':""} aria-label="Day ${i+1}, ${D.dow} ${D.date}: ${esc(D.title)}">
-      <small>${D.dow}</small><b>${D.short}</b></button>`;
-  }).join("");
-}
-
-/* ======================= day view ======================= */
-function spineNode(s,i,state,expanded){
-  const when=s.t||(s.alt?"":"Anytime");
-  const tag=s.stay?`<em class="sp-tag">Tonight</em>`:(s.alt?`<em class="sp-tag maybe">Maybe</em>`:"");
-  const glyph=state==="done"?ICON.check:state==="skip"?ICON.dash:"";
-  return `<li class="sp ${state}" data-v="${s.k}">
-    <span class="sp-t">${esc(when)}</span>
-    <span class="sp-rail"><i class="sp-dot">${glyph}</i></span>
-    <div class="sp-bd">
-      <button class="sp-h" data-go="open" data-v="${s.k}">
-        <b>${esc(s.n)}</b>${tag}
-        <span class="sr">${state==="done"?"Done. Tap the tick to undo.":state==="skip"?"Skipped. Tap the tick to undo.":"Open details"}</span>
-      </button>
-      ${expanded?`<p class="sp-d">${esc(s.d||"")}</p>
-      <div class="sp-act">
-        <a class="btn btn-primary btn-w" href="${navUrl(s.q)}" target="_blank" rel="noopener">${ICON.nav}Navigate</a>
-        <button class="btn btn-w" data-go="got" data-v="${s.k}">${esc(s.rl||"Reached")}</button>
-      </div>`:""}
-    </div>
-  </li>`;
-}
-function spineHtml(i){
-  const D=DAYS[i], L=stopsOf(i), nx=nextStop(i);
-  const planned=L.filter(s=>!s.alt), optional=L.filter(s=>s.alt);
-  const rows=planned.map(s=>{
-    const st=S.got[s.k]?"done":S.skip[s.k]?"skip":(nx&&nx.k===s.k?"next":"");
-    return spineNode(s,i,st,st==="next");
-  });
-  if(planned.length&&planned.every(isDone)){
-    const nd=i<DAYS.length-1?stopsOf(i+1).find(s=>!s.alt):null;
-    const last=planned[planned.length-1];
-    rows.push(`<li class="sp sp-end">
-      <span class="sp-t"></span>
-      <span class="sp-rail"><i class="sp-dot">${ICON.star}</i></span>
-      <div class="sp-bd">
-        <b>${i<DAYS.length-1?"Day complete":"Trip complete"}</b>
-        <p class="sp-d">${nd?`Tomorrow starts with ${esc(nd.n)}${nd.t?" at "+esc(nd.t):""}.`:"Safe travels home."}</p>
-        <div class="sp-act">${nd?`<button class="btn btn-primary btn-w" data-go="day" data-v="${i+1}">Open day ${i+2}</button>`:""}</div>
-        ${last?`<button class="btn btn-quiet" style="width:100%;margin-top:9px" data-go="undo" data-v="${last.k}">${ICON.undo}Undo \u201C${esc(last.n)}\u201D</button>`:""}
-      </div>
-    </li>`);
-  }
-  return `<ol class="spine" style="--c:${D.c}">${rows.join("")}</ol>`;
-}
-
-function viewDay(){
-  const i=VD, D=DAYS[i], n=nowIST(), td=tripDay(n), isToday=td===i+1;
-  const planned=stopsOf(i).filter(s=>!s.alt);
-  const doneN=planned.filter(isDone).length;
-  const pct=planned.length?Math.round(doneN/planned.length*100):0;
-  const items=D.tl.map(t=>({t,m:toMin(t[0])}));
-  let cur=-1;
-  if(isToday) items.forEach((o,x)=>{ if(o.m!==null&&o.m<=n.min) cur=x; });
-  const art=(ART[D.art]||ART.fallback||"")();
-  const wx=wxHtml(i);
-  return `<div class="dayview" style="--c:${D.c}">
-    <header class="band">
-      <p class="band-eye">${esc(D.dow)} ${esc(D.date)} \u00b7 ${D.km} km</p>
-      <h1>${esc(D.title)}${D.badge?`<span class="pill">${esc(D.badge)}</span>`:""}</h1>
-      ${wx?`<div class="band-wx">${wx}</div>`:""}
-    </header>
-
-    <div class="post-art${wxSky(i)}"><div class="art-in">${art}</div><i class="sky s1"></i><i class="sky s2"></i></div>
-
-    <div class="wrap">
-    <div class="prog" style="--c:${D.c};--p:${pct}%">
-      <span class="prog-bar"><u></u></span>
-      <span class="prog-l">${doneN} of ${planned.length}</span>
-    </div>
-
-    ${spineHtml(i)}
-    ${extraHtml(i)}
-
-    <details class="acc" style="--c:${D.c}">
-      <summary>${ICON.clock}Hour by hour<span class="chev">${ICON.chev}</span></summary>
-      <div class="acc-bd"><ol class="tl">${items.map((o,x)=>
-        `<li class="${o.t[2]?"key":""} ${x<cur?"past":""} ${x===cur?"now":""}"><time>${esc(o.t[0])}</time><p>${o.t[1]}</p></li>`
-      ).join("")}</ol></div>
-    </details>
-    <details class="acc" style="--c:${D.c}">
-      <summary>${ICON.spark}Good to know<span class="chev">${ICON.chev}</span></summary>
-      <div class="acc-bd"><ul class="tips">${D.tip.map(t=>`<li>${esc(t)}</li>`).join("")}</ul></div>
-    </details>
-    </div>
-  </div>`;
-}
-
-/* ======================= route view ======================= */
-function viewRoute(){
-  const n=nowIST(), td=tripDay(n), p=allProg(), pc=p.n?Math.round(100*p.d/p.n):0;
-  let when="";
-  if(!td){
-    const left=Math.round((Date.UTC(2026,9,24)-Date.UTC(n.y,n.mo-1,n.d))/864e5);
-    when=left===1?"Starts tomorrow.":left>1?"Starts in "+left+" days.":"";
-  } else if(td<=9) when="Today is day "+td+" of 9.";
-  return `<div class="wrap">
-    <h1 class="page-h">Kerala <em>by road</em> 🛣️</h1>
-    <h2 class="eye">The four of us</h2>
-    <p class="crew-line">Doing it the slow way 🧡</p>
-    <div class="strip-x">
-      <figure class="shot">
-        <img src="photos/us-1.jpg" alt="The four of us outside Palais de Mahé"
-             width="1000" height="1250" decoding="async">
-      </figure>
-      <figure class="shot">
-        <img src="photos/us-2.jpg" alt="The four of us on the beach"
-             width="1000" height="1250" loading="lazy" decoding="async">
-      </figure>
-    </div>
-    <p class="page-lede">Nine days, 24 October to 1 November 2026. Madurai for the wedding, up to Munnar, a birthday night on an Alleppey houseboat, then Kochi and home through Salem.</p>
-    <p class="stat">${p.d} of ${p.n} stops done${when?` <span>· ${when}</span>`:""}</p>
-    <div class="bar" style="--p:${pc}%"><u></u></div>
-    <h2 class="eye">The nine days</h2>
-    <div class="days">${DAYS.map((D,i)=>{
-      const q=dayProg(i);
-      return `<button class="day" data-go="day" data-v="${i}" style="--c:${D.c}">
-        <span class="day-no">${i+1}</span>
-        <span><span class="day-dt">${D.dow} ${D.date}</span><span class="day-ti">${esc(D.title)}</span>
-        <span class="day-sub">Night · ${esc(D.night)}</span></span>
-        <span class="day-km num">${D.km} km<em class="${q.d?"":"zero"}">${q.d}/${q.n}</em></span>
-      </button>`;
-    }).join("")}</div>
-    <h2 class="eye">ℹ️ The road</h2>
-    <div class="rows" style="padding:16px">
-      <p class="note-p">About ${TOTAL_KM.toLocaleString("en-IN")} km door to door, in the Tata Safari. Two adults, a 2-year-old and an infant.</p>
-      <p class="hint">Timings, fares and opening hours are planning estimates — confirm them when you book.</p>
-    </div>
-  </div>`;
-}
-
-/* ======================= money view ======================= */
-function ledger(list,total){
-  const rows=list.map(([l,v])=>`<li><span class="l">${esc(l)}</span><i class="d"></i><b class="num">${esc(v)}</b></li>`).join("");
-  return `<ul class="ledger">${rows}${total?`<li class="tot"><span class="l">Total</span><i class="d"></i><b class="num">${esc(total)}</b></li>`:""}</ul>`;
-}
-function chkList(arr){
-  return `<ul class="chk">${arr.map(([k,t,def])=>
-    `<li><label><input type="checkbox" data-k="${k}" ${(k in S.chk?S.chk[k]:!!def)?"checked":""}><span>${esc(t)}</span></label></li>`
-  ).join("")}</ul>`;
-}
-function viewInfo(){
-  return `<div class="wrap">
-    <h1 class="page-h">Money <em>&amp; prep</em></h1>
-    <h2 class="eye">What it costs</h2>
-    <div class="rows">${ledger(COSTS,"₹95,500")}</div>
-    <p class="hint">Diesel at about ₹99.55 a litre, the Safari at roughly 12 km per litre on this mix of highway and ghat. The Munnar nights use ₹7,000 each until you enter your booked rates.</p>
-    <h2 class="eye">Each night</h2>
-    <div class="rows">${ledger(NIGHTS)}</div>
-    <p class="hint">Aim for the houseboat at or just under your ₹10,000 limit: an AC one-bedroom with meals.</p>
-    <h2 class="eye">✅ Before you go</h2>
-    <div class="rows" style="padding-top:16px"><h3 style="font:800 18px/1.3 var(--display);padding:0 16px">Book this week</h3>${chkList(CHK.book)}</div>
-    <h2 class="eye">🌦️ Check on 23 and 24 Oct</h2>
-    <div class="rows">${chkList(CHK.check)}</div>
-    <h2 class="eye">🎒 Pack</h2>
-    <div class="rows">${chkList(CHK.pack)}</div>
-    <p class="hint">Ticks and reached marks stay on this device only.</p>
-    <button class="btn btn-quiet" style="margin-top:12px;background:var(--paper)" data-go="reset">Clear all ticks and marks</button>
-  </div>`;
-}
-
-
-/* ======================= sheet ======================= */
-let openKey=null;
-function stopByKey(k){ const i=+String(k).split(".")[0]; return {i,s:stopsOf(i).find(x=>x.k===k)}; }
-function sheetHtml(i,s){
-  const D=DAYS[i], got=S.got[s.k], skip=S.skip[s.k];
-  const edit=s.stay&&s.stay.sid!=="home";
-  return `<div class="scrim" data-go="close"></div>
-  <div class="panel" style="--c:${D.c}">
-    <div class="grab"></div>
-    <div class="panel-bd">
-      <span class="pmeta">Day ${i+1} · ${D.dow} ${D.date}${s.t?" · "+esc(s.t):""}</span>
-      <h2 id="sheet-h" style="margin-top:10px">${esc(s.n)}</h2>
-      <p class="ptext">${esc(s.d)}</p>
-      <div id="sheet-ph"></div>
-      <div class="act">
-        <a class="btn btn-primary" href="${navUrl(S.loc[s.stay?s.stay.sid:s.k]||s.q)}" target="_blank" rel="noopener">${ICON.nav}Navigate</a>
-        ${got||skip?`<button class="btn" data-go="undo" data-v="${s.k}">${ICON.undo}Undo</button>`
-                  :`<button class="btn btn-leaf" data-go="got" data-v="${s.k}">${esc(s.rl)}</button>`}
-        ${!got&&!skip&&!s.stay?`<button class="btn btn-quiet" style="background:var(--paper-2)" data-go="skip" data-v="${s.k}">Skip</button>`:""}
-        ${edit&&!got?`<button class="btn btn-quiet" style="background:var(--paper-2)" data-go="edit" data-v="${s.stay.sid}">Set location</button>`:""}
-      </div>
-      ${got?`<p class="marked">Marked at ${esc(clock(got))}.</p>`:""}
-    </div>
-  </div>`;
-}
-function openSheet(k){
-  const {i,s}=stopByKey(k); if(!s) return;
-  const el=$("#sheet");
-  el.innerHTML=sheetHtml(i,s);
-  el.hidden=false; openKey=k;
-  document.body.style.overflow="hidden";
-  try{ history.pushState({sheet:k},""); }catch(e){}
-  const btn=el.querySelector(".panel .btn"); if(btn) btn.focus({preventScroll:true});
-  if(s.w){
-    photoFor(s.w).then(ph=>{
-      const box=$("#sheet-ph");
-      if(!box||!ph||openKey!==k) return;
-      box.innerHTML=`<figure><img src="${ph.s}" alt="${esc(s.n)}"></figure>
-        <p class="cap">Photo: <a href="https://en.wikipedia.org/wiki/${encodeURIComponent(ph.p.replace(/ /g,"_"))}" target="_blank" rel="noopener">Wikipedia</a></p>`;
-    });
-  }
-}
-function closeSheet(){
-  const el=$("#sheet");
-  if(el.hidden) return;
-  el.hidden=true; el.innerHTML=""; openKey=null;
-  document.body.style.overflow="";
-  try{ if(history.state&&history.state.sheet) history.back(); }catch(e){}
-}
-
-
 /* ======================= the menu =======================
    Every place worth knowing in each area, rated for this family rather
    than scored like a review site, each one tapped straight into driving
@@ -1178,39 +936,132 @@ const EXTRAS={
   {n:"Sripuram Golden Temple, Vellore",r:3,q:"Sripuram Golden Temple Vellore",d:"Roughly on the way, but it adds two hours and the queue is unpredictable. Only on an early start."},
   {n:"Krishnagiri dam",r:2,q:"Krishnagiri Dam",d:"A leg-stretch beside the highway. Not worth a detour of its own."}]
 };
-function stars(n){
-  return `<i class="s-on">${"\u2605".repeat(n)}</i><i class="s-off">${"\u2606".repeat(5-n)}</i>`;
-}
-function extraHtml(i){
-  const list=(EXTRAS[AREA_OF[i]]||[]).slice().sort((a,b)=>b.r-a.r);
-  if(!list.length) return "";
-  return `<h2 class="eye">More around ${esc(AREA_NAME[AREA_OF[i]]||"here")}</h2>
-    <p class="hint" style="margin:-2px 0 11px">Rated for a family with a toddler and a baby, not a review score. Tap any row for directions.</p>
-    <ol class="xlist">${list.map(x=>`<li class="x">
-      <a class="x-go" href="${navUrl(x.q)}" target="_blank" rel="noopener">
-        <span class="x-top"><span class="rate" aria-label="${x.r} of 5">${stars(x.r)}</span><b>${esc(x.n)}</b><i class="x-nav">${ICON.go}</i></span>
-        <span class="x-d">${esc(x.d)}</span>
-      </a></li>`).join("")}</ol>`;
-}
 
-/* ======================= weather =======================
-   Open-Meteo: free, no API key, no signup, CORS-enabled. One request covers
-   every stop, because it accepts comma-separated coordinates. Cached for
-   three hours; if the call fails the app simply shows no weather. */
+/* colours pulled back into print inks; the data's originals were screen-bright */
+const DAY_INK=["#C4553A","#4F8A5A","#2F8B7A","#4A7FA3","#C08A2E","#C25E46","#5B7194","#7463A8","#B85C72"];
+DAYS.forEach((D,i)=>{ D.c=DAY_INK[i]; });
+
+const REGION=[
+ ["Madurai","Tamil Nadu"],
+ ["Theni","Munnar"],
+ ["Munnar","Idukki"],
+ ["Rajamalai","Munnar"],
+ ["Alappuzha","the backwaters"],
+ ["Fort Kochi","Ernakulam"],
+ ["Kochi","Marine Drive"],
+ ["Ernakulam","Salem"],
+ ["Salem","Potheri"]];
+const AREA_TITLE={mad:"Around Madurai",theni:"On the Theni road",mun:"Around Munnar",alp:"Around Alleppey",koc:"Around Kochi",slm:"Around Salem",home:"On the way home"};
+const MAP_DAY=[1,2,2,2,3,4,4,5,0]; /* index into the map's waypoints */
+const TOTAL_KM=DAYS.reduce((a,D)=>a+D.km,0);
+const CHECK_GROUPS=[["book","Book this week"],["check","Check on 23 & 24 Oct"],["car","The car"],["pack","Pack"]];
+
+/* ======================= helpers ======================= */
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const clamp=(n,a,b)=>Math.min(b,Math.max(a,n));
+const reduceMotion=()=>{try{return matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){return false}};
+function toMin(s){
+  const m=String(s).match(/^(\d+):(\d+)\s*(AM|PM)$/i);
+  if(!m) return s==="Morning"?540:null;
+  let h=(+m[1])%12; if(m[3].toUpperCase()==="PM") h+=12;
+  return h*60+(+m[2]);
+}
+function nowIST(){
+  const q=new URLSearchParams(location.search).get("now");
+  const t=q&&q.match(/^(\d{4})-(\d\d)-(\d\d)T(\d\d):(\d\d)/);
+  if(t) return {y:+t[1],mo:+t[2],d:+t[3],min:(+t[4])*60+(+t[5])};
+  const p={};
+  new Intl.DateTimeFormat("en-GB",{timeZone:"Asia/Kolkata",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",hourCycle:"h23"})
+    .formatToParts(new Date()).forEach(x=>{p[x.type]=x.value;});
+  return {y:+p.year,mo:+p.month,d:+p.day,min:(+p.hour)*60+(+p.minute)};
+}
+function tripDay(n){
+  if(n.y!==2026) return 0;
+  if(n.mo===10&&n.d>=24&&n.d<=31) return n.d-23;
+  if(n.mo===11&&n.d===1) return 9;
+  return 0;
+}
+function clock(ts){ try{return new Date(ts).toLocaleTimeString("en-IN",{timeZone:"Asia/Kolkata",hour:"numeric",minute:"2-digit",hour12:true}).toUpperCase();}catch(e){return "";} }
+const navUrl=q=>"https://www.google.com/maps/dir/?api=1&travelmode=driving&destination="+encodeURIComponent(q);
+const fmt=n=>Number(n).toLocaleString("en-IN");
+let NOW=nowIST();
+const isToday=i=>tripDay(NOW)===i+1;
+function preTripNote(){
+  if(tripDay(NOW)) return "";
+  const days=Math.round((Date.UTC(2026,9,24)-Date.UTC(NOW.y,NOW.mo-1,NOW.d))/864e5);
+  if(days===1) return "Starts tomorrow";
+  if(days>1) return "In "+days+" days";
+  return "";
+}
+function vibrate(ms){try{navigator.vibrate&&navigator.vibrate(ms)}catch(e){}}
+
+/* ======================= state ======================= */
+const KEY="kerala-trip-2026-app";
+let S={got:{},skip:{},loc:{},chk:{}};
+try{ Object.assign(S,JSON.parse(localStorage.getItem(KEY)||"{}")); }catch(e){}
+function save(){ try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){} }
+
+function stopsOf(i){
+  const D=DAYS[i], st=D.stay;
+  const list=D.places.map((p,j)=>({k:i+"."+j,n:p.n,d:p.d,q:S.loc["p"+i+"_"+j]||p.q,t:p.t||"",w:p.w||"",alt:!!p.alt,rl:p.rl||"Reached",place:true}));
+  list.push({k:i+".s",n:st.n,d:st.t,q:S.loc[st.sid]||st.q,t:st.at,w:st.w||"",alt:false,rl:st.rl,stay:st});
+  return list.map((s,x)=>({s,x,m:s.t?toMin(s.t):null}))
+    .sort((a,b)=>((a.s.alt?1:0)-(b.s.alt?1:0))||((a.m===null?9999:a.m)-(b.m===null?9999:b.m))||(a.x-b.x))
+    .map(o=>o.s);
+}
+const isDone=s=>!!S.got[s.k]||!!S.skip[s.k];
+const isMarked=k=>!!S.got[k]||!!S.skip[k];
+const nextStop=i=>{ const L=stopsOf(i); return L.find(s=>!s.alt&&!isDone(s))||null; };
+function dayProg(i){ const L=stopsOf(i).filter(s=>!s.alt); return {d:L.filter(isDone).length,n:L.length}; }
+function allProg(){ let d=0,n=0; DAYS.forEach((_,i)=>{const p=dayProg(i); d+=p.d; n+=p.n;}); return {d,n}; }
+const isChecked=(k,def)=>k in S.chk ? !!S.chk[k] : !!def;
+const ALL_CHK=CHECK_GROUPS.flatMap(([g])=>CHK[g]);
+function checkStats(){
+  const groups={}; let done=0;
+  CHECK_GROUPS.forEach(([g])=>{ const arr=CHK[g]; const d=arr.filter(([k,,def])=>isChecked(k,def)).length; groups[g]={d,n:arr.length}; done+=d; });
+  return {groups,done,n:ALL_CHK.length};
+}
+function dayProgLabel(i){ const p=dayProg(i); return p.d+" of "+p.n; }
+
+/* ======================= icons ======================= */
+const I={
+arrow:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12h14M12.5 6l6 6-6 6"/></svg>',
+chev:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>',
+nav:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2 20.2 20l-8.2-4-8.2 4z"/></svg>',
+check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4.5 12.5 5 5 10-11"/></svg>',
+dash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 12h12"/></svg>',
+close:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>',
+bed:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 18.5v-7h14a3.5 3.5 0 0 1 3.5 3.5v3.5M3.5 15h17M3.5 11.5V6.5"/><circle cx="8" cy="9.2" r="1.7"/></svg>',
+undo:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 8.5h9.2a4.8 4.8 0 0 1 0 9.6H8.6"/><path d="m8.5 4.5-4 4 4 4"/></svg>',
+share:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M8 7l4-4 4 4M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>',
+calendar:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M7.5 3v4M16.5 3v4M3.5 9.5h17"/></svg>',
+sun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4 17 7M7 17l-1.6 1.6"/></svg>',
+partly:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8.4" cy="8" r="3"/><path d="M8.4 1.9v1.7M2.4 8h1.7M4.3 3.9l1.2 1.2M12.9 3.9l-1.2 1.2"/><path d="M9.4 19.7h8.3a2.9 2.9 0 0 0 .3-5.8 4.3 4.3 0 0 0-8.2-.7 3.3 3.3 0 0 0-.4 6.5z"/></svg>',
+cloud:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.8 18.6h9.8a3.3 3.3 0 0 0 .4-6.6 5 5 0 0 0-9.5-.8 3.8 3.8 0 0 0-.7 7.4z"/></svg>',
+rain:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.8 14.9h9.8a3.3 3.3 0 0 0 .4-6.6 5 5 0 0 0-9.5-.8 3.8 3.8 0 0 0-.7 7.4z"/><path d="m8.6 17.3-1 2.8M12.3 17.3l-1 2.8M16 17.3l-1 2.8"/></svg>',
+storm:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.8 14.2h9.8a3.3 3.3 0 0 0 .4-6.6 5 5 0 0 0-9.5-.8 3.8 3.8 0 0 0-.7 7.4z"/><path d="m13.2 15.8-2.7 4h3.1l-1.4 2.7"/></svg>',
+route:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19.2c0-4.6 5.4-3.9 6.8-7.8 1.2-3.5 3.3-4.5 7.2-4.5"/><circle cx="5" cy="19.2" r="2.1"/><circle cx="19" cy="6.9" r="2.1"/></svg>',
+info:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.6"/><path d="M12 11v6M12 7.6v.2"/></svg>',
+clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.4"/><path d="M12 7.4V12l3 1.8"/></svg>',
+pin:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21.2s6.8-5.5 6.8-10.9a6.8 6.8 0 1 0-13.6 0C5.2 15.7 12 21.2 12 21.2z"/><circle cx="12" cy="10.3" r="2.4"/></svg>',
+plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>'
+};
+
+/* ======================= weather ======================= */
 const WXSTORE="kerala-trip-2026-wx";
-const WXLOC={mdu:[9.9252,78.1198],mnr:[10.0889,77.0595],alp:[9.4981,76.3388],
-             koc:[9.9312,76.2673],slm:[11.6643,78.1460],che:[12.8600,80.0400]};
+const WXLOC={mdu:[9.9252,78.1198],mnr:[10.0889,77.0595],alp:[9.4981,76.3388],koc:[9.9312,76.2673],slm:[11.6643,78.1460],che:[12.8600,80.0400]};
 const WXDAY=["mdu","mnr","mnr","mnr","alp","koc","koc","slm","che"];
 const ISO=DAYS.map((_,i)=>new Date(Date.UTC(2026,9,24+i)).toISOString().slice(0,10));
 let WX=(()=>{try{return JSON.parse(localStorage.getItem(WXSTORE))||{at:0,d:{}};}catch(e){return {at:0,d:{}};}})();
-
 function wxIcon(c){
   if(c==null) return "";
-  if(c>=95) return ICON.storm;
-  if((c>=51&&c<=67)||(c>=80&&c<=82)) return ICON.rain;
-  if(c>=45&&c<=48) return ICON.cloud;
-  if(c>=1&&c<=3) return ICON.partly;
-  return ICON.sun;
+  if(c>=95) return I.storm;
+  if((c>=51&&c<=67)||(c>=80&&c<=82)) return I.rain;
+  if(c>=45&&c<=48) return I.cloud;
+  if(c>=1&&c<=3) return I.partly;
+  return I.sun;
 }
 function wxWord(c){
   if(c==null) return "";
@@ -1222,31 +1073,24 @@ function wxWord(c){
   if(c>=1) return "Partly sunny";
   return "Clear";
 }
-function wxSky(i){
-  const w=WX&&WX.d&&WX.d[ISO[i]];
-  if(!w||w.c==null) return "";
-  if(w.c>=51) return " wx-rain";                      /* drizzle through thunder */
-  if(w.c===3||(w.c>=45&&w.c<=48)) return " wx-grey";  /* overcast or mist */
-  return "";                                          /* clear: let it look calm */
-}
 function wxHtml(i){
   const w=WX&&WX.d&&WX.d[ISO[i]];
   if(!w||w.hi==null) return "";
   const wet=w.p!=null&&w.p>=60;
-  const rain=w.p!=null?`<em>\u00b7</em><em>${w.p}% rain</em>`:"";
-  return `<span class="wx${wet?" wet":""}" title="${esc(wxWord(w.c))}">${wxIcon(w.c)}<b>${w.hi}\u00b0</b><em>/ ${w.lo}\u00b0</em>${rain}</span>`;
+  return `<span class="wx${wet?" wet":""}" title="${esc(wxWord(w.c))}${w.p!=null?" · "+w.p+"% rain":""}" aria-label="${esc(wxWord(w.c))}, high ${w.hi}, low ${w.lo}${w.p!=null?", "+w.p+"% chance of rain":""}">${wxIcon(w.c)}<b>${w.hi}°</b><em>/ ${w.lo}°</em></span>`;
 }
-async function wxLoad(){
+async function wxLoad(force){
   const stale=!WX.at||Date.now()-WX.at>3*36e5;
   const missing=ISO.some(d=>!WX.d[d]);
-  if(!stale&&!missing) return false;
+  if(!force&&!stale&&!missing) return false;
   try{
     const ks=Object.keys(WXLOC);
     const u="https://api.open-meteo.com/v1/forecast?latitude="+ks.map(k=>WXLOC[k][0]).join(",")
       +"&longitude="+ks.map(k=>WXLOC[k][1]).join(",")
       +"&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max"
       +"&timezone=Asia%2FKolkata&start_date="+ISO[0]+"&end_date="+ISO[ISO.length-1];
-    const r=await fetch(u,{cache:"no-store"});
+    const ctl=new AbortController(); const timer=setTimeout(()=>ctl.abort(),9000);
+    const r=await fetch(u,{cache:"no-store",signal:ctl.signal}); clearTimeout(timer);
     if(!r.ok) return false;
     const j=await r.json();
     const arr=Array.isArray(j)?j:[j];
@@ -1261,100 +1105,1027 @@ async function wxLoad(){
     });
     if(!Object.keys(d).length) return false;
     WX={at:Date.now(),d};
-    localStorage.setItem(WXSTORE,JSON.stringify(WX));
+    try{localStorage.setItem(WXSTORE,JSON.stringify(WX));}catch(e){}
     return true;
   }catch(e){ return false; }
 }
-
-/* ======================= boot ======================= */
-let TAB="day", VD=0, lastAnim="";
-function render(keep){
-  const y=keep?window.scrollY:0;
-  const n=nowIST(), td=tripDay(n);
-  document.documentElement.style.setProperty("--day", DAYS[VD].c);
-  $("#rail").innerHTML=railHtml();
-  $("#avnum").textContent=VD+1;
-  $("#greetsub").textContent=(TAB==="day")?"":td?("Day "+td+" of nine · "+DAYS[VD].title)
-    :(td===0&&n.y===2026&&(n.mo<10||(n.mo===10&&n.d<24))?"Getting ready · "+DAYS[VD].date
-    :DAYS[VD].dow+" "+DAYS[VD].date+" · "+DAYS[VD].title);
-  $("#view").classList.remove("fresh");
-  $("#view").innerHTML = TAB==="day"?viewDay():TAB==="route"?viewRoute():viewInfo();
-  /* Only the first paint of a day or tab animates. Marking a stop re-renders
-     constantly, and replaying the entrance every time would be maddening. */
-  const animKey=TAB+":"+VD;
-  if(animKey!==lastAnim){
-    lastAnim=animKey; void $("#view").offsetWidth; $("#view").classList.add("fresh");
-    const rail=$("#rail"), on=rail.querySelector('[aria-current="true"]');
-    if(on) rail.scrollLeft=Math.max(0, on.offsetLeft - rail.clientWidth/2 + on.offsetWidth/2);
-  }
-  document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute("aria-selected",String(b.dataset.tab===TAB)));
-  $(".rail").style.display = TAB==="day"?"":"none";
-  if(keep) window.scrollTo(0,y); else window.scrollTo(0,0);
+function updateWeather(){
+  const slot=$("#hero .wx-slot"); if(!slot) return;
+  slot.innerHTML=wxHtml(VD);
 }
 
-document.addEventListener("click",e=>{
-  /* Tapping the tick on a finished row un-marks it right there. That is the
-     gesture people reach for, and it saves a pointless trip into the sheet. */
-  const node=e.target.closest(".sp");
-  if(node&&e.target.closest(".sp-dot")){
-    const k=node.dataset.v;
-    if(S.got[k]||S.skip[k]){
-      delete S.got[k]; delete S.skip[k]; save();
-      try{navigator.vibrate&&navigator.vibrate(12);}catch(x){}
-      render(true);
-      return;
-    }
-  }
-  const el=e.target.closest("[data-go]"); if(!el) return;
-  const a=el.dataset.go, v=el.dataset.v;
-  if(a==="day"){ VD=+v; TAB="day"; render(false); return; }
-  if(a==="open"){ openSheet(v); return; }
-  if(a==="close"){ closeSheet(); return; }
-  if(a==="got"){ S.got[v]=Date.now(); delete S.skip[v]; try{navigator.vibrate&&navigator.vibrate(18);}catch(x){} }
-  else if(a==="skip"){ S.skip[v]=1; delete S.got[v]; }
-  else if(a==="undo"){ delete S.got[v]; delete S.skip[v]; }
-  else if(a==="edit"){
-    const st=DAYS.map(D=>D.stay).find(s=>s.sid===v);
-    const r=prompt("Name or address to open in Google Maps",S.loc[v]||st.q);
-    if(r!==null&&r.trim()) S.loc[v]=r.trim(); else return;
-  }
-  else if(a==="reset"){ if(!confirm("Clear every reached, skipped and checklist mark?")) return; S.got={};S.skip={};S.chk={}; }
-  save();
-  if(openKey&&["got","skip","undo"].includes(a)) openSheet(openKey);
-  render(true);
-});
-document.addEventListener("change",e=>{
-  const t=e.target;
-  if(t.matches&&t.matches(".chk input")){ S.chk[t.dataset.k]=t.checked; save(); }
-});
-document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeSheet(); });
-window.addEventListener("popstate",()=>{ if(openKey) closeSheet(); });
-document.addEventListener("visibilitychange",()=>{
-  if(document.hidden) return;
-  wxLoad().then(ok=>{ if(ok&&!openKey) render(true); });
-});
+/* ======================= photographs ======================= */
+const PHOTOS=[
+{src:"photos/plates/01.jpg",thumb:"photos/plates/01t.jpg",lq:"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAASABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDSvbswOAO9TWs3nR7jWJLNJcNvYHip7e9+zx4qVU94t09Bus6hLBNsjIAxRWRqTvc3bOOlFNvUEtDcveIjjisKdj6miisYmsilKzZPJ/OiiitCD//Z",alt:"Two gopurams of the Meenakshi Amman temple in Madurai, in morning light.",title:"Meenakshi Amman West Tower",credit:"KennyOMG",license:"CC BY-SA 4.0",href:"https://commons.wikimedia.org/wiki/File:Meenakshi_Amman_West_Tower.jpg"},
+{src:"photos/plates/02.jpg",thumb:"photos/plates/02t.jpg",lq:"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAASABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDYjZI+S2ad9p5+VxiuT/tCUDBak/tGQD79bOpDuYWZ1UkjvxRXJtqlwo4eihVYhysoGl7UUVxGoL1ooooEf//Z",alt:"A tea estate and a small hill town beneath a cloud-covered mountain in Munnar.",title:"Munnar valley",credit:"Abhiram RG",license:"CC0 1.0",href:"https://wordpress.org/photos/photo/70965c342a/"},
+{src:"photos/plates/03.jpg",thumb:"photos/plates/03t.jpg",lq:"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAASABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwB76xPNw7VG12XGZOTWdvz2xS7vesG2xls3ajoMUVSIJzRU2AhJO7rTkP70UUVQFg9KKKKkD//Z",alt:"Rows of tea bushes curving across a hillside above Munnar.",title:"Tea plantation at Munnar",credit:"Gautam Garg",license:"CC0 1.0",href:"https://wordpress.org/photos/photo/13765c47f6/"},
+{src:"photos/plates/04.jpg",thumb:"photos/plates/04t.jpg",lq:"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAASABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC/LfHzQGJC05m88fKwOKqtHLIh8xORVKGC5MjBHx9a5FZm1zTa7aIYcjHrRWckMm5hJlgvUUUMRsP92s1CftLc0UVEQJrXlpaKKK0A/9k=",alt:"A Nilgiri tahr standing on a grassy slope at Eravikulam National Park.",title:"Nilgiri tahr at Eravikulam",credit:"Aveek Bandyopadhyay",license:"CC BY-SA 4.0",href:"https://commons.wikimedia.org/wiki/File:Nilgiri_Tahr_at_Eravikulam_National_Park.jpg"},
+{src:"photos/plates/05.jpg",thumb:"photos/plates/05t.jpg",lq:"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAASABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwC5p2urcSEy4UYrXiuYZvuOK4COCbOYQau26agB8pNNTYuVHbFR6iiubtF1EkiSQhcUVfOxcqIdLALnitdAMdKKKzhsDHGiiitBH//Z",alt:"A traditional houseboat on still water in the Kerala backwaters, framed by palms.",title:"A houseboat on the backwaters",credit:"Rawpixel",license:"CC0 1.0",href:"https://www.rawpixel.com/image/6040834/boat-house-free-public-domain-cc0-photo"},
+{src:"photos/plates/06.jpg",thumb:"photos/plates/06t.jpg",lq:"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAASABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDI07TprorLGBhT3rbuonaApjHHJqGw1C3s4TGDkCm3eupIAFjP1pRm9rBKHW5Qj00FeTznmih9WBJAUCitlJGbizMBPPNW5P8AVj6UUViameepooooEz//2Q==",alt:"Chinese fishing nets silhouetted against the sunset in Fort Kochi.",title:"Chinese fishing nets at sunset, Kochi",credit:"Jose Varghese",license:"CC0 1.0",href:"https://wordpress.org/photos/photo/7863ef00c0/"},
+{src:"photos/plates/07.jpg",thumb:"photos/plates/07t.jpg",lq:"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAASABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwBwulx1pHuQRwawJrtlcrgcGrElyFiQ46ituZI63Uk0XZJQe9FZYuyzjgYorT2iMWmyjcf65vrT7gnyY+e1FFYo06EAJx1oooqZbiP/2Q==",alt:"The Marine Drive skyline in Kochi at dusk, its lights reflected in the water.",title:"Marine Drive, Kochi at dusk",credit:"Dhruvaraj S",license:"CC BY 2.0",href:"https://commons.wikimedia.org/wiki/File:Marine_Drive_Kochi_Ernakulam_Kerala.jpg"},
+{src:"photos/plates/08.jpg",thumb:"photos/plates/08t.jpg",lq:"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAASABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDSS5hPepBLEe9ZEbCPry1OeQgk5p+0kLkRpPLEf4hRWFMxGTmil7dhyIf/ABmnv/FRRSe6KIJPuGiiis57ks//2Q==",alt:"A multi-lane highway curving through green fields in Tamil Nadu.",title:"The highway through Tamil Nadu",credit:"TamilWiki Media Contest",license:"CC BY-SA 3.0",href:"https://commons.wikimedia.org/wiki/File:Looking-down-National-Highway-Chittode-Junction.JPG"},
+{src:"photos/plates/09.jpg",thumb:"photos/plates/09t.jpg",lq:"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABIMDRANCxIQDhAUExIVGywdGxgYGzYnKSAsQDlEQz85Pj1HUGZXR0thTT0+WXlaYWltcnNyRVV9hnxvhWZwcm7/2wBDARMUFBsXGzQdHTRuST5Jbm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm5ubm7/wAARCAASABgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDaDgUhnQDJzzUkqlIyQOahUqrB3wOOlauoZKn3JQ6+hoqRQGGaKPaByMkn71nXX3qKKiJrLYuL9xfpRRRWb3Gtj//Z",alt:"The four of us on the beach, in the late morning.",title:"The four of us on the beach",credit:"Our own",license:"Personal",href:""},
+];
 
-(function init(){
-  const n=nowIST(), td=tripDay(n);
-  VD = td ? td-1 : ((n.y>2026||(n.y===2026&&n.mo>=11))?8:0);
-  const wantTab=new URLSearchParams(location.search).get("tab");
-  if(["day","route","info"].includes(wantTab)) TAB=wantTab;
-  document.querySelectorAll(".tabs button").forEach(b=>b.addEventListener("click",()=>{TAB=b.dataset.tab;render(false);}));
-  render(false);
-  wxLoad().then(ok=>{ if(ok) render(true); });
-  if(VD===0||td===0){ const sel=document.querySelector('.chip[aria-current="true"]'); if(sel) sel.scrollIntoView({inline:"center",block:"nearest"}); }
-  try{ if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)) navigator.serviceWorker.register("sw.js"); }catch(e){}
+/* ======================= the loop map ======================= */
+const MAP_PTS=[[725,118],[420,584],[260,558],[160,654],[140,584],[425,301]];
+const MAP_ACTIVE=[1,2,2,2,3,4,4,5,0];
+function mapSvg(i){
+  const a=MAP_ACTIVE[i];
+  const halo=MAP_PTS[a];
+  return `<svg viewBox="0 0 800 900" role="img" aria-labelledby="map-t map-d">
+<title id="map-t">The nine-day loop through Tamil Nadu and Kerala</title>
+<desc id="map-d">Potheri near Chennai, south to Madurai, west to Munnar, down to Alleppey, north to Kochi, then back northeast through Salem to Potheri.</desc>
+<defs>
+<pattern id="seaWaves" width="96" height="44" patternUnits="userSpaceOnUse">
+<path class="m-wave" d="M0 22q24-9 48 0t48 0"/>
+</pattern>
+<pattern id="landDots" width="26" height="26" patternUnits="userSpaceOnUse">
+<circle class="m-dots" cx="4" cy="4" r="1.1" fill="var(--map-route)"/>
+</pattern>
+<clipPath id="landClip"><path d="M0 0H800V56C776 96 762 148 748 200C730 268 712 330 686 396C658 468 620 536 574 606C528 676 470 748 404 812C370 844 340 868 318 888C286 858 248 824 218 786C186 746 160 706 142 660C126 620 108 590 96 560C84 528 72 500 60 472C44 440 22 410 0 388Z"/></clipPath>
+</defs>
+<rect class="m-sea" width="800" height="900"/>
+<rect width="800" height="900" fill="url(#seaWaves)"/>
+<path class="m-land" d="M0 0H800V56C776 96 762 148 748 200C730 268 712 330 686 396C658 468 620 536 574 606C528 676 470 748 404 812C370 844 340 868 318 888C286 858 248 824 218 786C186 746 160 706 142 660C126 620 108 590 96 560C84 528 72 500 60 472C44 440 22 410 0 388Z"/>
+<g clip-path="url(#landClip)">
+  <rect width="800" height="900" fill="url(#landDots)"/>
+  <path class="m-ghat" d="M208 806C244 730 274 650 298 568C324 480 348 398 392 312C414 268 438 228 468 196" fill="none" stroke-width="30" stroke-linecap="round"/>
+  <path class="m-contour" d="M196 820C232 744 262 664 286 582C312 494 336 412 380 326C402 282 426 242 456 210"/>
+  <path class="m-contour" d="M222 792C258 716 288 636 312 554C338 466 362 384 406 298C428 254 452 214 482 182"/>
+  <path class="m-contour" d="M176 832C212 756 242 676 266 594C292 506 316 424 360 338C382 294 406 254 436 222"/>
+  <path class="m-contour" d="M242 776C278 700 308 620 332 538C358 450 382 368 426 282C448 238 472 198 502 166"/>
+  <g class="m-water">
+    <path d="M104 594q24-8 48 0t48 0M92 616q24-8 48 0t48 0M110 638q30-9 60 0t42 0M120 676q32-10 64 0t44 0M146 704q24-8 48 0t30 0"/>
+    <path d="M204 648q20-10 40 0t34 0M228 664q20-10 40 0t30 0" opacity=".6"/>
+  </g>
+  <path class="m-contour" d="M470 790C540 722 594 658 636 586" opacity=".35"/>
+  <path class="m-contour" d="M430 830C500 762 554 698 596 626" opacity=".25"/>
+</g>
+<g class="m-contours" opacity=".65">
+  <path class="m-contour" d="M330 730C430 664 534 572 630 474"/>
+  <path class="m-contour" d="M400 792C500 716 590 624 678 520"/>
+  <path class="m-contour" d="M238 506C328 446 420 392 512 322"/>
+  <path class="m-contour" d="M492 816C566 734 632 646 700 562"/>
+  <path class="m-contour" d="M470 180C540 220 598 270 646 330"/>
+</g>
+<text class="m-state" x="208" y="782" text-anchor="middle">Kerala</text>
+<text class="m-state" x="566" y="466" text-anchor="middle">Tamil Nadu</text>
+<text class="m-sea-label" x="58" y="700" text-anchor="middle" transform="rotate(-70 58 700)">Arabian Sea</text>
+<text class="m-sea-label" x="624" y="760" text-anchor="middle">Bay of Bengal</text>
+<text class="m-ghat-label" x="322" y="690" text-anchor="middle" transform="rotate(-74 322 690)">Western Ghats</text>
+
+<path class="m-border" d="M300 900C320 800 344 712 372 636C396 570 420 500 446 430C470 364 494 300 520 236C538 192 558 158 584 126"/>
+<path class="m-route-case" d="M725 118C690 290 545 490 420 584C380 606 300 604 260 558C220 594 186 628 160 654C146 634 140 608 140 584C225 500 330 380 425 301C520 252 638 174 725 118" pathLength="1"/>
+<path class="m-route" d="M725 118C690 290 545 490 420 584C380 606 300 604 260 558C220 594 186 628 160 654C146 634 140 608 140 584C225 500 330 380 425 301C520 252 638 174 725 118" pathLength="1"/>
+<path class="m-route-dash" d="M725 118C690 290 545 490 420 584C380 606 300 604 260 558C220 594 186 628 160 654C146 634 140 608 140 584C225 500 330 380 425 301C520 252 638 174 725 118" pathLength="1"/>
+
+
+<g class="m-nodes">
+  <g transform="translate(725 118)">
+    <circle r="13" fill="none" stroke="var(--map-line)" stroke-width="1"/>
+    <circle r="10.5" fill="var(--map-land)" stroke="var(--map-route)" stroke-width="1.7"/>
+    <circle r="4.2" fill="var(--map-gold)"/>
+  </g>
+  <text class="m-stop-label" x="704" y="92" text-anchor="end">Potheri</text>
+  <text class="m-micro" x="704" y="70" text-anchor="end">Start / finish</text>
+  <g class="m-node" data-d="1" transform="translate(420 584)">
+    <circle r="9" class="m-stop"/>
+  </g>
+  <text class="m-stop-label" x="442" y="574">Madurai</text>
+  <text class="m-micro" x="442" y="596">1 night</text>
+  <g class="m-node" data-d="10" transform="translate(260 558)">
+    <circle r="9" class="m-stop"/>
+  </g>
+  <text class="m-stop-label" x="260" y="518" text-anchor="middle">Munnar</text>
+  <text class="m-micro" x="260" y="540" text-anchor="middle">3 nights</text>
+  <g class="m-node" data-d="10" transform="translate(160 654)">
+    <circle r="9" class="m-stop"/>
+  </g>
+  <text class="m-stop-label" x="184" y="676">Alleppey</text>
+  <text class="m-micro" x="184" y="698">1 night</text>
+  <g class="m-node" data-d="10" transform="translate(140 584)">
+    <circle r="9" class="m-stop"/>
+  </g>
+  <text class="m-stop-label m-coast-label" x="120" y="568" text-anchor="end">Kochi</text>
+  <text class="m-micro m-coast-label" x="120" y="590" text-anchor="end">2 nights</text>
+  <path d="M126 574L137 583" stroke="var(--map-route)" stroke-width="1" opacity=".45"/>
+  <g class="m-node" data-d="10" transform="translate(425 301)">
+    <circle r="9" class="m-stop"/>
+  </g>
+  <text class="m-stop-label" x="448" y="290">Salem</text>
+  <text class="m-micro" x="448" y="312">1 night</text>
+</g>
+<g transform="translate(${halo[0]} ${halo[1]})" class="m-now">
+  <circle r="30" fill="none" stroke="var(--day)" stroke-width="1.1" opacity=".2"/>
+  <circle r="21" fill="none" stroke="var(--day)" stroke-width="1.7" opacity=".9"/>
+  <circle r="8.5" fill="var(--day)" opacity=".95"/>
+</g>
+<g transform="translate(742 58)">
+  <path d="M0 22V-2" stroke="var(--map-route)" stroke-width="1" opacity=".55"/>
+  <path d="M0-2l-4 9h8z" fill="var(--map-route)" opacity=".65"/>
+  <text x="0" y="34" text-anchor="middle" class="m-micro">N</text>
+</g>
+<g transform="translate(40 842)">
+  <path d="M0 0h145M0-4v8M72.5-3v6M145-4v8" stroke="var(--map-route)" stroke-width="1" opacity=".5"/>
+  <text x="0" y="-10" class="m-small">0</text>
+  <text x="145" y="-10" text-anchor="end" class="m-small">100 km</text>
+</g>
+</svg>`;
+}
+
+/* ======================= shared view bits ======================= */
+const stopTitle=s=>s.stay?s.stay.h:s.n;
+const COST_INK=["var(--ink)","#B08A45","#4F7F74","#A85A3C","#7D8552","#9B6571","#5B7285"];
+function amountOf(v){ return parseInt(String(v).replace(/[^\d]/g,""),10)||0; }
+function ratingDots(n){
+  let out="";
+  for(let i=1;i<=5;i++) out+=`<i class="${i<=n?"on":""}"></i>`;
+  return `<span class="rating" aria-hidden="true">${out}</span>`;
+}
+function heroCredit(p){
+  if(!p.credit) return "";
+  const label=p.credit==="Our own"?"Photo · ours":`Photo · ${p.credit}`;
+  if(!p.href) return `<span class="plate-credit">${esc(label)}</span>`;
+  return `<a class="plate-credit" href="${esc(p.href)}" target="_blank" rel="noopener" title="${esc(p.title)} — ${esc(p.license)}">${esc(label)}</a>`;
+}
+
+/* ======================= the day's opening ======================= */
+function viewHero(animate){
+  const D=DAYS[VD], P=PHOTOS[VD], td=tripDay(NOW), today=td===VD+1, pre=preTripNote();
+  const badge=D.badge?`<span class="badge">${esc(D.badge)}</span>`:"";
+  const jump=(!today&&td>=1&&td<=9)?`<button class="day-jump" data-act="today">${I.arrow}Back to today · day ${td}</button>`:"";
+  return `<div class="hero-grid${animate?" hero-fade":""}">
+    <figure class="plate">
+      <div class="plate-lq" style="background-image:url('${P.lq}')"></div>
+      <img class="plate-img" src="${P.src}" alt="${esc(P.alt)}" width="1200" height="900" fetchpriority="high" decoding="async">
+      <span class="plate-grain" aria-hidden="true"></span>
+      ${heroCredit(P)}
+    </figure>
+    <div class="day-head">
+      <div class="day-top">
+        <p class="eye">${today?'<span class="today">Today</span> · ':''}${pre?`<span class="pre">${esc(pre)}</span> · `:''}Day ${VD+1} of 9${badge?' '+badge:''}</p>
+        <span class="wx-slot">${wxHtml(VD)}</span>
+      </div>
+      <h1 class="day-title">${esc(D.title)}</h1>
+      <p class="day-sub"><span>${esc(D.dow)} ${esc(D.date)}</span><span class="sep">·</span><span>${esc(REGION[VD][0])}</span><span class="sep">·</span><b>${D.km} km</b></p>
+      <p class="day-stay">${I.bed}<span>${today?"Tonight":"Sleeps"} · <b>${esc(D.night)}</b></span></p>
+      ${jump}
+    </div>
+  </div>`;
+}
+
+/* ======================= journey bar ======================= */
+function buildJourney(){
+  const el=$("#journey-in"); if(!el||el.querySelector(".jday")) return;
+  const btns=DAYS.map((D,i)=>`<button class="jday" data-act="day" data-day="${i}" style="--day:${D.c}" aria-label="Day ${i+1}, ${esc(D.dow)} ${esc(D.date)}: ${esc(D.title)}">
+    <span class="jdow">${esc(D.dow)}</span><span class="jnode" aria-hidden="true"></span><span class="jnum">${esc(D.short)}</span></button>`).join("");
+  el.innerHTML=`<span class="j-rail" aria-hidden="true"><u></u></span>${btns}`;
+  updateJourney(false);
+}
+function updateJourney(){
+  $$("#journey-in .jday").forEach((b,i)=>{
+    const p=dayProg(i);
+    b.classList.toggle("done", p.n>0&&p.d===p.n);
+    b.setAttribute("aria-current", i===VD?"true":"false");
+  });
+  const el=$("#journey-in");
+  if(el) el.style.setProperty("--jp",(VD/8*100)+"%");
+}
+
+/* ======================= next up ======================= */
+function nextCard(i){
+  const L=stopsOf(i).filter(s=>!s.alt);
+  const done=L.filter(isDone).length;
+  const nx=L.find(s=>!isDone(s));
+  const today=isToday(i);
+  if(!nx){
+    const nd=i<DAYS.length-1?DAYS[i+1]:null;
+    const ndFirst=nd?stopsOf(i+1).find(s=>!isDone(s)):null;
+    return `<article class="next done">
+      <p class="next-top"><span class="pulse"></span>Day complete</p>
+      <div style="display:flex;align-items:flex-start;gap:12px"><h2>All ${L.length} stop${L.length===1?"":"s"} handled.</h2><span class="checkmark">${I.check}</span></div>
+      <p class="next-desc">${nd?`Tomorrow starts with ${esc(ndFirst?stopTitle(ndFirst):nd.title)}.`:"Nine days, all the way home."}</p>
+      <div class="next-acts">
+        ${nd?`<button class="btn btn-primary btn-flex" data-act="day" data-day="${i+1}">Open day ${i+2} ${I.arrow}</button>`:`<button class="btn btn-primary btn-flex" data-act="tab" data-tab="route">See the whole loop ${I.arrow}</button>`}
+      </div>
+    </article>`;
+  }
+  const title=stopTitle(nx);
+  let label=today?"Up next":(done?"Up next":"First stop");
+  if(today&&nx.stay) label="Tonight";
+  const desc=nx.d||"";
+  return `<article class="next">
+    <p class="next-top"><span class="pulse"></span>${esc(label)}${nx.t?`<time>${esc(nx.t)}</time>`:""}</p>
+    <h2>${esc(title)}</h2>
+    ${desc?`<p class="next-desc">${esc(desc)}</p>`:""}
+    <div class="next-acts">
+      <a class="btn btn-primary btn-flex" href="${navUrl(nx.q)}" target="_blank" rel="noopener" aria-label="Navigate to ${esc(title)} in Google Maps">${I.nav}Navigate</a>
+      <button class="btn btn-line btn-flex" data-act="toggle" data-key="${nx.k}" aria-label="${esc(nx.rl)}: ${esc(title)}">${I.check}${esc(nx.rl)}</button>
+    </div>
+  </article>`;
+}
+function factsHtml(D){
+  return `<dl class="facts">${D.facts.map(([k,v])=>`<div class="fact"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>`;
+}
+
+/* ======================= plan ======================= */
+function planHtml(i){
+  const L=stopsOf(i), nx=L.filter(s=>!s.alt).find(s=>!isDone(s));
+  const planned=L.filter(s=>!s.alt);
+  const done=planned.filter(isDone).length;
+  const pct=planned.length?Math.round(done/planned.length*100):0;
+  const rows=L.map(s=>{
+    const got=S.got[s.k], skip=S.skip[s.k];
+    const state=got?"is-done":skip?"is-skip":(nx&&nx.k===s.k?"is-next":"");
+    const title=stopTitle(s);
+    const tag = s.stay?`<span class="stop-tag night">Tonight</span>`
+      : (nx&&nx.k===s.k&&!got&&!skip)?`<span class="stop-tag next">Next</span>`
+      : s.alt?`<span class="stop-tag maybe">Maybe</span>`:"";
+    let node="";
+    if(got) node=I.check; else if(skip) node=I.dash;
+    const checkLabel=got?`Undo ${title}`:skip?`Undo skip of ${title}`:`${s.rl}: ${title}`;
+    return `<li class="stop ${state} ${s.stay?"is-stay":""}">
+      <span class="stop-time">${s.t?esc(s.t):""}</span>
+      <span class="stop-rail" aria-hidden="true"><i class="stop-node">${node}</i></span>
+      <div class="stop-main">
+        <button class="stop-open" data-act="open" data-key="${s.k}" aria-label="Open details for ${esc(title)}">
+          <span class="stop-title"><b>${esc(title)}</b>${tag}</span>
+          ${s.d?`<span class="stop-desc">${esc(s.d)}</span>`:""}
+        </button>
+        <button class="stop-check" data-act="toggle" data-key="${s.k}" aria-label="${esc(checkLabel)}" aria-pressed="${got?"true":"false"}"><i>${got?I.check:skip?I.dash:I.check}</i></button>
+      </div>
+    </li>`;
+  }).join("");
+  return `<section class="sec plan">
+    <div class="sec-head"><h2>The day</h2><span class="sec-meta">${done} of ${planned.length} stops</span></div>
+    <div class="planbar" style="--p:${pct}%"><u></u></div>
+    <ol class="stops">${rows}</ol>
+  </section>`;
+}
+
+/* ======================= notes, hours, nearby ======================= */
+function notesHtml(D){
+  return `<section class="sec">
+    <div class="sec-head"><h2>Good to know</h2></div>
+    <ul class="notes-list">${D.tip.map(t=>`<li>${esc(t)}</li>`).join("")}</ul>
+  </section>`;
+}
+function foldHtml(i){
+  const D=DAYS[i], key="hours-"+i, open=OPEN.has(key), n=nowIST(), today=isToday(i);
+  let cur=-1;
+  if(today) D.tl.forEach((t,x)=>{const m=toMin(t[0]); if(m!==null&&m<=n.min) cur=x;});
+  const rows=D.tl.map((t,x)=>{
+    const keyed=!!t[2], cls=`${keyed?"key":""} ${today&&x<cur?"past":""} ${today&&x===cur?"now":""}`;
+    return `<li class="${cls}"><time>${esc(t[0])}</time><p>${esc(t[1])}</p></li>`;
+  }).join("");
+  return `<div class="fold in-sec" data-open="${open}" data-fold="${key}">
+    <button class="fold-btn" data-act="fold" data-fold="${key}" aria-expanded="${open}" aria-controls="fold-${key}">
+      ${I.clock}<span>Hour by hour</span><span class="cnt">${D.tl.length} entries</span><span class="fold-ic">${I.chev}</span>
+    </button>
+    <div class="fold-body" id="fold-${key}" ${open?"":"inert"}><div class="fold-inner"><div class="fold-content"><ol class="hours">${rows}</ol></div></div></div>
+  </div>`;
+}
+function nearbyHtml(i){
+  const area=AREA_OF[i], list=(EXTRAS[area]||[]).slice().sort((a,b)=>b.r-a.r);
+  if(!list.length) return "";
+  const places=list.map(x=>`<a class="place" href="${navUrl(x.q)}" target="_blank" rel="noopener" aria-label="${esc(x.n)}, rated ${x.r} of 5 for this family. Opens directions in Google Maps.">
+    <div class="place-main">
+      <div class="place-top"><b>${esc(x.n)}</b>${ratingDots(x.r)}</div>
+      <p>${esc(x.d)}</p>
+    </div>
+    <span class="place-go" aria-hidden="true">${I.arrow}</span>
+  </a>`).join("");
+  return `<section class="sec">
+    <div class="sec-head"><h2>${esc(AREA_TITLE[area]||"Around here")}</h2><span class="sec-meta">${list.length} places</span></div>
+    <p class="sec-lede">Rated for this family, not scored like a review site. Tap a place for directions.</p>
+    <div class="places">${places}</div>
+  </section>`;
+}
+function nextDayHtml(i){
+  if(i<DAYS.length-1){
+    const D2=DAYS[i+1];
+    return `<button class="nextday" data-act="day" data-day="${i+1}" style="--day:${D2.c}" aria-label="Open day ${i+2}: ${esc(D2.title)}">
+      <span class="nd-num">${esc(D2.short)}</span>
+      <span class="nd-main"><span class="nd-label">Next · day ${i+2} · ${esc(D2.dow)} ${esc(D2.date)}</span><span class="nd-title">${esc(D2.title)}</span></span>
+      <span class="nd-go" aria-hidden="true">${I.arrow}</span>
+    </button>`;
+  }
+  return `<button class="nextday" data-act="tab" data-tab="route" aria-label="See the whole loop">
+    <span class="nd-num" aria-hidden="true">${I.route}</span>
+    <span class="nd-main"><span class="nd-label">The loop</span><span class="nd-title">See all nine days on one map</span></span>
+    <span class="nd-go" aria-hidden="true">${I.arrow}</span>
+  </button>`;
+}
+
+/* ======================= day view ======================= */
+function viewDay(){
+  const i=VD;
+  return `<div class="wrap day">
+    ${nextCard(i)}
+    ${factsHtml(DAYS[i])}
+    ${planHtml(i)}
+    ${notesHtml(DAYS[i])}
+    <section class="sec" style="padding-top:9px">${foldHtml(i)}</section>
+    ${nearbyHtml(i)}
+    ${nextDayHtml(i)}
+    <p class="day-foot">Times, fares and opening hours are planning estimates — check them when you book. Directions open Google Maps and need a signal. <button class="credits-btn" data-act="credits">Photo credits</button></p>
+  </div>`;
+}
+
+/* ======================= route page ======================= */
+function viewRoute(){
+  const td=tripDay(NOW), p=allProg();
+  const rows=DAYS.map((D,i)=>{
+    const pr=dayProg(i), today=td===i+1, sel=i===VD;
+    return `<button class="dayrow${sel?" is-selected":""}" data-act="day" data-day="${i}" aria-label="Open day ${i+1}: ${esc(D.title)}">
+      <img src="${PHOTOS[i].thumb}" alt="" width="280" height="210" loading="lazy" decoding="async">
+      <span class="dayrow-main">
+        <span class="dayrow-meta">Day ${i+1} · ${esc(D.dow)} ${esc(D.date)}${today?` <span class="now-tag">Today</span>`:""}</span>
+        <span class="dayrow-title">${esc(D.title)}</span>
+        <span class="dayrow-night">${esc(D.night)}</span>
+      </span>
+      <span class="dayrow-right"><span class="dayrow-km">${D.km} km</span><span class="dayrow-prog">${pr.d}/${pr.n}</span></span>
+    </button>`;
+  }).join("");
+  return `<div class="page route">
+    <div class="wrap">
+      <div class="route-head">
+        <p class="eyebrow"><span class="line"></span>24 Oct — 1 Nov 2026 · nine days</p>
+        <h1 class="page-title">Nine days, one loop.</h1>
+        <p class="page-lede">Madurai for the wedding, the tea hills above Munnar, a night on the Alleppey backwaters, then home the long way through Kochi and Salem.</p>
+      </div>
+      <div class="map-bleed">
+        <div class="map-frame" id="map-frame">${mapSvg(VD)}</div>
+        <div class="map-cap"><span>Potheri to Potheri</span><span><b>${fmt(TOTAL_KM)} km</b> · 9 days</span></div>
+      </div>
+      <section class="sec crew">
+        <div class="sec-head"><h2>The four of us</h2><span class="sec-meta">${p.d} of ${p.n} stops marked</span></div>
+        <p class="crew-line">Two adults, two kids, one car. Same four, new roads.</p>
+        <div class="crew-grid">
+          <figure class="crew-fig"><img src="photos/us-1.jpg" alt="The four of us outside a yellow-walled café" width="1000" height="1250" loading="lazy" decoding="async"></figure>
+          <figure class="crew-fig beach"><img src="photos/us-2.jpg" alt="The four of us standing on a beach" width="1000" height="1250" loading="lazy" decoding="async"></figure>
+        </div>
+        <p class="crew-cap">The two photographs we keep coming back to.</p>
+      </section>
+      <section class="sec">
+        <div class="sec-head"><h2>The nine days</h2><span class="sec-meta">Tap a day</span></div>
+        <div class="days">${rows}</div>
+      </section>
+      <section class="sec">
+        <div class="sec-head"><h2>The road</h2></div>
+        <p class="road-note">About <b>${fmt(TOTAL_KM)} km</b> door to door in the Tata Safari. The first day is the longest drive, and Kochi is the shortest. Fuel, tolls and stays are in <button class="credits-btn" style="margin:0;font-size:12.5px;color:var(--ink);text-decoration-color:var(--line)" data-act="tab" data-tab="money">Money &amp; prep</button>.</p>
+        <dl class="road-grid">
+          <div><dt>Door to door</dt><dd>${fmt(TOTAL_KM)} km</dd></div>
+          <div><dt>Days</dt><dd>9</dd></div>
+          <div><dt>Nights</dt><dd>8</dd></div>
+        </dl>
+        <p class="hint">Timings, fares and opening hours are planning estimates. Confirm them when you book.</p>
+      </section>
+      <p class="day-foot">Weather forecast by <a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo</a>. Photographs from Wikimedia Commons, WordPress Photos, Rawpixel and our own camera. <button class="credits-btn" data-act="credits">Photographs &amp; credits</button></p>
+    </div>
+  </div>`;
+}
+
+/* ======================= money page ======================= */
+function viewMoney(){
+  const costs=COSTS, total=costs.reduce((a,[,v])=>a+amountOf(v),0);
+  const stack=costs.map(([l,v],j)=>`<i style="flex:${amountOf(v)} 1 0;background:${COST_INK[j]}" title="${esc(l)}: ${esc(v)}"></i>`).join("");
+  const ledger=costs.map(([l,v],j)=>`<li><span class="sw" style="background:${COST_INK[j]}"></span><span class="l">${esc(l)}</span><span class="v">${esc(v)}</span></li>`).join("");
+  const nights=NIGHTS.map(([n,v])=>`<li><span class="n">${esc(n)}</span><span class="v">${/booked/i.test(v)?`<span class="booked">Booked</span>`:esc(v)}</span></li>`).join("");
+  const stats=checkStats();
+  const groups=CHECK_GROUPS.map(([g,label])=>{
+    const arr=CHK[g], st=stats.groups[g];
+    const items=arr.map(([k,text,def])=>`<li><label><input type="checkbox" data-chk="${k}" ${isChecked(k,def)?"checked":""}><span>${esc(text)}</span></label></li>`).join("");
+    return `<div class="checkgroup" data-group="${g}">
+      <div class="checkgroup-head"><h3>${esc(label)}</h3><span data-count="${g}">${st.d} / ${st.n}</span></div>
+      <ul class="chk">${items}</ul>
+    </div>`;
+  }).join("");
+  const pct=Math.round(stats.done/stats.n*100);
+  return `<div class="page money">
+    <div class="wrap">
+      <p class="eyebrow"><span class="line"></span>Budget &amp; prep</p>
+      <h1 class="page-title">What it costs.</h1>
+      <p class="page-lede">An estimate for the whole loop, and everything to sort before we leave.</p>
+      <div class="total"><b>₹${fmt(total)}</b><span>Estimated total<br>nine days · eight nights</span></div>
+      <div class="stack" aria-label="How the total breaks down">${stack}</div>
+      <ul class="ledger">${ledger}</ul>
+      <p class="hint">Diesel at about ₹99.55 a litre and roughly 12 km to the litre, highway and ghat together. Stays are the big line. The two Munnar nights use ₹7,000 each until the booked rates are in.</p>
+      <section class="sec">
+        <div class="sec-head"><h2>Each night</h2><span class="sec-meta">8 nights</span></div>
+        <ul class="nights">${nights}</ul>
+        <p class="hint">Aim for the houseboat at or just under ₹10,000: an AC one-bedroom with meals.</p>
+      </section>
+      <section class="sec" id="prep">
+        <div class="sec-head"><h2>Before we go</h2><span class="sec-meta">Saved on this phone</span></div>
+        <div class="prep-top"><span class="prep-count" id="prep-count">${stats.done} of ${stats.n} done</span><span class="sec-meta" id="prep-pct">${pct}%</span></div>
+        <div class="prepbar" id="prepbar" style="--p:${pct}%"><u></u></div>
+        ${groups}
+        <div class="data-foot">
+          <p class="hint">Ticks and reached marks stay on this phone. They are not shared between devices.</p>
+          <button class="danger" data-act="clear">Clear all ticks &amp; marks</button>
+        </div>
+      </section>
+      <p class="page-foot">All timings, fares and opening hours are planning estimates. Confirm them when you book. Forecast by Open-Meteo. <button class="credits-btn" data-act="credits">Photo credits</button></p>
+    </div>
+  </div>`;
+}
+
+/* ======================= sheets ======================= */
+function sheetShell(inner,labelled){
+  return `<div class="scrim" data-act="sheet-close" aria-hidden="true"></div>
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="${labelled}" tabindex="-1">
+    <div class="grab" aria-hidden="true"></div>
+    <button class="sheet-close" data-act="sheet-close" aria-label="Close">${I.close}</button>
+    ${inner}
+  </div>`;
+}
+function sheetStopHtml(i,s){
+  const D=DAYS[i], done=!!S.got[s.k], skip=!!S.skip[s.k], title=stopTitle(s);
+  const photo=s.w?`<div class="sheet-photo" id="sheet-photo"><div class="shimmer"></div></div>`:"";
+  const act=done||skip
+    ? `<button class="btn btn-line" data-act="toggle" data-key="${s.k}">${I.undo}Undo</button>`
+    : `<button class="btn btn-line" data-act="toggle" data-key="${s.k}">${I.check}${esc(s.rl)}</button>`;
+  const marked=done
+    ? `<p class="sheet-marked">${I.check}${s.stay?esc(s.rl):"Marked"} at ${clock(S.got[s.k])}</p>`
+    : skip?`<p class="sheet-marked">${I.dash}Skipped</p>`:"";
+  const links=[];
+  if(!s.stay&&!done&&!skip) links.push(`<button class="linkish" data-act="skip" data-key="${s.k}">Skip this stop</button>`);
+  if(s.stay&&s.stay.sid!=="home") links.push(`<button class="linkish" data-act="set-loc" data-key="${s.k}">${S.loc[s.stay.sid]?"Change location":"Set location"}</button>`);
+  if(s.w) links.push(`<span class="credits-src" id="sheet-source"></span>`);
+  return sheetShell(`<div class="sheet-head">
+      <p class="sheet-eye"><span class="dot" style="background:${D.c}"></span>Day ${i+1} · ${esc(D.dow)} ${esc(D.date)}${s.t?` · ${esc(s.t)}`:""}</p>
+      <h2 id="sheet-title">${esc(title)}</h2>
+      <p class="sheet-sub">${esc(s.d)}</p>
+    </div>
+    ${photo}
+    <div class="sheet-acts">
+      <a class="btn btn-primary" href="${navUrl(s.q)}" target="_blank" rel="noopener" aria-label="Navigate to ${esc(title)} in Google Maps">${I.nav}Navigate</a>
+      ${act}
+    </div>
+    ${marked}
+    ${s.stay&&S.loc[s.stay.sid]?`<p class="sheet-marked">${I.pin}Directions use “${esc(S.loc[s.stay.sid])}”</p>`:""}
+    <div class="sheet-links">${links.join("")}</div>`, "sheet-title");
+}
+function sheetLocHtml(i,s){
+  const st=s.stay, val=S.loc[st.sid]||st.q, custom=!!S.loc[st.sid];
+  return sheetShell(`<div class="sheet-head">
+      <p class="sheet-eye"><span class="dot" style="background:${DAYS[i].c}"></span>Night ${i+1} · ${esc(DAYS[i].dow)} ${esc(DAYS[i].date)}</p>
+      <h2 id="sheet-title">Where are you staying?</h2>
+      <p class="sheet-sub">Directions for ${esc(st.h)} will search for this instead.</p>
+    </div>
+    <form class="sheet-form" data-form="loc" data-key="${s.k}" data-sid="${st.sid}" novalidate>
+      <label for="loc-input">Hotel name or address</label>
+      <input id="loc-input" name="loc" type="text" value="${esc(val)}" autocomplete="off" enterkeyhint="done" spellcheck="false">
+      <p class="field-error" id="loc-error">Add a hotel or address to search for.</p>
+      <div class="form-actions">
+        <button type="button" class="btn btn-line" data-act="loc-back" data-key="${s.k}">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save location</button>
+      </div>
+      ${custom?`<button type="button" class="linkish" style="margin-top:13px" data-act="loc-reset" data-key="${s.k}">Use the original place</button>`:""}
+      <p class="hint">This is used by every Navigate button for the night, and saved on this phone only.</p>
+    </form>`, "sheet-title");
+}
+function sheetCreditsHtml(){
+  const rows=PHOTOS.map((p,i)=>`<li><b>Day ${i+1} · ${esc(p.title)}</b>${esc(p.credit)} · ${esc(p.license)}${p.href?` · <a href="${esc(p.href)}" target="_blank" rel="noopener">source</a>`:""}</li>`).join("");
+  return sheetShell(`<div class="sheet-head">
+      <p class="sheet-eye">${I.info}Photographs &amp; credits</p>
+      <h2 id="sheet-title">The pictures.</h2>
+      <p class="sheet-sub">Photographs are cropped and colour-graded for this app. The family photographs are our own.</p>
+    </div>
+    <ul class="credits-list" style="margin-top:15px">${rows}</ul>
+    <p class="hint">Weather forecast by Open-Meteo. Images from Wikimedia Commons, WordPress Photos and Rawpixel. Where an image is CC BY-SA, this cropped and graded version is shared under the same licence. Map drawn for this trip.</p>
+    <div class="sheet-acts"><button class="btn btn-primary" data-act="sheet-close">Close</button></div>`, "sheet-title");
+}
+function sheetClearHtml(){
+  return sheetShell(`<div class="sheet-head">
+      <p class="sheet-eye">${I.info}On this phone</p>
+      <h2 id="sheet-title">Clear everything?</h2>
+      <p class="confirm-body">This removes every reached mark, skipped stop, custom location and checklist tick on this phone. It cannot be undone.</p>
+    </div>
+    <div class="sheet-acts">
+      <button class="btn btn-line" data-act="sheet-close">Keep my marks</button>
+      <button class="btn btn-danger" data-act="clear-confirm">Clear everything</button>
+    </div>`, "sheet-title");
+}
+
+/* ======================= app state and shell ======================= */
+let TAB="day", VD=0, SHEET=null, lastFocus=null, sheetHistory=false, sheetClosing=false;
+const OPEN=new Set();
+let toastTimer=null, toastAction=null;
+const TAB_INDEX={day:0,route:1,money:2};
+
+/* photo cache for Wikipedia pictures */
+const IMGK="kerala-trip-2026-photos";
+let IMG={}; try{ IMG=JSON.parse(localStorage.getItem(IMGK)||"{}"); }catch(e){}
+async function photoFor(w){
+  const list=(w||"").split("|").filter(Boolean);
+  for(const t of list) if(IMG[t]&&IMG[t].s) return IMG[t];
+  const need=list.filter(t=>IMG[t]===undefined);
+  if(!need.length||navigator.onLine===false) return null;
+  try{
+    const url="https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&redirects=1&prop=pageimages&piprop=thumbnail&pithumbsize=1200&titles="+encodeURIComponent(need.join("|"));
+    const ctl=new AbortController(); const timer=setTimeout(()=>ctl.abort(),8000);
+    const r=await fetch(url,{signal:ctl.signal}); clearTimeout(timer);
+    if(!r.ok) return null;
+    const j=await r.json();
+    const norm={},redir={},by={};
+    (j.query&&j.query.normalized||[]).forEach(x=>norm[x.from]=x.to);
+    (j.query&&j.query.redirects||[]).forEach(x=>redir[x.from]=x.to);
+    Object.values(j.query&&j.query.pages||{}).forEach(pg=>{ if(pg.thumbnail&&pg.thumbnail.source) by[pg.title]={s:pg.thumbnail.source,p:pg.title}; });
+    need.forEach(t=>{ let x=norm[t]||t; x=redir[x]||x; IMG[t]=by[x]||0; });
+    try{localStorage.setItem(IMGK,JSON.stringify(IMG));}catch(e){}
+  }catch(e){ return null; }
+  for(const t of list) if(IMG[t]&&IMG[t].s) return IMG[t];
+  return null;
+}
+
+/* ======================= url, tabs, days ======================= */
+function syncURL(){
+  try{
+    const u=new URL(location.href);
+    if(TAB==="day"){ u.searchParams.set("day",String(VD+1)); u.searchParams.delete("tab"); }
+    else{ u.searchParams.set("tab",TAB); u.searchParams.delete("day"); }
+    history.replaceState(null,"",u.pathname+u.search+u.hash);
+  }catch(e){}
+}
+function defaultDay(){
+  const td=tripDay(NOW);
+  if(td) return td-1;
+  if(NOW.y>2026||(NOW.y===2026&&(NOW.mo>11||(NOW.mo===11&&NOW.d>1)))) return 8;
+  return 0;
+}
+function updateDock(){
+  $$(".dock button").forEach(b=>{
+    if(b.dataset.tab===TAB) b.setAttribute("aria-current","page"); else b.removeAttribute("aria-current");
+  });
+  const d=$("#dock-in"); if(d) d.style.setProperty("--i",String(TAB_INDEX[TAB]??0));
+}
+function updateNet(){
+  const n=$("#net"); if(!n) return;
+  n.hidden=navigator.onLine!==false;
+}
+
+/* ======================= hero ======================= */
+function applyDayColor(){ document.documentElement.style.setProperty("--day",DAYS[VD].c); }
+function renderHero(animate){
+  applyDayColor();
+  const el=$("#hero"); if(!el) return;
+  el.innerHTML=viewHero(animate);
+  wirePlate();
+}
+function wirePlate(){
+  const pic=$("#hero .plate"), img=$("#hero .plate-img");
+  if(!pic||!img) return;
+  const show=()=>pic.classList.add("is-loaded");
+  if(img.complete&&img.naturalWidth) show();
+  else{
+    img.addEventListener("load",show,{once:true});
+    img.addEventListener("error",()=>{ img.style.visibility="hidden"; pic.classList.add("is-error"); },{once:true});
+  }
+}
+function animatePlanBar(){
+  const u=$("#view .planbar u"); if(!u) return;
+  const target=u.parentElement.style.getPropertyValue("--p")||"0%";
+  if(reduceMotion()){ u.style.width=target; return; }
+  u.style.width="0%";
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{ u.style.width=target; }));
+}
+
+/* ======================= rendering ======================= */
+function setDocTitle(){
+  const t=TAB==="day"?`${isToday(VD)?"Today · ":""}${DAYS[VD].title} · Kerala by road`:TAB==="route"?"The route · Kerala by road":"Money & prep · Kerala by road";
+  if(document.title!==t) document.title=t;
+}
+function renderView(animate){
+  const v=$("#view"); if(!v) return;
+  setDocTitle();
+  v.innerHTML=TAB==="day"?viewDay():TAB==="route"?viewRoute():viewMoney();
+  v.classList.remove("view-in");
+  if(animate&&!reduceMotion()){ void v.offsetWidth; v.classList.add("view-in"); }
+  if(TAB==="day") animatePlanBar();
+  if(TAB==="route") requestAnimationFrame(wireMap);
+}
+function setTab(tab){
+  if(!(tab in TAB_INDEX)) tab="day";
+  if(TAB===tab){
+    window.scrollTo({top:0,behavior:reduceMotion()?"auto":"smooth"});
+    return;
+  }
+  TAB=tab; document.body.dataset.tab=TAB;
+  applyDayColor();
+  if(tab==="day"&&!$("#hero .hero-grid")) renderHero(true);
+  updateDock(); renderView(true); syncURL();
+  window.scrollTo(0,0);
+}
+function setDay(i,opts){
+  VD=clamp(i,0,8);
+  hideToast();
+  const tabChanged=TAB!=="day";
+  TAB="day"; document.body.dataset.tab="day";
+  applyDayColor();
+  renderHero(true);
+  updateDock(); updateJourney(); renderView(true); syncURL();
+  window.scrollTo(0,0);
+  if(opts&&opts.focusNav){
+    requestAnimationFrame(()=>{ const j=$('.jday[aria-current="true"]'); if(j) j.focus({preventScroll:true}); });
+  }
+}
+
+/* ======================= map intro ======================= */
+let mapIO=null;
+function wireMap(){
+  const frame=$("#map-frame"); if(!frame) return;
+  if(reduceMotion()||typeof IntersectionObserver==="undefined"){ frame.classList.add("is-in"); return; }
+  if(frame.dataset.wired) return;
+  frame.dataset.wired="1";
+  mapIO=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ frame.classList.add("is-in"); mapIO.disconnect(); mapIO=null; } });
+  },{rootMargin:"0px 0px -6% 0px",threshold:.05});
+  mapIO.observe(frame);
+}
+
+/* ======================= toast ======================= */
+function showToast(msg,action){
+  const el=$("#toast"); if(!el) return;
+  el.innerHTML=`<span class="t-dot" aria-hidden="true"></span><span class="t-msg">${esc(msg)}</span>${action?'<button type="button" data-act="toast-undo">Undo</button>':''}<button type="button" class="t-close" data-act="toast-close" aria-label="Dismiss">×</button>`;
+  el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastAction=action||null;
+  toastTimer=setTimeout(hideToast,4800);
+}
+function hideToast(){
+  const el=$("#toast"); if(!el) return;
+  clearTimeout(toastTimer); toastTimer=null; toastAction=null;
+  el.classList.remove("show");
+}
+
+/* ======================= sheet ======================= */
+function stopByKey(k){ const i=+String(k).split(".")[0]; return {i,s:stopsOf(i).find(x=>x.k===k)}; }
+function openStopSheet(key){
+  const f=stopByKey(key); if(!f||!f.s) return;
+  hideToast();
+  SHEET={kind:"stop",key};
+  lastFocus=document.activeElement;
+  drawSheet();
+  showSheet();
+}
+function openCustomSheet(kind){
+  hideToast();
+  SHEET={kind};
+  lastFocus=document.activeElement;
+  drawSheet();
+  showSheet();
+}
+function drawSheet(){
+  const el=$("#sheet"); if(!el) return;
+  if(!SHEET){ el.hidden=true; el.innerHTML=""; return; }
+  let html="";
+  if(SHEET.kind==="stop"){
+    const f=stopByKey(SHEET.key); if(!f||!f.s){ SHEET=null; el.hidden=true; return; }
+    html=sheetStopHtml(f.i,f.s);
+  }else if(SHEET.kind==="loc"){
+    const f=stopByKey(SHEET.key); if(!f||!f.s){ SHEET=null; el.hidden=true; return; }
+    html=sheetLocHtml(f.i,f.s);
+  }else if(SHEET.kind==="credits"){
+    html=sheetCreditsHtml();
+  }else if(SHEET.kind==="clear"){
+    html=sheetClearHtml();
+  }
+  el.innerHTML=html;
+  if(SHEET&&SHEET.kind==="stop"){
+    const f=stopByKey(SHEET.key);
+    if(f&&f.s.w) loadSheetPhoto(f.i,f.s);
+  }
+  if(SHEET&&SHEET.kind==="loc"){
+    requestAnimationFrame(()=>{ const inp=$("#loc-input"); if(inp){ inp.focus({preventScroll:true}); inp.select&&inp.select(); } });
+  }
+}
+function showSheet(){
+  const el=$("#sheet"); if(!el) return;
+  if(el.hidden){
+    el.hidden=false;
+    document.body.style.overflow="hidden";
+    if(!sheetHistory){ try{ history.pushState({sheet:1},""); sheetHistory=true; }catch(e){} }
+  }
+  requestAnimationFrame(()=>{
+    const focus=SHEET&&SHEET.kind==="loc"?$("#loc-input"):($("#sheet .sheet-close")||$("#sheet .panel"));
+    if(focus) focus.focus({preventScroll:true});
+  });
+}
+function closeSheet(fromHistory){
+  const el=$("#sheet");
+  if(!el||el.hidden||sheetClosing) return;
+  const panel=$("#sheet .panel");
+  SHEET=null;
+  if(!fromHistory&&sheetHistory){ sheetHistory=false; try{history.back();}catch(e){} }
+  document.body.style.overflow="";
+  const finish=()=>{
+    if(!el) return;
+    el.hidden=true; el.innerHTML=""; sheetClosing=false;
+    if(lastFocus&&lastFocus.isConnected) lastFocus.focus({preventScroll:true});
+    lastFocus=null;
+  };
+  if(panel&&!reduceMotion()){
+    sheetClosing=true;
+    panel.classList.add("is-closing");
+    setTimeout(finish,230);
+  }else finish();
+}
+async function loadSheetPhoto(i,s){
+  const host=$("#sheet-photo"); if(!host) return;
+  const key=s.k;
+  if(navigator.onLine===false){ host.remove(); const src=$("#sheet-source"); if(src) src.remove(); return; }
+  const ph=await photoFor(s.w);
+  if(!SHEET||SHEET.kind!=="stop"||SHEET.key!==key){ return; }
+  const hostNow=$("#sheet-photo"); if(!hostNow) return;
+  if(!ph){ hostNow.remove(); const src=$("#sheet-source"); if(src) src.remove(); return; }
+  const img=document.createElement("img");
+  img.alt="Photograph of "+stopTitle(s);
+  img.decoding="async"; img.loading="eager";
+  img.src=ph.s;
+  img.addEventListener("load",()=>hostNow.classList.add("loaded"),{once:true});
+  img.addEventListener("error",()=>{ hostNow.remove(); const src=$("#sheet-source"); if(src) src.remove(); },{once:true});
+  hostNow.appendChild(img);
+  const src=$("#sheet-source");
+  if(src){
+    const a=document.createElement("a");
+    a.href="https://en.wikipedia.org/wiki/"+encodeURIComponent(String(ph.p||"Wikipedia").replace(/ /g,"_"));
+    a.target="_blank"; a.rel="noopener"; a.textContent="Wikimedia";
+    src.textContent="Photo: "; src.appendChild(a);
+  }
+}
+function trapFocus(e){
+  const panel=$("#sheet .panel"); if(!panel) return;
+  const f=$$('a[href],button:not([disabled]),input:not([disabled]),[tabindex]:not([tabindex="-1"])',panel).filter(el=>el.offsetWidth||el.offsetHeight);
+  if(!f.length) return;
+  const first=f[0], last=f[f.length-1];
+  if(e.shiftKey&&(document.activeElement===first||!panel.contains(document.activeElement))){ e.preventDefault(); last.focus(); }
+  else if(!e.shiftKey&&(document.activeElement===last||!panel.contains(document.activeElement))){ e.preventDefault(); first.focus(); }
+}
+
+/* ======================= state actions ======================= */
+function refreshDay(){
+  renderView(false);
+  updateJourney();
+}
+function focusCheck(key){
+  requestAnimationFrame(()=>{ const b=$(`[data-act="toggle"][data-key="${key}"]`); if(b) b.focus({preventScroll:true}); });
+}
+function toggleStop(key,opts){
+  const f=stopByKey(key); if(!f||!f.s) return;
+  const s=f.s, was=isMarked(key), title=stopTitle(s);
+  if(was){ delete S.got[key]; delete S.skip[key]; }
+  else{ S.got[key]=Date.now(); delete S.skip[key]; }
+  save(); vibrate(14);
+  if(SHEET) closeSheet();
+  refreshDay();
+  focusCheck(key);
+  if(!was){
+    const verb=(s.stay?s.rl:"Reached");
+    const msg=verb.toLowerCase()===title.toLowerCase()?`Marked · ${title}`:`${verb} · ${title}`;
+    showToast(msg,()=>{ delete S.got[key]; delete S.skip[key]; save(); refreshDay(); focusCheck(key); });
+  }else{
+    showToast(`Mark removed · ${title}`);
+  }
+}
+function skipStop(key){
+  const f=stopByKey(key); if(!f||!f.s) return;
+  const s=f.s, title=stopTitle(s);
+  S.skip[key]=1; delete S.got[key]; save(); vibrate(10);
+  if(SHEET) closeSheet();
+  refreshDay(); focusCheck(key);
+  showToast(`Skipped · ${title}`,()=>{ delete S.skip[key]; save(); refreshDay(); focusCheck(key); });
+}
+function clearEverything(){
+  S={got:{},skip:{},loc:{},chk:{}};
+  ALL_CHK.forEach(([k])=>{ S.chk[k]=false; });
+  save();
+  closeSheet();
+  renderView(false);
+  if(TAB==="day") updateJourney();
+  showToast("Marks, locations and ticks cleared");
+  requestAnimationFrame(()=>{ const b=$('[data-act="clear"]'); if(b) b.focus({preventScroll:true}); });
+}
+
+/* ======================= events ======================= */
+function onCheckChange(t){
+  if(!t.matches||!t.matches("input[data-chk]")) return;
+  S.chk[t.dataset.chk]=t.checked; save();
+  const st=checkStats();
+  const count=$("#prep-count"); if(count) count.textContent=`${st.done} of ${st.n} done`;
+  const pctEl=$("#prep-pct"); const pct=Math.round(st.done/st.n*100); if(pctEl) pctEl.textContent=pct+"%";
+  const bar=$("#prepbar"); if(bar){ bar.style.setProperty("--p",pct+"%"); const u=bar.querySelector("u"); if(u) u.style.width=pct+"%"; }
+  $$("#prep .checkgroup").forEach(g=>{
+    const st2=st.groups[g.dataset.group]; const el=g.querySelector("[data-count]");
+    if(st2&&el) el.textContent=`${st2.d} / ${st2.n}`;
+  });
+}
+function onLocSubmit(form){
+  const input=form.querySelector("#loc-input");
+  const err=$("#loc-error");
+  const value=(input&&input.value||"").trim();
+  if(!value){
+    if(err) err.classList.add("show");
+    if(input){ input.setAttribute("aria-invalid","true"); input.focus(); }
+    return;
+  }
+  const sid=form.dataset.sid, key=form.dataset.key;
+  S.loc[sid]=value; save();
+  refreshDay();
+  SHEET={kind:"stop",key};
+  drawSheet();
+  requestAnimationFrame(()=>{ const b=$("#sheet .panel"); if(b) b.focus({preventScroll:true}); });
+}
+function onJourneyKey(e){
+  if(e.key!=="ArrowLeft"&&e.key!=="ArrowRight") return;
+  e.preventDefault();
+  const next=clamp(VD+(e.key==="ArrowRight"?1:-1),0,8);
+  setDay(next);
+  requestAnimationFrame(()=>{ const b=$$(".jday")[next]; if(b) b.focus({preventScroll:true}); });
+}
+function onClick(e){
+  const el=e.target.closest("[data-act]"); if(!el) return;
+  const act=el.dataset.act;
+  if(act==="sheet-close"){ e.preventDefault(); closeSheet(); return; }
+  if(act==="toast-undo"){
+    e.preventDefault();
+    const fn=toastAction; hideToast(); if(fn) fn(); return;
+  }
+  if(act==="toast-close"){ e.preventDefault(); hideToast(); return; }
+  if(act==="tab"){ e.preventDefault(); setTab(el.dataset.tab); return; }
+  if(act==="day"){ e.preventDefault(); const nav=el.classList.contains("jday"); setDay(+el.dataset.day,{focusNav:!nav}); return; }
+  if(act==="today"){
+    e.preventDefault();
+    const td=tripDay(NOW);
+    if(td) setDay(td-1,{focusNav:true});
+    return;
+  }
+  if(act==="open"){ e.preventDefault(); openStopSheet(el.dataset.key); return; }
+  if(act==="toggle"){ e.preventDefault(); toggleStop(el.dataset.key,{fromSheet:!!SHEET}); return; }
+  if(act==="skip"){ e.preventDefault(); skipStop(el.dataset.key); return; }
+  if(act==="set-loc"){
+    e.preventDefault();
+    SHEET={kind:"loc",key:el.dataset.key};
+    drawSheet();
+    if($("#sheet").hidden) showSheet();
+    requestAnimationFrame(()=>{ const i=$("#loc-input"); if(i){ i.focus({preventScroll:true}); i.select&&i.select(); } });
+    return;
+  }
+  if(act==="loc-back"){
+    e.preventDefault();
+    SHEET={kind:"stop",key:el.dataset.key}; drawSheet();
+    requestAnimationFrame(()=>{ const b=$("#sheet .sheet-close"); if(b) b.focus({preventScroll:true}); });
+    return;
+  }
+  if(act==="loc-reset"){
+    e.preventDefault();
+    const f=stopByKey(el.dataset.key); if(f&&f.s&&f.s.stay){ delete S.loc[f.s.stay.sid]; save(); refreshDay(); }
+    SHEET={kind:"stop",key:el.dataset.key}; drawSheet();
+    return;
+  }
+  if(act==="credits"){ e.preventDefault(); openCustomSheet("credits"); return; }
+  if(act==="clear"){ e.preventDefault(); openCustomSheet("clear"); return; }
+  if(act==="clear-confirm"){ e.preventDefault(); clearEverything(); return; }
+  if(act==="hint-close"){ e.preventDefault(); closeHint(); return; }
+  if(act==="fold"){
+    e.preventDefault();
+    const key=el.dataset.fold, box=el.closest(".fold"), body=box.querySelector(".fold-body");
+    const open=!OPEN.has(key);
+    if(open) OPEN.add(key); else OPEN.delete(key);
+    box.dataset.open=String(open);
+    el.setAttribute("aria-expanded",String(open));
+    if(body){ if(open) body.removeAttribute("inert"); else body.setAttribute("inert",""); }
+    return;
+  }
+}
+function onFormSubmit(e){
+  const form=e.target.closest('[data-form="loc"]');
+  if(!form) return;
+  e.preventDefault(); onLocSubmit(form);
+}
+function onKeydown(e){
+  if(e.key==="Escape"&&SHEET){ e.preventDefault(); closeSheet(); return; }
+  if(SHEET&&e.key==="Tab") trapFocus(e);
+}
+function onPop(){
+  if(SHEET){ const s=SHEET; closeSheet(true); }
+}
+function onVisibility(){
+  if(document.hidden) return;
+  const oldDay=tripDay(NOW);
+  NOW=nowIST();
+  const newDay=tripDay(NOW);
+  if(newDay&&newDay!==oldDay&&VD===oldDay-1){ setDay(newDay-1); }
+  else if(TAB==="route"||TAB==="money"){ renderView(false); }
+  wxLoad().then(ok=>{ if(ok) updateWeather(); });
+  updateNet();
+}
+
+/* ======================= sheet drag ======================= */
+let dragState=null;
+function onPointerDown(e){
+  const g=e.target.closest("#sheet .grab"); if(!g||reduceMotion()) return;
+  const panel=$("#sheet .panel"); if(!panel) return;
+  dragState={x:e.clientX,y:e.clientY,panel};
+  panel.classList.add("is-dragging");
+  panel.style.transform="translateY(0)";
+  try{ g.setPointerCapture(e.pointerId); }catch(err){}
+}
+function onPointerMove(e){
+  if(!dragState) return;
+  const dy=Math.max(0,e.clientY-dragState.y);
+  dragState.dy=dy;
+  dragState.panel.style.transform=`translateY(${dy}px)`;
+}
+function onPointerUp(){
+  if(!dragState) return;
+  const {panel,dy}=dragState;
+  dragState=null;
+  panel.classList.remove("is-dragging");
+  if(dy>90){ panel.style.transform=""; closeSheet(); }
+  else{ panel.style.transform=""; }
+}
+
+/* ======================= install hint, sw, boot ======================= */
+function showHint(){
+  const bar=$("#hintbar"); if(!bar) return;
+  bar.innerHTML=`${I.share}<span>For the car: open <b>Share</b>, then <b>Add to Home Screen</b>.</span><button type="button" data-act="hint-close" aria-label="Dismiss">×</button>`;
+  bar.hidden=false;
+}
+function closeHint(){
+  try{ localStorage.setItem("kerala-hint","1"); }catch(e){}
+  const bar=$("#hintbar"); if(bar){ bar.hidden=true; bar.innerHTML=""; }
+}
+function bindEvents(){
+  document.addEventListener("click",onClick);
+  document.addEventListener("change",e=>onCheckChange(e.target));
+  document.addEventListener("submit",onFormSubmit);
+  document.addEventListener("keydown",onKeydown);
+  document.addEventListener("pointerdown",onPointerDown);
+  document.addEventListener("pointermove",onPointerMove);
+  document.addEventListener("pointerup",onPointerUp);
+  document.addEventListener("pointercancel",onPointerUp);
+  $("#journey").addEventListener("keydown",onJourneyKey);
+  window.addEventListener("popstate",onPop);
+  window.addEventListener("online",()=>{ updateNet(); wxLoad().then(ok=>{ if(ok) updateWeather(); }); });
+  window.addEventListener("offline",updateNet);
+  document.addEventListener("visibilitychange",onVisibility);
+  const el=$("#toast");
+  if(el){
+    el.addEventListener("mouseenter",()=>clearTimeout(toastTimer));
+    el.addEventListener("focusin",()=>clearTimeout(toastTimer));
+    el.addEventListener("mouseleave",()=>{ if(el.classList.contains("show")) toastTimer=setTimeout(hideToast,2200); });
+  }
+}
+function wireScroll(){
+  const journey=$("#journey");
+  let raf=false;
+  const check=()=>{
+    if(raf) return; raf=true;
+    requestAnimationFrame(()=>{
+      raf=false;
+      if(!journey) return;
+      if(TAB!=="day"){ journey.classList.remove("is-stuck"); return; }
+      const top=parseFloat(getComputedStyle(journey).top)||0;
+      journey.classList.toggle("is-stuck",journey.getBoundingClientRect().top<=top+1);
+    });
+  };
+  window.addEventListener("scroll",check,{passive:true});
+  window.addEventListener("resize",check);
+  check();
+}
+function init(){
+  try{ history.scrollRestoration="manual"; }catch(e){}
+  const p=new URLSearchParams(location.search);
+  const t=p.get("tab");
+  TAB=t==="route"?"route":(t==="money"||t==="info")?"money":"day";
+  const d=parseInt(p.get("day"),10);
+  VD=(d>=1&&d<=9)?d-1:defaultDay();
+  document.body.dataset.tab=TAB;
+  applyDayColor();
+  buildJourney();
+  if(TAB==="day") renderHero(true);
+  updateDock();
+  renderView(true);
+  syncURL();
+  updateNet();
+  bindEvents();
+  wireScroll();
+  window.scrollTo(0,0);
+  wxLoad().then(ok=>{ if(ok) updateWeather(); });
+  try{
+    if("serviceWorker" in navigator&&/^https?:$/.test(location.protocol)) navigator.serviceWorker.register("sw.js").catch(()=>{});
+  }catch(e){}
   try{
     const ios=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
-    if(ios&&!navigator.standalone&&!localStorage.getItem("kerala-hint")){
-      const bar=document.createElement("div");
-      bar.className="hintbar";
-      bar.innerHTML='<span>Install: tap Share, then <b>Add to Home Screen</b>.</span><button aria-label="Dismiss">×</button>';
-      bar.querySelector("button").onclick=()=>{ try{localStorage.setItem("kerala-hint","1");}catch(e){} bar.remove(); };
-      document.body.appendChild(bar);
-    }
+    const standalone=window.navigator.standalone||matchMedia("(display-mode: standalone)").matches;
+    if(ios&&!standalone&&!localStorage.getItem("kerala-hint")) setTimeout(showHint,2200);
   }catch(e){}
-})();
+}
+init();
+
 </script>
 </body>
 </html>

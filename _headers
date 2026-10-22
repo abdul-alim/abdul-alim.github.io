@@ -7,5 +7,19 @@
 /sw.js
   Cache-Control: no-cache
 
+# Page loads are handled network-first by the service worker. Keep the HTTP
+# cache short too, so a deploy cannot hide behind it for ten minutes.
+/index.html
+  Cache-Control: no-cache
+
 /icons/*
   Cache-Control: public, max-age=604800
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/photos/*
+  Cache-Control: public, max-age=604800
+
+/photos/plates/*
+  Cache-Control: public, max-age=31536000, immutable
